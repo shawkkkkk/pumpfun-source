@@ -1,0 +1,229 @@
+--- a/programs/pump-fees/src/instructions/fee_sharing/update_fee_shares.rs
++++ b/programs/pump-fees/src/instructions/fee_sharing/update_fee_shares.rs
+@@ -1,7 +1,7 @@
+ use anchor_lang::prelude::*;
+ use crate::types::*;
+ use crate::donation::ConfigStatus;
+-use crate::{FeeError, sharing_update::{UpdateFeeShares, legacy_transfer_creator_fees_to_pump, legacy_payout_accounts, legacy_distribute_creator_fees}};
++use crate::{FeeError, sharing_update::PreparedLegacyPayout, sharing_update::{UpdateFeeShares, legacy_transfer_creator_fees_to_pump, legacy_payout_accounts, legacy_distribute_creator_fees}};
+ use super::{legacy_authorize, preprocess_remaining};
+ 
+ 
+@@ -174,61 +174,61 @@
+ 
+ 
+ 
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
++pub fn prepare_legacy_payout<'info>(
++    remaining: &[AccountInfo<'info>], shareholders: &[Shareholder],
++) -> Result<PreparedLegacyPayout<'info>> {
++    let mut accounts = Vec::with_capacity(remaining.len());
++    let mut retained = Vec::with_capacity(shareholders.len());
++    let mut sum = 0u16;
++    let mut max_weight = 0u16;
++    let mut max_shareholder_idx = 0usize;
++    for (i, share) in shareholders.iter().enumerate() {
++        let account = remaining.get(i).ok_or_else(|| error!(FeeError::NotEnoughRemainingAccounts))?;
++        if account.key() != share.address {
++            return Err(error!(FeeError::ShareholderAccountMismatch)
++                .with_values((account.key(), share.address)));
++        }
++        if account.executable {
++            continue;
++        }
++        retained.push(share.clone());
++        accounts.push(account.clone());
++        if share.share_bps > max_weight {
++            max_weight = share.share_bps;
++            max_shareholder_idx = retained.len().saturating_sub(1);
++        }
++        sum = sum.saturating_add(share.share_bps);
++    }
++    if retained.len() == shareholders.len() {
++        // The unchanged result includes trailing accounts, with their real flags.
++        return Ok((
++            retained, false, remaining.to_vec(),
++        ));
++    }
++    if retained.is_empty() {
++        return Ok((
++            Vec::new(), true, Vec::new(),
++        ));
++    }
++    // Renormalize the retained entries only after all admission checks.
++    let mut normalized_sum = 0u16;
++    for share in &mut retained {
++        share.share_bps = if sum == 0 {
++            0
++        } else {
++            ((u64::from(share.share_bps) * 10_000 / u64::from(sum)).min(10_000)) as u16
++        };
++        normalized_sum = normalized_sum
++            .saturating_add(share.share_bps);
++    }
++
++    // Assign the rounding remainder to the largest retained shareholder.
++    // Saturating arithmetic also covers a zero total share weight.
++
++    retained[max_shareholder_idx].share_bps = retained[max_shareholder_idx].share_bps
++        .saturating_add(10_000u16.saturating_sub(normalized_sum));
++    Ok((retained, true, accounts))
++}
+ 
+ 
+ 
+--- a/programs/pump-fees/src/sharing_update.rs
++++ b/programs/pump-fees/src/sharing_update.rs
+@@ -218,52 +218,52 @@
+ 
+ 
+ // Original [199072,204080). Per-entry availability precedes key and executable.
+-pub fn prepare_legacy_payout<'info>(
+-    remaining: &[AccountInfo<'info>], shareholders: &[Shareholder],
+-) -> Result<PreparedLegacyPayout<'info>> {
+-    let mut accounts = Vec::with_capacity(remaining.len());
+-    let mut retained = Vec::with_capacity(shareholders.len());
+-    let mut sum = 0u16;
+-    let mut max_weight = 0u16;
+-    let mut max_index = 0usize;
+-    for (i, share) in shareholders.iter().enumerate() {
+-        require!(i < remaining.len(), FeeError::NotEnoughRemainingAccounts);
+-        let account = &remaining[i];
+-        if account.key() != share.address {
+-            return Err(error!(FeeError::ShareholderAccountMismatch)
+-                .with_values((account.key(), share.address)));
+-        }
+-        if account.executable { continue; }
+-        retained.push(share.clone());
+-        accounts.push(account.clone());
+-        if share.share_bps > max_weight {
+-            max_weight = share.share_bps;
+-            max_index = retained.len() - 1;
+-        }
+-        sum = sum.saturating_add(share.share_bps);
+-    }
+-    if retained.len() == shareholders.len() {
+-        // The unchanged result includes trailing accounts, with their real flags.
+-        return Ok((
+-            retained, false, remaining.to_vec(),
+-        ));
+-    }
+-    if retained.is_empty() {
+-        return Ok((
+-            Vec::new(), true, Vec::new(),
+-        ));
+-    }
+-    let mut normalized_sum = 0u16;
+-    for share in &mut retained {
+-        share.share_bps = if sum == 0 { 0 } else {
+-            ((u64::from(share.share_bps) * 10_000 / u64::from(sum)).min(10_000)) as u16
+-        };
+-        normalized_sum = normalized_sum.saturating_add(share.share_bps);
+-    }
+-    retained[max_index].share_bps = retained[max_index].share_bps
+-        .saturating_add(10_000u16.saturating_sub(normalized_sum));
+-    Ok((retained, true, accounts))
+-}
++pub use crate::instructions::fee_sharing::update_fee_shares::prepare_legacy_payout;
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
+ 
+ // Original [204080,205768). This is a legacy adapter, not the V2 caller.
+ pub fn legacy_payout_accounts<'info>(
