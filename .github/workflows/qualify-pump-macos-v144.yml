@@ -1,0 +1,41 @@
+name: Qualify Pump macOS v1.44 profile
+on:
+  push:
+    branches: [research/pump-macos-v144-qualification]
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: pump-macos-v144-qualification
+  cancel-in-progress: false
+jobs:
+  qualify:
+    runs-on: macos-15
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+          filter: blob:none
+          sparse-checkout: |
+            scripts
+            programs/pump
+            evidence/original/pump
+            repro/pump/main-contract-round37-20261027
+            research/pump-round37-trade-add-site-20261027
+            research/pump-macos-v144-qualification-20261027
+      - name: Install isolated comparison dependency
+        run: |
+          python3 -m venv "$RUNNER_TEMP/pump-qualification-python"
+          "$RUNNER_TEMP/pump-qualification-python/bin/pip" install pyelftools==0.32
+          printf '%s\n' "$RUNNER_TEMP/pump-qualification-python/bin" >> "$GITHUB_PATH"
+      - name: Reproduce pinned profile and frozen source
+        run: python3 -B scripts/pump_macos_v144_qualification.py
+      - name: Retain actual compiler inputs and results
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: pump-macos-v144-${{ github.run_id }}-${{ github.run_attempt }}
+          path: work/pump-macos-qualification/evidence
+          if-no-files-found: error
+          retention-days: 30
