@@ -1,0 +1,14 @@
+{
+  "README.md": "0fd9c3787318b595dc319068ebc4d328bc8a8ea8b08821022e0d32b1325030d8",
+  "baseline-sources.json": "a04809312049139d04c491976da7e5cff13c7cc2fa9b368f9aff5c9036edd33a",
+  "compare.py": "bcbf005bd11c629c4aa88e06157e212a339e329fb5577dca636199c5bf7aaa93",
+  "comparison-inputs.json": "366ce9f52fc1a0d24a80cda35b0715bdb9587207a9840bfaf6991584b6089011",
+  "expected.json": "1e9c12253e8cc8d061dec2ea9454b29de7f291a40095636b3cac5be1e7d04ed0",
+  "source-inputs.json": "917427100589cfcfbddc9fb52bbaecf6cdf1b059a9f306b21e4e262e0af2b7d0",
+  "source.patch": "0e7e4b2de5df6f66839caa410cc75539a1e4ff1eff229e8612a6e18f2e2f5297",
+  "source/src/settlement_handlers.rs": "1a5ee118d3c262a45077aff42b1565094e399feafd63d88712095cebd3db436e",
+  "source/src/tools/checks.rs": "73508faab137ffdd716ff2ec7aaec56a8d8b1e576f3dde96b00f4f0124b0cddb",
+  "source/src/tools/distribution/shared.rs": "90cdbc1b85996769bae31e680cbbf85af87d5c8a5e986b566fdf27737df5c220",
+  "test_verify.py": "2cb9021ab6307301bea9d9aaee27ec832268d65d70c04bd9da57dbb6357d7d14",
+  "verify.py": "22285784a3cd373020b4f77d07bc2d986a0e6fd14860ccd9e8c58923ac476315"
+}

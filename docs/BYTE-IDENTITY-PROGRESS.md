@@ -873,3 +873,30 @@ No logs, replay cases, binary/encoded artifacts or archived receipt excerpts
 are included. The extension business body and whole original binary remain
 unequal; this is diagnostic-source progress, not a new complete-body or global
 frontier claim. Protected checkpoints and prior evidence remain unchanged.
+
+
+## Relay: three complete settlement bodies, 488/492 normalized windows — 27 October 2026
+
+The [settlement bodies source proposal](../repro/donation-relay/settlement-bodies-source-proposal/README.md)
+recovers original windows **97, 98 and 100** (5,216, 5,696 and 5,328 bytes),
+advancing 485→488 normalized windows without losses. Raw local matches stay 142;
+these are not raw body or whole-program equality claims. All **99 actual direct
+callee sites** bind complete normalized bodies and recursively closed direct-call
+shapes. Only original windows 92–95 remain unmatched; closed pairs rise to 659.
+
+Three ordinary source files add the actual generic basis-point iterator helper,
+normal borrowed-key argument constructor and measured argument declaration order.
+Two exact 60-input maps derive from pinned public PR175/PR181 source blobs. Nine
+source-only tests and independent fresh local remeasurement pass. The complete
+19,863-byte .rodata remains equal, and all 359 positional data pointers plus 507
+nonpointer qwords retain the previously bounded relocation-aware shape result.
+Five referenced text targets still contain indirect calls. .text excess falls
+120→112 bytes; whole-file common differences remain 383,718 positions.
+
+Local independent root-clean builds and finite signed replay were observed, but
+no binaries, runtime cases or archived build/replay receipts/excerpts are
+published. Default checks report compiler_executed=false and runtime_verified=false;
+protected relayer settlement success remains untested. The 818,392-byte candidate
+is not equal to the 818,280-byte meaningful original ELF or 830,448-byte capture.
+All-data semantics, indirect behavior and unique historical source remain open;
+whole identity across the four core programs remains 0/4.
