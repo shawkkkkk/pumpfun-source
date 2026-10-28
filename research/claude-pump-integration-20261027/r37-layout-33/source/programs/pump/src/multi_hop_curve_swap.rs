@@ -245,7 +245,7 @@ struct PostCompleteFill {
 // S01: General iteration; fee flags and last-hop transfer are independent.
 pub fn execute<'info>(ctx: Context<'_,'_,'info,'info,MultiHopCurve<'info>>,
     amount_in: u64, hop_fees: Vec<u8>) -> Result<CurveRunResult> {
-    require!(amount_in > 0,PumpError::BuyZeroAmount);
+    require_gt!(amount_in,0,PumpError::BuyZeroAmount);
     require!(ctx.remaining_accounts.len() >= 5 && ctx.remaining_accounts.len() % 5 == 0,
         PumpError::NotEnoughRemainingAccounts);
     let count = ctx.remaining_accounts.len()/5;
