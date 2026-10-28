@@ -477,10 +477,10 @@ pub fn execute<'info>(ctx: Context<'_,'_,'info,'info,MultiHopCurve<'info>>,
 
 
 
-
-
-
-
+        let stepped=run_curve(a,&mut h,flag,index,count,current_mint,amount,previous,total_buyback,bumps,ctx.bumps.event_authority,overflow)?;
+        current_mint=stepped.0;amount=stepped.1;previous=stepped.2;total_buyback=stepped.3;
+        #[inline(never)]
+        fn run_curve<'info>(a:&MultiHopCurve<'info>,h:&mut CurveHop<'info>,flag:u8,index:usize,count:usize,mut current_mint:Pubkey,mut amount:u64,mut previous:Option<PreviousHop<'info>>,mut total_buyback:u64,bumps:CurveHopBumps,event_bump:u8,overflow:fn()->anchor_lang::error::Error)->Result<(Pubkey,u64,Option<PreviousHop<'info>>,u64)>{
         require!(!h.bonding_curve.is_mayhem_mode,PumpError::MultiHopMayhemCurveNotSupported);
         let base_token_program = token_program_for(&a.token_program, &a.token_2022_program, h.base_mint.as_ref().as_ref())?; let quote_token_program = token_program_for(&a.token_program, &a.token_2022_program, h.quote_mint.as_ref().as_ref())?; admit_vaults(&h,require_ata)?;
         if flag & 1 != 0 {
@@ -751,7 +751,7 @@ pub fn execute<'info>(ctx: Context<'_,'_,'info,'info,MultiHopCurve<'info>>,
         // One quote transfer pays both buybacks; the receipt is assigned to the first fill before the post fill.
         if flag & 1 != 0 {
             if native {
-                native_buyback(a,ctx.bumps.event_authority,&h.bonding_curve,paid_buyback)?;
+                native_buyback(a,event_bump,&h.bonding_curve,paid_buyback)?;
             } else if paid_buyback != 0 {
                 transfer_buyback_out(&quote_token_program,&h.associated_quote_bonding_curve,&a.buyback_fee_recipient,
                     &h.bonding_curve,h.quote_mint.decimals,AsRef::<AccountInfo>::as_ref(&*h.quote_mint),
@@ -777,13 +777,11 @@ pub fn execute<'info>(ctx: Context<'_,'_,'info,'info,MultiHopCurve<'info>>,
 
 
 
-
-
-        route_event(a,&event,ctx.bumps.event_authority)?;
+        route_event(a,&event,event_bump)?;
         if completed {
             let completion=crate::trade_types::CompleteEvent { user:a.user.key(),mint:mint_key,
                 bonding_curve:h.bonding_curve.key(),timestamp:Clock::get()?.unix_timestamp,quote_mint:c.quote_mint };
-            route_event(a,&completion,ctx.bumps.event_authority)?;
+            route_event(a,&completion,event_bump)?;
         }
         if let Some(post)=post_fill.as_ref() {
             let post_event=crate::trade::PostCompleteBuyEvent { user:a.user.key(),mint:mint_key,
@@ -792,7 +790,7 @@ pub fn execute<'info>(ctx: Context<'_,'_,'info,'info,MultiHopCurve<'info>>,
                 creator_fee_basis_points:c_rate,creator_fee:post.creator,buyback_fee:post_buyback,
                 pool_base_reserves_before:post.pool_base,pool_quote_reserves_before:post.pool_quote,
                 pool_base_reserves_after:sub(post.pool_base,post.base)?,pool_quote_reserves_after:add(post.pool_quote,post.quote)? };
-            route_event(a,&post_event,ctx.bumps.event_authority)?;
+            route_event(a,&post_event,event_bump)?;
         }
         h.exit(&crate::ID)?;
         current_mint = if buy { h.base_mint.key() } else { h.quote_mint.key() };
@@ -801,6 +799,8 @@ pub fn execute<'info>(ctx: Context<'_,'_,'info,'info,MultiHopCurve<'info>>,
             authority: h.bonding_curve.to_account_info(),bump: bumps.bonding_curve });
         amount = output;
         total_buyback = total_buyback.checked_add(add(buyback,post_buyback)?).ok_or_else(overflow)?;
+        Ok((current_mint,amount,previous,total_buyback))
+        }
     }
     require_keys_eq!(current_mint,a.destination.mint,PumpError::MultiHopDiscontinuousPath);
     Ok(CurveRunResult { amount_out: amount,buyback_fee: total_buyback })
