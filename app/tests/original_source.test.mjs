@@ -8,12 +8,12 @@ import { openCorpus, decodeSource, sha256, RANGE_ENCODING } from '../scripts/ori
 async function fixture(t) {
   const root = await mkdtemp(path.join(os.tmpdir(), 'original-source-'));
   t.after(() => rm(root, { recursive: true, force: true }));
-  await mkdir(path.join(root, 'evidence/web'), { recursive: true });
+  await mkdir(path.join(root, 'evidence/web/objects'), { recursive: true });
   await mkdir(path.join(root, 'recovered'));
   const text = '\ufeff(globalThis.TURBOPACK||(globalThis.TURBOPACK=[])).push(["/chunk.js",7,e=>{const label="é😀";e.s(["x",0,label])}]);\r\n';
   const start = text.indexOf('e=>');
   const end = text.indexOf('}]);') + 1;
-  const source = 'evidence/web/chunk.js';
+  const source = 'evidence/web/objects/chunk.js';
   const record = { path: source, url: 'https://example.invalid/chunk.js', status: 200,
     bytes: Buffer.byteLength(text), sha256: sha256(Buffer.from(text)) };
   const index = { rangeEncoding: RANGE_ENCODING, modules: [{ ids: [7],
@@ -95,5 +95,41 @@ test('manifest source symlinks and traversal paths are rejected', async (t) => {
   f.record.path = '../escape.js';
   f.index.modules[0].origins[0].source = '../escape.js';
   await f.save();
-  await assert.rejects((await openCorpus(f.root)).factory(7), /unsafe source path/);
+  await assert.rejects((await openCorpus(f.root)).factory(7), /non-object capture path/);
+});
+
+test('a forged manifest cannot authorize reading a repository file outside retained objects', async (t) => {
+  const f = await fixture(t);
+  const harmless = 'recovered/harmless.txt';
+  const bytes = Buffer.from('Synthetic non-sensitive file; not capture evidence.');
+  await writeFile(path.join(f.root, harmless), bytes);
+  f.record.path = harmless;
+  f.record.bytes = bytes.length;
+  f.record.sha256 = sha256(bytes);
+  await f.save();
+  await assert.rejects((await openCorpus(f.root)).capture(harmless), /non-object capture path/);
+});
+
+test('the runtime-leading nested-array grammar validates nested and trailing factories', async (t) => {
+  const f = await fixture(t);
+  const text = '(globalThis.TURBOPACK||(globalThis.TURBOPACK=[])).push(["c",[7,e=>{}],9,e=>{}]);';
+  f.record.bytes = Buffer.byteLength(text);
+  f.record.sha256 = sha256(text);
+  f.index.modules = [7, 9].map((id, i) => {
+    const start = text.indexOf('e=>{}', i ? text.indexOf('e=>{}') + 1 : 0);
+    return { ids: [id], sha256: sha256('e=>{}'), origins: [{ source: f.source, url: f.record.url, start, end: start + 'e=>{}'.length }] };
+  });
+  await writeFile(path.join(f.root, f.source), text);
+  await f.save();
+  const corpus = await openCorpus(f.root);
+  assert.deepEqual((await corpus.factory(7)).ids, [7]);
+  assert.deepEqual((await corpus.factory(9)).ids, [9]);
+  const moved = text.replace('["c",[7,e=>{}],9,e=>{}]', '["c",9,e=>{},[7,e=>{}]]');
+  f.record.bytes = Buffer.byteLength(moved);
+  f.record.sha256 = sha256(moved);
+  const nested = moved.indexOf('e=>{}', moved.indexOf('e=>{}') + 1);
+  f.index.modules = [{ ids: [7], sha256: sha256('e=>{}'), origins: [{ source: f.source, url: f.record.url, start: nested, end: nested + 'e=>{}'.length }] }];
+  await writeFile(path.join(f.root, f.source), moved);
+  await f.save();
+  await assert.rejects((await openCorpus(f.root)).factory(7), /registration/);
 });

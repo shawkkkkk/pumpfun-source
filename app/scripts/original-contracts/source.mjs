@@ -112,6 +112,11 @@ export async function openCorpus(appRoot) {
   }
   const captureCache = new Map();
   async function capture(relative) {
+    // A manifest is evidence data, not authority to read arbitrary repository
+    // files. Only retained object basenames can reach the filesystem reader.
+    if (typeof relative !== 'string' || !/^evidence\/web\/objects\/[A-Za-z0-9][A-Za-z0-9._-]*$/.test(relative)) {
+      throw new Error(`non-object capture path: ${relative}`);
+    }
     if (!captureCache.has(relative)) {
       const record = records.get(relative);
       if (!record || record.status !== 200) throw new Error(`unmanifested successful capture: ${relative}`);
@@ -141,15 +146,26 @@ export async function openCorpus(appRoot) {
     if (!result.ast) {
       result.ast = parse(result.text, { sourceType: 'unambiguous', errorRecovery: false });
       result.factories = [];
-      for (const registration of findNodes(result.ast, isFactoryRegistration)) {
+      // The captured runtime's X decoder recurses only into the leading
+      // array at each level, then scans ID groups up to their factory. Arrays
+      // at arbitrary later positions are not another registration container.
+      function registrations(elements, first) {
+        let cursor = first;
+        if (elements[cursor]?.type === 'ArrayExpression') {
+          registrations(elements[cursor].elements, 0);
+          cursor += 1;
+        }
         let ids = [];
-        for (const entry of registration.arguments[0].elements.slice(1)) {
+        for (const entry of elements.slice(cursor)) {
           if (['NumericLiteral', 'StringLiteral'].includes(entry?.type)) ids.push(entry.value);
           else if (['ArrowFunctionExpression', 'FunctionExpression'].includes(entry?.type)) {
             result.factories.push({ node: entry, ids });
             ids = [];
           } else ids = [];
         }
+      }
+      for (const registration of findNodes(result.ast, isFactoryRegistration)) {
+        registrations(registration.arguments[0].elements, 1);
       }
     }
     return result;
