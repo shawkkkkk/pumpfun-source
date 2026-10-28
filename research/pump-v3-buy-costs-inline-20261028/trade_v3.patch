@@ -1,0 +1,73 @@
+--- /tmp/pf/trade_v3_l33.rs	2026-10-28 15:06:41.730041542 +0000
++++ /tmp/pf/l33phy/programs/pump/src/trade_v3.rs	2026-10-28 15:05:54.394321255 +0000
+@@ -418,12 +418,12 @@
+ 
+ 
+ #[inline(never)]
+-fn v3_buy_costs(buyback_bps:u64,is_mayhem:bool,quote_fee:&Option<native_transfer_fee::Fee>,quote:u64,protocol_fee:u64,creator_fee:u64,post:Option<&PostComplete>)->Result<(u64,u64,u64)>{
+-    let (buyback,post_buyback)=if is_mayhem{(0,0)}else{(v3_buyback_split(protocol_fee,buyback_bps).0,match post{Some(p)=>v3_buyback_split(p.fees.protocol_fee,buyback_bps).0,None=>0})};
++fn v3_buy_costs(buyback_bps:u64,is_mayhem:u8,quote_fee:&Option<native_transfer_fee::Fee>,quote:u64,protocol_fee:u64,creator_fee:u64,post:Option<&PostComplete>)->Result<(u64,u64,u64)>{
++    let (buyback,post_buyback)=if is_mayhem!=0{(0,0)}else{(v3_buyback_split(protocol_fee,buyback_bps).0,match post{Some(p)=>v3_buyback_split(p.fees.protocol_fee,buyback_bps).0,None=>0})};
+     let total_buyback=add(buyback,post_buyback)?;
+-    let first=add3(quote,protocol_fee,creator_fee)?;
+-    let second=match post{Some(p)=>add3(p.quote_in,p.fees.protocol_fee,p.fees.creator_fee)?,None=>0};
+-    let net=sub(add(first,second)?,total_buyback)?;
++    let first=quote.checked_add(protocol_fee).and_then(|v|v.checked_add(creator_fee)).ok_or_else(||error!(PumpError::Overflow))?;
++    let second=match post{Some(p)=>add(p.quote_in,p.fees.protocol_fee)?.checked_add(p.fees.creator_fee).ok_or_else(||error!(PumpError::Overflow))?,None=>0};
++    let net=add(first,second)?.checked_sub(total_buyback).ok_or_else(||error!(PumpError::Overflow))?;
+     let (pool_quote,quote_transfer_fee)=gross_up_quote(quote_fee,net)?;
+     Ok((pool_quote,total_buyback,quote_transfer_fee))
+ }
+@@ -600,13 +600,13 @@
+ #[inline(never)]
+ pub fn fit_post_complete(buyback_bps:u64,is_mayhem:bool,quote_fee:&Option<native_transfer_fee::Fee>,quote:u64,protocol_fee:u64,creator_fee:u64,post:&mut PostComplete,budget:u64)->Result<(Option<PostComplete>,(u64,u64,u64))>{
+     loop{
+-        let costs=v3_buy_costs(buyback_bps,is_mayhem,quote_fee,quote,protocol_fee,creator_fee,Some(post))?;
++        let costs=v3_buy_costs(buyback_bps,is_mayhem as u8,quote_fee,quote,protocol_fee,creator_fee,Some(post))?;
+         let total=add(costs.0,costs.1)?;
+         if total<=budget{return Ok((Some(*post),costs));}
+-        let Some(q)=post.quote_in.checked_sub(total-budget).filter(|q|*q>1) else {return Ok((None,v3_buy_costs(buyback_bps,is_mayhem,quote_fee,quote,protocol_fee,creator_fee,None)?));};
++        let Some(q)=post.quote_in.checked_sub(total-budget).filter(|q|*q>1) else {return Ok((None,v3_buy_costs(buyback_bps,is_mayhem as u8,quote_fee,quote,protocol_fee,creator_fee,None)?));};
+         post.quote_in=q;
+         post.base_out=exact_input_tokens(post.quote_in,post.pool_base_before,post.pool_quote_before)?;
+-        if post.base_out==0{return Ok((None,v3_buy_costs(buyback_bps,is_mayhem,quote_fee,quote,protocol_fee,creator_fee,None)?));}
++        if post.base_out==0{return Ok((None,v3_buy_costs(buyback_bps,is_mayhem as u8,quote_fee,quote,protocol_fee,creator_fee,None)?));}
+     }
+ }
+ 
+@@ -811,7 +811,7 @@
+     let quote=u64::try_from(crate::buy_quote(&a.bonding_curve,amount)?).map_err(|_|error!(PumpError::Truncation))?;
+     let fees=v3_trade_fees(a,quote)?;
+     let post=if excess>0{let (pool_base,pool_quote)=v3_pool_before(a.bonding_curve.real_quote_reserves,a.global.pool_migration_fee,a.associated_base_bonding_curve.amount,is_sol,amount,quote)?;Some(v3_post_complete(a,pool_base,pool_quote,excess)?)}else{None};
+-    let (pool_quote,total_buyback,quote_transfer_fee)=v3_buy_costs(a.global.buyback_basis_points,a.bonding_curve.is_mayhem_mode,&quote_fee,quote,fees.protocol_fee,fees.creator_fee,post.as_ref())?;
++    let (pool_quote,total_buyback,quote_transfer_fee)=v3_buy_costs(a.global.buyback_basis_points,a.bonding_curve.is_mayhem_mode as u8,&quote_fee,quote,fees.protocol_fee,fees.creator_fee,post.as_ref())?;
+ // layout-pad(27): aligns the next Source site with the original line
+ 
+ 
+@@ -929,7 +929,7 @@
+ 
+         let quote=u64::try_from(crate::buy_quote(curve,amount)?).map_err(|_|error!(PumpError::Truncation))?;
+         let curve_fees=v3_trade_fees(a,quote)?;
+-        let costs=v3_buy_costs(a.global.buyback_basis_points,curve.is_mayhem_mode,&quote_fee,quote,curve_fees.protocol_fee,curve_fees.creator_fee,None)?;
++        let costs=v3_buy_costs(a.global.buyback_basis_points,curve.is_mayhem_mode as u8,&quote_fee,quote,curve_fees.protocol_fee,curve_fees.creator_fee,None)?;
+ 
+ 
+         require_gte!(spendable_quote_in,add(costs.0,costs.1)?,PumpError::TooMuchSolRequired);
+@@ -973,7 +973,7 @@
+         (amount,quote,curve_fees,post,costs)
+     }else{
+         let (mut tokens,mut net)=(tokens,net);
+-        let mut costs=v3_buy_costs(a.global.buyback_basis_points,curve.is_mayhem_mode,&quote_fee,net,protocol_fee,creator_fee,None)?;
++        let mut costs=v3_buy_costs(a.global.buyback_basis_points,curve.is_mayhem_mode as u8,&quote_fee,net,protocol_fee,creator_fee,None)?;
+         let total=add(costs.0,costs.1)?;
+         if total>spendable_quote_in{
+             net=net.checked_sub(total-spendable_quote_in).ok_or(PumpError::BuyNotEnoughSolToCoverFees)?;
+@@ -995,7 +995,7 @@
+ 
+ 
+             tokens=u64::try_from(crate::constant_product::tokens_for_quote(curve,net)?).map_err(|_|error!(PumpError::Truncation))?;
+-            costs=v3_buy_costs(a.global.buyback_basis_points,curve.is_mayhem_mode,&quote_fee,net,protocol_fee,creator_fee,None)?;
++            costs=v3_buy_costs(a.global.buyback_basis_points,curve.is_mayhem_mode as u8,&quote_fee,net,protocol_fee,creator_fee,None)?;
+         }
+ 
+         require_gte!(tokens,min_tokens_out,PumpError::BuySlippageBelowMinTokensOut);
