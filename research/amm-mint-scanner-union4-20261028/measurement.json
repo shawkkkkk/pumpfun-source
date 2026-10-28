@@ -1,0 +1,17 @@
+{
+  "baseline": "research/claude-amm-union4-20261028/builds/a/symbols.so.gz",
+  "baseline_normalized": 769,
+  "baseline_raw": 160,
+  "candidate_sha256": "562bfa9e87b47713b0fa60d061c17e4612eea621aca930023914d3c3d84a79e4",
+  "candidate_bytes": 1802960,
+  "candidate_normalized": 770,
+  "candidate_raw": 163,
+  "windows": 785,
+  "gained": ["0xf28b8"],
+  "normalized_losses": [],
+  "raw_gains": ["0xf28a8", "0xf28b8", "0x111360"],
+  "raw_losses": [],
+  "amm_matched_percent": 98.09,
+  "five_program_windows": "3278 / 3338",
+  "five_program_percent": 98.2
+}
