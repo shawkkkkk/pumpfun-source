@@ -1,0 +1,15 @@
+{
+  "baseline": "research/claude-pump-integration-20261027/r37-layout-32/unstripped.so",
+  "baseline_normalized": 990,
+  "baseline_raw": 166,
+  "candidate_sha256": "de4e5dfce4e136708b1451e2e19bc3ea2f4fe455de7a6d3c6bbc224b407e2019",
+  "candidate_bytes": 2764360,
+  "candidate_normalized": 992,
+  "candidate_raw": 164,
+  "gained": ["0x857a8", "0x9b430"],
+  "normalized_losses": [],
+  "checked_bytes": 736,
+  "checked_original_bytes": 744,
+  "unchecked_bytes": 624,
+  "pump_matched_percent": 95.85
+}

@@ -1,0 +1,87 @@
+--- research/claude-pump-integration-20261027/r37-layout-32/source/programs/pump/src/trade_types.rs	2026-10-28 13:41:34.140055950 +0000
++++ /tmp/pf/l32ws/programs/pump/src/trade_types.rs	2026-10-28 14:06:56.344971120 +0000
+@@ -40,39 +40,59 @@
+ impl anchor_lang::AccountDeserialize for BondingCurve {
+     #[inline(never)]
+     fn try_deserialize(buf: &mut &[u8]) -> Result<Self> {
+-        if buf.len() < Self::DISCRIMINATOR.len()
+-            || &buf[..Self::DISCRIMINATOR.len()] != Self::DISCRIMINATOR
+-        {
++        if buf.len() <= 7 {
+             return Err(anchor_lang::solana_program::program_error::ProgramError::InvalidAccountData.into());
+         }
+-        Self::try_deserialize_unchecked(buf)
++        if &buf[..8] == &[23, 183, 248, 55, 96, 216, 172, 96] {
++            *buf = &buf[8..];
++            let n = buf.len();
++            const MIN: usize = 41;
++            const V1: usize = 73;
++            const V2: usize = 75;
++            const V3: usize = 107;
++            const V4: usize = 116;
++            const V6: usize = 133;
++            const V7: usize = 158;
++            if n < MIN { return Err(anchor_lang::solana_program::program_error::ProgramError::InvalidAccountData.into()); }
++            if n < V1 { return historical_curve::decode_v0(buf); }
++            if n == V1 { return historical_curve::decode_v1(buf); }
++            if n < V2 { return historical_curve::decode_v2(buf); }
++            if n < V3 { return historical_curve::decode_v3(buf); }
++            if n < V4 { return historical_curve::decode_v4(buf); }
++            if n == V4 { return historical_curve::decode_v5(buf); }
++            if n < V6 { return historical_curve::decode_v6(buf); }
++            if n < V7 { return historical_curve::decode_v7(buf); }
++            historical_curve::decode_v8(buf)
++        } else {
++            Err(anchor_lang::solana_program::program_error::ProgramError::InvalidAccountData.into())
++        }
+     }
+ 
++    #[inline(never)]
+     fn try_deserialize_unchecked(buf: &mut &[u8]) -> Result<Self> {
+-        if buf.len() < Self::DISCRIMINATOR.len() {
++        if buf.len() < 8 {
+             return Err(anchor_lang::solana_program::program_error::ProgramError::InvalidAccountData.into());
+         }
+-        *buf = &buf[Self::DISCRIMINATOR.len()..];
+-        decode_original_curve_payload(buf)
+-    }
+-}
+-
+-// Recovered historical layout dispatch. Each Borsh layout owns one complete
+-// version; bytes between complete layout boundaries are not decoded.
+-fn decode_original_curve_payload(buf: &mut &[u8]) -> Result<BondingCurve> {
+-    let n = buf.len();
+-    if n < 41 {
+-        return Err(anchor_lang::solana_program::program_error::ProgramError::InvalidAccountData.into());
++        *buf = &buf[8..];
++        let n = buf.len();
++        const MIN: usize = 41;
++        const V1: usize = 73;
++        const V2: usize = 75;
++        const V3: usize = 107;
++        const V4: usize = 116;
++        const V6: usize = 133;
++        const V7: usize = 158;
++        if n < MIN { return Err(anchor_lang::solana_program::program_error::ProgramError::InvalidAccountData.into()); }
++        if n < V1 { return historical_curve::decode_v0(buf); }
++        if n == V1 { return historical_curve::decode_v1(buf); }
++        if n < V2 { return historical_curve::decode_v2(buf); }
++        if n < V3 { return historical_curve::decode_v3(buf); }
++        if n < V4 { return historical_curve::decode_v4(buf); }
++        if n == V4 { return historical_curve::decode_v5(buf); }
++        if n < V6 { return historical_curve::decode_v6(buf); }
++        if n < V7 { return historical_curve::decode_v7(buf); }
++        historical_curve::decode_v8(buf)
+     }
+-    if n < 73 { return historical_curve::decode_v0(buf); }
+-    if n == 73 { return historical_curve::decode_v1(buf); }
+-    if n < 75 { return historical_curve::decode_v2(buf); }
+-    if n < 107 { return historical_curve::decode_v3(buf); }
+-    if n < 116 { return historical_curve::decode_v4(buf); }
+-    if n == 116 { return historical_curve::decode_v5(buf); }
+-    if n < 133 { return historical_curve::decode_v6(buf); }
+-    if n < 158 { return historical_curve::decode_v7(buf); }
+-    historical_curve::decode_v8(buf)
+ }
+ 
+ mod historical_curve {
