@@ -107,10 +107,10 @@ pub fn execute<'info,const EXACT:bool>(ctx:Context<'_,'_,'_,'info,LegacyBuy<'inf
 
 
 
- require_gt!(adjusted,0,PumpError::BuySlippageBelowMinTokensOut);narrow(crate::constant_product::tokens_for_quote(c,adjusted)?)?}else{input};
+ require_gt!(adjusted,0,PumpError::BuySlippageBelowMinTokensOut);u64::try_from(crate::constant_product::tokens_for_quote(c,adjusted)?).ok().ok_or(PumpError::Truncation)?}else{input};
  let amount=computed.min(c.real_token_reserves);
- let quote=if !exact{pre_quote}else if computed<=c.real_token_reserves{adjusted}else{add232(narrow(amount as u128*c.virtual_quote_reserves as u128/(c.virtual_token_reserves as u128-amount as u128))?,1)?};
- let fq=if exact && computed<=c.real_token_reserves{raw_quote}else{quote};let pf=if exact{ceil_fee(fq,protocol_fee_bps)?}else{initial_protocol_fee};let cf=if exact{ceil_fee(fq,cb)?}else{initial_creator_fee};
+ let quote=if !exact{pre_quote}else if computed<=c.real_token_reserves{adjusted}else{crate::buy_quote(c,amount)? as u64};
+ let fq=if exact && computed<=c.real_token_reserves{raw_quote}else{quote};let pf=if exact{ceil_fee(fq,protocol_fee_bps)?}else{initial_protocol_fee};let cf=if exact{if c.creator==Pubkey::default(){0}else{ceil_fee(fq,cb)?}}else{initial_creator_fee};
 
 
 
