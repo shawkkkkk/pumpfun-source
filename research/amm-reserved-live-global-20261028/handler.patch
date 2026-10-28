@@ -1,0 +1,19 @@
+--- /tmp/amm-u7/programs/pump-amm/src/instructions/admin/set_reserved_fee_recipients.rs	1970-01-01 00:00:00.000000000 +0000
++++ /tmp/amm-build/programs/pump-amm/src/instructions/admin/set_reserved_fee_recipients.rs	2026-10-28 15:12:36.323608120 +0000
+@@ -42,7 +42,7 @@
+         RESERVED_FEE_RECIPIENTS_LEN,
+         PumpAmmError::NotEnoughRemainingAccounts
+     );
+-
++    let global_config = &mut ctx.accounts.global_config;
+     let recipients: [Pubkey; RESERVED_FEE_RECIPIENTS_LEN] = remaining_accounts[..RESERVED_FEE_RECIPIENTS_LEN]
+         .iter()
+         .map(|account| account.key())
+@@ -72,7 +72,6 @@
+         }
+     }
+ 
+-    let global_config = &mut ctx.accounts.global_config;
+     global_config.whitelist_pda = whitelist_pda;
+     global_config.reserved_fee_recipient = reserved_fee_recipient;
+     global_config.reserved_fee_recipients = reserved_fee_recipients;
