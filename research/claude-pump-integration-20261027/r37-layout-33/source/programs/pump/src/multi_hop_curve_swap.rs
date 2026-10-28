@@ -165,30 +165,6 @@ fn admit_vaults(h: &CurveHop, require_ata: fn(&Pubkey,&Pubkey,&Pubkey,&Pubkey)->
     }
     Ok(())
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 // N01: Native interface hypotheses use pinned SDK APIs, not newly recovered processors.
 fn prepare_curve<'info>(a: &MultiHopCurve<'info>, h: &CurveHop<'info>) -> Result<()> {
     crate::trade_types::prepare_bonding_curve(&h.bonding_curve, &a.system_program, &a.user)
@@ -204,22 +180,7 @@ fn move_lamports(from: &AccountInfo, to: &AccountInfo, amount: u64) -> Result<()
     **to.try_borrow_mut_lamports()? = credit;
     Ok(())
 }
-pub fn native_buyback<'info>(a: &MultiHopCurve<'info>, event_bump: u8, curve: &Account<'info, BondingCurve>, amount: u64) -> Result<()> {
-    if amount == 0 { return Ok(()); }
-    let to = a.buyback_fee_recipient.to_account_info();
-    let curve_info = curve.to_account_info();
-    crate::trade::quote_payments::transfer_native(curve, to.clone(), amount)?;
-    invoke_signed(&Instruction { program_id: crate::ID, accounts: vec![AccountMeta::new_readonly(a.event_authority.key(), true), AccountMeta::new(curve_info.key(), false), AccountMeta::new(to.key(), false)], data: anchor_lang::event::EVENT_IX_TAG_LE.to_vec() },
-        &[a.event_authority.to_account_info(), curve_info, to.clone()], &[&[b"__event_authority", &[event_bump]]])?;
-    invoke(&anchor_spl::token::spl_token::instruction::sync_native(&anchor_spl::token::spl_token::id(), to.key)?, &[to])?;
-    Ok(())
-}
-
-
-
-
-
-
+pub fn native_buyback<'info>(a: &MultiHopCurve<'info>, event_bump: u8, curve: &Account<'info, BondingCurve>, amount: u64) -> Result<()> { if amount == 0 { return Ok(()); } let to = a.buyback_fee_recipient.to_account_info(); let curve_info = curve.to_account_info(); crate::trade::quote_payments::transfer_native(curve, to.clone(), amount)?; invoke_signed(&Instruction { program_id: crate::ID, accounts: vec![AccountMeta::new_readonly(a.event_authority.key(), true), AccountMeta::new(curve_info.key(), false), AccountMeta::new(to.key(), false)], data: anchor_lang::event::EVENT_IX_TAG_LE.to_vec() }, &[a.event_authority.to_account_info(), curve_info, to.clone()], &[&[b"__event_authority", &[event_bump]]])?; invoke(&anchor_spl::token::spl_token::instruction::sync_native(&anchor_spl::token::spl_token::id(), to.key)?, &[to])?; Ok(()) }
 fn route_event<E: anchor_lang::Event>(a: &MultiHopCurve, event: &E, event_bump: u8) -> Result<()> {
     let data = anchor_lang::Event::data(event);
     anchor_lang::solana_program::log::sol_log_data(&[&data]);
@@ -243,13 +204,52 @@ struct PostCompleteFill {
 }
 
 // S01: General iteration; fee flags and last-hop transfer are independent.
-pub fn execute<'info>(ctx: Context<'_,'_,'info,'info,MultiHopCurve<'info>>,
-    amount_in: u64, hop_fees: Vec<u8>) -> Result<CurveRunResult> {
+pub fn execute<'info>(ctx: Context<'_,'_,'info,'info,MultiHopCurve<'info>>, amount_in: u64, hop_fees: Vec<u8>) -> Result<CurveRunResult> {
     require_gt!(amount_in,0,PumpError::BuyZeroAmount);
+
+
+
+
+
     require!(ctx.remaining_accounts.len() >= 5 && ctx.remaining_accounts.len() % 5 == 0,
         PumpError::NotEnoughRemainingAccounts);
     let count = ctx.remaining_accounts.len()/5;
+
     require!(hop_fees.len() == count && hop_fees.iter().all(|f| *f < 4),PumpError::MultiHopHopFeesMismatch);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     let a = &ctx.accounts;
     let mut remaining = ctx.remaining_accounts;
     let mut current_mint = a.source.mint;

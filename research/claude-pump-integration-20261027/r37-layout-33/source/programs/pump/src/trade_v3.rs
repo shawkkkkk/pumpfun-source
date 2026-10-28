@@ -1124,9 +1124,9 @@ pub fn sell(ctx:Context<SellV3>,amount:u64,min_sol_output:u64)->Result<()> {
 
 
     require_gt!(amount,0,PumpError::SellZeroAmount);
+    require_gte!(a.associated_base_user.amount,amount,PumpError::NotEnoughTokensToSell);
     let (is_sol,quote_fee)=check_quote(a)?;let quote_fee=quote_fee.map(|f|(f.epoch,f.maximum_fee,f.basis_points as u64));
     let quote_decimals:Option<u8>=if is_sol{None}else{Some(a.quote_mint.decimals)};
-    require_gte!(a.associated_base_user.amount,amount,PumpError::NotEnoughTokensToSell);
 
     let curve=&a.bonding_curve;
 // layout-pad(8): aligns the next Source site with the original line
@@ -1139,20 +1139,20 @@ pub fn sell(ctx:Context<SellV3>,amount:u64,min_sol_output:u64)->Result<()> {
 
     let quote=u64::try_from(curve.sell_quote(amount)?).map_err(|_|error!(PumpError::Truncation))?;
     let (fees,creator_bps)=if a.user.key()==a.global.whitelist_pda { (Fees{lp_fee_bps:0,protocol_fee_bps:0,creator_fee_bps:0},0) }else{ let cap=buy_fee_market_cap(curve, &a.base_mint)?;
-        let config_info=a.fee_config.to_account_info();
-        let config_data=config_info.try_borrow_data()?;
-        let config=read_config(&config_data)?;
-        drop(config_data);
+        let config_info=a.fee_config.to_account_info(); let config_data=config_info.try_borrow_data()?;
+        let config=read_config(&config_data)?; drop(config_data);
         let mut fees=selected(&config,cap,curve.quote_mint)?;
         if a.global.creator_fee_configurable && curve.creator_fee_bps>0{fees.creator_fee_bps=curve.creator_fee_bps;}
-        let creator_bps=if curve.creator==Pubkey::default(){0}else{fees.creator_fee_bps};
-        (fees,creator_bps) };
+        let creator_bps=if curve.creator==Pubkey::default(){0}else{fees.creator_fee_bps}; (fees,creator_bps) };
+
+    #[inline(always)] fn check_slip(net:u64,min_out:u64)->Result<()>{ require_gte!(net,min_out,PumpError::TooLittleSolReceived); Ok(()) }
+
     let protocol_fee=fee(quote,fees.protocol_fee_bps)?;
     let creator_fee=fee(quote,creator_bps)?;
     let buyback_bps=if curve.is_mayhem_mode {0}else{a.global.buyback_basis_points};
     let user_output=sub3(quote,protocol_fee,creator_fee)?;
     let quote_transfer_fee=if is_sol{0}else{quote_fee_for_amount(&quote_fee,user_output,false)?};
-    let net_output=sub(user_output,quote_transfer_fee)?; require_gte!(net_output,min_sol_output,PumpError::TooLittleSolReceived); let quote_transfer_fee=user_output.checked_sub(net_output).ok_or_else(||error!(PumpError::Overflow))?;
+    let net_output=sub(user_output,quote_transfer_fee)?; check_slip(net_output,min_sol_output)?; let quote_transfer_fee=user_output.checked_sub(net_output).ok_or_else(||error!(PumpError::Overflow))?;
     let next_base=add(curve.virtual_token_reserves,amount)?;
     let next_quote=sub(curve.virtual_quote_reserves,quote)?;
     let next_real_base=add(curve.real_token_reserves,amount)?;
