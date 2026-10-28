@@ -813,7 +813,7 @@ pub mod pump_recovered {
      }
      Ok(())
     }
-    pub fn buy_exact_sol_in<'info>(ctx:Context<'_,'_,'_,'info,LegacyBuy<'info>>,spendable_sol_in:u64,min_tokens_out:u64,track_volume:OptionBool,partial_fill:OptionBool)->Result<()>{legacy_buy::execute::<true>(ctx,spendable_sol_in,min_tokens_out,track_volume.0,partial_fill.0)}
+    pub fn buy_exact_sol_in<'info>(ctx:Context<'_,'_,'_,'info,LegacyBuy<'info>>,spendable_sol_in:u64,min_tokens_out:u64,track_volume:OptionBool,partial_fill:OptionBool)->Result<()>{legacy_buy::buy_exact_sol_in_inner(ctx,spendable_sol_in,min_tokens_out,track_volume.0,partial_fill.0)}
     pub fn sell(ctx:Context<LegacySell>,amount:u64,min_sol_output:u64)->Result<()>{let minimum=min_sol_output;
      let a=&mut *ctx.accounts;
      crate::trade_types::prepare_bonding_curve(&a.bonding_curve,&a.system_program,&a.user)?;
