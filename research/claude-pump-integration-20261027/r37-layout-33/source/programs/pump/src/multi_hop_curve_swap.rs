@@ -482,7 +482,7 @@ pub fn execute<'info>(ctx: Context<'_,'_,'info,'info,MultiHopCurve<'info>>,
         #[inline(never)]
         fn run_curve<'info>(a:&MultiHopCurve<'info>,h:&mut CurveHop<'info>,flag:u8,index:usize,count:usize,mut current_mint:Pubkey,mut amount:u64,mut previous:Option<PreviousHop<'info>>,mut total_buyback:u64,bumps:CurveHopBumps,event_bump:u8,overflow:fn()->anchor_lang::error::Error)->Result<(Pubkey,u64,Option<PreviousHop<'info>>,u64)>{
         require!(!h.bonding_curve.is_mayhem_mode,PumpError::MultiHopMayhemCurveNotSupported);
-        let base_token_program = token_program_for(&a.token_program, &a.token_2022_program, h.base_mint.as_ref().as_ref())?; let quote_token_program = token_program_for(&a.token_program, &a.token_2022_program, h.quote_mint.as_ref().as_ref())?; admit_vaults(&h,require_ata)?;
+        let base_token_program = token_program_for(&a.token_program, &a.token_2022_program, h.base_mint.as_ref().as_ref())?; let quote_token_program = token_program_for(&a.token_program, &a.token_2022_program, h.quote_mint.as_ref().as_ref())?; require_ata(&h.associated_base_bonding_curve.key(),&h.bonding_curve.key(),&h.base_mint.key(),h.base_mint.to_account_info().owner)?; require_ata(&h.associated_quote_bonding_curve.key(),&h.bonding_curve.key(),&h.quote_mint.key(),h.quote_mint.to_account_info().owner)?; crate::buy_v2::admit_associated_token_account(h.associated_quote_bonding_curve.as_ref(),&h.bonding_curve.to_account_info(),h.quote_mint.key(),*h.quote_mint.to_account_info().owner,h.quote_mint.as_ref().as_ref(),&quote_token_program,false,a.user.as_ref(),a.system_program.as_ref())?;
         if flag & 1 != 0 {
             crate::trade::validate_buyback_fee_recipient_account(&a.global,&a.buyback_fee_recipient.to_account_info(),false,
                 &h.quote_mint.key(),h.quote_mint.to_account_info().owner)?;
@@ -573,9 +573,9 @@ pub fn execute<'info>(ctx: Context<'_,'_,'info,'info,MultiHopCurve<'info>>,
             c.virtual_token_reserves as u128)?;
         let mut post_fill = None;
         let (p_rate,c_rate,base_amount,quote_amount,pf,cf,raw_output) = if buy {
-            let selected = select_fees(a,c,cap,trade_amount)?;
-            let p_rate = if flag & 1 != 0 { selected.rates.protocol_fee_bps } else { 0 };
-            let c_rate = if flag & 2 != 0 { selected.rates.creator_fee_bps } else { 0 };
+            let fees = crate::legacy_sell::fee_math::get_fees(&a.global,c,&a.fee_config.0,a.fee_config.to_account_info().data_len(),cap,trade_amount)?;
+            let p_rate = if flag & 1 != 0 { fees.protocol_fee_bps } else { 0 };
+            let c_rate = if flag & 2 != 0 { fees.creator_fee_bps } else { 0 };
             let (pf,cf) = buy_budget(trade_amount,p_rate,c_rate,c.creator)?;
             let q = sub(sub(trade_amount,pf)?,cf)?;
             require!(q != 0,PumpError::Overflow);
@@ -671,11 +671,11 @@ pub fn execute<'info>(ctx: Context<'_,'_,'info,'info,MultiHopCurve<'info>>,
 
         } else {
             let gross_sell = u64::try_from(c.sell_quote(amount)?).map_err(|_| error!(PumpError::Truncation))?;
-            let selected = select_fees(a,c,cap,gross_sell)?;
-            let p_rate = if flag & 1 != 0 { selected.rates.protocol_fee_bps } else { 0 };
-            let c_rate = if flag & 2 != 0 { selected.rates.creator_fee_bps } else { 0 };
-            let pf = if flag & 1 != 0 { selected.protocol } else { 0 };
-            let cf = if flag & 2 != 0 { selected.creator } else { 0 };
+            let fees = crate::legacy_sell::fee_math::get_fees(&a.global,c,&a.fee_config.0,a.fee_config.to_account_info().data_len(),cap,gross_sell)?;
+            let p_rate = if flag & 1 != 0 { fees.protocol_fee_bps } else { 0 };
+            let c_rate = if flag & 2 != 0 { fees.creator_fee_bps } else { 0 };
+            let pf = if flag & 1 != 0 { fees.protocol_fee } else { 0 };
+            let cf = if flag & 2 != 0 { fees.creator_fee } else { 0 };
             let net = sub(sub(gross_sell,pf)?,cf)?;
 // layout-pad(6): aligns the next Source site with the original line
 

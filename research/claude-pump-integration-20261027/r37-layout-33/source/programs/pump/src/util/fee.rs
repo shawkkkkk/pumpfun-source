@@ -192,7 +192,7 @@ fn get_fee_basis_points(fee_config: &FeeConfig, fee_config_len: usize, quote_min
     }
 }
 #[derive(Clone, Copy, Default)] pub struct TradeFees { pub protocol_fee: u64, pub creator_fee: u64, pub protocol_fee_bps: u64, pub creator_fee_bps: u64 }
-pub fn get_fees(global: &crate::Global, bonding_curve: &BondingCurve, fee_config: &FeeConfig, fee_config_len: usize, market_cap: u128, amount: u64) -> Result<TradeFees> {
+#[inline(never)] pub fn get_fees(global: &crate::Global, bonding_curve: &BondingCurve, fee_config: &FeeConfig, fee_config_len: usize, market_cap: u128, amount: u64) -> Result<TradeFees> {
     let (protocol_fee_bps, creator_fee_bps) = get_fee_basis_points(fee_config, fee_config_len, &bonding_curve.quote_mint, market_cap)?;
     let creator_fee_bps = if global.creator_fee_configurable && bonding_curve.creator_fee_bps != 0 { bonding_curve.creator_fee_bps } else { creator_fee_bps };
     let protocol_fee = fee(amount, protocol_fee_bps)?;
