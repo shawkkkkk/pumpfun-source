@@ -165,6 +165,9 @@ export async function openCorpus(appRoot) {
         }
       }
       for (const registration of findNodes(result.ast, isFactoryRegistration)) {
+        // X treats an outer two-element tuple as chunk metadata. A nested
+        // leading [id, factory] pair is different and still recurses above.
+        if (registration.arguments[0].elements.length === 2) continue;
         registrations(registration.arguments[0].elements, 1);
       }
     }

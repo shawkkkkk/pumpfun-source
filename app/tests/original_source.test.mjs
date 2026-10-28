@@ -133,3 +133,16 @@ test('the runtime-leading nested-array grammar validates nested and trailing fac
   await f.save();
   await assert.rejects((await openCorpus(f.root)).factory(7), /registration/);
 });
+
+test('outer two-element registration is metadata, not a nested factory container', async (t) => {
+  const f = await fixture(t);
+  const text = '(globalThis.TURBOPACK||(globalThis.TURBOPACK=[])).push(["metadata",[7,e=>{}]]);';
+  f.record.bytes = Buffer.byteLength(text);
+  f.record.sha256 = sha256(text);
+  const start = text.indexOf('e=>{}');
+  f.index.modules[0].sha256 = sha256('e=>{}');
+  f.index.modules[0].origins[0] = { source: f.source, url: f.record.url, start, end: start + 'e=>{}'.length };
+  await writeFile(path.join(f.root, f.source), text);
+  await f.save();
+  await assert.rejects((await openCorpus(f.root)).factory(7), /registration/);
+});
