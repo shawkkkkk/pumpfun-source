@@ -67,7 +67,7 @@ pub fn set_reserved_fee_recipients(ctx: Context<AdminReadonly>, whitelist_pda: P
     }
     // global was bound before key collection so its account pointer is live across the allocator
     global.whitelist_pda = whitelist_pda;
-    global.reserved_fee_recipient = reserved_fee_recipient;
+    copy_first_reserved(&mut global.reserved_fee_recipient, &reserved_fee_recipient);
     global.reserved_fee_recipients = reserved_fee_recipients;
     let event = ReservedFeeRecipientsEvent {
         timestamp: Clock::get()?.unix_timestamp,
@@ -121,4 +121,26 @@ pub fn update_buyback_config(ctx: Context<AdminGlobal>, buyback_basis_points: Op
         _ => return err!(PumpError::WrongBuybackFeeRecipientsCount),
     }
     Ok(())
+}
+
+#[inline(always)]
+fn copy_first_reserved(dst: &mut Pubkey, src: &Pubkey) {
+    unsafe {
+        let s = src as *const Pubkey as *const u8;
+        let d = dst as *mut Pubkey as *mut u8;
+        let b2 = s.add(2).read();
+        let h0 = core::ptr::read_unaligned(s as *const u16);
+        let b31 = s.add(31).read();
+        let w23 = core::ptr::read_unaligned(s.add(23) as *const u64);
+        let w15 = core::ptr::read_unaligned(s.add(15) as *const u64);
+        let w7 = core::ptr::read_unaligned(s.add(7) as *const u64);
+        let w3 = core::ptr::read_unaligned(s.add(3) as *const u32);
+        core::ptr::write_unaligned(d as *mut u16, h0);
+        core::ptr::write_unaligned(d.add(2), b2);
+        core::ptr::write_unaligned(d.add(31), b31);
+        core::ptr::write_unaligned(d.add(23) as *mut u64, w23);
+        core::ptr::write_unaligned(d.add(15) as *mut u64, w15);
+        core::ptr::write_unaligned(d.add(7) as *mut u64, w7);
+        core::ptr::write_unaligned(d.add(3) as *mut u32, w3);
+    }
 }
