@@ -33,7 +33,7 @@ pub fn process_cashback(remaining_ptr:*const u8,remaining_len:usize,user:*const 
     require!(acc.key()==pda,PumpError::InvalidCashbackAccumulator);
     if acc.data_is_empty(){
         let rent=Rent::get()?;
-        let space=82u64;
+        let space=137u64;
         let need=rent.minimum_balance(space as usize);
         if acc.lamports()<need{
             let pay=need-acc.lamports();
@@ -82,7 +82,7 @@ pub fn process_cashback(remaining_ptr:*const u8,remaining_len:usize,user:*const 
 
 
 
-    require!(acc.data_len()>=82,PumpError::InvalidCashbackAccumulator);
+    require!(acc.data_len()>=137,PumpError::InvalidCashbackAccumulator);
     let earned={let data=acc.try_borrow_data()?;u64::from_le_bytes(data[74..82].try_into().unwrap())};
 
 
