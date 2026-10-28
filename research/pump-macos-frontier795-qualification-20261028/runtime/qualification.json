@@ -1,0 +1,13 @@
+{
+  "status": "passed",
+  "candidate_sha256": "1550d099c1e2b15caeee50043abdf0fd68dd16b0230aee9e7f884b526be6cf02",
+  "corpus_suites": 44,
+  "corpus_cases": 10468,
+  "targeted_migration_cases": {
+    "legacy_migration_quote": 20,
+    "v2_migration_quote": 40
+  },
+  "corpus_diagnostic_mismatches": 0,
+  "targeted_recipient_cases": 42,
+  "scope": "Separate bounded suites; their control cases can overlap. Whole original ELF equality is not established."
+}

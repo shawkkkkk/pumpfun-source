@@ -7,3 +7,5 @@ Status is pending execution. The primary source archive and toolchain hashes are
 The dependent replay additionally gates the separate 20-case legacy and 40-case migration-v2 post-completion quote probes. Their controls can overlap the unchanged corpus; counts are reported separately.
 
 Native macOS qualification passed: 795 matches, all 744 baseline matches retained, identical candidate/repeat artifacts, both canonical Round37 hashes reproduced. Downloaded artifact ZIP digest and all 57 payload hashes independently verified. Runtime qualification remains in progress.
+
+Both jobs passed. The exact native candidate passes the 44-suite corpus (10,468 cases, 10,464 paired diagnostic cases, zero mismatches), separate 42 recipient cases, separate 20 legacy migration quote cases and separate 40 migration-v2 quote cases. All runtime payloads and loader receipts are archived; ZIP digest and payload hashes independently verified. Controls can overlap. Whole original ELF equality remains false.

@@ -53,3 +53,35 @@ for label in images:
 print('Verified actual compiled-source archives for all five native builds; full runtime qualification remains separate.')
 
 
+
+T=P/'runtime'
+m=json.loads((T/'MANIFEST.json').read_text());assert all(sha((T/k).read_bytes())==v for k,v in m.items())
+full=json.loads(gzip.decompress((T/'full.json.gz').read_bytes()));rec=json.loads((T/'recipients.json').read_text());binding=json.loads((T/'native-input-binding.json').read_text())
+h=sha(images['candidate']['candidate.so'])
+assert full['candidate_sha256']==rec['candidate_sha256']==binding['candidate_sha256']==h
+assert binding['native_artifact_manifest_sha256']==sha((D/'MANIFEST.json').read_bytes())
+assert binding['native_build_record_sha256']==sha(gzip.decompress((D/'candidate/build-comparison.json.gz').read_bytes()))
+assert binding['compiled_source_sha256']==full['compiled_source_sha256']
+assert len(full['suites'])==44 and full['case_count']==10468 and not full['mismatches']
+assert full['diagnostics']['log_bearing_cases']==10464 and not full['diagnostics']['mismatches']
+assert rec['case_count']==42 and not rec['mismatches']
+assert len(full['loader_receipts'])==44
+for name,receipt in full['loader_receipts'].items():
+ p=T/'full.json.gz.suites'/(name+'.loader.json');assert sha(p.read_bytes())==receipt['sha256']
+ doc=json.loads(p.read_text())
+ loads=doc['loads'];assert len(loads)==receipt['load_count']
+ for load in loads:
+  assert load['elf_sha256'] in [h,sha(original)] and load['elf_prefix_unchanged'] and load['zero_allocation_tail']
+  assert load['program_bytes']==36 and load['programdata_bytes']==10485760
+print('Verified native-bound 44-suite runtime corpus (10,468 cases, zero diagnostic mismatches) and separate 42 recipient cases.')
+
+from importlib import util
+s=util.spec_from_file_location('audit',R/'scripts/pump_diagnostic_audit.py');audit=util.module_from_spec(s);s.loader.exec_module(audit)
+for label,count in [('legacy_migration_quote',20),('v2_migration_quote',40)]:
+ report=json.loads(gzip.decompress((T/(label+'.json.gz')).read_bytes()))
+ assert report['candidate_sha256']==h and report['original_sha256']==sha(original)
+ assert report['case_count']==len(report['cases'])==count and not report['mismatches']
+ check=audit.audit({label:report});assert check['log_bearing_cases']==count and not check['mismatches']
+ receipt=json.loads((T/(label+'.loader.json')).read_text());assert {x['elf_sha256']for x in receipt['loads']}=={h,sha(original)}
+ assert all(x['program_bytes']==36 and x['programdata_bytes']==10485760 and x['elf_prefix_unchanged']and x['zero_allocation_tail']for x in receipt['loads'])
+print('Independently verified additional 20 legacy and 40 migration-v2 post-completion quote cases; controls can overlap.')

@@ -1,5 +1,5 @@
 {
-  "status": "native_passed_runtime_in_progress",
+  "status": "passed",
   "normalized_frontier": 795,
   "original_windows": 1035,
   "whole_original_elf_equal": false,
@@ -7,5 +7,7 @@
   "run_url": "https://github.com/shawkkkkk/pumpfun-source/actions/runs/40622104447",
   "tested_revision": "ec657c8253d86a6c45e504ce7164642a1dd59074",
   "native_artifact_id": 12787798280,
-  "native_artifact_zip_sha256": "09fc937465218f89101891d5d1704f6a67d906953180f348d7700b268da03d6f"
+  "native_artifact_zip_sha256": "09fc937465218f89101891d5d1704f6a67d906953180f348d7700b268da03d6f",
+  "runtime_artifact_id": 12788921731,
+  "runtime_artifact_zip_sha256": "2e7120073d42cdf43ce5183d4da0c62ff904c46a70af94ab4d9fdf530c982771"
 }
