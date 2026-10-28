@@ -63,8 +63,8 @@ pub fn execute<'info,const EXACT:bool>(ctx:Context<'_,'_,'_,'info,LegacyBuy<'inf
   &a.global,&a.bonding_curve,&a.mint,&a.fee_config,&a.fee_program,a.program.as_ref(),if exact{input}else{pre_quote}
  )?;if a.user.key()==a.global.whitelist_pda{(0,0,0,0)}else{values}};
  let cb=if c.creator==Pubkey::default(){0}else{creator_fee_bps};
- let raw_quote=if exact{let total_bps=protocol_fee_bps.checked_add(cb).ok_or(PumpError::Overflow)?;let denominator=10000u128+total_bps as u128;narrow(input as u128*10000/denominator)?}else{0};
- let adjusted=if exact && add232(add232(raw_quote,ceil_fee(raw_quote,protocol_fee_bps)?)?,ceil_fee(raw_quote,cb)?)?>input{sub232(raw_quote,1)?}else{raw_quote};
+ let raw_quote=if exact{let total_bps=protocol_fee_bps.checked_add(cb).ok_or(PumpError::Overflow)?;let denominator=10000u128+total_bps as u128;(input as u128*10000/denominator) as u64}else{0};
+ let pf0=if exact{ceil_fee(raw_quote,protocol_fee_bps)?}else{0};let cf0=if exact&&c.creator!=Pubkey::default(){ceil_fee(raw_quote,cb)?}else{0};let sum=match raw_quote.checked_add(pf0){Some(v)=>v.checked_add(cf0),None=>None}.ok_or(PumpError::Overflow)?;let adjusted=if exact&&sum>input{raw_quote.checked_sub(1).ok_or(PumpError::Overflow)?}else{raw_quote};
 
 
 
