@@ -292,13 +292,13 @@ pub mod pump_recovered {
      let event=SetParamsEvent{initial_virtual_token_reserves,initial_virtual_sol_reserves,initial_real_token_reserves,token_total_supply,fee_basis_points,withdraw_authority,enable_migrate,pool_migration_fee,creator_fee_basis_points,set_creator_authority,admin_set_creator_authority,final_real_sol_reserves,fee_recipients:recipients,timestamp:Clock::get()?.unix_timestamp};emit!(event);emit_cpi!(event);Ok(())
     }
     pub fn set_mayhem_virtual_params(ctx: Context<SetMayhemVirtualParams>) -> Result<()> { mayhem_virtual_params::execute(ctx) }
-    pub fn set_reserved_fee_recipients(ctx:Context<AdminReadonly>,whitelist_pda:Pubkey)->Result<()>{
-     require_gte!(ctx.remaining_accounts.len(),8,PumpError::NotEnoughRemainingAccounts);
-     for (index,account) in ctx.remaining_accounts.iter().take(8).enumerate(){require_keys_neq!(account.key(),Pubkey::default(),PumpError::AllFeeRecipientsShouldBeNonZero);if account.executable{return Err(anchor_lang::error::Error::from(anchor_lang::error::ErrorCode::ConstraintExecutable).with_account_name(format!("reserved_fee_recipients[{}]",index)));}if !Rent::get()?.is_exempt(account.lamports(),account.data_len()){return Err(crate::account_name::with_owned_name(anchor_lang::error::Error::from(anchor_lang::error::ErrorCode::ConstraintRentExempt), &format!("reserved_fee_recipients[{}]",index)));}}
-     let first=ctx.remaining_accounts[0].key();let rest=core::array::from_fn(|i|ctx.remaining_accounts[i+1].key());
-     ctx.accounts.global.whitelist_pda=whitelist_pda;ctx.accounts.global.reserved_fee_recipient=first;ctx.accounts.global.reserved_fee_recipients=rest;
-     let event=ReservedFeeRecipientsEvent{timestamp:Clock::get()?.unix_timestamp,reserved_fee_recipient:first,reserved_fee_recipients:rest};emit!(event.clone());emit_cpi!(event);Ok(())
-    }
+    pub fn set_reserved_fee_recipients(ctx:Context<AdminReadonly>,whitelist_pda:Pubkey)->Result<()>{crate::set_reserved_fee_recipients::set_reserved_fee_recipients(ctx,whitelist_pda)}
+
+
+
+
+
+
 // layout-pad: aligns the next Source site with the original lib.rs line
 
 

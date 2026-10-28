@@ -1,5 +1,6 @@
 use anchor_lang::prelude::*;
-use crate::{AdminGlobal, PumpError};
+use crate::{AdminGlobal, AdminReadonly, PumpError, ReservedFeeRecipientsEvent};
+use anchor_lang::error::ErrorCode;
 
 
 
@@ -35,6 +36,9 @@ use crate::{AdminGlobal, PumpError};
 
 
 
+pub fn set_reserved_fee_recipients(ctx: Context<AdminReadonly>, whitelist_pda: Pubkey) -> Result<()> {
+    require_gte!(ctx.remaining_accounts.len(), 8, PumpError::NotEnoughRemainingAccounts);
+    let global = &mut ctx.accounts.global;
 
 
 
@@ -48,36 +52,32 @@ use crate::{AdminGlobal, PumpError};
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    let recipients: [Pubkey; 8] = ctx.remaining_accounts[..8].iter().map(|account| account.key()).collect::<Vec<Pubkey>>().try_into().unwrap();
+    let reserved_fee_recipient = recipients[0];
+    let reserved_fee_recipients: [Pubkey; 7] = recipients[1..].try_into().unwrap();
+    let rent = Rent::get()?;
+    for (index, account) in ctx.remaining_accounts[..8].iter().enumerate() {
+        require_keys_neq!(account.key(), Pubkey::default(), PumpError::AllFeeRecipientsShouldBeNonZero);
+        if account.executable {
+            return Err(Error::from(ErrorCode::ConstraintExecutable).with_account_name(format!("reserved_fee_recipients[{}]", index)));
+        }
+        if !rent.is_exempt(account.lamports(), account.try_data_len()?) {
+            return Err(crate::account_name::with_owned_name(Error::from(ErrorCode::ConstraintRentExempt), &format!("reserved_fee_recipients[{}]", index)));
+        }
+    }
+    // global was bound before key collection so its account pointer is live across the allocator
+    global.whitelist_pda = whitelist_pda;
+    global.reserved_fee_recipient = reserved_fee_recipient;
+    global.reserved_fee_recipients = reserved_fee_recipients;
+    let event = ReservedFeeRecipientsEvent {
+        timestamp: Clock::get()?.unix_timestamp,
+        reserved_fee_recipient: global.reserved_fee_recipient,
+        reserved_fee_recipients: global.reserved_fee_recipients,
+    };
+    emit!(event);
+    emit_cpi!(event);
+    return Ok(());
+}
 
 
 
