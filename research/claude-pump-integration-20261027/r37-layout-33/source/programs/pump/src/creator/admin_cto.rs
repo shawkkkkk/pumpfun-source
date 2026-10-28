@@ -281,12 +281,12 @@ pub fn execute(ctx:Context<AdminCto>,holder:Option<bool>,fee:Option<u64>,new:Opt
 
 
 
- if a.bonding_curve.is_mayhem_mode{return Err(error!(PumpError::CtoNotAllowedForMayhemCoin));}if a.bonding_curve.is_holder_reward&&holder!=Some(true){return Err(error!(PumpError::HolderRewardCreatorImmutable));}
+ if a.bonding_curve.is_mayhem_mode{return Err(error!(PumpError::CtoNotAllowedForMayhemCoin));}
 // layout-pad(11): aligns the next Source site with the original line
 
 
 
-
+ if a.bonding_curve.is_holder_reward&&holder!=Some(true){return Err(error!(PumpError::HolderRewardCreatorImmutable));}
 
 
 
@@ -295,7 +295,7 @@ pub fn execute(ctx:Context<AdminCto>,holder:Option<bool>,fee:Option<u64>,new:Opt
 
  if holder==Some(true)&&!a.bonding_curve.is_holder_reward&&!a.global.is_holder_reward_enabled{return Err(error!(PumpError::HolderRewardDisabled));}
  let holder=holder.unwrap_or(false);let cashback=!holder&&a.bonding_curve.is_cashback_coin;let old=a.current_creator.key();let mint=a.mint.key();let (holder_key,_)=Pubkey::find_program_address(&[b"holder-rewards",mint.as_ref()],&crate::ID);
-// layout-pad(8): aligns the next Source site with the original line
+ if holder && new.is_some(){return Err(error!(PumpError::CtoNewCreatorNotAllowed));}
 
 
 
@@ -303,13 +303,13 @@ pub fn execute(ctx:Context<AdminCto>,holder:Option<bool>,fee:Option<u64>,new:Opt
 
 
 
- if holder && new.is_some(){return Err(error!(PumpError::CtoNewCreatorNotAllowed));}if !holder && new.is_none(){return Err(error!(PumpError::CtoNewCreatorRequired));}
-// layout-pad(5): aligns the next Source site with the original line
+ if !holder && new.is_none(){return Err(error!(PumpError::CtoNewCreatorRequired));}
+ let mut target=if holder{holder_key}else{new.unwrap()};if target==Pubkey::default(){return Err(error!(PumpError::CreatorShouldNotBeZero).with_pubkeys((target,Pubkey::default())));}
 
 
 
 
- let mut target=if holder{holder_key}else{new.unwrap()};if target==Pubkey::default(){return Err(error!(PumpError::CreatorShouldNotBeZero).with_pubkeys((target,Pubkey::default())));}if !holder && (target==holder_key||target==a.sharing_config.key()){return Err(error!(PumpError::InvalidCreator));}
+ if !holder && (target==holder_key||target==a.sharing_config.key()){return Err(error!(PumpError::InvalidCreator));}
 // layout-pad(13): aligns the next Source site with the original line
 
 
@@ -328,15 +328,15 @@ pub fn execute(ctx:Context<AdminCto>,holder:Option<bool>,fee:Option<u64>,new:Opt
 
 
  if fee.is_some()&&cashback{return Err(error!(PumpError::CreatorFeeNotAllowedForCashbackCoin));}
+
+
+
  if fee.is_some()&&!a.global.creator_fee_configurable{return Err(error!(PumpError::CreatorFeeNotConfigurable));}
+
+
+
  if let Some(f)=fee{if f==0||f>a.global.max_configurable_creator_fee_bps{return Err(error!(PumpError::CreatorFeeBpsOutOfRange));}}
  crate::trade_types::prepare_bonding_curve(&a.bonding_curve,&a.system_program,&a.admin_set_creator_authority)?;
-// layout-pad(76): aligns the next Source site with the original line
-
-
-
-
-
 
 
 
