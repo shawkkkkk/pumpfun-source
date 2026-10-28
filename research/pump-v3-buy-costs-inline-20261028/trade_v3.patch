@@ -1,23 +1,68 @@
 --- /tmp/pf/trade_v3_l33.rs	2026-10-28 15:06:41.730041542 +0000
-+++ /tmp/pf/l33phy/programs/pump/src/trade_v3.rs	2026-10-28 15:05:54.394321255 +0000
-@@ -418,12 +418,12 @@
++++ /tmp/pf/l33phy/programs/pump/src/trade_v3.rs	2026-10-28 15:17:21.474824191 +0000
+@@ -357,24 +357,24 @@
  
  
- #[inline(never)]
--fn v3_buy_costs(buyback_bps:u64,is_mayhem:bool,quote_fee:&Option<native_transfer_fee::Fee>,quote:u64,protocol_fee:u64,creator_fee:u64,post:Option<&PostComplete>)->Result<(u64,u64,u64)>{
--    let (buyback,post_buyback)=if is_mayhem{(0,0)}else{(v3_buyback_split(protocol_fee,buyback_bps).0,match post{Some(p)=>v3_buyback_split(p.fees.protocol_fee,buyback_bps).0,None=>0})};
+ 
++#[inline(never)]
 +fn v3_buy_costs(buyback_bps:u64,is_mayhem:u8,quote_fee:&Option<native_transfer_fee::Fee>,quote:u64,protocol_fee:u64,creator_fee:u64,post:Option<&PostComplete>)->Result<(u64,u64,u64)>{
 +    let (buyback,post_buyback)=if is_mayhem!=0{(0,0)}else{(v3_buyback_split(protocol_fee,buyback_bps).0,match post{Some(p)=>v3_buyback_split(p.fees.protocol_fee,buyback_bps).0,None=>0})};
-     let total_buyback=add(buyback,post_buyback)?;
++    let total_buyback=add(buyback,post_buyback)?;
++    let second=match post{Some(p)=>add(p.quote_in,p.fees.protocol_fee)?,None=>0};
++    let partial=quote.checked_add(protocol_fee).and_then(|v|v.checked_add(creator_fee));
+ 
+ 
+ 
+ 
+ 
++    let first=match partial{Some(v)=>v,None=>return Err(error!(PumpError::Overflow)),};
++    let summed=first.checked_add(second).and_then(|v|v.checked_sub(total_buyback));
+ 
+ 
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
++    let net=match summed{Some(v)=>v,None=>return Err(error!(PumpError::Overflow)),};
++    let (pool_quote,quote_transfer_fee)=gross_up_quote(quote_fee,net)?;
++    Ok((pool_quote,total_buyback,quote_transfer_fee))}
+ /// Gross-up of the pool-side quote by the quote mint's transfer fee; the fee is re-derived from the gross.
+ #[inline(always)]
+ fn gross_up_quote(quote_fee:&Option<native_transfer_fee::Fee>,net:u64)->Result<(u64,u64)>{
+@@ -417,16 +417,16 @@
+ 
+ 
+ 
+-#[inline(never)]
+-fn v3_buy_costs(buyback_bps:u64,is_mayhem:bool,quote_fee:&Option<native_transfer_fee::Fee>,quote:u64,protocol_fee:u64,creator_fee:u64,post:Option<&PostComplete>)->Result<(u64,u64,u64)>{
+-    let (buyback,post_buyback)=if is_mayhem{(0,0)}else{(v3_buyback_split(protocol_fee,buyback_bps).0,match post{Some(p)=>v3_buyback_split(p.fees.protocol_fee,buyback_bps).0,None=>0})};
+-    let total_buyback=add(buyback,post_buyback)?;
 -    let first=add3(quote,protocol_fee,creator_fee)?;
 -    let second=match post{Some(p)=>add3(p.quote_in,p.fees.protocol_fee,p.fees.creator_fee)?,None=>0};
 -    let net=sub(add(first,second)?,total_buyback)?;
-+    let first=quote.checked_add(protocol_fee).and_then(|v|v.checked_add(creator_fee)).ok_or_else(||error!(PumpError::Overflow))?;
-+    let second=match post{Some(p)=>add(p.quote_in,p.fees.protocol_fee)?.checked_add(p.fees.creator_fee).ok_or_else(||error!(PumpError::Overflow))?,None=>0};
-+    let net=add(first,second)?.checked_sub(total_buyback).ok_or_else(||error!(PumpError::Overflow))?;
-     let (pool_quote,quote_transfer_fee)=gross_up_quote(quote_fee,net)?;
-     Ok((pool_quote,total_buyback,quote_transfer_fee))
- }
+-    let (pool_quote,quote_transfer_fee)=gross_up_quote(quote_fee,net)?;
+-    Ok((pool_quote,total_buyback,quote_transfer_fee))
+-}
++
++
++
++
++
++
++
++
++
++
+ // layout-pad(62): aligns the next Source site with the original line
+ #[inline(always)] fn v3_fee_exempt(global:&Global,curve:&BondingCurve,user:&Pubkey)->bool{curve.is_mayhem_mode || *user==global.whitelist_pda}
+ 
 @@ -600,13 +600,13 @@
  #[inline(never)]
  pub fn fit_post_complete(buyback_bps:u64,is_mayhem:bool,quote_fee:&Option<native_transfer_fee::Fee>,quote:u64,protocol_fee:u64,creator_fee:u64,post:&mut PostComplete,budget:u64)->Result<(Option<PostComplete>,(u64,u64,u64))>{
