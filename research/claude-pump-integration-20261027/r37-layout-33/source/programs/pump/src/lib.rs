@@ -1036,12 +1036,12 @@ pub mod pump_recovered {
 
      let rq=c.real_quote_reserves.checked_sub(quote).ok_or_else(||error!(PumpError::Overflow))?;
      crate::collect_v2::transfer_user_tokens_ref(&a.token_program,&a.associated_user,&a.associated_bonding_curve,&&a.user,a.mint.decimals,a.mint.as_ref(),amount)?;
-     let rem=ctx.remaining_accounts;let index=if c.is_cashback_coin {let acc=rem.first().ok_or_else(||error!(PumpError::MissingCashbackAccounts))?;require!(acc.key()==Pubkey::find_program_address(&[b"user_volume_accumulator",a.user.key().as_ref()],&crate::ID).0&&acc.owner==&crate::ID&&acc.data_len()>=82,PumpError::InvalidCashbackAccumulator);1}else{0};
-     crate::legacy_sell::check_bonding_curve_v2(&rem[index..],&a.mint.key())?;
+     let rem=ctx.remaining_accounts;let index=if c.is_cashback_coin{1}else{0};
      let bbps=if c.is_mayhem_mode{0}else{a.global.buyback_basis_points};
-     let cashback_coin=c.is_cashback_coin;
-     if cf!=0 && !cashback_coin {crate::legacy_buy::native_payments::ensure_rent_exempt(&a.system_program,&a.user,&a.creator_vault)?;}
-     if cf!=0 {if cashback_coin{a.bonding_curve.sub_lamports(cf)?;rem[0].add_lamports(cf)?;let mut d=rem[0].try_borrow_mut_data()?;let n=u64::from_le_bytes(d[74..82].try_into().unwrap());d[74..82].copy_from_slice(&crate::legacy_sell::add(n,cf)?.to_le_bytes());}else{crate::trade::quote_payments::move_native(&a.bonding_curve,&a.creator_vault,cf)?;}}
+     let cashback_coin=c.is_cashback_coin;let mint_key=a.mint.key();
+     if cf!=0&&cashback_coin{crate::legacy_sell::process_cashback(rem.as_ptr() as *const u8,rem.len(),AsRef::<AccountInfo>::as_ref(&a.user) as *const AccountInfo as *const u8,AsRef::<AccountInfo>::as_ref(&a.system_program) as *const AccountInfo as *const u8,AsRef::<AccountInfo>::as_ref(&a.bonding_curve) as *const AccountInfo as *const u8,cf,&mint_key)?;}
+     if cf!=0&&!cashback_coin{crate::legacy_sell::check_bonding_curve_v2(&rem[index..],&a.mint.key())?;crate::legacy_buy::native_payments::ensure_rent_exempt(&a.system_program,&a.user,&a.creator_vault)?;crate::trade::quote_payments::move_native(&a.bonding_curve,&a.creator_vault,cf)?;}
+
      let bb=crate::legacy_sell::buyback_fee_recipient(rem,&a.global,index+1)?;
      if output!=0 {crate::trade::quote_payments::transfer_native_unchecked(&a.bonding_curve,&a.user,output)?;}
      let (bf,protocol_fee)=crate::buy_v2::recipient_payments::split_protocol_fee(&a.global,pf,c.is_mayhem_mode);

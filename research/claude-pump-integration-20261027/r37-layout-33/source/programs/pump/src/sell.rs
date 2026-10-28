@@ -16,6 +16,138 @@ pub use crate::pump_fees::{
     program::PumpFees as LegacyFeesProgram,
 };
 
+#[inline(never)]
+pub fn process_cashback(remaining_ptr:*const u8,remaining_len:usize,user:*const u8,system_program:*const u8,curve:*const u8,amount:u64,mint:&Pubkey)->Result<()>{
+    let remaining_accounts=unsafe{std::slice::from_raw_parts(remaining_ptr as *const AccountInfo,remaining_len)};let user=unsafe{&*(user as *const AccountInfo)};let system_program=unsafe{&*(system_program as *const AccountInfo)};let curve=unsafe{&*(curve as *const AccountInfo)};let user_key=user.key();let (pda,bump)=Pubkey::find_program_address(&[b"user_volume_accumulator",user_key.as_ref()],&crate::ID);
+    let bump_arr=[bump];let seeds:&[&[u8]]=&[b"user_volume_accumulator",user_key.as_ref(),&bump_arr];
+    let acc=remaining_accounts.first().ok_or_else(||error!(PumpError::MissingCashbackAccounts))?;
+
+
+
+
+
+
+
+
+
+    require!(acc.key()==pda,PumpError::InvalidCashbackAccumulator);
+    if acc.data_is_empty(){
+        let rent=Rent::get()?;
+        let space=82u64;
+        let need=rent.minimum_balance(space as usize);
+        if acc.lamports()<need{
+            let pay=need-acc.lamports();
+            anchor_lang::solana_program::program::invoke(&anchor_lang::solana_program::system_instruction::transfer(user.key,acc.key,pay),&[user.clone(),acc.clone(),system_program.clone()])?;
+        }
+        anchor_lang::solana_program::program::invoke_signed(&anchor_lang::solana_program::system_instruction::allocate(acc.key,space),&[acc.clone(),system_program.clone()],&[seeds])?;
+        anchor_lang::solana_program::program::invoke_signed(&anchor_lang::solana_program::system_instruction::assign(acc.key,&crate::ID),&[acc.clone(),system_program.clone()],&[seeds])?;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    require!(acc.owner==&crate::ID,PumpError::InvalidCashbackAccumulator);
+
+
+
+    require!(acc.data_len()>=82,PumpError::InvalidCashbackAccumulator);
+    let earned={let data=acc.try_borrow_data()?;u64::from_le_bytes(data[74..82].try_into().unwrap())};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    let next=earned.checked_add(amount).ok_or_else(||error!(PumpError::Overflow))?;let curve_left=curve.lamports().checked_sub(amount).ok_or_else(||error!(PumpError::Overflow))?;
+    let _=curve_left;
+    curve.sub_lamports(amount)?;
+    acc.add_lamports(amount)?;
+    acc.try_borrow_mut_data()?[74..82].copy_from_slice(&next.to_le_bytes());
+    require!(remaining_accounts.len()>1,PumpError::InvalidBondingCurveV2);
+    let curve_v2=&remaining_accounts[1];
+    let (curve_pda,_)=Pubkey::find_program_address(&[b"bonding-curve-v2",mint.as_ref()],&crate::ID);
+
+
+
+
+    require!(curve_v2.key()==curve_pda,PumpError::InvalidBondingCurveV2);
+    Ok(())
+}
+
+
+
+
+
+
+
+
+pub fn check_bonding_curve_v2<'info>(remaining_accounts:&[AccountInfo<'info>],mint:&Pubkey)->Result<()>{
+    require!(!remaining_accounts.is_empty(),PumpError::InvalidBondingCurveV2);let bonding_curve_v2=&remaining_accounts[0];
+    let (expected,_)=Pubkey::find_program_address(&[b"bonding-curve-v2",mint.as_ref()],&crate::ID);
+// layout-pad(5): aligns the next Source site with the original line
+
+
+
+
+    require!(bonding_curve_v2.key()==expected,PumpError::InvalidBondingCurveV2);
+    Ok(())
+}
+// layout-pad(8): aligns the next Source site with the original line
+
+
+
+
+
+
+
+pub fn buyback_fee_recipient<'a,'info>(remaining_accounts:&'a [AccountInfo<'info>],global:&Global,index:usize)->Result<&'a AccountInfo<'info>>{
+    require!(index<remaining_accounts.len(),PumpError::BuybackFeeRecipientMissing);let account=&remaining_accounts[index];
+    let result=global.validate_buyback_fee_recipient(&account.key());result.map(|_|account)
+
+}
+
+// Displaced from lines 19-45 so process_cashback can occupy the original sell.rs error lines.
 #[derive(Accounts)]
 pub struct LegacySell<'info>{
  #[account(seeds=[b"global"],bump)]pub global:Box<Account<'info,Global>>,
@@ -49,100 +181,3 @@ pub(crate) mod fee_cpi;
 
 #[path="util/fee.rs"]
 pub mod fee_math;
-
-// layout-pad(72): aligns the next Source site with the original line
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-pub fn check_bonding_curve_v2<'info>(remaining_accounts:&[AccountInfo<'info>],mint:&Pubkey)->Result<()>{
-    require!(!remaining_accounts.is_empty(),PumpError::InvalidBondingCurveV2);let bonding_curve_v2=&remaining_accounts[0];
-    let (expected,_)=Pubkey::find_program_address(&[b"bonding-curve-v2",mint.as_ref()],&crate::ID);
-// layout-pad(5): aligns the next Source site with the original line
-
-
-
-
-    require!(bonding_curve_v2.key()==expected,PumpError::InvalidBondingCurveV2);
-    Ok(())
-}
-// layout-pad(8): aligns the next Source site with the original line
-
-
-
-
-
-
-
-pub fn buyback_fee_recipient<'a,'info>(remaining_accounts:&'a [AccountInfo<'info>],global:&Global,index:usize)->Result<&'a AccountInfo<'info>>{
-    require!(index<remaining_accounts.len(),PumpError::BuybackFeeRecipientMissing);let account=&remaining_accounts[index];
-    let result=global.validate_buyback_fee_recipient(&account.key());result.map(|_|account)
-
-}
