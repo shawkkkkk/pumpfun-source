@@ -74,7 +74,7 @@ fn add(a:u64,b:u64)->Result<u64>{a.checked_add(b).ok_or_else(||error!(PumpError:
 fn sub(a:u64,b:u64)->Result<u64>{a.checked_sub(b).ok_or_else(||error!(PumpError::Overflow))}
 fn narrow(a:u128)->Result<u64>{u64::try_from(a).map_err(|_|error!(PumpError::Truncation))}
 pub fn execute(ctx:Context<SellV2>,amount:u64,minimum:u64)->Result<()>{
- let a=&mut *ctx.accounts;
+ let a=&mut *ctx.accounts;let fee_recipient=&a.fee_recipient;let buyback_fee_recipient=&a.buyback_fee_recipient;
  crate::trade_types::prepare_bonding_curve(&a.bonding_curve,&a.system_program,&a.user)?;
 
 
@@ -245,8 +245,8 @@ let c=&a.bonding_curve;let native=c.quote_mint==Pubkey::default();
  require_gt!(amount,0,PumpError::SellZeroAmount);
 // layout-pad(1): aligns the next Source site with the original line
  require_gte!(a.associated_base_user.amount,amount,PumpError::NotEnoughTokensToSell);
- crate::legacy_sell::fee_recipient::validate_fee_recipient(&a.fee_recipient,&a.global,&a.bonding_curve)?;
- let bb=&a.buyback_fee_recipient;a.global.validate_buyback_fee_recipient(&bb.key())?;
+ crate::legacy_sell::fee_recipient::validate_fee_recipient(fee_recipient,&a.global,&a.bonding_curve)?;
+ a.global.validate_buyback_fee_recipient(&buyback_fee_recipient.key())?;
  if a.user_volume_accumulator.user==Pubkey::default(){a.user_volume_accumulator.user=a.user.key();}
  if a.bonding_curve.quote_mint!=Pubkey::default(){
   crate::buy_v2::admit_associated_token_account(a.associated_quote_bonding_curve.as_ref(),&a.bonding_curve.to_account_info(),a.quote_mint.key(),a.quote_token_program.key(),&a.quote_mint.to_account_info(),a.quote_token_program.as_ref(),false,a.user.as_ref(),a.system_program.as_ref())?;
@@ -404,9 +404,9 @@ let c=&a.bonding_curve;let native=c.quote_mint==Pubkey::default();
  let quote_source=if native{None}else{Some(a.associated_quote_bonding_curve.as_ref())};
  let buyback_quote=if native{None}else{Some(a.associated_quote_buyback_fee_recipient.as_ref())};
  let fee_quote=if native{None}else{Some(a.associated_quote_fee_recipient.as_ref())};
- let fee_recipient=&a.fee_recipient;
+
  crate::trade::quote_payments::transfer_to_recipient(
-  native,a.base_mint.as_ref().as_ref(),a.bonding_curve.as_ref(),&bb,bf,
+  native,a.base_mint.as_ref().as_ref(),a.bonding_curve.as_ref(),&buyback_fee_recipient,bf,
   &a.quote_token_program,a.quote_mint.decimals,a.quote_mint.as_ref().as_ref(),
   quote_source,buyback_quote,ctx.bumps.bonding_curve,
  )?;
