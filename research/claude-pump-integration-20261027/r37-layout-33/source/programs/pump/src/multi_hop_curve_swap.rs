@@ -700,15 +700,15 @@ pub fn execute<'info>(ctx: Context<'_,'_,'info,'info,MultiHopCurve<'info>>,
         // A02: Input succeeded; each checked operation immediately precedes its store.
         let c = &mut h.bonding_curve;
         if buy {
-            c.virtual_token_reserves = sub(c.virtual_token_reserves,base_amount)?;
-            c.real_token_reserves = sub(c.real_token_reserves,base_amount)?;
-            c.virtual_quote_reserves = add(c.virtual_quote_reserves,quote_amount)?;
-            c.real_quote_reserves = add(c.real_quote_reserves,quote_amount)?;
+            c.apply_buy(base_amount,quote_amount)?;
+
+
+
         } else {
-            c.virtual_token_reserves = add(c.virtual_token_reserves,base_amount)?;
-            c.real_token_reserves = add(c.real_token_reserves,base_amount)?;
-            c.virtual_quote_reserves = sub(c.virtual_quote_reserves,quote_amount)?;
-            c.real_quote_reserves = sub(c.real_quote_reserves,quote_amount)?;
+
+            c.apply_sell(base_amount,quote_amount)?;
+
+
         }
         let mint_key = h.base_mint.key();
         let bump = [bumps.bonding_curve];
