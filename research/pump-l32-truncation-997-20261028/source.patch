@@ -1,0 +1,13 @@
+--- research/claude-pump-integration-20261027/r37-layout-32/source/programs/pump/src/trade_v3.rs	2026-10-28 13:41:34.140055950 +0000
++++ /tmp/pf/l32ws/programs/pump/src/trade_v3.rs	2026-10-28 13:46:20.791660965 +0000
+@@ -993,8 +993,8 @@
+         if is_sol{user_output}else{pool_quote},&a.quote_token_program,
+         quote_decimals.unwrap_or_default(),a.quote_mint.as_ref().as_ref(),
+         if is_sol{None}else{Some(a.associated_quote_user.as_ref())},
+-        if is_sol{None}else{Some(a.associated_quote_bonding_curve.as_ref())},
+-    )?;
++        if is_sol{None}else{Some(a.associated_quote_bonding_curve.as_ref())})?;
++    let _=u64::try_from(crate::constant_product::tokens_for_quote(curve,quote)?).map_err(|_|error!(PumpError::Truncation))?;
+     if let Some(decimals)=quote_decimals {
+       crate::collect_v2::transfer_user_quote_tokens(&a.quote_token_program,&a.associated_quote_user,&a.buyback_fee_recipient,a.user.as_ref(),decimals,a.quote_mint.as_ref().as_ref(),total_buyback)?;
+     }else{
