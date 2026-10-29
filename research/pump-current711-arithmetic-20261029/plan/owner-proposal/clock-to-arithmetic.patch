@@ -1,0 +1,75 @@
+--- a/programs/pump/src/multi_hop_curve_swap.rs
++++ b/programs/pump/src/multi_hop_curve_swap.rs
+@@ -64,9 +64,9 @@
+ fn add(a: u64, b: u64) -> Result<u64> { a.checked_add(b).ok_or(error!(PumpError::Overflow)) }
+ fn sub(a: u64, b: u64) -> Result<u64> { a.checked_sub(b).ok_or(error!(PumpError::Overflow)) }
+ 
+-fn div(a: u128, b: u128) -> Result<u128> {
+-    a.checked_div(b).ok_or(error!(PumpError::DivisionByZero))
+-}
++
++
++
+ 
+ 
+ // layout-pad(46): aligns the next Source site with the original line
+@@ -546,7 +546,7 @@
+         require!(buy || *current_mint == h.base_mint.key(),PumpError::MultiHopDiscontinuousPath);
+ 
+ 
+-        let c = &h.bonding_curve;
++        let c = &h.bonding_curve; let cap = crate::buy_fee_market_cap(c,&h.base_mint)?;
+         let trade_amount = if buy {
+             crate::transfer_fee_recovered::post_fee_amount(&quote_fee,amount)?
+         }else{amount};
+@@ -569,24 +569,24 @@
+ 
+ 
+         let buy_transfer_fee = amount.checked_sub(trade_amount).ok_or_else(|| error!(PumpError::Overflow))?;
+-        let cap = div(h.base_mint.supply as u128 * c.virtual_quote_reserves as u128,
+-            c.virtual_token_reserves as u128)?;
++
++
+         let mut post_fill = None;
+         let (p_rate,c_rate,base_amount,quote_amount,pf,cf,raw_output) = if buy {
+             let selected = crate::legacy_sell::fee_math::get_fees(&a.global,c,&a.fee_config,a.fee_config.to_account_info().data_len(),cap,trade_amount)?;
+             let p_rate = if flag & 1 != 0 { selected.protocol_fee_bps } else { 0 };
+             let c_rate = if flag & 2 != 0 { selected.creator_fee_bps } else { 0 };
+             let (_,crate::trade::TradeFees{protocol_fee:pf,creator_fee:cf,..}) = crate::trade::net_quote_for_budget(&c.creator,p_rate,c_rate,trade_amount)?;
+-            let q = sub(sub(trade_amount,pf)?,cf)?;
+-            require!(q != 0,PumpError::Overflow);
+-            let effective = q - 1;
++            let q = crate::trade::sub3(trade_amount,pf,cf)?;
++
++
+ // layout-pad(6): aligns the next Source site with the original line
+ 
+ 
+ 
+ 
+ 
+-            let base = u64::try_from(div(effective as u128 * c.virtual_token_reserves as u128, c.virtual_quote_reserves as u128 + effective as u128)?).map_err(|_| error!(PumpError::Truncation))?;
++            let base = u64::try_from(crate::constant_product::tokens_for_quote(c,q)?).map_err(|_| error!(PumpError::Truncation))?;
+             require_gt!(base,0,PumpError::BuyZeroAmount);
+             let capped = base.min(c.real_token_reserves);
+             if base > c.real_token_reserves {
+@@ -676,7 +676,7 @@
+             let c_rate = if flag & 2 != 0 { selected.creator_fee_bps } else { 0 };
+             let pf = if flag & 1 != 0 { selected.protocol_fee } else { 0 };
+             let cf = if flag & 2 != 0 { selected.creator_fee } else { 0 };
+-            let net = sub(sub(gross_sell,pf)?,cf)?;
++            let net = crate::trade::sub3(gross_sell,pf,cf)?;
+ // layout-pad(6): aligns the next Source site with the original line
+ 
+ 
+--- a/programs/pump/src/trade_v3.rs
++++ b/programs/pump/src/trade_v3.rs
+@@ -291,7 +291,7 @@
+ 
+ 
+ #[inline(never)]
+-fn sub3(a:u64,b:u64,c:u64)->Result<u64>{a.checked_sub(b).and_then(|x|x.checked_sub(c)).ok_or_else(||error!(PumpError::Overflow))}
++pub(crate) fn sub3(a:u64,b:u64,c:u64)->Result<u64>{a.checked_sub(b).and_then(|x|x.checked_sub(c)).ok_or_else(||error!(PumpError::Overflow))}
+ // layout-pad(14): aligns the next Source site with the original line
+ 
+ 

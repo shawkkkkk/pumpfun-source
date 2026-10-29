@@ -1,0 +1,17 @@
+{
+  "CALL-BOUNDARIES.json": "36f60349156c5a1368246bac11cb548edf621419e7907c37479f48aeb4ae98af",
+  "HELPER-CLOSURE.json": "9116c5e02c35d78faf3cb7892d22fa1045d41b8ecd3123522196cf95683e5057",
+  "POINTEES-VERIFIED.json": "a046fd2683962b6c0984c1230385d0f6d233435a66e8e39454046358204fd5a3",
+  "README.md": "174cd16cdf98090227b44bdf23683fe18cef106f35f9756942b70529f966f9c7",
+  "clock-to-arithmetic.patch": "da002416995d9f8ffed35283807818e0189d00ab45f1a16b2d8804a92c7fce74",
+  "current-to-arithmetic.patch": "733564ff5ce1a49de2b356c556c442a61a89467e8e34c0c761fd60abb89601f4",
+  "freeze_source.py": "cd4c7ed4939e70876d08b43b871b20c7005c6adf0b557d2116fd96a8d664ffca",
+  "multi_hop_curve_swap.rs": "d21edc8069031396f32667acc3f1210ab4f824b349b3f963415a9aad31cbc855",
+  "proposal.json": "ae086f0a3650834a8841e56ebe2813da197a7b82876813b4b5adf3f1acac37c2",
+  "prove_call_boundaries.py": "184213be6f5aca9fed4081b2710b4c0c3bad66af97c139153edc7c2303868cf1",
+  "source-before-clock.rs": "5871a2cf35ebe0db502eb242db0f1652ef93e51e4971e56483016d900349ac2b",
+  "source-before-current.rs": "734bdae1189dd4e4f54a27fd215624611228f36b92d3877b63f00df19ccc9e44",
+  "trade-before.rs": "580b1e31173ca53ccd5cb547e04efde4ae178a0626fca966ca0034e4305b2ee5",
+  "trade_v3.rs": "27ec6da2a17824f4149ec514c5288ad90ca0e9a6e4fb51f0f431a3f2aac9b2ac",
+  "verify_pointees.py": "9bc8e5056898556aadca7c71b1e75dc3a4be8e611358ce3bdbe7a2258f568d6b"
+}

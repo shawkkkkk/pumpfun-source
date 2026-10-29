@@ -1,0 +1,79 @@
+{
+  "scope": "One used arithmetic call-boundary proposal. Static original/current ELF and actual compiled source only; no build, VM, identity gain, or unique historical source claim.",
+  "original": {
+    "sha256": "7a19affaa2c6187e04a5fe0ea298cee81fa5eb8c24cfcc30d85f615e89f7b02d",
+    "start": "0x5b3b0",
+    "bytes": 18584
+  },
+  "current_symbols_sha256": "4f8f22984af1a35d9c6b0978e4d33b9e9bfe13a80188c6aabc41eb85fe3a0b14",
+  "archive_sha256": "549f0b679dd93990787456594420142c36245fa7b851df1d8d4691fa76642877",
+  "actual_compiled_sources": {
+    "programs/pump/src/lib.rs": "3201fde6c15c69dd710cda8672c8d4d1837e8fea6c6943735b34c64c6463e0a9",
+    "programs/pump/src/trade_v3.rs": "580b1e31173ca53ccd5cb547e04efde4ae178a0626fca966ca0034e4305b2ee5",
+    "programs/pump/src/util/constant_product.rs": "3269785c24ef5a343c6b7f2095ba1541b042b9944596bad9cab1e026dbca8616",
+    "programs/pump/src/multi_hop_curve_swap.rs": "5871a2cf35ebe0db502eb242db0f1652ef93e51e4971e56483016d900349ac2b"
+  },
+  "CFG": {
+    "instructions": 2287,
+    "reachable": 2287,
+    "r9_fixed_point_iterations": 3,
+    "conditional_edges": "Both retained; no infeasible-path pruning.",
+    "stack_reaching_definitions": {
+      "-0xaa8@0x12a0": [
+        "0x6d8"
+      ],
+      "-0xaa8@0x1358": [
+        "0x6d8"
+      ],
+      "-0xab0@0x1748": [
+        "0x678",
+        "0x688"
+      ],
+      "-0xa40@0x6b0": [
+        "0x18"
+      ],
+      "-0xaf0@0x1bf0": [
+        "0x1af0"
+      ],
+      "-0xab8@0x1da0": [
+        "0x17d8"
+      ]
+    },
+    "memory_scope": "Explicit stores to these frame slots; all listed slots are scalar or immutable account pointers, outside the callee result buffers. This is not a general alias-analysis proof."
+  },
+  "market_cap": {
+    "call": "+0x17b0 -> 0xa08f8 (760B)",
+    "r2_curve": "Incoming h[0x10] box saved by +0x678/+0x688, reloaded +0x1748 and adjusted +8 at +0x1750; exact helper reads virtual tokens +0x40, virtual quote +0x48, Mayhem bit +0x9a, token_total_supply +0x60.",
+    "r3_mint": "Incoming h[0] box saved +0x6d8; either +0x12a0 or +0x1358 reload is the only reaching r9 definition. Exact helper reads Mint.supply at +0x28 on ordinary admitted hops.",
+    "ordering": "Call dominates both sell_quote +0x1838 and buy post_fee_amount +0x18e8. The proposed common cap binding belongs before trade_amount, not after it.",
+    "success": "Zero Result<u128> tag; low cap saved -0xac8 and high cap retained r6, then both passed to unchanged get_fees on either branch.",
+    "failure": "Nonzero tag -> +0x1858..+0x1870 copies both Error words unchanged to outer output; no caller source replacement."
+  },
+  "sell_sub3": {
+    "call": "+0x1c08 -> 0x80488 (576B)",
+    "arguments": "r2 gross_sell from successful sell_quote +0x1838: low word +0x1840 after high-word zero check +0x1958, stored -0xaf0 by +0x1af0. r3 protocol and r4 creator fees are selected/zeroed by the existing flag branches.",
+    "success": "Tag2 -> +0x1c60 reads net; original SellZeroAmount and outgoing quote transfer-fee operation remain after this boundary.",
+    "failure": "Other tag -> +0x2710..+0x2728 copies Error discriminant and pointer unchanged to outer output."
+  },
+  "buy_sub3": {
+    "call": "+0x1d68 -> 0x80488 (576B)",
+    "arguments": "r2 trade_amount has sole reaching r9 definition +0x19d0 from post_fee_amount successful low value; r3/r4 read actual net_quote_for_budget returned protocol/creator fee fields -0x6c0/-0x6b8. The returned net quote is deliberately recomputed, not substituted.",
+    "success": "Tag2 -> +0x1d88 supplies exactly its returned quote to tokens_for_quote and saves the same quote as -0xaf0.",
+    "failure": "Same unchanged Error forwarding at +0x2710..+0x2728 as sell."
+  },
+  "tokens_for_quote": {
+    "call": "+0x1db0 -> 0xa0838 (192B)",
+    "arguments": "r2 same cap curve pointer saved -0xab8; r3 successful buy sub3 quote.",
+    "success": "Zero Result<u128> tag -> +0x2190; high word admission +0x2198 precedes original u64 truncation and BuyZeroAmount +0x2290, then cap against real_token_reserves.",
+    "failure": "+0x1dd8..+0x1df8 copies its two Error words unchanged to outer output.",
+    "zero_quote": "The actual helper performs checked_sub(1); zero converts PumpError::Overflow through the full matched From<PumpError> body, with no caller Source. It replaces the current explicit q!=0 require and effective=q-1 together."
+  },
+  "helper_closure_sha256": "9116c5e02c35d78faf3cb7892d22fa1045d41b8ecd3123522196cf95683e5057",
+  "source_failures": {
+    "buy_fee_market_cap": "DivisionByZero6026; programs/pump/src/lib.rs:2481",
+    "sub3": "Overflow6024; programs/pump/src/trade_v3.rs:294",
+    "tokens_for_quote_zero": "From<PumpError::Overflow> through matched504Bhelper; no Source",
+    "constant_product_output": "Overflow6024 util/constant_product.rs13(multiply)/17(add); DivisionByZero6026 line19"
+  },
+  "limitations": "Static attribution is not compiled caller identity or runtime qualification. Existing rejected Mayhem witness and closed constructor/CTA probes remain separate. Native compilation and replay may only follow one frozen proposal; no variants."
+}

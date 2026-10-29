@@ -1,0 +1,13 @@
+{
+  "status": "PASS",
+  "helper_bodies": 5,
+  "complete_direct_callee_edges_checked": 30,
+  "masked_ELF_pointer_operands_closed": 33,
+  "unique_used_vtable_method_bodies_checked": 5,
+  "actual_images_sha256": {
+    "original": "7a19affaa2c6187e04a5fe0ea298cee81fa5eb8c24cfcc30d85f615e89f7b02d",
+    "current": "4f8f22984af1a35d9c6b0978e4d33b9e9bfe13a80188c6aabc41eb85fe3a0b14"
+  },
+  "HELPER_CLOSURE_sha256": "9116c5e02c35d78faf3cb7892d22fa1045d41b8ecd3123522196cf95683e5057",
+  "limits": "All masked data operands of these five helper bodies and their listed used vtables are bounded and verified. Direct callee full normalized identities are checked; this does not claim blanket transitive stdlib pointee closure or unique historical source."
+}

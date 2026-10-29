@@ -1,11 +1,11 @@
-name: Measure qualified current711 Pump composition on native macOS
-run-name: Current711 three-file composition native v1.44
+name: Measure independent current711 arithmetic boundaries on native macOS
+run-name: Current711 two-file arithmetic boundaries native v1.44
 on:
   workflow_dispatch:
 permissions:
   contents: read
 concurrency:
-  group: pump-current711-qualified-composition
+  group: pump-current711-arithmetic-boundaries
   cancel-in-progress: false
 jobs:
   composition:
@@ -21,8 +21,8 @@ jobs:
           sparse-checkout: |
             /.github/workflows/qualify-pump-macos-v144.yml
             /scripts/pump_current673_macos_control.py
-            /scripts/pump_current711_composition_macos.py
-            /research/pump-current711-composition-20261029/
+            /scripts/pump_current711_arithmetic_macos.py
+            /research/pump-current711-arithmetic-20261029/
             /research/pump-multihop-accrual-qualification-20261028/build.py
             /research/pump-multihop-accrual-qualification-20261028/build-inputs.json
             /research/pump-multihop-accrual-qualification-20261028/source/
@@ -32,15 +32,15 @@ jobs:
             /research/pump-multihop-accrual-qualification-20261028/builds/cold-01/candidate.so
             /research/pump-multihop-accrual-qualification-20261028/builds/cold-01/unstripped.so
             /evidence/original/pump/deployed.so
-      - name: Authenticate current711 source, qualified base and sealed three-file plan
-        run: python3 -B scripts/pump_current711_composition_macos.py --inspect
-      - name: Compile the single frozen composition with fresh host and target crates
-        run: python3 -B scripts/pump_current711_composition_macos.py
+      - name: Authenticate current711 source, qualified base and frozen two-file helper plan
+        run: python3 -B scripts/pump_current711_arithmetic_macos.py --inspect
+      - name: Compile the single frozen two-file boundary proposal with fresh host and target crates
+        run: python3 -B scripts/pump_current711_arithmetic_macos.py
       - name: Retain actual source, raw compiler outputs and immutable receipts
         if: always()
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         with:
-          name: pump-current711-composition-${{ github.run_id }}-${{ github.run_attempt }}
-          path: work/pump-current711-composition/evidence
+          name: pump-current711-arithmetic-${{ github.run_id }}-${{ github.run_attempt }}
+          path: work/pump-current711-arithmetic/evidence
           if-no-files-found: error
           retention-days: 30

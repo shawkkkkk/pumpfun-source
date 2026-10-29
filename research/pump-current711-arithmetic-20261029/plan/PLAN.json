@@ -1,0 +1,133 @@
+{
+  "schema": "PUMP_CURRENT711_TWO_FILE_BOUNDARY_PLAN_V1",
+  "current_main": "f57bbf0dd856b101acd02c242cb5c4a56bf276b1",
+  "owner_proposal_sha256": "ae086f0a3650834a8841e56ebe2813da197a7b82876813b4b5adf3f1acac37c2",
+  "only_authorized_source_changes": [
+    {
+      "path": "programs/pump/src/multi_hop_curve_swap.rs",
+      "current_sha256": "734bdae1189dd4e4f54a27fd215624611228f36b92d3877b63f00df19ccc9e44",
+      "composed_sha256": "d21edc8069031396f32667acc3f1210ab4f824b349b3f963415a9aad31cbc855"
+    },
+    {
+      "path": "programs/pump/src/trade_v3.rs",
+      "current_sha256": "580b1e31173ca53ccd5cb547e04efde4ae178a0626fca966ca0034e4305b2ee5",
+      "composed_sha256": "27ec6da2a17824f4149ec514c5288ad90ca0e9a6e4fb51f0f431a3f2aac9b2ac"
+    }
+  ],
+  "current_recipe": {
+    "all5_tool_pins": {
+      "rustc": "1f26338cc2cabd0a6057dcbd0528bba262b23ca1296d357a55304ee31d1d9e5a",
+      "cargo": "cd27e4113fc155b5e79fca97c1cc5447ef89d1c8ce3d0e1e5679d2dd7a9ab0ef",
+      "objcopy": "8f79cc9a0eab0bd1b19a2ad789e5cb5e6f22d16c2f147d58ca30b9b51d2231e1",
+      "clang": "6310b1b8597e31c61e256db37784a7cd25ac52d1a9546a038827ce37409107a4",
+      "ar": "f5f6f54d235df10bc7e806a22966ca9bbae048a3ae8f8c4c20eb9b6c8081d267"
+    },
+    "entire_target_library_file_map": {
+      "libaddr2line-e6aeb2e4b400d273.rlib": {
+        "sha256": "db16f788fbc9049a1c694876c9c8e52335640be0e667ef9c871d545e05b007d9",
+        "mode": 420
+      },
+      "libadler-a1ecf6226fab4e4c.rlib": {
+        "sha256": "eb6633b603230abf871ea94dc06141f493d31bb7b5db4469a85cc9212428a0dc",
+        "mode": 420
+      },
+      "liballoc-f3c66a8de450488e.rlib": {
+        "sha256": "679a55ef942aab47fc69da32765e782a28d71d0edc544ba4367589722bd69d94",
+        "mode": 420
+      },
+      "libcfg_if-ea0575808b373f94.rlib": {
+        "sha256": "17a2996b3d25d5ff035e6ecae7b29ccdeb5fe4ade59ffe80eda70bae6d321452",
+        "mode": 420
+      },
+      "libcompiler_builtins-c45c2ded080d9668.rlib": {
+        "sha256": "10fc7b8628875a6d330dcd5aea94852ec9f31ed85009a20dcf98e93f36894e86",
+        "mode": 420
+      },
+      "libcore-52876eb403c2f847.rlib": {
+        "sha256": "85972d2c6f6b4eabb34b7c9d5cb04aa216723d9ac35f050a7c219d6f9d65f5e7",
+        "mode": 420
+      },
+      "libgetopts-70e39e4d407d9f9d.rlib": {
+        "sha256": "322d8fbd80f1ffbc186abb461f85a1f845eb54cc23b1d9ebbfebecd2cf9e1c62",
+        "mode": 420
+      },
+      "libgimli-e8cd2ed6ba81ed3d.rlib": {
+        "sha256": "59337ec33e3c65422b2984247708c1668cee45e6c017d7cbee9d510c9db9bbc5",
+        "mode": 420
+      },
+      "libhashbrown-acc155a66701b798.rlib": {
+        "sha256": "9c916224d6f42d506323dc0fa78e3ba8a6d05feab3f8a7e99ae78093e45bbbda",
+        "mode": 420
+      },
+      "liblibc-6e7ddecf4e3040fb.rlib": {
+        "sha256": "804d80ef515b2d75e435bd5908ffdd98c62fdb962942c8254fa92e472f33f042",
+        "mode": 420
+      },
+      "libmemchr-014ff96e10cd0668.rlib": {
+        "sha256": "bb996019425342176ba13e5b060a193f725fea5956346a025eaa1a0bd05e5dbe",
+        "mode": 420
+      },
+      "libminiz_oxide-35c9473c472b3826.rlib": {
+        "sha256": "8c54b094181013ae29d72455f0c2e14807c2d24865df470f1d00d7d1a20254b8",
+        "mode": 420
+      },
+      "libobject-f88c80390b2ba95c.rlib": {
+        "sha256": "7584eea0c9862c5e5e354d35c60a0e3be42aa2ab1d82292b98532614460bbf85",
+        "mode": 420
+      },
+      "libpanic_abort-103d29f0ede7c858.rlib": {
+        "sha256": "e4c090de50a06b9ccd0d0ad3e5f0bc0389155277b3dc25ca1c268c3975f3bfb6",
+        "mode": 420
+      },
+      "libpanic_unwind-0c092adc710fd79f.rlib": {
+        "sha256": "02c687c95a570afb23e971ee45dfe7f26358081ca3f01843859f1dc50be7e4a6",
+        "mode": 420
+      },
+      "libproc_macro-b0e8b13964190326.rlib": {
+        "sha256": "896b9e3be0e2071c42ab1ff580801ce33ffff34d6bb7f1c7fa66ac601f5a448c",
+        "mode": 420
+      },
+      "librustc_std_workspace_alloc-43985c5bf5cb3cc1.rlib": {
+        "sha256": "d1f708aea3212a8723daed54851c6f08b2ac875f2a85ec6f6cad667848622558",
+        "mode": 420
+      },
+      "librustc_std_workspace_core-0d013a368a425fcf.rlib": {
+        "sha256": "22634be6b5115c40acfb7ca250eb9677a27aa1062531a99240fa60ada36bec88",
+        "mode": 420
+      },
+      "librustc_std_workspace_std-e66af626521502ee.rlib": {
+        "sha256": "7b7f3c944172d447f899f8a140b7eb3ca02b5ae045d083e18df381433712781d",
+        "mode": 420
+      },
+      "libstd-b21c434e0a696890.rlib": {
+        "sha256": "43c13aedf385aed42c3c7c97d13e7cc89979203e72fd87857c93c395e5fd4efa",
+        "mode": 420
+      },
+      "libstd_detect-ec5d45a0e20fae33.rlib": {
+        "sha256": "25f93d04b12d269e870666aa97bb47727203b533316932a8dee0966f3bb1d942",
+        "mode": 420
+      },
+      "libsysroot-b6b213ae1df94df5.rlib": {
+        "sha256": "c1a9183a76386cbaf604b48211008c219afdaae6757f846733950d046936ba82",
+        "mode": 420
+      },
+      "libtest-080eee5a22e558c4.rlib": {
+        "sha256": "8f82444d4c8591a90c63af2e41e51d8f74d4cfbab43da83cde196bfc6787bd36",
+        "mode": 420
+      },
+      "libunicode_width-e11e6d0a5e02b016.rlib": {
+        "sha256": "5bb7b96f1afdd9da91efb1e9b6e71d805d87804f17006560757030f194faed13",
+        "mode": 420
+      },
+      "libunwind-411a1a08afc96e48.rlib": {
+        "sha256": "089468bfa405b742e86b418b7d3c795a74d2d123539bc0b3d16144cee8f25101",
+        "mode": 420
+      }
+    },
+    "empty_target_directories": [
+      "self-contained"
+    ],
+    "recorded_sdk_rust_library_files": 1827
+  },
+  "policy": "Explicit root release for exactly one independent current711 arithmetic-helper measurement, after prerequisite guard8/counter12; no CTO/Sweep, other63 fixed; no variants."
+}

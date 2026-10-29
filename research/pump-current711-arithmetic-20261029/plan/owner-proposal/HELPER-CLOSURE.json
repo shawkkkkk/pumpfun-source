@@ -1,0 +1,925 @@
+{
+  "scope": "Read-only original/current actual helper ABI, complete-body identities and every masked data operand in the five consumed helper bodies. Pointee bounds come from actual enum/u32, str lengths, Source filenames, vtable layouts or Location ABI; adjacent unrelated rodata is excluded.",
+  "current_source_sha256": "5871a2cf35ebe0db502eb242db0f1652ef93e51e4971e56483016d900349ac2b",
+  "current_symbols_sha256": "4f8f22984af1a35d9c6b0978e4d33b9e9bfe13a80188c6aabc41eb85fe3a0b14",
+  "helpers": [
+    {
+      "label": "buy_fee_market_cap",
+      "original": "0xa08f8",
+      "current": "0xb2108",
+      "bytes": 760,
+      "normalized_sha256": "6fc8bc26d4ab97fdb155042656d570f87af50098af21eeec9d6732e2cac926d7",
+      "symbol": "_ZN14pump_recovered18buy_fee_market_cap17h0b0637c19adda7b8E",
+      "masked_pointees": [
+        {
+          "offset": "0xf8",
+          "kind": "error_ordinal",
+          "bounded_bytes": 4,
+          "original": "0x1b5f54",
+          "current": "0x1b7fe4",
+          "sha256": "3ef3bd3d6658c0dfdfdd7aa65e3d92bf1da9a04678a4ed2a5d84ed824ec91775",
+          "value": 26
+        },
+        {
+          "offset": "0x128",
+          "kind": "used_vtable",
+          "closure": {
+            "kind": "String_fmt_Write",
+            "original": "0x1bd838",
+            "current": "0x1bf880",
+            "bounded_words": 6,
+            "size": 24,
+            "alignment": 8,
+            "methods": [
+              {
+                "slot": 0,
+                "original": "0xaf00",
+                "current": "0xb1a0",
+                "bytes": 8,
+                "normalized_sha256": "e1425229c865ac8b8222d13972f05098f084426a258428c2b5a470933aca6cc4",
+                "symbol": "_ZN4core3ptr42drop_in_place$LT$alloc..string..String$GT$17h36d8e4095db7ad83E"
+              },
+              {
+                "slot": 3,
+                "original": "0xd258",
+                "current": "0xd3a8",
+                "bytes": 168,
+                "normalized_sha256": "4585b0b08f8202343fc275eac83e8f46a441f6022ad81f6d9915fce969f17333",
+                "symbol": "_ZN58_$LT$alloc..string..String$u20$as$u20$core..fmt..Write$GT$9write_str17h4b62f46a222bd5b2E"
+              },
+              {
+                "slot": 4,
+                "original": "0xd240",
+                "current": "0xd390",
+                "bytes": 24,
+                "normalized_sha256": "46e9ac266e0e15df8d195e7b648b2647c413eb6d061c6aeb453e8209464b197b",
+                "symbol": "_ZN58_$LT$alloc..string..String$u20$as$u20$core..fmt..Write$GT$10write_char17hfde5b685689164ccE"
+              },
+              {
+                "slot": 5,
+                "original": "0xac58",
+                "current": "0xaef8",
+                "bytes": 40,
+                "normalized_sha256": "df9cfad880268dbec308c1a9cac7f2a91b44694378a09e6895c73d2aaa898649",
+                "symbol": "_ZN4core3fmt5Write9write_fmt17hd52a4ebe329e4f3cE"
+              }
+            ]
+          }
+        },
+        {
+          "offset": "0x188",
+          "kind": "error_ordinal",
+          "bounded_bytes": 4,
+          "original": "0x1b5f54",
+          "current": "0x1b7fe4",
+          "sha256": "3ef3bd3d6658c0dfdfdd7aa65e3d92bf1da9a04678a4ed2a5d84ed824ec91775",
+          "value": 26
+        },
+        {
+          "offset": "0x1b8",
+          "kind": "unwrap_message",
+          "bounded_bytes": 55,
+          "original": "0x1b5fa4",
+          "current": "0x1b8034",
+          "sha256": "abd78de6799e812cd7272a062382ca0368772ad9efbc99d1a5cdd6cdf113cdbf",
+          "value": "a Display implementation returned an error unexpectedly"
+        },
+        {
+          "offset": "0x1d0",
+          "kind": "used_vtable",
+          "closure": {
+            "kind": "fmt_Error_Debug",
+            "original": "0x1bd868",
+            "current": "0x1bf8b0",
+            "bounded_words": 4,
+            "size": 0,
+            "alignment": 1,
+            "methods": [
+              {
+                "slot": 0,
+                "original": "0xaef8",
+                "current": "0xb198",
+                "bytes": 8,
+                "normalized_sha256": "e1425229c865ac8b8222d13972f05098f084426a258428c2b5a470933aca6cc4",
+                "symbol": "_ZN4core3ptr37drop_in_place$LT$core..fmt..Error$GT$17hcd839a646a3475c3E"
+              },
+              {
+                "slot": 3,
+                "original": "0xd210",
+                "current": "0xd360",
+                "bytes": 48,
+                "normalized_sha256": "a48cfdbc00561c9bd89d3561e8d6ea9a1fef7d431a5afd2a5c62572a3473a40c",
+                "symbol": "_ZN53_$LT$core..fmt..Error$u20$as$u20$core..fmt..Debug$GT$3fmt17h85666afa16c4890eE"
+              }
+            ]
+          }
+        },
+        {
+          "offset": "0x1e0",
+          "kind": "panic_Location",
+          "bounded_bytes": 24,
+          "filename": "/home/runner/work/platform-tools/platform-tools/out/rust/library/alloc/src/string.rs",
+          "filename_bytes": 84,
+          "line": 2559,
+          "column": 14,
+          "filename_sha256": "2e3f7f57f23324c9574a9fcea180f19afc3f68f9bb560306d3aa40cd5786dc57"
+        },
+        {
+          "offset": "0x258",
+          "kind": "Source_filename",
+          "bounded_bytes": 24,
+          "original": "0x1b72c5",
+          "current": "0x1b92a7",
+          "sha256": "53abacb17a0e41134c0f871af33a9e8a4065871c446ee825bfee2bb8fe7d2047",
+          "value": "programs/pump/src/lib.rs"
+        }
+      ],
+      "actual_direct_callees": [
+        {
+          "offset": "0x80",
+          "original": "0x1b55c8",
+          "current": "0x1b7638",
+          "bytes": 352,
+          "normalized_sha256": "face056642083fcc15c6737f1910030a4b59b6a78a4fa523f142dc0f28635762",
+          "symbol": "__multi3"
+        },
+        {
+          "offset": "0xb8",
+          "original": "0x1b4088",
+          "current": "0x1b60f8",
+          "bytes": 72,
+          "normalized_sha256": "e527c70bcf384106f3d885bf743397dba53af8c7aa44b320dae12fd4d454e461",
+          "symbol": "__udivti3"
+        },
+        {
+          "offset": "0x108",
+          "original": "0x157380",
+          "current": "0x1578c0",
+          "bytes": 26896,
+          "normalized_sha256": "12ec21afd9749fdf5ecd506345b09510b6c6676fd604c8e20869439afb9d143b",
+          "symbol": "_ZN14pump_recovered9PumpError4name17h61022c7ff53288d0E"
+        },
+        {
+          "offset": "0x198",
+          "original": "0x15de88",
+          "current": "0x15e3c8",
+          "bytes": 3616,
+          "normalized_sha256": "e7a0b7da14a8fc34169dc90c2e5a38dcb32c5f782445954fd51ed0bd2825cbfb",
+          "symbol": "_ZN64_$LT$pump_recovered..PumpError$u20$as$u20$core..fmt..Display$GT$3fmt17hbf6a90ed7cf777ebE"
+        },
+        {
+          "offset": "0x1f0",
+          "original": "0x1ace18",
+          "current": "0x1aee88",
+          "bytes": 232,
+          "normalized_sha256": "b34e14663b2408f2ac727dd770ea414287409ebd158eacd6a21df134dc66e2e0",
+          "symbol": "_ZN4core6result13unwrap_failed17h2dbd2ef42161686dE"
+        },
+        {
+          "offset": "0x2b8",
+          "original": "0x19bb30",
+          "current": "0x19dba0",
+          "bytes": 136,
+          "normalized_sha256": "4d309b5bb532665fe5ae3039c64ca95b3ef2648370f47d2586acb6dec6c6c96e",
+          "symbol": "_ZN104_$LT$anchor_lang..error..Error$u20$as$u20$core..convert..From$LT$anchor_lang..error..AnchorError$GT$$GT$4from17h4ec711440ff80a00E"
+        }
+      ]
+    },
+    {
+      "label": "sub3",
+      "original": "0x80488",
+      "current": "0x98b90",
+      "bytes": 576,
+      "normalized_sha256": "ed0bef6ff14c5db5c35dafac7d6795bb5b8d6b283099e95383c99d7cf655ce7e",
+      "symbol": "_ZN14pump_recovered5trade4sub317he4ce99f8f0beb513E",
+      "masked_pointees": [
+        {
+          "offset": "0x30",
+          "kind": "error_ordinal",
+          "bounded_bytes": 4,
+          "original": "0x1b5efc",
+          "current": "0x1b7f8c",
+          "sha256": "17fa9c7f5e9039a2d46e73e17d8e094a796ee4c313199bad42db4ee1dc30d865",
+          "value": 24
+        },
+        {
+          "offset": "0x60",
+          "kind": "used_vtable",
+          "closure": {
+            "kind": "String_fmt_Write",
+            "original": "0x1bd838",
+            "current": "0x1bf880",
+            "bounded_words": 6,
+            "size": 24,
+            "alignment": 8,
+            "methods": [
+              {
+                "slot": 0,
+                "original": "0xaf00",
+                "current": "0xb1a0",
+                "bytes": 8,
+                "normalized_sha256": "e1425229c865ac8b8222d13972f05098f084426a258428c2b5a470933aca6cc4",
+                "symbol": "_ZN4core3ptr42drop_in_place$LT$alloc..string..String$GT$17h36d8e4095db7ad83E"
+              },
+              {
+                "slot": 3,
+                "original": "0xd258",
+                "current": "0xd3a8",
+                "bytes": 168,
+                "normalized_sha256": "4585b0b08f8202343fc275eac83e8f46a441f6022ad81f6d9915fce969f17333",
+                "symbol": "_ZN58_$LT$alloc..string..String$u20$as$u20$core..fmt..Write$GT$9write_str17h4b62f46a222bd5b2E"
+              },
+              {
+                "slot": 4,
+                "original": "0xd240",
+                "current": "0xd390",
+                "bytes": 24,
+                "normalized_sha256": "46e9ac266e0e15df8d195e7b648b2647c413eb6d061c6aeb453e8209464b197b",
+                "symbol": "_ZN58_$LT$alloc..string..String$u20$as$u20$core..fmt..Write$GT$10write_char17hfde5b685689164ccE"
+              },
+              {
+                "slot": 5,
+                "original": "0xac58",
+                "current": "0xaef8",
+                "bytes": 40,
+                "normalized_sha256": "df9cfad880268dbec308c1a9cac7f2a91b44694378a09e6895c73d2aaa898649",
+                "symbol": "_ZN4core3fmt5Write9write_fmt17hd52a4ebe329e4f3cE"
+              }
+            ]
+          }
+        },
+        {
+          "offset": "0xc0",
+          "kind": "error_ordinal",
+          "bounded_bytes": 4,
+          "original": "0x1b5efc",
+          "current": "0x1b7f8c",
+          "sha256": "17fa9c7f5e9039a2d46e73e17d8e094a796ee4c313199bad42db4ee1dc30d865",
+          "value": 24
+        },
+        {
+          "offset": "0xf0",
+          "kind": "unwrap_message",
+          "bounded_bytes": 55,
+          "original": "0x1b5fa4",
+          "current": "0x1b8034",
+          "sha256": "abd78de6799e812cd7272a062382ca0368772ad9efbc99d1a5cdd6cdf113cdbf",
+          "value": "a Display implementation returned an error unexpectedly"
+        },
+        {
+          "offset": "0x108",
+          "kind": "used_vtable",
+          "closure": {
+            "kind": "fmt_Error_Debug",
+            "original": "0x1bd868",
+            "current": "0x1bf8b0",
+            "bounded_words": 4,
+            "size": 0,
+            "alignment": 1,
+            "methods": [
+              {
+                "slot": 0,
+                "original": "0xaef8",
+                "current": "0xb198",
+                "bytes": 8,
+                "normalized_sha256": "e1425229c865ac8b8222d13972f05098f084426a258428c2b5a470933aca6cc4",
+                "symbol": "_ZN4core3ptr37drop_in_place$LT$core..fmt..Error$GT$17hcd839a646a3475c3E"
+              },
+              {
+                "slot": 3,
+                "original": "0xd210",
+                "current": "0xd360",
+                "bytes": 48,
+                "normalized_sha256": "a48cfdbc00561c9bd89d3561e8d6ea9a1fef7d431a5afd2a5c62572a3473a40c",
+                "symbol": "_ZN53_$LT$core..fmt..Error$u20$as$u20$core..fmt..Debug$GT$3fmt17h85666afa16c4890eE"
+              }
+            ]
+          }
+        },
+        {
+          "offset": "0x118",
+          "kind": "panic_Location",
+          "bounded_bytes": 24,
+          "filename": "/home/runner/work/platform-tools/platform-tools/out/rust/library/alloc/src/string.rs",
+          "filename_bytes": 84,
+          "line": 2559,
+          "column": 14,
+          "filename_sha256": "2e3f7f57f23324c9574a9fcea180f19afc3f68f9bb560306d3aa40cd5786dc57"
+        },
+        {
+          "offset": "0x190",
+          "kind": "Source_filename",
+          "bounded_bytes": 29,
+          "original": "0x1b723b",
+          "current": "0x1b928a",
+          "sha256": "098539f7f9ad8de8130c71c6eae3171088eacb17ea0e48f303ee36eb69f0b7af",
+          "value": "programs/pump/src/trade_v3.rs"
+        }
+      ],
+      "actual_direct_callees": [
+        {
+          "offset": "0x40",
+          "original": "0x157380",
+          "current": "0x1578c0",
+          "bytes": 26896,
+          "normalized_sha256": "12ec21afd9749fdf5ecd506345b09510b6c6676fd604c8e20869439afb9d143b",
+          "symbol": "_ZN14pump_recovered9PumpError4name17h61022c7ff53288d0E"
+        },
+        {
+          "offset": "0xd0",
+          "original": "0x15de88",
+          "current": "0x15e3c8",
+          "bytes": 3616,
+          "normalized_sha256": "e7a0b7da14a8fc34169dc90c2e5a38dcb32c5f782445954fd51ed0bd2825cbfb",
+          "symbol": "_ZN64_$LT$pump_recovered..PumpError$u20$as$u20$core..fmt..Display$GT$3fmt17hbf6a90ed7cf777ebE"
+        },
+        {
+          "offset": "0x128",
+          "original": "0x1ace18",
+          "current": "0x1aee88",
+          "bytes": 232,
+          "normalized_sha256": "b34e14663b2408f2ac727dd770ea414287409ebd158eacd6a21df134dc66e2e0",
+          "symbol": "_ZN4core6result13unwrap_failed17h2dbd2ef42161686dE"
+        },
+        {
+          "offset": "0x1f0",
+          "original": "0x19bb30",
+          "current": "0x19dba0",
+          "bytes": 136,
+          "normalized_sha256": "4d309b5bb532665fe5ae3039c64ca95b3ef2648370f47d2586acb6dec6c6c96e",
+          "symbol": "_ZN104_$LT$anchor_lang..error..Error$u20$as$u20$core..convert..From$LT$anchor_lang..error..AnchorError$GT$$GT$4from17h4ec711440ff80a00E"
+        }
+      ]
+    },
+    {
+      "label": "tokens_for_quote",
+      "original": "0xa0838",
+      "current": "0xa83e8",
+      "bytes": 192,
+      "normalized_sha256": "fe59af0d9d9acfa678d5ebb86b6a20063ade7daa8a77466be328320b1430ccc8",
+      "symbol": "_ZN14pump_recovered16constant_product16tokens_for_quote17h4006f7aa0ff394deE",
+      "masked_pointees": [],
+      "actual_direct_callees": [
+        {
+          "offset": "0x30",
+          "original": "0x15dc90",
+          "current": "0x15e1d0",
+          "bytes": 504,
+          "normalized_sha256": "4c841c1b8a62df4847301cd7ec322c6e78fb082a2e3853fe100adfacf9c6dc1d",
+          "symbol": "_ZN14pump_recovered108_$LT$impl$u20$core..convert..From$LT$pump_recovered..PumpError$GT$$u20$for$u20$anchor_lang..error..Error$GT$4from17he2863c13b6d46d53E"
+        },
+        {
+          "offset": "0xb0",
+          "original": "0x880b0",
+          "current": "0xa7b90",
+          "bytes": 2136,
+          "normalized_sha256": "738fb814dbcb2ec0d6d84ecb54d7cb45299d84bad92b3807c148622a09c76c6b",
+          "symbol": "_ZN14pump_recovered16constant_product6output17h28bee2a21f317522E"
+        }
+      ]
+    },
+    {
+      "label": "constant_product_output",
+      "original": "0x880b0",
+      "current": "0xa7b90",
+      "bytes": 2136,
+      "normalized_sha256": "738fb814dbcb2ec0d6d84ecb54d7cb45299d84bad92b3807c148622a09c76c6b",
+      "symbol": "_ZN14pump_recovered16constant_product6output17h28bee2a21f317522E",
+      "masked_pointees": [
+        {
+          "offset": "0x288",
+          "kind": "error_ordinal",
+          "bounded_bytes": 4,
+          "original": "0x1b5efc",
+          "current": "0x1b7f8c",
+          "sha256": "17fa9c7f5e9039a2d46e73e17d8e094a796ee4c313199bad42db4ee1dc30d865",
+          "value": 24
+        },
+        {
+          "offset": "0x2b8",
+          "kind": "used_vtable",
+          "closure": {
+            "kind": "String_fmt_Write",
+            "original": "0x1bd838",
+            "current": "0x1bf880",
+            "bounded_words": 6,
+            "size": 24,
+            "alignment": 8,
+            "methods": [
+              {
+                "slot": 0,
+                "original": "0xaf00",
+                "current": "0xb1a0",
+                "bytes": 8,
+                "normalized_sha256": "e1425229c865ac8b8222d13972f05098f084426a258428c2b5a470933aca6cc4",
+                "symbol": "_ZN4core3ptr42drop_in_place$LT$alloc..string..String$GT$17h36d8e4095db7ad83E"
+              },
+              {
+                "slot": 3,
+                "original": "0xd258",
+                "current": "0xd3a8",
+                "bytes": 168,
+                "normalized_sha256": "4585b0b08f8202343fc275eac83e8f46a441f6022ad81f6d9915fce969f17333",
+                "symbol": "_ZN58_$LT$alloc..string..String$u20$as$u20$core..fmt..Write$GT$9write_str17h4b62f46a222bd5b2E"
+              },
+              {
+                "slot": 4,
+                "original": "0xd240",
+                "current": "0xd390",
+                "bytes": 24,
+                "normalized_sha256": "46e9ac266e0e15df8d195e7b648b2647c413eb6d061c6aeb453e8209464b197b",
+                "symbol": "_ZN58_$LT$alloc..string..String$u20$as$u20$core..fmt..Write$GT$10write_char17hfde5b685689164ccE"
+              },
+              {
+                "slot": 5,
+                "original": "0xac58",
+                "current": "0xaef8",
+                "bytes": 40,
+                "normalized_sha256": "df9cfad880268dbec308c1a9cac7f2a91b44694378a09e6895c73d2aaa898649",
+                "symbol": "_ZN4core3fmt5Write9write_fmt17hd52a4ebe329e4f3cE"
+              }
+            ]
+          }
+        },
+        {
+          "offset": "0x318",
+          "kind": "error_ordinal",
+          "bounded_bytes": 4,
+          "original": "0x1b5efc",
+          "current": "0x1b7f8c",
+          "sha256": "17fa9c7f5e9039a2d46e73e17d8e094a796ee4c313199bad42db4ee1dc30d865",
+          "value": 24
+        },
+        {
+          "offset": "0x410",
+          "kind": "Source_filename",
+          "bounded_bytes": 42,
+          "original": "0x1b7258",
+          "current": "0x1b92bf",
+          "sha256": "a114927b24d2cc8dbb55866d749940f726a146306acea49c9017bc15fee21149",
+          "value": "programs/pump/src/util/constant_product.rs"
+        },
+        {
+          "offset": "0x4a0",
+          "kind": "error_ordinal",
+          "bounded_bytes": 4,
+          "original": "0x1b5f54",
+          "current": "0x1b7fe4",
+          "sha256": "3ef3bd3d6658c0dfdfdd7aa65e3d92bf1da9a04678a4ed2a5d84ed824ec91775",
+          "value": 26
+        },
+        {
+          "offset": "0x4d0",
+          "kind": "used_vtable",
+          "closure": {
+            "kind": "String_fmt_Write",
+            "original": "0x1bd838",
+            "current": "0x1bf880",
+            "bounded_words": 6,
+            "size": 24,
+            "alignment": 8,
+            "methods": [
+              {
+                "slot": 0,
+                "original": "0xaf00",
+                "current": "0xb1a0",
+                "bytes": 8,
+                "normalized_sha256": "e1425229c865ac8b8222d13972f05098f084426a258428c2b5a470933aca6cc4",
+                "symbol": "_ZN4core3ptr42drop_in_place$LT$alloc..string..String$GT$17h36d8e4095db7ad83E"
+              },
+              {
+                "slot": 3,
+                "original": "0xd258",
+                "current": "0xd3a8",
+                "bytes": 168,
+                "normalized_sha256": "4585b0b08f8202343fc275eac83e8f46a441f6022ad81f6d9915fce969f17333",
+                "symbol": "_ZN58_$LT$alloc..string..String$u20$as$u20$core..fmt..Write$GT$9write_str17h4b62f46a222bd5b2E"
+              },
+              {
+                "slot": 4,
+                "original": "0xd240",
+                "current": "0xd390",
+                "bytes": 24,
+                "normalized_sha256": "46e9ac266e0e15df8d195e7b648b2647c413eb6d061c6aeb453e8209464b197b",
+                "symbol": "_ZN58_$LT$alloc..string..String$u20$as$u20$core..fmt..Write$GT$10write_char17hfde5b685689164ccE"
+              },
+              {
+                "slot": 5,
+                "original": "0xac58",
+                "current": "0xaef8",
+                "bytes": 40,
+                "normalized_sha256": "df9cfad880268dbec308c1a9cac7f2a91b44694378a09e6895c73d2aaa898649",
+                "symbol": "_ZN4core3fmt5Write9write_fmt17hd52a4ebe329e4f3cE"
+              }
+            ]
+          }
+        },
+        {
+          "offset": "0x530",
+          "kind": "error_ordinal",
+          "bounded_bytes": 4,
+          "original": "0x1b5f54",
+          "current": "0x1b7fe4",
+          "sha256": "3ef3bd3d6658c0dfdfdd7aa65e3d92bf1da9a04678a4ed2a5d84ed824ec91775",
+          "value": 26
+        },
+        {
+          "offset": "0x568",
+          "kind": "error_ordinal",
+          "bounded_bytes": 4,
+          "original": "0x1b5efc",
+          "current": "0x1b7f8c",
+          "sha256": "17fa9c7f5e9039a2d46e73e17d8e094a796ee4c313199bad42db4ee1dc30d865",
+          "value": 24
+        },
+        {
+          "offset": "0x598",
+          "kind": "used_vtable",
+          "closure": {
+            "kind": "String_fmt_Write",
+            "original": "0x1bd838",
+            "current": "0x1bf880",
+            "bounded_words": 6,
+            "size": 24,
+            "alignment": 8,
+            "methods": [
+              {
+                "slot": 0,
+                "original": "0xaf00",
+                "current": "0xb1a0",
+                "bytes": 8,
+                "normalized_sha256": "e1425229c865ac8b8222d13972f05098f084426a258428c2b5a470933aca6cc4",
+                "symbol": "_ZN4core3ptr42drop_in_place$LT$alloc..string..String$GT$17h36d8e4095db7ad83E"
+              },
+              {
+                "slot": 3,
+                "original": "0xd258",
+                "current": "0xd3a8",
+                "bytes": 168,
+                "normalized_sha256": "4585b0b08f8202343fc275eac83e8f46a441f6022ad81f6d9915fce969f17333",
+                "symbol": "_ZN58_$LT$alloc..string..String$u20$as$u20$core..fmt..Write$GT$9write_str17h4b62f46a222bd5b2E"
+              },
+              {
+                "slot": 4,
+                "original": "0xd240",
+                "current": "0xd390",
+                "bytes": 24,
+                "normalized_sha256": "46e9ac266e0e15df8d195e7b648b2647c413eb6d061c6aeb453e8209464b197b",
+                "symbol": "_ZN58_$LT$alloc..string..String$u20$as$u20$core..fmt..Write$GT$10write_char17hfde5b685689164ccE"
+              },
+              {
+                "slot": 5,
+                "original": "0xac58",
+                "current": "0xaef8",
+                "bytes": 40,
+                "normalized_sha256": "df9cfad880268dbec308c1a9cac7f2a91b44694378a09e6895c73d2aaa898649",
+                "symbol": "_ZN4core3fmt5Write9write_fmt17hd52a4ebe329e4f3cE"
+              }
+            ]
+          }
+        },
+        {
+          "offset": "0x5f8",
+          "kind": "error_ordinal",
+          "bounded_bytes": 4,
+          "original": "0x1b5efc",
+          "current": "0x1b7f8c",
+          "sha256": "17fa9c7f5e9039a2d46e73e17d8e094a796ee4c313199bad42db4ee1dc30d865",
+          "value": 24
+        },
+        {
+          "offset": "0x628",
+          "kind": "unwrap_message",
+          "bounded_bytes": 55,
+          "original": "0x1b5fa4",
+          "current": "0x1b8034",
+          "sha256": "abd78de6799e812cd7272a062382ca0368772ad9efbc99d1a5cdd6cdf113cdbf",
+          "value": "a Display implementation returned an error unexpectedly"
+        },
+        {
+          "offset": "0x640",
+          "kind": "used_vtable",
+          "closure": {
+            "kind": "fmt_Error_Debug",
+            "original": "0x1bd868",
+            "current": "0x1bf8b0",
+            "bounded_words": 4,
+            "size": 0,
+            "alignment": 1,
+            "methods": [
+              {
+                "slot": 0,
+                "original": "0xaef8",
+                "current": "0xb198",
+                "bytes": 8,
+                "normalized_sha256": "e1425229c865ac8b8222d13972f05098f084426a258428c2b5a470933aca6cc4",
+                "symbol": "_ZN4core3ptr37drop_in_place$LT$core..fmt..Error$GT$17hcd839a646a3475c3E"
+              },
+              {
+                "slot": 3,
+                "original": "0xd210",
+                "current": "0xd360",
+                "bytes": 48,
+                "normalized_sha256": "a48cfdbc00561c9bd89d3561e8d6ea9a1fef7d431a5afd2a5c62572a3473a40c",
+                "symbol": "_ZN53_$LT$core..fmt..Error$u20$as$u20$core..fmt..Debug$GT$3fmt17h85666afa16c4890eE"
+              }
+            ]
+          }
+        },
+        {
+          "offset": "0x650",
+          "kind": "panic_Location",
+          "bounded_bytes": 24,
+          "filename": "/home/runner/work/platform-tools/platform-tools/out/rust/library/alloc/src/string.rs",
+          "filename_bytes": 84,
+          "line": 2559,
+          "column": 14,
+          "filename_sha256": "2e3f7f57f23324c9574a9fcea180f19afc3f68f9bb560306d3aa40cd5786dc57"
+        },
+        {
+          "offset": "0x6c8",
+          "kind": "Source_filename",
+          "bounded_bytes": 42,
+          "original": "0x1b7258",
+          "current": "0x1b92bf",
+          "sha256": "a114927b24d2cc8dbb55866d749940f726a146306acea49c9017bc15fee21149",
+          "value": "programs/pump/src/util/constant_product.rs"
+        },
+        {
+          "offset": "0x7d8",
+          "kind": "Source_filename",
+          "bounded_bytes": 42,
+          "original": "0x1b7258",
+          "current": "0x1b92bf",
+          "sha256": "a114927b24d2cc8dbb55866d749940f726a146306acea49c9017bc15fee21149",
+          "value": "programs/pump/src/util/constant_product.rs"
+        }
+      ],
+      "actual_direct_callees": [
+        {
+          "offset": "0x60",
+          "original": "0x1b55c8",
+          "current": "0x1b7638",
+          "bytes": 352,
+          "normalized_sha256": "face056642083fcc15c6737f1910030a4b59b6a78a4fa523f142dc0f28635762",
+          "symbol": "__multi3"
+        },
+        {
+          "offset": "0xb0",
+          "original": "0x1b55c8",
+          "current": "0x1b7638",
+          "bytes": 352,
+          "normalized_sha256": "face056642083fcc15c6737f1910030a4b59b6a78a4fa523f142dc0f28635762",
+          "symbol": "__multi3"
+        },
+        {
+          "offset": "0xe8",
+          "original": "0x1b55c8",
+          "current": "0x1b7638",
+          "bytes": 352,
+          "normalized_sha256": "face056642083fcc15c6737f1910030a4b59b6a78a4fa523f142dc0f28635762",
+          "symbol": "__multi3"
+        },
+        {
+          "offset": "0x298",
+          "original": "0x157380",
+          "current": "0x1578c0",
+          "bytes": 26896,
+          "normalized_sha256": "12ec21afd9749fdf5ecd506345b09510b6c6676fd604c8e20869439afb9d143b",
+          "symbol": "_ZN14pump_recovered9PumpError4name17h61022c7ff53288d0E"
+        },
+        {
+          "offset": "0x328",
+          "original": "0x15de88",
+          "current": "0x15e3c8",
+          "bytes": 3616,
+          "normalized_sha256": "e7a0b7da14a8fc34169dc90c2e5a38dcb32c5f782445954fd51ed0bd2825cbfb",
+          "symbol": "_ZN64_$LT$pump_recovered..PumpError$u20$as$u20$core..fmt..Display$GT$3fmt17hbf6a90ed7cf777ebE"
+        },
+        {
+          "offset": "0x370",
+          "original": "0x1b4088",
+          "current": "0x1b60f8",
+          "bytes": 72,
+          "normalized_sha256": "e527c70bcf384106f3d885bf743397dba53af8c7aa44b320dae12fd4d454e461",
+          "symbol": "__udivti3"
+        },
+        {
+          "offset": "0x470",
+          "original": "0x19bb30",
+          "current": "0x19dba0",
+          "bytes": 136,
+          "normalized_sha256": "4d309b5bb532665fe5ae3039c64ca95b3ef2648370f47d2586acb6dec6c6c96e",
+          "symbol": "_ZN104_$LT$anchor_lang..error..Error$u20$as$u20$core..convert..From$LT$anchor_lang..error..AnchorError$GT$$GT$4from17h4ec711440ff80a00E"
+        },
+        {
+          "offset": "0x4b0",
+          "original": "0x157380",
+          "current": "0x1578c0",
+          "bytes": 26896,
+          "normalized_sha256": "12ec21afd9749fdf5ecd506345b09510b6c6676fd604c8e20869439afb9d143b",
+          "symbol": "_ZN14pump_recovered9PumpError4name17h61022c7ff53288d0E"
+        },
+        {
+          "offset": "0x540",
+          "original": "0x15de88",
+          "current": "0x15e3c8",
+          "bytes": 3616,
+          "normalized_sha256": "e7a0b7da14a8fc34169dc90c2e5a38dcb32c5f782445954fd51ed0bd2825cbfb",
+          "symbol": "_ZN64_$LT$pump_recovered..PumpError$u20$as$u20$core..fmt..Display$GT$3fmt17hbf6a90ed7cf777ebE"
+        },
+        {
+          "offset": "0x578",
+          "original": "0x157380",
+          "current": "0x1578c0",
+          "bytes": 26896,
+          "normalized_sha256": "12ec21afd9749fdf5ecd506345b09510b6c6676fd604c8e20869439afb9d143b",
+          "symbol": "_ZN14pump_recovered9PumpError4name17h61022c7ff53288d0E"
+        },
+        {
+          "offset": "0x608",
+          "original": "0x15de88",
+          "current": "0x15e3c8",
+          "bytes": 3616,
+          "normalized_sha256": "e7a0b7da14a8fc34169dc90c2e5a38dcb32c5f782445954fd51ed0bd2825cbfb",
+          "symbol": "_ZN64_$LT$pump_recovered..PumpError$u20$as$u20$core..fmt..Display$GT$3fmt17hbf6a90ed7cf777ebE"
+        },
+        {
+          "offset": "0x660",
+          "original": "0x1ace18",
+          "current": "0x1aee88",
+          "bytes": 232,
+          "normalized_sha256": "b34e14663b2408f2ac727dd770ea414287409ebd158eacd6a21df134dc66e2e0",
+          "symbol": "_ZN4core6result13unwrap_failed17h2dbd2ef42161686dE"
+        },
+        {
+          "offset": "0x728",
+          "original": "0x19bb30",
+          "current": "0x19dba0",
+          "bytes": 136,
+          "normalized_sha256": "4d309b5bb532665fe5ae3039c64ca95b3ef2648370f47d2586acb6dec6c6c96e",
+          "symbol": "_ZN104_$LT$anchor_lang..error..Error$u20$as$u20$core..convert..From$LT$anchor_lang..error..AnchorError$GT$$GT$4from17h4ec711440ff80a00E"
+        },
+        {
+          "offset": "0x838",
+          "original": "0x19bb30",
+          "current": "0x19dba0",
+          "bytes": 136,
+          "normalized_sha256": "4d309b5bb532665fe5ae3039c64ca95b3ef2648370f47d2586acb6dec6c6c96e",
+          "symbol": "_ZN104_$LT$anchor_lang..error..Error$u20$as$u20$core..convert..From$LT$anchor_lang..error..AnchorError$GT$$GT$4from17h4ec711440ff80a00E"
+        }
+      ]
+    },
+    {
+      "label": "From_PumpError",
+      "original": "0x15dc90",
+      "current": "0x15e1d0",
+      "bytes": 504,
+      "normalized_sha256": "4c841c1b8a62df4847301cd7ec322c6e78fb082a2e3853fe100adfacf9c6dc1d",
+      "symbol": "_ZN14pump_recovered108_$LT$impl$u20$core..convert..From$LT$pump_recovered..PumpError$GT$$u20$for$u20$anchor_lang..error..Error$GT$4from17he2863c13b6d46d53E",
+      "masked_pointees": [
+        {
+          "offset": "0x60",
+          "kind": "used_vtable",
+          "closure": {
+            "kind": "String_fmt_Write",
+            "original": "0x1bd838",
+            "current": "0x1bf880",
+            "bounded_words": 6,
+            "size": 24,
+            "alignment": 8,
+            "methods": [
+              {
+                "slot": 0,
+                "original": "0xaf00",
+                "current": "0xb1a0",
+                "bytes": 8,
+                "normalized_sha256": "e1425229c865ac8b8222d13972f05098f084426a258428c2b5a470933aca6cc4",
+                "symbol": "_ZN4core3ptr42drop_in_place$LT$alloc..string..String$GT$17h36d8e4095db7ad83E"
+              },
+              {
+                "slot": 3,
+                "original": "0xd258",
+                "current": "0xd3a8",
+                "bytes": 168,
+                "normalized_sha256": "4585b0b08f8202343fc275eac83e8f46a441f6022ad81f6d9915fce969f17333",
+                "symbol": "_ZN58_$LT$alloc..string..String$u20$as$u20$core..fmt..Write$GT$9write_str17h4b62f46a222bd5b2E"
+              },
+              {
+                "slot": 4,
+                "original": "0xd240",
+                "current": "0xd390",
+                "bytes": 24,
+                "normalized_sha256": "46e9ac266e0e15df8d195e7b648b2647c413eb6d061c6aeb453e8209464b197b",
+                "symbol": "_ZN58_$LT$alloc..string..String$u20$as$u20$core..fmt..Write$GT$10write_char17hfde5b685689164ccE"
+              },
+              {
+                "slot": 5,
+                "original": "0xac58",
+                "current": "0xaef8",
+                "bytes": 40,
+                "normalized_sha256": "df9cfad880268dbec308c1a9cac7f2a91b44694378a09e6895c73d2aaa898649",
+                "symbol": "_ZN4core3fmt5Write9write_fmt17hd52a4ebe329e4f3cE"
+              }
+            ]
+          }
+        },
+        {
+          "offset": "0xe8",
+          "kind": "unwrap_message",
+          "bounded_bytes": 55,
+          "original": "0x1b5fa4",
+          "current": "0x1b8034",
+          "sha256": "abd78de6799e812cd7272a062382ca0368772ad9efbc99d1a5cdd6cdf113cdbf",
+          "value": "a Display implementation returned an error unexpectedly"
+        },
+        {
+          "offset": "0x100",
+          "kind": "used_vtable",
+          "closure": {
+            "kind": "fmt_Error_Debug",
+            "original": "0x1bd868",
+            "current": "0x1bf8b0",
+            "bounded_words": 4,
+            "size": 0,
+            "alignment": 1,
+            "methods": [
+              {
+                "slot": 0,
+                "original": "0xaef8",
+                "current": "0xb198",
+                "bytes": 8,
+                "normalized_sha256": "e1425229c865ac8b8222d13972f05098f084426a258428c2b5a470933aca6cc4",
+                "symbol": "_ZN4core3ptr37drop_in_place$LT$core..fmt..Error$GT$17hcd839a646a3475c3E"
+              },
+              {
+                "slot": 3,
+                "original": "0xd210",
+                "current": "0xd360",
+                "bytes": 48,
+                "normalized_sha256": "a48cfdbc00561c9bd89d3561e8d6ea9a1fef7d431a5afd2a5c62572a3473a40c",
+                "symbol": "_ZN53_$LT$core..fmt..Error$u20$as$u20$core..fmt..Debug$GT$3fmt17h85666afa16c4890eE"
+              }
+            ]
+          }
+        },
+        {
+          "offset": "0x110",
+          "kind": "panic_Location",
+          "bounded_bytes": 24,
+          "filename": "/home/runner/work/platform-tools/platform-tools/out/rust/library/alloc/src/string.rs",
+          "filename_bytes": 84,
+          "line": 2559,
+          "column": 14,
+          "filename_sha256": "2e3f7f57f23324c9574a9fcea180f19afc3f68f9bb560306d3aa40cd5786dc57"
+        }
+      ],
+      "actual_direct_callees": [
+        {
+          "offset": "0x40",
+          "original": "0x157380",
+          "current": "0x1578c0",
+          "bytes": 26896,
+          "normalized_sha256": "12ec21afd9749fdf5ecd506345b09510b6c6676fd604c8e20869439afb9d143b",
+          "symbol": "_ZN14pump_recovered9PumpError4name17h61022c7ff53288d0E"
+        },
+        {
+          "offset": "0xc8",
+          "original": "0x15de88",
+          "current": "0x15e3c8",
+          "bytes": 3616,
+          "normalized_sha256": "e7a0b7da14a8fc34169dc90c2e5a38dcb32c5f782445954fd51ed0bd2825cbfb",
+          "symbol": "_ZN64_$LT$pump_recovered..PumpError$u20$as$u20$core..fmt..Display$GT$3fmt17hbf6a90ed7cf777ebE"
+        },
+        {
+          "offset": "0x120",
+          "original": "0x1ace18",
+          "current": "0x1aee88",
+          "bytes": 232,
+          "normalized_sha256": "b34e14663b2408f2ac727dd770ea414287409ebd158eacd6a21df134dc66e2e0",
+          "symbol": "_ZN4core6result13unwrap_failed17h2dbd2ef42161686dE"
+        },
+        {
+          "offset": "0x1c8",
+          "original": "0x19bb30",
+          "current": "0x19dba0",
+          "bytes": 136,
+          "normalized_sha256": "4d309b5bb532665fe5ae3039c64ca95b3ef2648370f47d2586acb6dec6c6c96e",
+          "symbol": "_ZN104_$LT$anchor_lang..error..Error$u20$as$u20$core..convert..From$LT$anchor_lang..error..AnchorError$GT$$GT$4from17h4ec711440ff80a00E"
+        }
+      ]
+    }
+  ],
+  "source_failures": {
+    "buy_fee_market_cap": "DivisionByZero6026; programs/pump/src/lib.rs:2481",
+    "sub3": "Overflow6024; programs/pump/src/trade_v3.rs:294",
+    "tokens_for_quote_zero": "From<PumpError::Overflow> through matched504Bhelper; no Source",
+    "constant_product_output": "Overflow6024 util/constant_product.rs13(multiply)/17(add); DivisionByZero6026 line19"
+  },
+  "used_fmt_message_closure": {
+    "variant24": "Overflow",
+    "variant26": "Division by zero",
+    "method": "Concrete enum-dispatch static trace in both complete matching PumpError::fmt bodies selects one &str piece; bounded text is equal (8/16bytes). Formatting writes through the closed String fmt::Write vtable."
+  },
+  "remaining_scope": "Direct callees and used vtable methods are complete normalized-body matches. This is not unique historical source provenance or blanket stdlib/security qualification. No compiler/source variant yet."
+}
