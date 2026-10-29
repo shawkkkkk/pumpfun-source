@@ -1,0 +1,79 @@
+[
+  {
+    "actual_build_record_sha256": "ace968285351a6f75c8d0685a3f40779034fb73dc56f3bc14bbacdb8f7376caf",
+    "actual_candidate_sha256": "df40382896c913ba02f064a993424daec707abe7ea95895cc821061cc7a82684",
+    "actual_source_archive_deltas_from_current_control66": [
+      "programs/pump/src/creator/admin_cto.rs",
+      "programs/pump/src/multi_hop_curve_swap.rs"
+    ],
+    "actual_source_archive_sha256": "0ea0a7fa9eae7ca4e01302eedec8edfa3d0b24faf0e8d816a7f7ca78aaeb3c32",
+    "actual_symbols_sha256": "388fa73431d68cb0a89e9c939f1645510abd844652f4272ef1a841a0ec60bbe0",
+    "before_main_sha256": "6353b1f7b9e613bb8d819000c504d44410b04f7da7dfbdc7fb2e5132df100180",
+    "build": "/workspace/pump-current673-native-results/cto-used-flow-40794982049",
+    "component_build_host": {
+      "machine": "arm64",
+      "python": "3.14.7 (main, Aug  5 2026, 10:29:49) [Clang 17.0.0 (clang-1700.6.4.2)]",
+      "revision": "90e99547c5114fb558191dea53242cf5ecdafdd9",
+      "system": "Darwin"
+    },
+    "file": "src/creator/admin_cto.rs",
+    "head": "1d9326956d272b25498cd8aad3fae73d4b6ae9a5",
+    "name": "cto-used-cpi-flow",
+    "pr": "https://github.com/lalalune/pumpfun-source/pull/730",
+    "same_all_recorded_tool_and_target_library_pins_as_current711": true,
+    "sha": "5203d20c2e63be7337204491588e0ec69808f8ddd39d96b8b5fa1964d6ec201d",
+    "source": "/workspace/pump-admin-cto/candidates/used-cpi-flow/admin_cto.rs",
+    "target_library_file_count": 25
+  },
+  {
+    "actual_build_record_sha256": "6f3cdfc76382e9d37bf7d31c4b2eca4771df9f8af9a9759bd49c1baf25217ffd",
+    "actual_candidate_sha256": "4e0e96a2b32b175cf576655063499f2d53974bcaa3a6280e6b9886f1805fa151",
+    "actual_source_archive_deltas_from_current_control66": [
+      "programs/pump/src/multi_hop_curve_swap.rs",
+      "programs/pump/src/sweep_fees.rs"
+    ],
+    "actual_source_archive_sha256": "1472b60823a4f47ce81087b59a3611c0d2924e4950512c88c7966803cdf0e329",
+    "actual_symbols_sha256": "6680ce7a8834c233bb0d6dc6aa084560c462c561c6d46ec2aa608cc8c5f3826e",
+    "before_main_sha256": "8735adba8b670c3b4ee63a6fd716d1d639be6efa56269a15365c15ff2f44ba0c",
+    "build": "/workspace/pump-current673-native-results/sweep-read-timing-40796286687",
+    "component_build_host": {
+      "machine": "arm64",
+      "python": "3.14.7 (main, Aug  5 2026, 10:29:49) [Clang 17.0.0 (clang-1700.6.4.2)]",
+      "revision": "d49c8162389f7a3b4ff3d87c8a69c0c96eeb3232",
+      "system": "Darwin"
+    },
+    "file": "src/sweep_fees.rs",
+    "head": null,
+    "name": "sweep-native-read-order",
+    "pr": null,
+    "same_all_recorded_tool_and_target_library_pins_as_current711": true,
+    "sha": "3d3363ddd7713999363bf950fb404fa4e35e42731d43806cb6ceeccda94985e9",
+    "source": "/workspace/pumpfun-source-workers/pump-lifecycle/work/pump-lifecycle/sweep-native-read-order-673/source/programs/pump/src/sweep_fees.rs",
+    "target_library_file_count": 25
+  },
+  {
+    "actual_build_record_sha256": "5ec88089a1f4d6f0d82400b36bcb0ca7a0d8a1bb7f8af8725ebed6b74bd7d7a2",
+    "actual_candidate_sha256": "0bc4a222f4040ad49b7228cd5ce7476ce8a3c96725a4634c476bc07fd5f83c89",
+    "actual_source_archive_deltas_from_current_control66": [
+      "programs/pump/src/multi_hop_curve_swap.rs"
+    ],
+    "actual_source_archive_sha256": "549f0b679dd93990787456594420142c36245fa7b851df1d8d4691fa76642877",
+    "actual_symbols_sha256": "4f8f22984af1a35d9c6b0978e4d33b9e9bfe13a80188c6aabc41eb85fe3a0b14",
+    "before_main_sha256": "734bdae1189dd4e4f54a27fd215624611228f36b92d3877b63f00df19ccc9e44",
+    "build": "/workspace/pump-current673-native-results/perhop-clock-40795474496",
+    "component_build_host": {
+      "machine": "arm64",
+      "python": "3.14.7 (main, Aug  5 2026, 10:29:49) [Clang 17.0.0 (clang-1700.6.4.2)]",
+      "revision": "10ff631e5e2fa72240745a0a44d6fa8d0f38814c",
+      "system": "Darwin"
+    },
+    "file": "src/multi_hop_curve_swap.rs",
+    "head": "77e1701644494179606fa83d082934eff9dcdaa1",
+    "name": "perhop-clock-snapshot",
+    "pr": "https://github.com/lalalune/pumpfun-source/pull/731",
+    "same_all_recorded_tool_and_target_library_pins_as_current711": true,
+    "sha": "5871a2cf35ebe0db502eb242db0f1652ef93e51e4971e56483016d900349ac2b",
+    "source": "/workspace/pumpfun-source-workers/pump-creation/work/pump-creation/resume-1285b5e9/perhop-clock-snapshot/multi_hop_curve_swap.rs",
+    "target_library_file_count": 25
+  }
+]

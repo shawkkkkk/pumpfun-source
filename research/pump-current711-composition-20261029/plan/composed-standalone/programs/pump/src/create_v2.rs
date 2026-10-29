@@ -1,0 +1,790 @@
+use crate::*; pub use pump_token_ext::quote_extensions_supported;
+use spl_type_length_value::variable_len_pack::VariableLenPack;
+use anchor_spl::{token_interface::{self,Mint,TokenAccount},token_2022::Token2022,associated_token::AssociatedToken};
+use anchor_lang::solana_program::{instruction::{Instruction,AccountMeta},program::invoke_signed};
+pub const MAYHEM_ID:Pubkey=anchor_lang::solana_program::pubkey!("MAyhSmzXzV1pTf7LsNkrNwkWKTo4ougAJ1PPg47MD4e");const UNSUPPORTED_QUOTE_MINT:Pubkey=anchor_lang::solana_program::pubkey!("9pan9bMn5HatX4EJdBwg9VgCa7Uz5HL8N1m5D3NdXejP");const PUMP_QUOTE_MINT:Pubkey=anchor_lang::solana_program::pubkey!("pumpCmXqMfrsAkQ5r49WcJnRayYRqmXz6ae8H7H9Dfn");
+#[derive(AnchorSerialize,Clone)]
+pub struct CreationOptionU64(pub u64);
+impl AnchorDeserialize for CreationOptionU64 {
+ fn deserialize_reader<R:std::io::Read>(reader:&mut R)->std::io::Result<Self>{let mut bytes=[0;8];match reader.read_exact(&mut bytes){Ok(())=>Ok(Self(u64::from_le_bytes(bytes))),Err(e) if e.kind()==std::io::ErrorKind::UnexpectedEof=>Ok(Self(0)),Err(e)=>Err(e)}}
+}
+// layout-pad(15): aligns the next Source site with the original line
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#[event_cpi]
+#[derive(Accounts)]
+pub struct CreateV2<'info>{
+ #[account(init,payer=user,mint::decimals=6,mint::authority=mint_authority,mint::token_program=token_program,extensions::metadata_pointer::metadata_address=mint)]
+ pub mint:InterfaceAccount<'info,Mint>,
+ /// CHECK: canonical mint authority.
+ #[account(seeds=[b"mint-authority"],bump)]pub mint_authority:UncheckedAccount<'info>,
+ #[account(init,payer=user,space=166,seeds=[b"bonding-curve",mint.key().as_ref()],bump)]pub bonding_curve:Box<Account<'info,trade_types::BondingCurve>>,
+ #[account(init,payer=user,associated_token::mint=mint,associated_token::authority=bonding_curve,associated_token::token_program=token_program)]pub associated_bonding_curve:Box<InterfaceAccount<'info,TokenAccount>>,
+ #[account(seeds=[b"global"],bump)]pub global:Box<Account<'info,Global>>,
+ #[account(mut)]pub user:Signer<'info>,
+ pub system_program:Program<'info,System>,
+ pub token_program:Program<'info,Token2022>,
+ pub associated_token_program:Program<'info,AssociatedToken>,
+ /// CHECK: fixed CPI program; Mayhem invocation outside this bounded branch.
+ #[account(mut,address=MAYHEM_ID)]pub mayhem_program_id:UncheckedAccount<'info>,
+ /// CHECK: canonical Mayhem account, unused for normal creation.
+ #[account(seeds=[b"global-params"],bump,seeds::program=MAYHEM_ID)]pub global_params:UncheckedAccount<'info>,
+ /// CHECK: canonical Mayhem account, unused for normal creation.
+ #[account(mut,seeds=[b"sol-vault"],bump,seeds::program=MAYHEM_ID)]pub sol_vault:UncheckedAccount<'info>,
+ /// CHECK: canonical Mayhem account, unused for normal creation.
+ #[account(mut,seeds=[b"mayhem-state",mint.key().as_ref()],bump,seeds::program=MAYHEM_ID)]pub mayhem_state:UncheckedAccount<'info>,
+ /// CHECK: unused for normal creation.
+ #[account(mut)]pub mayhem_token_vault:UncheckedAccount<'info>,
+}
+// Main-owned CPI caller for the observed zero-argument instruction.
+#[inline(never)]
+pub fn initialize_mayhem<'info>(ctx:&Context<'_, '_, '_, 'info, CreateV2<'info>>)->Result<()>{
+ let a=&ctx.accounts;
+ mayhem_interface::cpi::initialize_mayhem_state(CpiContext::new_with_signer(
+  a.mayhem_program_id.to_account_info(),mayhem_interface::cpi::accounts::InitializeMayhemState{
+   payer:a.user.to_account_info(),
+   mint_authority:a.mint_authority.to_account_info(),
+   sol_vault:a.sol_vault.to_account_info(),
+   mint:a.mint.to_account_info(),
+   token_vault:a.mayhem_token_vault.to_account_info(),
+   global_params:a.global_params.to_account_info(),
+   mayhem_state:a.mayhem_state.to_account_info(),
+   system_program:a.system_program.to_account_info(),
+   token_program:a.token_program.to_account_info(),
+   associated_token_program:a.associated_token_program.to_account_info(),
+  },&[&[b"mint-authority",&[ctx.bumps.mint_authority]]],
+ ))
+}
+
+// Client-side instruction/account binding only; no companion implementation.
+pub mod mayhem_interface {
+ use super::*;
+ pub mod instruction {
+  use super::*;
+  #[derive(AnchorSerialize,AnchorDeserialize)]
+  pub struct InitializeMayhemState;
+  impl Discriminator for InitializeMayhemState {const DISCRIMINATOR:&'static[u8]=&[157,189,94,72,85,69,204,45];}
+  impl anchor_lang::InstructionData for InitializeMayhemState {}
+ }
+ pub mod cpi {
+  use super::*;
+  pub fn initialize_mayhem_state<'a,'b,'c,'info>(ctx:anchor_lang::context::CpiContext<'a,'b,'c,'info,accounts::InitializeMayhemState<'info>>)->anchor_lang::Result<()>{
+   let ix={
+    let ix=instruction::InitializeMayhemState;
+    let mut data=Vec::with_capacity(256);
+    data.extend_from_slice(<instruction::InitializeMayhemState as anchor_lang::Discriminator>::DISCRIMINATOR);
+    AnchorSerialize::serialize(&ix,&mut data).map_err(|_|anchor_lang::error::ErrorCode::InstructionDidNotSerialize)?;
+    let accounts=ctx.to_account_metas(None);
+    anchor_lang::solana_program::instruction::Instruction{program_id:ctx.program.key(),accounts,data}
+   };
+   let mut acc_infos=ctx.to_account_infos();
+   anchor_lang::solana_program::program::invoke_signed(&ix,&acc_infos,ctx.signer_seeds).map_or_else(|e|Err(Into::into(e)),|_|Ok(()))
+  }
+  pub mod accounts {
+   use super::*;
+   pub struct InitializeMayhemState<'info>{
+    pub payer:anchor_lang::solana_program::account_info::AccountInfo<'info>,
+    pub global_params:anchor_lang::solana_program::account_info::AccountInfo<'info>,
+    pub mint_authority:anchor_lang::solana_program::account_info::AccountInfo<'info>,
+    pub sol_vault:anchor_lang::solana_program::account_info::AccountInfo<'info>,
+    pub mint:anchor_lang::solana_program::account_info::AccountInfo<'info>,
+    pub token_vault:anchor_lang::solana_program::account_info::AccountInfo<'info>,
+    pub mayhem_state:anchor_lang::solana_program::account_info::AccountInfo<'info>,
+    pub system_program:anchor_lang::solana_program::account_info::AccountInfo<'info>,
+    pub token_program:anchor_lang::solana_program::account_info::AccountInfo<'info>,
+    pub associated_token_program:anchor_lang::solana_program::account_info::AccountInfo<'info>,
+   }
+   impl<'info> anchor_lang::ToAccountMetas for InitializeMayhemState<'info>{
+    fn to_account_metas(&self,_is_signer:Option<bool>)->Vec<anchor_lang::solana_program::instruction::AccountMeta>{
+     let mut account_metas=vec![];
+     account_metas.push(anchor_lang::solana_program::instruction::AccountMeta::new(anchor_lang::Key::key(&self.payer),true));
+     account_metas.push(anchor_lang::solana_program::instruction::AccountMeta::new_readonly(anchor_lang::Key::key(&self.global_params),false));
+     account_metas.push(anchor_lang::solana_program::instruction::AccountMeta::new_readonly(anchor_lang::Key::key(&self.mint_authority),true));
+     account_metas.push(anchor_lang::solana_program::instruction::AccountMeta::new(anchor_lang::Key::key(&self.sol_vault),false));
+     account_metas.push(anchor_lang::solana_program::instruction::AccountMeta::new_readonly(anchor_lang::Key::key(&self.mint),false));
+     account_metas.push(anchor_lang::solana_program::instruction::AccountMeta::new(anchor_lang::Key::key(&self.token_vault),false));
+     account_metas.push(anchor_lang::solana_program::instruction::AccountMeta::new(anchor_lang::Key::key(&self.mayhem_state),false));
+     account_metas.push(anchor_lang::solana_program::instruction::AccountMeta::new_readonly(anchor_lang::Key::key(&self.system_program),false));
+     account_metas.push(anchor_lang::solana_program::instruction::AccountMeta::new_readonly(anchor_lang::Key::key(&self.token_program),false));
+     account_metas.push(anchor_lang::solana_program::instruction::AccountMeta::new_readonly(anchor_lang::Key::key(&self.associated_token_program),false));
+     account_metas
+    }
+   }
+   impl<'info> anchor_lang::ToAccountInfos<'info> for InitializeMayhemState<'info>{
+    fn to_account_infos(&self)->Vec<anchor_lang::solana_program::account_info::AccountInfo<'info>>{
+     let mut account_infos=vec![];
+     account_infos.extend(anchor_lang::ToAccountInfos::to_account_infos(&self.payer));
+     account_infos.extend(anchor_lang::ToAccountInfos::to_account_infos(&self.global_params));
+     account_infos.extend(anchor_lang::ToAccountInfos::to_account_infos(&self.mint_authority));
+     account_infos.extend(anchor_lang::ToAccountInfos::to_account_infos(&self.sol_vault));
+     account_infos.extend(anchor_lang::ToAccountInfos::to_account_infos(&self.mint));
+     account_infos.extend(anchor_lang::ToAccountInfos::to_account_infos(&self.token_vault));
+     account_infos.extend(anchor_lang::ToAccountInfos::to_account_infos(&self.mayhem_state));
+     account_infos.extend(anchor_lang::ToAccountInfos::to_account_infos(&self.system_program));
+     account_infos.extend(anchor_lang::ToAccountInfos::to_account_infos(&self.token_program));
+     account_infos.extend(anchor_lang::ToAccountInfos::to_account_infos(&self.associated_token_program));
+     account_infos
+    }
+   }
+  }
+ }
+}
+
+#[derive(Clone,Copy)]
+enum CreateQuoteConfig { Native, Whitelisted, Configured(u64), Nested(u64,u8) }
+impl CreateQuoteConfig {
+ #[inline] fn can_configure(self)->bool {matches!(self,Self::Configured(_)|Self::Nested(..))}
+ #[inline] fn depth(self)->u8 {if let Self::Nested(_,d)=self{d}else{0}}
+ #[inline] fn reserves(self,g:&Global)->u64 {match self{Self::Configured(r)|Self::Nested(r,_)=>r,_=>g.initial_virtual_quote_reserves}}
+}
+#[inline(always)]
+fn create_quote_config(mint:Pubkey,remaining:&[AccountInfo<'_>],g:&Global)->Result<CreateQuoteConfig>{
+ if mint==Pubkey::default() || mint==anchor_spl::token::spl_token::native_mint::id() || g.whitelisted_quote_mints.contains(&mint){return Ok(CreateQuoteConfig::Whitelisted);}
+ let control=nested_create::quote_control(remaining.get(3))?;
+ if let Some(reserves)=nested_create::control_account(control,&mint)?{Ok(CreateQuoteConfig::Configured(reserves))}else{let(reserves,depth)=nested_create::walk(remaining,g)?;Ok(CreateQuoteConfig::Nested(reserves,depth))}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#[inline(always)]
+fn initialize_quote_accounts<'info>(ctx:&Context<'_,'_,'_,'info,CreateV2<'info>>)->Result<(Pubkey,CreateQuoteConfig)>{
+ let a=&ctx.accounts;let remaining=ctx.remaining_accounts;
+ if remaining.is_empty(){return Ok((Pubkey::default(),CreateQuoteConfig::Native));}
+
+ require_gte!(remaining.len(),3,PumpError::NotEnoughRemainingAccounts);
+
+ let mint=&remaining[0];
+ let ata=&remaining[1];
+ let program=&remaining[2];
+
+
+ require!(
+  program.key()==anchor_spl::token::ID || program.key()==anchor_spl::token_2022::ID,
+  PumpError::InvalidQuoteTokenProgram
+ );
+
+ require!(program.executable,PumpError::InvalidQuoteTokenProgram);
+
+ if mint.key()==anchor_spl::token::spl_token::native_mint::id()
+  || mint.key()==Pubkey::default() {
+  return Ok((Pubkey::default(),CreateQuoteConfig::Native));
+ }
+
+
+
+
+ require_keys_neq!(mint.key(),UNSUPPORTED_QUOTE_MINT,PumpError::UnsupportedQuoteMint);
+ let quote_config=create_quote_config(mint.key(),remaining,&a.global)?;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ require_keys_eq!(*mint.owner,program.key(),PumpError::UnsupportedQuoteMint);
+
+ if program.key()==anchor_spl::token_2022::ID && mint.key()!=PUMP_QUOTE_MINT {
+  check_quote_mint_extensions(mint)?;
+ }
+ let expected=anchor_spl::associated_token::get_associated_token_address_with_program_id(
+  &a.bonding_curve.key(),mint.key,program.key
+ );
+
+
+
+
+
+
+
+ require_keys_eq!(ata.key(),expected,PumpError::InvalidAssociatedQuoteBondingCurve);
+
+ let ix=anchor_spl::associated_token::spl_associated_token_account::instruction::create_associated_token_account(&a.user.key(),&a.bonding_curve.key(),&mint.key(),&program.key()); let payer=a.user.to_account_info(); let associated=ata.clone(); let authority=a.bonding_curve.to_account_info(); let quote_info=mint.clone(); let system=a.system_program.to_account_info(); anchor_lang::solana_program::program::invoke(&ix,&[payer,associated,authority,quote_info,system,program.clone()])?;
+ Ok((mint.key(),quote_config))
+}
+
+
+
+
+
+
+
+pub(crate) mod nested_create {
+//! Source hypothesis for the create-linked ancestor walk; see the publication ledger.
+//! Numeric/local contracts are recovered. Framework error payloads and runtime ABI
+//! remain conditional; these are natural Rust types, not an original memory layout.
+use crate::{Global, PumpError};
+use crate::trade_types::BondingCurve;
+use anchor_lang::prelude::*;
+
+const CURVE_DISC: [u8; 8] = [23, 183, 248, 55, 96, 216, 172, 96];
+use crate::quote_control::state::control_entry;use crate::pump_quote::price;
+
+
+
+use crate::pump_quote::{Record, depth, pool_record, AMM}; const EMPTY_RECORD: Record = Record::Pool { base: 0, quote: 0 };
+
+
+
+
+
+pub(crate) fn overflow() -> anchor_lang::error::Error { error!(PumpError::Overflow) }
+
+
+
+
+
+
+
+#[inline(never)]
+pub(super) fn control_account(account: &AccountInfo<'_>, mint: &Pubkey) -> Result<Option<u64>> {
+    let data = account.try_borrow_data()?;
+    control_entry(&data, mint)
+}
+
+// layout-pad(39): aligns the next Source site with the original line
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// Quote-control account admission (remaining_accounts[3]).
+#[inline(never)]
+pub(super) fn quote_control<'a, 'info>(account: Option<&'a AccountInfo<'info>>) -> Result<&'a AccountInfo<'info>> {
+    let control = account.ok_or_else(|| error!(PumpError::UnsupportedQuoteMint))?;
+    let expected = Pubkey::find_program_address(&[b"quote-control"], &crate::ID).0;
+
+    require_keys_eq!(control.key(), expected, PumpError::InvalidQuoteControl);
+// layout-pad(4)
+
+
+
+    require_keys_eq!(*control.owner, crate::ID, PumpError::InvalidQuoteControl);
+    Ok(control)
+}
+// layout-pad(28)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+pub(super) fn walk(accounts: &[AccountInfo<'_>], g: &Global) -> Result<(u64, u8)> {
+    let quote_control_ai = &accounts[3];
+    let mut mint = *accounts[0].key;
+    let mut tail = &accounts[4..];
+
+
+    let mut curve = ancestor({ require!(!tail.is_empty(), PumpError::UnsupportedQuoteMint); &tail[0] }, &mint)?;
+// layout-pad(3)
+
+
+    let depth = depth(&curve, g)?;
+    require!(!curve.is_mayhem_mode, PumpError::QuoteBondingCurveNotEligible);
+// layout-pad(10)
+
+
+
+
+
+
+
+
+
+    let root = usize::from(curve.depth);
+    let mut records = [EMPTY_RECORD; 5];
+    let mut seed = 0;
+    for (position, slot) in records.iter_mut().enumerate().take(usize::from(depth)) {
+        if position != 0 {
+            mint = curve.quote_mint;
+            let account = tail.first().ok_or_else(|| error!(PumpError::QuoteChainAccountsRequired))?;
+            curve = ancestor(account, &mint)?;
+        }
+        if position == root {
+            let control = quote_control_ai.try_borrow_data()?;
+            seed = crate::pump_quote::root_seed(&curve, g, &control)?;
+        }
+        *slot = record(&curve, g, &mint, &mut tail)?;
+    }
+// layout-pad(5)
+
+
+
+
+    let num_hops = usize::from(depth); Ok((price(seed, &records[..num_hops], g)?, depth))
+}
+// layout-pad(7)
+
+
+
+
+
+
+fn ancestor(account: &AccountInfo<'_>, mint: &Pubkey) -> Result<BondingCurve> {
+    let expected = Pubkey::find_program_address(&[b"bonding-curve", mint.as_ref()], &crate::ID).0;
+    require_keys_eq!(account.key(), expected, PumpError::InvalidQuoteBondingCurve);
+// layout-pad(4)
+
+
+
+    require_keys_eq!(*account.owner, crate::ID, PumpError::InvalidQuoteBondingCurve);
+    let data = account.try_borrow_data()?;
+// layout-pad(5)
+
+
+
+
+    BondingCurve::try_deserialize(&mut &data[..]).map_err(|_| error!(PumpError::InvalidQuoteBondingCurve))
+}
+// layout-pad(12)
+
+
+
+
+
+
+
+
+
+
+
+fn record(curve: &BondingCurve, g: &Global, mint: &Pubkey, tail: &mut &[AccountInfo<'_>]) -> Result<Record> {
+    if curve.real_quote_reserves != 0 || curve.virtual_quote_reserves != 0
+            || curve.real_token_reserves != 0 || curve.virtual_token_reserves != 0 {
+        require!(!curve.complete, PumpError::QuoteCurveAwaitingMigration);
+// layout-pad(6)
+
+
+
+
+
+        let pool_base = curve.token_total_supply.checked_sub(g.initial_real_token_reserves).ok_or_else(|| error!(PumpError::Overflow))?; let migration_fee = if curve.quote_mint == Pubkey::default() { g.pool_migration_fee } else { 0 };
+// layout-pad(14)
+
+
+
+
+
+
+
+
+
+
+
+
+
+     *tail = &tail[1..];
+// layout-pad(2)
+
+        Ok(Record::Curve { vt: curve.virtual_token_reserves, vq: curve.virtual_quote_reserves, rt: curve.real_token_reserves, rq: curve.real_quote_reserves, pool_base, migration_fee })
+    } else {
+        let [_, pool, base_vault, quote_vault, rest @ ..] = *tail else { return Err(error!(PumpError::QuotePoolAccountsRequired)) };
+        let authority = Pubkey::find_program_address(&[b"pool-authority", mint.as_ref()], &crate::ID).0; let pool_quote = if curve.quote_mint == Pubkey::default() { anchor_spl::token::spl_token::native_mint::id() } else { curve.quote_mint }; let expected = Pubkey::find_program_address(&[b"pool", &0u16.to_le_bytes(), authority.as_ref(), mint.as_ref(), pool_quote.as_ref()], &AMM).0;
+        let (base, quote) = pool_record(pool, &expected, base_vault, quote_vault)?;
+        *tail = rest;
+        Ok(Record::Pool { base, quote })
+    }
+}
+// layout-pad(8)
+
+
+
+
+
+
+
+}
+// layout-pad(16)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#[inline(never)]
+fn check_quote_mint_extensions(mint:&AccountInfo)->Result<()>{
+ let data=mint.try_borrow_data()?;
+ require!(quote_extensions_supported(&data,true),PumpError::UnsupportedQuoteMint);
+ Ok(())
+}
+
+#[inline(never)]
+fn create_event<'info>(name:String,symbol:String,uri:String,creator:Pubkey,mint:&InterfaceAccount<'info,Mint>,user:&Signer<'info>,bonding_curve:&Account<'info,trade_types::BondingCurve>,token_program:&Program<'info,Token2022>,is_mayhem_mode:bool,creator_fee_bps:u64)->Result<CreateEvent>{
+ let virtual_token_reserves=bonding_curve.virtual_token_reserves;let virtual_sol_reserves=bonding_curve.virtual_quote_reserves;let real_token_reserves=bonding_curve.real_token_reserves;let token_total_supply=bonding_curve.token_total_supply;let is_holder_reward=bonding_curve.is_holder_reward;let depth=bonding_curve.depth;let quote_mint=bonding_curve.quote_mint;Ok(CreateEvent{name,symbol,uri,mint:mint.key(),bonding_curve:bonding_curve.key(),user:user.key(),creator,timestamp:Clock::get()?.unix_timestamp,virtual_token_reserves,virtual_sol_reserves,real_token_reserves,token_total_supply,token_program:token_program.key(),is_mayhem_mode,is_cashback_enabled:false,quote_mint:quote_mint,virtual_quote_reserves:virtual_sol_reserves,creator_fee_bps,is_holder_reward,depth})
+}
+
+
+
+#[inline(always)]
+fn validate_create_metadata(name:&String,symbol:&String,uri:&String)->Result<()>{
+ require_gte!(
+  32usize,
+  name.len(),
+  PumpError::NameTooLong
+ );
+
+ require_gte!(
+  13usize,
+  symbol.len(),
+  PumpError::SymbolTooLong
+ );
+
+ require_gte!(
+  200usize,
+  uri.len(),
+  PumpError::UriTooLong
+ );
+ Ok(())
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#[inline(never)]
+fn initialize_metadata<'info>(ctx:&Context<'_,'_,'_,'info,CreateV2<'info>>,name:String,symbol:String,uri:String)->Result<()>{let a=&ctx.accounts;let bump=ctx.bumps.mint_authority;
+ let metadata=anchor_spl::token_2022_extensions::spl_token_metadata_interface::state::TokenMetadata{name:name.clone(),symbol:symbol.clone(),uri:uri.clone(),update_authority:anchor_spl::token_2022_extensions::spl_pod::optional_keys::OptionalNonZeroPubkey(a.mint_authority.key()),mint:a.mint.key(),additional_metadata:vec![]};
+ let minimum=Rent::get()?
+  .minimum_balance(
+  a.mint.to_account_info().data_len().checked_add(4).ok_or_else(|| error!(PumpError::Overflow))?
+   .checked_add(metadata.get_packed_len()?)
+   .ok_or_else(|| error!(PumpError::Overflow))?);
+ let rent=minimum.checked_sub(a.mint.to_account_info().lamports()).unwrap_or(0);
+ transfer_rent(a,rent)?;
+ metadata_cpi(&(&a.token_program,&a.mint,&a.mint_authority),(name,symbol,uri),&[&[b"mint-authority",&[bump]]])?;
+ update_metadata_authority(bump,&(&a.token_program,&a.mint,&a.mint_authority))
+}
+fn transfer_rent<'info>(a:&CreateV2<'info>,rent:u64)->Result<()>{
+ if rent>0 {anchor_lang::system_program::transfer(CpiContext::new(a.system_program.to_account_info(),anchor_lang::system_program::Transfer{from:a.user.to_account_info(),to:a.mint.to_account_info()}),rent)?;}
+ Ok(())
+}
+fn metadata_cpi<'info>(accounts:&(&Program<'info,Token2022>,&InterfaceAccount<'info,Mint>,&UncheckedAccount<'info>),metadata:(String,String,String),signer_seeds:&[&[&[u8]]])->Result<()>{ anchor_spl::token_2022_extensions::token_metadata_initialize(CpiContext::new_with_signer(accounts.0.to_account_info(),anchor_spl::token_2022_extensions::TokenMetadataInitialize{mint:accounts.1.to_account_info(),metadata:accounts.1.to_account_info(),program_id:accounts.0.to_account_info(),update_authority:accounts.2.to_account_info(),mint_authority:accounts.2.to_account_info()},signer_seeds),metadata.0,metadata.1,metadata.2)?; Ok(()) }
+
+#[inline(never)]
+fn mint_supply<'info>(ctx:&Context<'_,'_,'_,'info,CreateV2<'info>>,is_mayhem_mode:bool)->Result<()>{
+ let a=&ctx.accounts;let bump=ctx.bumps.mint_authority;
+ mint_tokens(a,&*a.associated_bonding_curve,&a.global,&[&[b"mint-authority",&[bump]]])?;
+ if is_mayhem_mode {
+  mint_tokens(a,&a.mayhem_token_vault,&a.global,&[&[b"mint-authority",&[bump]]])?;
+ }
+ let signer:&[&[&[u8]]]=&[&[b"mint-authority",&[bump]]];
+ token_interface::set_authority(CpiContext::new_with_signer(a.token_program.to_account_info(),token_interface::SetAuthority{account_or_mint:a.mint.to_account_info(),current_authority:a.mint_authority.to_account_info()},signer),token_interface::spl_token_2022::instruction::AuthorityType::MintTokens,None)
+}
+
+#[inline(never)]
+fn update_metadata_authority<'info>(bump:u8,accounts:&(&Program<'info,Token2022>,&InterfaceAccount<'info,Mint>,&UncheckedAccount<'info>))->Result<()>{
+ revoke_update_authority(accounts,&[&[b"mint-authority",&[bump]]])
+}
+#[inline(always)]
+fn revoke_update_authority<'info>(accounts:&(&Program<'info,Token2022>,&InterfaceAccount<'info,Mint>,&UncheckedAccount<'info>),signer:&[&[&[u8]]])->Result<()>{
+ anchor_spl::token_2022_extensions::token_metadata_update_authority(CpiContext::new_with_signer(accounts.0.to_account_info(),anchor_spl::token_2022_extensions::TokenMetadataUpdateAuthority{program_id:accounts.0.to_account_info(),metadata:accounts.1.to_account_info(),current_authority:accounts.2.to_account_info(),new_authority:accounts.1.to_account_info()},signer),anchor_spl::token_2022_extensions::spl_pod::optional_keys::OptionalNonZeroPubkey::try_from(None)?)
+}
+#[inline(always)]
+fn mint_tokens<'info,T:ToAccountInfo<'info>>(a:&CreateV2<'info>,to:&T,global:&Account<'info,Global>,signer:&[&[&[u8]]])->Result<()>{
+ token_interface::mint_to(CpiContext::new_with_signer(a.token_program.to_account_info(),token_interface::MintTo{mint:a.mint.to_account_info(),to:to.to_account_info(),authority:a.mint_authority.to_account_info()},signer),global.token_total_supply)
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+pub fn execute<'info>(ctx:Context<'_,'_,'_,'info,CreateV2<'info>>,name:String,symbol:String,uri:String,creator:Pubkey,is_mayhem_mode:bool,is_cashback_enabled:OptionBool,creator_fee_bps:CreationOptionU64,is_holder_reward:OptionBool)->Result<()>{
+ let a=&ctx.accounts;
+ if is_mayhem_mode {
+
+  require_eq!(a.global.mayhem_mode_enabled,true,PumpError::MayhemModeDisabled);
+ }
+
+
+
+
+
+ require!(!is_cashback_enabled.0,PumpError::CashbackDeprecated);
+
+ let creator=if is_holder_reward.0 {
+  require!(a.global.is_holder_reward_enabled,PumpError::HolderRewardDisabled);
+
+  Pubkey::find_program_address(&[b"holder-rewards",a.mint.key().as_ref()],&crate::ID).0
+ }else{creator};
+
+
+
+
+
+
+
+
+
+ require_keys_neq!(creator,Pubkey::default(),PumpError::CreatorShouldNotBeZero);
+
+
+
+
+
+ require_eq!(a.global.create_v2_enabled,true,PumpError::CreateV2Disabled);
+
+
+
+
+
+ let (quote_mint,quote_config)=initialize_quote_accounts(&ctx)?;
+
+
+
+
+
+
+
+
+
+ if is_mayhem_mode && quote_mint!=Pubkey::default()
+  && quote_mint!=anchor_spl::token::spl_token::native_mint::id() {
+
+
+  require!(a.global.whitelisted_quote_mints.contains(&quote_mint),PumpError::MayhemModeQuoteMintNotAllowed);
+ }
+
+
+
+
+
+
+
+
+
+
+ let fee=if quote_config.can_configure() && creator_fee_bps.0>0 {
+
+
+
+  require!(a.global.creator_fee_configurable,PumpError::CreatorFeeNotConfigurable);
+
+
+
+  require!(creator_fee_bps.0<=a.global.max_configurable_creator_fee_bps,PumpError::CreatorFeeBpsOutOfRange);
+
+  creator_fee_bps.0
+ }else{0};
+
+ let g=&ctx.accounts.global;let depth=quote_config.depth();let virtual_quote_reserves=if quote_mint==Pubkey::default(){g.initial_virtual_sol_reserves}else{quote_config.reserves(g)};let curve=&mut ctx.accounts.bonding_curve;curve.virtual_token_reserves=g.initial_virtual_token_reserves;curve.virtual_quote_reserves=virtual_quote_reserves;curve.real_token_reserves=g.initial_real_token_reserves;curve.token_total_supply=g.token_total_supply;curve.creator=creator;curve.creator_fee_bps=fee;curve.is_holder_reward=is_holder_reward.0;curve.quote_mint=quote_mint;curve.initial_virtual_quote_reserves=virtual_quote_reserves;curve.depth=depth;curve.is_mayhem_mode=is_mayhem_mode; validate_create_metadata(&name,&symbol,&uri)?;
+ initialize_metadata(&ctx,name.clone(),symbol.clone(),uri.clone())?;
+ if is_mayhem_mode {initialize_mayhem(&ctx)?;}
+ mint_supply(&ctx,is_mayhem_mode)?;
+
+ let a=&ctx.accounts;let event=create_event(name,symbol,uri,creator,&a.mint,&a.user,&a.bonding_curve,&a.token_program,is_mayhem_mode,fee)?;
+ emit!(event);emit_cpi!(event);Ok(())
+}

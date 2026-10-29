@@ -1,15 +1,15 @@
-name: Qualify Pump frontier on pinned macOS profile
+name: Measure qualified current711 Pump composition on native macOS
+run-name: Current711 three-file composition native v1.44
 on:
-  push:
-    branches: [research/pump-macos-frontier798-qualification]
   workflow_dispatch:
 permissions:
   contents: read
 concurrency:
-  group: pump-macos-v144-qualification
+  group: pump-current711-qualified-composition
   cancel-in-progress: false
 jobs:
-  qualify:
+  composition:
+    if: github.repository == 'shawkkkkk/pumpfun-source'
     runs-on: macos-15
     timeout-minutes: 60
     steps:
@@ -17,64 +17,30 @@ jobs:
         with:
           persist-credentials: false
           filter: blob:none
+          sparse-checkout-cone-mode: false
           sparse-checkout: |
-            .github/workflows
-            scripts
-            programs/pump
-            evidence/original/pump
-            repro/pump/main-contract-round37-20261027
-            research/pump-round37-trade-add-site-20261027
-            research/pump-round37-sell-v2-fee-errors-20261028
-            research/pump-macos-frontier798-qualification-20261028
-      - name: Install isolated comparison dependency
-        run: |
-          python3 -m venv "$RUNNER_TEMP/pump-qualification-python"
-          "$RUNNER_TEMP/pump-qualification-python/bin/pip" install pyelftools==0.32
-          printf '%s\n' "$RUNNER_TEMP/pump-qualification-python/bin" >> "$GITHUB_PATH"
-      - name: Reproduce profile, canonical checkpoint and frozen frontier
-        run: python3 -B scripts/pump_macos_frontier_qualification.py
-      - name: Retain actual compiler inputs and results
+            /.github/workflows/qualify-pump-macos-v144.yml
+            /scripts/pump_current673_macos_control.py
+            /scripts/pump_current711_composition_macos.py
+            /research/pump-current711-composition-20261029/
+            /research/pump-multihop-accrual-qualification-20261028/build.py
+            /research/pump-multihop-accrual-qualification-20261028/build-inputs.json
+            /research/pump-multihop-accrual-qualification-20261028/source/
+            /research/pump-multihop-accrual-qualification-20261028/tools/
+            /research/pump-multihop-accrual-qualification-20261028/builds/cold-01/build-attempt.json
+            /research/pump-multihop-accrual-qualification-20261028/builds/cold-01/build-comparison.json
+            /research/pump-multihop-accrual-qualification-20261028/builds/cold-01/candidate.so
+            /research/pump-multihop-accrual-qualification-20261028/builds/cold-01/unstripped.so
+            /evidence/original/pump/deployed.so
+      - name: Authenticate current711 source, qualified base and sealed three-file plan
+        run: python3 -B scripts/pump_current711_composition_macos.py --inspect
+      - name: Compile the single frozen composition with fresh host and target crates
+        run: python3 -B scripts/pump_current711_composition_macos.py
+      - name: Retain actual source, raw compiler outputs and immutable receipts
         if: always()
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         with:
-          name: pump-macos-v144-${{ github.run_id }}-${{ github.run_attempt }}
-          path: work/pump-macos-qualification/evidence
-          if-no-files-found: error
-          retention-days: 30
-  runtime:
-    needs: qualify
-    runs-on: ubuntu-latest
-    timeout-minutes: 60
-    steps:
-      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
-        with:
-          persist-credentials: false
-          filter: blob:none
-          sparse-checkout: |
-            scripts
-            programs/pump
-            evidence/original
-            evidence/dependencies
-            evidence/upstream
-            research/imported-lab/analysis/pump_fun
-            repro/pump/native-curve-partial-fortyeight
-            repro/pump/tokenkeg-two-curve-fortyeight
-      - name: Install isolated runtime dependencies
-        run: |
-          python3 -m venv "$RUNNER_TEMP/pump-runtime-python"
-          "$RUNNER_TEMP/pump-runtime-python/bin/pip" install solders==0.27.1 pyelftools==0.32
-          printf '%s\n' "$RUNNER_TEMP/pump-runtime-python/bin" >> "$GITHUB_PATH"
-      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
-        with:
-          name: pump-macos-v144-${{ github.run_id }}-${{ github.run_attempt }}
-          path: work/pump-macos-frontier-inputs
-      - name: Replay this exact native artifact
-        run: python3 -B scripts/pump_replay_macos_frontier.py
-      - name: Retain actual runtime reports and loader receipts
-        if: always()
-        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
-        with:
-          name: pump-frontier-runtime-${{ github.run_id }}-${{ github.run_attempt }}
-          path: work/pump-macos-frontier-runtime/evidence
+          name: pump-current711-composition-${{ github.run_id }}-${{ github.run_attempt }}
+          path: work/pump-current711-composition/evidence
           if-no-files-found: error
           retention-days: 30
