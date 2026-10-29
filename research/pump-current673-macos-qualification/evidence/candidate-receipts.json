@@ -194,6 +194,34 @@
         "both_local_crates_compiled": true,
         "limits": "No acceptance, census gain, runtime behavior or original whole-ELF identity claim."
       }
+    },
+    {
+      "candidate": "sweep-read-timing",
+      "run_id": 40796286687,
+      "artifact_id": 12863719191,
+      "zip": "sweep-read-timing-40796286687.zip",
+      "zip_sha256": "7b04cb90b237900b881f93ad160a7b0503e487e18431aa94e7b61e7bda7b9f97",
+      "result": {
+        "status": "compiled-measurement-only",
+        "candidate": "sweep-read-timing",
+        "base_commit": "1285b5e9e3a29c1e2cf32246d6046035e5d66fad",
+        "control_run": 40791064153,
+        "proposal": {
+          "source_path": "src/sweep_fees.rs",
+          "frozen_file": "sweep-read-timing.rs",
+          "before_sha256": "8735adba8b670c3b4ee63a6fd716d1d639be6efa56269a15365c15ff2f44ba0c",
+          "after_sha256": "3d3363ddd7713999363bf950fb404fa4e35e42731d43806cb6ceeccda94985e9",
+          "immediate_parent_source_sha256": "15dbbd46bdbe7af62c6b7bb436f657c45e290c080c185fc075b7a3c08e3df7e8",
+          "state": "eighth one-shot after seventh complete; original CFG/def-use backed native-read timing",
+          "source_scope": "One used quoteMint/native read moved after fee clear/nonzero exit; preserves guards,state,helpers,event/order and five bangmacro positions. Vacatedline27 leftblank and existingelseblank reused, disclosed; no predicted byte gain."
+        },
+        "candidate_sha256": "4e0e96a2b32b175cf576655063499f2d53974bcaa3a6280e6b9886f1805fa151",
+        "unstripped_sha256": "6680ce7a8834c233bb0d6dc6aa084560c462c561c6d46ec2aa608cc8c5f3826e",
+        "control_hashes_equal": false,
+        "cold_empty_target": true,
+        "both_local_crates_compiled": true,
+        "limits": "No acceptance, census gain, runtime behavior or original whole-ELF identity claim."
+      }
     }
   ]
 }

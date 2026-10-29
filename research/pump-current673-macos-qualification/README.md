@@ -1,4 +1,12 @@
-# Current673 native macOS control
+# Frozen673 native macOS control
+
+This is the historical673/1285 cohort. After its measurements, #711 promoted the
+734 per-hop source and `c0e29e2d` / `dd73afe7` outputs to maintained main. The
+historical199fd/49df control and its source pins below remain unchanged. Use the
+frozen cohort ref/branch for these commands; a newer main with different sources
+correctly fails the source guard. CTO/Sweep outputs here require an explicit new
+main composition before promotion. Clock587 already includes734, but its exact
+other64 input bindings must still be checked when relating it to the new main.
 
 This controller runs the unchanged, hash-pinned
 `pump-final-composition-cold-20261028/build.py` against the 65 maintained Pump
@@ -53,10 +61,11 @@ measurement adapter. It executes no captured program or compiler.
 | Constructor array lifetime | [40794358580](https://github.com/shawkkkkk/pumpfun-source/actions/runs/40794358580) | `199fd7379b6881ad` |
 | CTO used CPI flow | [40794982049](https://github.com/shawkkkkk/pumpfun-source/actions/runs/40794982049) | `df40382896c913ba` |
 | Per-hop common timestamp | [40795474496](https://github.com/shawkkkkk/pumpfun-source/actions/runs/40795474496) | `0bc4a222f4040ad4` |
+| Sweep native-read timing | [40796286687](https://github.com/shawkkkkk/pumpfun-source/actions/runs/40796286687) | `4e0e96a2b32b175c` |
 
-All seven raw artifacts and exact measured hashes are retained under `evidence`.
+All eight raw artifacts and exact measured hashes are retained under `evidence`.
 The coordinator independently ran the unchanged official1035-window census for
-the six distinct changed images. `evidence/census` retains those full outputs and input bindings: all preserve
+the seven distinct changed images. `evidence/census` retains those full outputs and input bindings: all preserve
 1019 normalized and188 raw memberships, with no original-start gains or losses.
 The default verifier binds their symbol hashes and independently recomputes the
 retained membership deltas; it does not rerun the normalizer. Runtime qualification

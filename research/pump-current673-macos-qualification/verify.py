@@ -99,6 +99,12 @@ def retained_census():
         assert delta['inventory_sha256'] == digest(compressed)
         assert candidate['candidate_sha256'] == delta['candidate_symbols_sha256'] == measurement['result']['unstripped_sha256']
         assert len(baseline['windows']) == len(candidate['windows']) == 1035
+        for inventory in [baseline, candidate]:
+            windows = inventory['windows']
+            normalized = sum(bool(row['normalized_matches']) for row in windows)
+            assert inventory['counts'] == {'total': len(windows), 'normalized': normalized,
+                'raw': sum(row['raw_match'] for row in windows), 'unmatched': len(windows) - normalized,
+                'matched_text_bytes': sum(row['bytes'] for row in windows if row['normalized_matches'])}
         changes = []
         for before, after in zip(baseline['windows'], candidate['windows']):
             assert all(before[key] == after[key] for key in ['start', 'end', 'bytes', 'raw_sha256'])

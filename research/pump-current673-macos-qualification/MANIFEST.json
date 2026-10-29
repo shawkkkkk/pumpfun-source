@@ -1,5 +1,5 @@
 {
-  "README.md": "12de0fba9f490bf2004d46b0684ad830eaca0d65e1f5abbb28ff5768bf995265",
+  "README.md": "f019fbd10c23f4856e7cbee10b84f35c4147fdf5d1df2e65945e25206513b6c1",
   "candidates/constructor.rs": "8cf97e31c958609aa5bbc07e2d4fb092fc980f724d4054d24af2163241e7a931",
   "candidates/cto-used-flow.rs": "5203d20c2e63be7337204491588e0ec69808f8ddd39d96b8b5fa1964d6ec201d",
   "candidates/cto.rs": "f4a2bb7d33431e0fb4911e39d5e03c8bb9f45c6f7a184da21d1a6762f9127955",
@@ -9,7 +9,7 @@
   "candidates/sell-event.rs": "f1f484c50a792c82fba414dff31b6bfc55f03cbec54d7115782c60ad5870b45d",
   "candidates/sweep-read-timing.rs": "3d3363ddd7713999363bf950fb404fa4e35e42731d43806cb6ceeccda94985e9",
   "candidates/sweep.rs": "15dbbd46bdbe7af62c6b7bb436f657c45e290c080c185fc075b7a3c08e3df7e8",
-  "evidence/candidate-receipts.json": "c8820ceb814a49b3f0cff06e2c4d4016cf3d8182a7d53698b8c70c5d78909112",
+  "evidence/candidate-receipts.json": "3acd56c28bb62e8ed6a499f958b3c1adc140065e667047b21e4d4b3a7a23be59",
   "evidence/census/baseline-inventory.json.gz": "521ce42fe3c4e701897f42a59c39f3fff6d85c53c1070aac96360e42d18d3b7a",
   "evidence/census/cto-40792775552/delta.json": "ed1c269ee149fd0f046dfe5172e5dfa7ce1ef7325d01f8ce9c7269d4b5e9023d",
   "evidence/census/cto-40792775552/inventory.json.gz": "e0206c2e9c1557950adf8749b16ceaf3c3e34275c3d255839fb746ed3a6c2fe9",
@@ -24,6 +24,8 @@
   "evidence/census/sell-event-40793772555/inventory.json.gz": "67ac2e4218b91091d450025df72d2c262130ef4d30985908aad7d567946e2468",
   "evidence/census/sweep-40793129553/delta.json": "95739a9c28e0d261efcdeb46acb14a05d0eb183821102436142d3c58e5ab64e3",
   "evidence/census/sweep-40793129553/inventory.json.gz": "5d0f7117ef4fe1aa0f1252e0837f1515eb1171b57571203c568d7978df3c19a8",
+  "evidence/census/sweep-read-timing-40796286687/delta.json": "486d52bf129946159d99527722d741f77c8cf4855f7fda194d10ea7ac3065a59",
+  "evidence/census/sweep-read-timing-40796286687/inventory.json.gz": "a3e77edb60aa2f715da13cc032d0ad1f2d3b0bb3a3058aa037f9666582114788",
   "evidence/constructor-40794358580.zip": "ab8350156e0a058de7fd287cea1a284edccf07379e8c1066e1b194aec267edc3",
   "evidence/control-40791064153.zip": "b3e31aeb7512b6cec0e1aede4efbb16e72edf047451065a1e5b476223230a6ce",
   "evidence/control-hosted.log.gz": "617d7680e0d64da3a847b0d567e4b728f1dea8368637dc37f8ac17215c04366c",
@@ -37,6 +39,7 @@
   "evidence/sweep-40793129553.zip": "71a9f703fe80da290727f69164db2a7d92393fcfa6f23a8357940e345fd6c4f9",
   "evidence/sweep-precompile-api403-run.json": "8975c26a2f8b50aa03e87d9e3cfdf27c13487c75b294b688f8c61a0cc7d01fb7",
   "evidence/sweep-precompile-api403.log.gz": "1a0f7faefffff9fa6774fc0c7d0eda4cee549a0ee2930573e6038da87c32e9c7",
+  "evidence/sweep-read-timing-40796286687.zip": "7b04cb90b237900b881f93ad160a7b0503e487e18431aa94e7b61e7bda7b9f97",
   "inputs.json": "40d1d18d9979d1039506dfebe6d86cbba5c67ec2b462c43e1ae890b035c804d2",
-  "verify.py": "b57deb32a0eb0514597576a1fdca713d1cc3e021f20380cad5efbb6672fc2e30"
+  "verify.py": "3e4ee085ddc2357e97c31e5b95475f993390e1c280ffd16081d56aa4ee055d4c"
 }
