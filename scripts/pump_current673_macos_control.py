@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Reproduce CURRENT673 with its unchanged portable cold builder on native macOS."""
+"""Reproduce archived673 with its unchanged portable cold builder on native macOS."""
 import argparse
 import gzip
 import hashlib
@@ -16,6 +16,7 @@ import urllib.request
 
 ROOT = Path(__file__).resolve().parents[1]
 SPEC = ROOT / 'research/pump-current673-macos-qualification/inputs.json'
+SOURCE_DIRECTORY = ROOT / 'research/pump-final-composition-673-20261028/source'
 WORK = ROOT / 'work/pump-current673-macos-control'
 EVIDENCE = WORK / 'evidence'
 
@@ -32,7 +33,7 @@ def write(path, value):
     path.write_text(json.dumps(value, indent=2) + '\n')
 
 
-def inspect():
+def inspect(source_directory=None):
     spec = json.loads(SPEC.read_text())
     cold = ROOT / spec['cold_package']
     assert sha(cold / 'build.py') == spec['builder_sha256']
@@ -41,11 +42,13 @@ def inspect():
     definition = importlib.util.spec_from_file_location('current673_source_manifest', cold / 'tools/build_source_manifest.py')
     module = importlib.util.module_from_spec(definition)
     definition.loader.exec_module(module)
-    source = ROOT / spec['source_directory']
+    # The retained spec records the original programs/pump locator. Future runs
+    # select the authenticated archived673 tree without rewriting that receipt.
+    source = Path(source_directory or SOURCE_DIRECTORY).resolve()
     manifest = module.source_manifest(source, source, ROOT, cwd=source)
     actual = {str((ROOT / name).relative_to(source)): digest for name, digest in manifest.items()}
     expected = json.loads((cold / 'build-inputs.json').read_text())
-    assert actual == expected['source_inputs'], 'Current source differs from frozen673 inputs'
+    assert actual == expected['source_inputs'], 'Selected source differs from frozen673 inputs'
     assert sha(ROOT / 'evidence/original/pump/deployed.so') == spec['original_sha256']
     assert expected['comparison']['candidate_sha256'] == spec['expected']['candidate_sha256']
     assert expected['unstripped_sha256'] == spec['expected']['unstripped_sha256']
@@ -85,12 +88,15 @@ def retain(build):
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--inspect', action='store_true', help='Authenticate frozen local inputs only; no download/build')
+    parser.add_argument('--source-directory', type=Path, default=SOURCE_DIRECTORY,
+                        help='Archived673 primary source; all65 existing hashes must match')
     args = parser.parse_args()
     assert __debug__, 'Optimized Python is unsupported'
-    spec, cold, source, source_before, expected = inspect()
+    spec, cold, source, source_before, expected = inspect(args.source_directory)
     if args.inspect:
         print(json.dumps({'source_files': len(source_before), 'authenticated_cold_builder': spec['builder_sha256'],
-                          'expected': spec['expected']}, indent=2))
+                          'expected': spec['expected'], 'source_directory': str(source),
+                          'scope': 'historical673 control; not maintained current-source qualification'}, indent=2))
         return
     assert platform.system() == 'Darwin' and platform.machine() == 'arm64', 'Native Apple Silicon macOS required'
     assert sys.version_info >= (3, 12), 'Python 3.12+ required for safe tar extraction'
@@ -101,6 +107,7 @@ def main():
         shutil.copyfile(path, EVIDENCE / name)
     write(EVIDENCE / 'source-before.json', source_before)
     write(EVIDENCE / 'host.json', {'system': platform.system(), 'machine': platform.machine(), 'python': sys.version,
+                                  'primary_source_directory': str(source),
                                   'revision': subprocess.check_output(['git', 'rev-parse', 'HEAD'], cwd=ROOT, text=True).strip()})
     build = WORK / 'control'
     try:
@@ -138,7 +145,7 @@ def main():
         receipt = json.loads((build / 'build-attempt.json').read_text())
         assert all(receipt[k] for k in ['cold_empty_target', 'source_unchanged', 'tools_unchanged',
             'sdk_rust_libraries_unchanged', 'registry_sources_unchanged', 'target_libraries_unchanged', 'qualified_image_hashes_equal'])
-        assert inspect()[3] == source_before
+        assert inspect(source)[3] == source_before
         write(EVIDENCE / 'RESULT.json', {'status': 'reproduced', 'base_commit': spec['base_commit'],
             **actual, 'cold_empty_target': True, 'source_files': len(source_before),
             'limits': 'Unchanged control only. No new census, runtime, candidate or original whole-ELF identity claim.'})

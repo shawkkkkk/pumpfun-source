@@ -1,15 +1,16 @@
-# Frozen673 native macOS control
+# Archived673 native macOS control
 
 This is the historical673/1285 cohort. After its measurements, #711 promoted the
 734 per-hop source and `c0e29e2d` / `dd73afe7` outputs to maintained main. The
-historical199fd/49df control and its source pins below remain unchanged. Use the
-frozen cohort ref/branch for these commands; a newer main with different sources
-correctly fails the source guard. CTO/Sweep outputs here require an explicit new
-main composition before promotion. Clock587 already includes734, but its exact
-other64 input bindings must still be checked when relating it to the new main.
+historical199fd/49df control and source pins below remain unchanged. Live
+controllers now select the authenticated archived673 source; explicitly selecting
+newer maintained source with different hashes correctly fails the guard.
+CTO/Sweep outputs here require a new-main composition before promotion.
+Clock587 already includes734, but its exact other64 input bindings must still be
+checked when relating it to the new main.
 
 This controller runs the unchanged, hash-pinned
-`pump-final-composition-cold-20261028/build.py` against the 65 maintained Pump
+`pump-final-composition-cold-20261028/build.py` against the 65 archived673 Pump
 inputs at `1285b5e9e3a29c1e2cf32246d6046035e5d66fad`. It downloads authenticated
 v1.44 native macOS tools and Linux **SBPF** libraries, fetches locked registry
 packages, and lets the frozen builder authenticate every dependency source file
@@ -94,7 +95,7 @@ download action retrieves that exact run's retained outputs using the standard
 read-only Actions permission. The controller authenticates the actual ELF hashes,
 RESULT, host revision, executed cold builder and complete artifact ledger before
 compilation. No script reads or handles a token. A fresh isolated copy contains
-the same65 source inputs with exactly one declared replacement. The unchanged
+the same 65 source inputs with exactly one declared replacement. The unchanged
 cold source is retained; its visibly derived measurement builder removes only
 the final assertion demanding that the candidate output equal the control.
 The original comparison and `qualified_image_hashes_equal` result remain in the
@@ -162,3 +163,22 @@ source, retaining each previous source/attempt separately. Never substitute an
 unrun ID, reuse an expired HTTP URL as proof, relabel historical control outputs,
 or overwrite this retained control ZIP. Changed maintained sources require their
 own explicitly qualified frontier instead of inheriting this673 label.
+
+## Archived source selection after the maintained frontier advanced
+
+The retained input spec and executed controllers describe the original673 build
+from `programs/pump`; those historical bytes remain unchanged. Maintained source
+now selects a later image. The live controllers and workflow explicitly use
+`research/pump-final-composition-673-20261028/source` for future historical673
+controls and one-file measurements. They authenticate the same 65 primary hashes
+with the unchanged cold builder and actual 66-file compiler projection. Their
+`--source-directory` option accepts another locator only when every existing
+source hash matches; selecting maintained source after the accrual change fails
+before any download or compiler execution. This workflow does not qualify the
+maintained current source. Its sparse checkout includes the archived source,
+frozen cold builder, tools, packet, controllers and original capture.
+
+Run `python3 -B scripts/pump_current673_macos_control.py --inspect` to check the
+archived inputs without compiling. Candidate inspection uses the same archived
+source selection. Later cohorts and artifact expiry still require the explicit
+rebinding described above; this locator correction supplies no new build result.

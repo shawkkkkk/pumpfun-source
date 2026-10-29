@@ -1,5 +1,5 @@
-name: Qualify CURRENT673 Pump on pinned native macOS v1.44
-run-name: CURRENT673 ${{ inputs.proposal || 'control' }} native v1.44
+name: Qualify archived673 Pump on pinned native macOS v1.44
+run-name: Archived673 ${{ inputs.proposal || 'control' }} native v1.44
 on:
   workflow_dispatch:
     inputs:
@@ -29,14 +29,14 @@ jobs:
             /.github/workflows/qualify-pump-macos-v144.yml
             /scripts/pump_current673_macos_control.py
             /scripts/pump_current673_macos_candidate.py
-            /programs/pump/
+            /research/pump-final-composition-673-20261028/source/
             /evidence/original/pump/
             /research/pump-current673-macos-qualification/
             /research/pump-final-composition-cold-20261028/build.py
             /research/pump-final-composition-cold-20261028/build-inputs.json
             /research/pump-final-composition-cold-20261028/tools/
-      - name: Authenticate exact current source and portable builder
-        run: python3 -B scripts/pump_current673_macos_control.py --inspect
+      - name: Authenticate archived673 source and portable builder
+        run: python3 -B scripts/pump_current673_macos_control.py --source-directory research/pump-final-composition-673-20261028/source --inspect
       - name: Retrieve exact reproduced control for independent candidate measurement
         if: inputs.proposal != 'control'
         uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
@@ -51,9 +51,9 @@ jobs:
           PROPOSAL: ${{ inputs.proposal }}
         run: |
           if [ "$PROPOSAL" = control ]; then
-            python3 -B scripts/pump_current673_macos_control.py
+            python3 -B scripts/pump_current673_macos_control.py --source-directory research/pump-final-composition-673-20261028/source
           else
-            python3 -B scripts/pump_current673_macos_candidate.py --candidate "$PROPOSAL"
+            python3 -B scripts/pump_current673_macos_candidate.py --source-directory research/pump-final-composition-673-20261028/source --candidate "$PROPOSAL"
           fi
       - name: Retain actual compiler inputs, outputs and logs
         if: always()

@@ -20,8 +20,8 @@ ROOT = control.ROOT
 DIRECTORY = ROOT / 'research/pump-current673-macos-qualification/candidates'
 
 
-def descriptor(name):
-    spec, cold, source, manifest, expected = control.inspect()
+def descriptor(name, source_directory=None):
+    spec, cold, source, manifest, expected = control.inspect(source_directory)
     ledger = json.loads((DIRECTORY / 'descriptors.json').read_text())
     proposal = ledger['proposals'][name]
     assert expected['source_inputs'][proposal['source_path']] == proposal['before_sha256']
@@ -47,9 +47,11 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--candidate', choices=['cto', 'sweep', 'perhop', 'sell-event', 'constructor', 'cto-used-flow', 'perhop-clock', 'sweep-read-timing'], required=True)
     parser.add_argument('--inspect', action='store_true')
+    parser.add_argument('--source-directory', type=Path, default=control.SOURCE_DIRECTORY,
+                        help='Archived673 primary source; all65 existing hashes must match')
     args = parser.parse_args()
     assert __debug__, 'Optimized Python is unsupported'
-    spec, cold, source, ledger, proposal, frozen, expected, derived, patch = descriptor(args.candidate)
+    spec, cold, source, ledger, proposal, frozen, expected, derived, patch = descriptor(args.candidate, args.source_directory)
     if args.inspect:
         print(json.dumps({'candidate': args.candidate, 'proposal': proposal, 'adapter_patch': patch}, indent=2))
         return
@@ -82,7 +84,7 @@ def main():
     control.write(evidence / 'inputs.json', spec)
     control.write(evidence / 'candidate-build-inputs.json', expected)
     control.write(evidence / 'host.json', {'system': platform.system(), 'machine': platform.machine(),
-                  'python': sys.version, 'revision': subprocess.check_output(
+                  'python': sys.version, 'primary_source_directory': str(source), 'revision': subprocess.check_output(
                       ['git', 'rev-parse', 'HEAD'], cwd=ROOT, text=True).strip()})
     (evidence / 'measurement-adapter.patch').write_text(patch)
     shutil.copyfile(Path(__file__), evidence / 'candidate-controller.py')
@@ -138,7 +140,7 @@ def main():
         assert record['tool_sha256'] == expected['tool_sha256']
         log = (build / 'build.log').read_text()
         assert '--crate-name pump_recovered ' in log and '--crate-name pump_token_ext ' in log
-        assert control.inspect()[3] == spec_source_inputs(cold)
+        assert control.inspect(source)[3] == spec_source_inputs(cold)
         control.write(evidence / 'RESULT.json', {'status': 'compiled-measurement-only', 'candidate': args.candidate,
                       'base_commit': spec['base_commit'], 'control_run': ledger['control_run'], 'proposal': proposal,
                       'candidate_sha256': control.sha(build / 'candidate.so'), 'unstripped_sha256': control.sha(build / 'unstripped.so'),
