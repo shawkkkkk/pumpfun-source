@@ -1,0 +1,12 @@
+{
+  "macos": {
+    "url": "https://github.com/anza-xyz/platform-tools/releases/download/v1.44/platform-tools-osx-aarch64.tar.bz2",
+    "sha256": "66e20d135fddd70ff519baf7ff320d762957f9aedf93a50e23756db23ad79351",
+    "observed_sha256": "66e20d135fddd70ff519baf7ff320d762957f9aedf93a50e23756db23ad79351"
+  },
+  "linux": {
+    "url": "https://github.com/anza-xyz/platform-tools/releases/download/v1.44/platform-tools-linux-x86_64.tar.bz2",
+    "sha256": "6719b889d60677a8a2fcf4c82f68441a1afe0ab093edd2efe9f84a67a808b3e9",
+    "observed_sha256": "6719b889d60677a8a2fcf4c82f68441a1afe0ab093edd2efe9f84a67a808b3e9"
+  }
+}

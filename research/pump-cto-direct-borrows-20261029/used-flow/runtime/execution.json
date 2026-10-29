@@ -1,0 +1,96 @@
+{
+  "input_sha256": {
+    "/workspace/pump-current673-native-results/cto-used-flow-40794982049/candidate.so": "df40382896c913ba02f064a993424daec707abe7ea95895cc821061cc7a82684",
+    "/workspace/pump-current673-native-results/cto-40792775552/candidate.so": "d537faf5907c594eeef6f3706d87e300e6f01509243b5dcf28b018f3c90a64c6",
+    "/workspace/pump-admin-cto/candidates/used-cpi-flow/admin_cto.rs": "5203d20c2e63be7337204491588e0ec69808f8ddd39d96b8b5fa1964d6ec201d",
+    "/workspace/pump-current673-native-results/cto-used-flow-40794982049/build-comparison.json": "ace968285351a6f75c8d0685a3f40779034fb73dc56f3bc14bbacdb8f7376caf",
+    "/workspace/pump-admin-cto/used-flow-runtime/replay.py": "66ba7ff3d2b4a152cd7c597f8fdf275745fbdbc21382fa748f49681b765e9b6d",
+    "/workspace/pump-admin-cto/used-flow-runtime/INPUTS.json": "122da26870cb3e3c0f497c8f857740a4613f69e0b6416f37d11a997231f43e68"
+  },
+  "runs": [
+    {
+      "name": "broad",
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+        "-B",
+        "/workspace/pump-admin-cto/runtime-control/repo/scripts/pump_with_captured_loader.py",
+        "--receipt",
+        "/workspace/pump-admin-cto/used-flow-runtime/df403-strict380/broad-loader.json",
+        "/workspace/pump-admin-cto/runtime-control/repo/scripts/pump_admin_cto_differential.py",
+        "--candidate",
+        "/workspace/pump-current673-native-results/cto-used-flow-40794982049/candidate.so",
+        "--output",
+        "/workspace/pump-admin-cto/used-flow-runtime/df403-strict380/broad.json"
+      ],
+      "returncode": 0,
+      "producer_sha256": "89a98d33f9338bc56822d7800ceba97f6ee64156a1e8cc2dc09849808d8cd11c",
+      "report_sha256": "86f1bb86b898eea30ae50a1c84abfdcd22c217c4ee5864e1f09c148d9ce00e25",
+      "verification": {
+        "case_records": 363,
+        "actual_signed_executions": 726,
+        "signature_fields_verified": 1448,
+        "differences": [],
+        "Source_substitutions": null,
+        "pool_authority_outer_signer": false
+      }
+    },
+    {
+      "name": "cto",
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+        "-B",
+        "/workspace/pump-admin-cto/runtime-control/repo/scripts/pump_with_captured_loader.py",
+        "--receipt",
+        "/workspace/pump-admin-cto/used-flow-runtime/df403-strict380/cto-loader.json",
+        "/workspace/pump-admin-cto/used-flow-runtime/inputs/cto-focused.py",
+        "--candidate",
+        "/workspace/pump-current673-native-results/cto-used-flow-40794982049/candidate.so",
+        "--output",
+        "/workspace/pump-admin-cto/used-flow-runtime/df403-strict380/cto.json.gz"
+      ],
+      "returncode": 0,
+      "producer_sha256": "3c90566c8da4dfc811c2a42a79c2120a4b812061893a0d907ddfa45b3ee5bdf0",
+      "report_sha256": "890aab5fe61e4783e0221d902b5d32c0ad47107711aa72ad5ee8825c87e8bfcb",
+      "verification": {
+        "case_records": 5,
+        "actual_signed_executions": 15,
+        "signature_fields_verified": 30,
+        "differences": [],
+        "Source_substitutions": null,
+        "pool_authority_outer_signer": false
+      }
+    },
+    {
+      "name": "shared",
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+        "-B",
+        "/workspace/pump-admin-cto/runtime-control/repo/scripts/pump_with_captured_loader.py",
+        "--receipt",
+        "/workspace/pump-admin-cto/used-flow-runtime/df403-strict380/shared-loader.json",
+        "/workspace/pump-admin-cto/used-flow-runtime/inputs/shared-holder-focused.py",
+        "--candidate",
+        "/workspace/pump-current673-native-results/cto-used-flow-40794982049/candidate.so",
+        "--baseline",
+        "/workspace/pump-current673-native-results/cto-40792775552/candidate.so",
+        "--output",
+        "/workspace/pump-admin-cto/used-flow-runtime/df403-strict380/shared.json.gz"
+      ],
+      "returncode": 0,
+      "producer_sha256": "06eca75e26a70ecdafff093eed6c2ce819fd1c1142f32a4fbdaa241ee03cc664",
+      "report_sha256": "c90eff350d931239576753f078a84354445fbb205376def87f8f9fc8377d6352",
+      "verification": {
+        "case_records": 12,
+        "actual_signed_executions": 36,
+        "signature_fields_verified": 72,
+        "differences": [],
+        "Source_substitutions": null,
+        "pool_authority_outer_signer": false
+      }
+    }
+  ],
+  "candidate_sha256": "df40382896c913ba02f064a993424daec707abe7ea95895cc821061cc7a82684",
+  "source_sha256": "5203d20c2e63be7337204491588e0ec69808f8ddd39d96b8b5fa1964d6ec201d",
+  "build_record_binding": "provided actual bytes hash; independently authenticate compiler/source receipt",
+  "Source_normalization": null
+}

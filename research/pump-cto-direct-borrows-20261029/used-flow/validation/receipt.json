@@ -1,0 +1,42 @@
+{
+  "recorded_at_utc": "2026-10-29T01:01:00.511060+00:00",
+  "git_head_before_final_receipt": "a70725ff32c16249a0493b4b8f423dd554ca5d84",
+  "source_sha256": "5203d20c2e63be7337204491588e0ec69808f8ddd39d96b8b5fa1964d6ec201d",
+  "candidate_sha256": "df40382896c913ba02f064a993424daec707abe7ea95895cc821061cc7a82684",
+  "commands": [
+    {
+      "command": "python3 -B used-flow/verify.py --repo /workspace/pump-admin-cto/runtime-control/repo",
+      "result": "PASS",
+      "output": "verify.json"
+    },
+    {
+      "command": "python3 -O -B used-flow/verify.py --repo /workspace/pump-admin-cto/runtime-control/repo",
+      "result": "PASS",
+      "output": "verify-optimized.json"
+    },
+    {
+      "command": "python3 -B used-flow/test_runtime_controls.py",
+      "result": "PASS4",
+      "output": "runtime-controls.log"
+    },
+    {
+      "command": "python3 -B scripts/verify_evidence.py",
+      "result": "PASS9",
+      "output": "verify-evidence.log"
+    },
+    {
+      "command": "python3 -B scripts/test_tooling.py",
+      "result": "PASS6",
+      "output": "test-tooling.log"
+    }
+  ],
+  "content_sha256": {
+    "README.md": "3c28648d9082892d45eef448db08728bcffb4e2587d736520a8151d3c1984925",
+    "F4-STAGE.md": "afcb2b932407c16c2588944db0e6ba0ecc7dec6e15b843a8554a908274477596",
+    "used-flow/MEASUREMENT.json": "bb0da6795f7c8daad7a665eae3d964b26cb68c465e0c7b929dde2ecce29b9544",
+    "used-flow/verify.py": "8b993039db49d3d6ce1e01e6e7e0845e3baed55136cc7c94f5335baab3cf036c",
+    "used-flow/test_runtime_controls.py": "579572bbf7e5c3ed4f823190cb251d7f5768a23aed106f2ea49920910a859188",
+    "used-flow/independent-audit/SUMMARY.json": "a33c849cac9a929795aa2e03f3dca55b5f4b2554a0181851f850985b7cd624d2"
+  },
+  "limits": "Actual finite380/777/1550 and complete no-loss1035 in historical673cohort; no newcurrent734 composition, full44 replay, window gain or wholecaller equality."
+}

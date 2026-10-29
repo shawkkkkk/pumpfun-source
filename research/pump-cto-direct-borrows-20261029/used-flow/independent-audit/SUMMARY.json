@@ -1,0 +1,78 @@
+{
+  "actual_original_payout_depth2_pairs_equal": 21,
+  "body_bytes": {
+    "5203": 18464,
+    "f4": 18104,
+    "original": 27400
+  },
+  "defined_parent_calls": {
+    "5203": 178,
+    "f4": 170,
+    "original": 154
+  },
+  "files": {
+    "callees.json": {
+      "bytes": 305957,
+      "sha256": "e99cb11e04752c9caa5b94e75cf04780bd4b32e70fb19cc4e4422a0c1efd5c36"
+    },
+    "callees.py": {
+      "bytes": 5673,
+      "sha256": "9953a6451146594825d346b579090ec0461c8eaa3d2a756209b717d5d71f86fd"
+    },
+    "clone_locations.py": {
+      "bytes": 8633,
+      "sha256": "ccac5aa9402b3c597a1707f00c416e73f3c0495f76e255481c66d6db4f5f852b"
+    },
+    "clones-locations.json": {
+      "bytes": 34770,
+      "sha256": "c2fc5bea6665be68b44e0ea4fef20b65006bd9af80e1ceee965171338d4d4559"
+    },
+    "finish.py": {
+      "bytes": 9047,
+      "sha256": "e12c052532be08db930411c7e92d887ad4b4223e209147561e82d015c256b787"
+    },
+    "original-actual-depth2.json": {
+      "bytes": 15979,
+      "sha256": "03b3161205b5cfbe9857ecb5855b4c3674951e09e3d913f7e748af5f82c05b03"
+    },
+    "token-helper-closure.json": {
+      "bytes": 8331,
+      "sha256": "854277815c5b3a3e9a31538800896e0196c036e8a86f73c4c738d40c8f634d4f"
+    }
+  },
+  "helper_location": {
+    "column": 19,
+    "file": "src/lib.rs",
+    "line": 102,
+    "unchanged": true
+  },
+  "holder_extra_copy_removed": true,
+  "images": {
+    "5203": "388fa73431d68cb0a89e9c939f1645510abd844652f4272ef1a841a0ec60bbe0",
+    "f4": "daa2772d4745d8488b357c6c1c088fadc77bf31d341c59f5b50c4706d7b54c78",
+    "original": "7a19affaa2c6187e04a5fe0ea298cee81fa5eb8c24cfcc30d85f615e89f7b02d"
+  },
+  "limits": "Bounded static body/actualedge/copy-source and typed Location observations. Official1035counts remain1019normalized/188raw; no window gain/wholeparent/runtime/private-source/semantic proof. Partial pointer slicer does not model callee sret writes; numeric amount uses separate explicit witnesses.",
+  "memcmp_parent_counts": {
+    "5203": 15,
+    "f4": 15,
+    "original": 14
+  },
+  "memcpy_parent_counts": {
+    "5203": 8,
+    "f4": 7,
+    "original": 6
+  },
+  "new_compile_or_source_edit": false,
+  "published_source_selection_changed": false,
+  "reachable_accountinfo_copy_sites": {
+    "5203": 54,
+    "f4": 55,
+    "original": 54
+  },
+  "schema": "CTO_5203_INDEPENDENT_READ_ONLY_AUDIT_V1",
+  "source_line_775_to_772_is_lexical_only_in_observed_helper_evidence": true,
+  "source_sha256": "5203d20c2e63be7337204491588e0ec69808f8ddd39d96b8b5fa1964d6ec201d",
+  "three_program_first_context_groups_reproduce_original_source_pointer_order": true,
+  "token_helper_actual_depth2_pairs_equal": 12
+}

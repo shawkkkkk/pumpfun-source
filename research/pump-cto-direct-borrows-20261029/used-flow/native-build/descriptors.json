@@ -1,0 +1,58 @@
+{
+  "schema": "PUMP_CURRENT673_SINGLE_FILE_CANDIDATES_V1",
+  "control_run": 40791064153,
+  "control_head": "c6ae78c36ef59de4f1b2a057b54e57b6c9f3dce7",
+  "proposals": {
+    "cto": {
+      "source_path": "src/creator/admin_cto.rs",
+      "frozen_file": "cto.rs",
+      "before_sha256": "6353b1f7b9e613bb8d819000c504d44410b04f7da7dfbdc7fb2e5132df100180",
+      "after_sha256": "f4a2bb7d33431e0fb4911e39d5e03c8bb9f45c6f7a184da21d1a6762f9127955",
+      "state": "uncompiled independent proposal; not accepted coverage",
+      "source_proposal": "https://github.com/lalalune/pumpfun-source/pull/712",
+      "source_proposal_head": "89ecb2b0785c7157e696f4dcbe7d1dc0a5207a8c"
+    },
+    "sweep": {
+      "source_path": "src/sweep_fees.rs",
+      "frozen_file": "sweep.rs",
+      "before_sha256": "8735adba8b670c3b4ee63a6fd716d1d639be6efa56269a15365c15ff2f44ba0c",
+      "after_sha256": "15dbbd46bdbe7af62c6b7bb436f657c45e290c080c185fc075b7a3c08e3df7e8",
+      "state": "uncompiled independent proposal; not accepted coverage",
+      "source_proposal": "https://github.com/lalalune/pumpfun-source/pull/713",
+      "source_proposal_head": "819609edf904d975550c6e13cd0987e1b76e141b"
+    },
+    "perhop": {
+      "source_path": "src/multi_hop_curve_swap.rs",
+      "frozen_file": "perhop.rs",
+      "before_sha256": "679b34ae4965bf1cdc999e0f45f3ae5e171116c5f04173e7394c3b9e48a0fb43",
+      "after_sha256": "734bdae1189dd4e4f54a27fd215624611228f36b92d3877b63f00df19ccc9e44",
+      "state": "uncompiled independent proposal; not accepted coverage",
+      "source_proposal": "https://github.com/lalalune/pumpfun-source/pull/711",
+      "source_proposal_head": "9c20f6a5316e3423345fee04206a7819a797af7c"
+    },
+    "sell-event": {
+      "source_path": "src/sell_v2.rs",
+      "frozen_file": "sell-event.rs",
+      "before_sha256": "0a214cbd9077b5606c1c867e831d9ccc5cc2705262d568061c03925334783b4c",
+      "after_sha256": "f1f484c50a792c82fba414dff31b6bfc55f03cbec54d7115782c60ad5870b45d",
+      "state": "staged only; one compiler measurement after preceding cohort; no runtime authorization"
+    },
+    "constructor": {
+      "source_path": "src/create_v2.rs",
+      "frozen_file": "constructor.rs",
+      "before_sha256": "afd072350a1febfb4c7e0b327a40f73556b3407d53bd609edf4b01f9ac1c198e",
+      "after_sha256": "8cf97e31c958609aa5bbc07e2d4fb092fc980f724d4054d24af2163241e7a931",
+      "state": "staged only; one compiler measurement after preceding cohort; no runtime authorization"
+    },
+    "cto-used-flow": {
+      "source_path": "src/creator/admin_cto.rs",
+      "frozen_file": "cto-used-flow.rs",
+      "before_sha256": "6353b1f7b9e613bb8d819000c504d44410b04f7da7dfbdc7fb2e5132df100180",
+      "after_sha256": "5203d20c2e63be7337204491588e0ec69808f8ddd39d96b8b5fa1964d6ec201d",
+      "immediate_parent_source_sha256": "f4a2bb7d33431e0fb4911e39d5e03c8bb9f45c6f7a184da21d1a6762f9127955",
+      "state": "staged only; sixth one-shot original-backed compiler proposal after fourth/fifth complete",
+      "source_proposal": "https://github.com/lalalune/pumpfun-source/pull/712",
+      "source_positions": "17 explicit Source/error/unwrap sites unchanged; natural obsolete-helper deletion moves token_raw_amount775to772, disclosed for actual Location audit; no padding."
+    }
+  }
+}

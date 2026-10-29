@@ -1,0 +1,29 @@
+{
+  "source_sha256": "5203d20c2e63be7337204491588e0ec69808f8ddd39d96b8b5fa1964d6ec201d",
+  "candidate_sha256": "df40382896c913ba02f064a993424daec707abe7ea95895cc821061cc7a82684",
+  "unstripped_sha256": "388fa73431d68cb0a89e9c939f1645510abd844652f4272ef1a841a0ec60bbe0",
+  "native_compiler_input_files": 66,
+  "both_local_crates_compiled": true,
+  "defined_CTO_calls": 178,
+  "actual_call_counts": {
+    "clone": 54,
+    "ATA": 2,
+    "transfer": 1,
+    "raw": 2,
+    "frozen": 5
+  },
+  "lexical_raw_helper_line_shift": "775\u2192772; no non-CALL instruction or direct helper data/Location relocation change",
+  "normalized_windows": 1019,
+  "raw_windows": 188,
+  "gains": 0,
+  "losses": 0,
+  "runtime": {
+    "case_records": 380,
+    "actual_signed_executions": 777,
+    "signature_fields_verified": 1550
+  },
+  "ordered_Source_or_structured_differences": 0,
+  "Source_substitutions": null,
+  "residual": "54direct/0inline copies vsoriginal33direct+21inline; fullcaller/wholeELF equality unresolved",
+  "canonical_selection_changed": false
+}

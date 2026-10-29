@@ -1,0 +1,8 @@
+{
+  "raw_output": "/workspace/pump-admin-cto/used-flow-runtime/df403-strict380/broad.json",
+  "raw_sha256": "86f1bb86b898eea30ae50a1c84abfdcd22c217c4ee5864e1f09c148d9ce00e25",
+  "raw_bytes": 27593524,
+  "archived_gzip": "broad.json.gz",
+  "archived_sha256": "2c25a306b40ad812989685339c2c4c32fa707b96c3f3343175e6814ec66b9c02",
+  "lossless": true
+}

@@ -1,0 +1,2952 @@
+[
+  {
+    "name": "base"
+  },
+  {
+    "name": "no-new",
+    "new_none": true
+  },
+  {
+    "name": "holder-none",
+    "holder": true,
+    "new_none": true
+  },
+  {
+    "name": "holder-new",
+    "holder": true
+  },
+  {
+    "name": "nonholder-new",
+    "holder": false
+  },
+  {
+    "name": "wrong-authority",
+    "wrong_authority": true
+  },
+  {
+    "name": "version-0",
+    "version": 0
+  },
+  {
+    "name": "version-1",
+    "version": 1
+  },
+  {
+    "name": "version-2",
+    "version": 2
+  },
+  {
+    "name": "version-3",
+    "version": 3
+  },
+  {
+    "name": "version-255",
+    "version": 255
+  },
+  {
+    "name": "status-0",
+    "status": 0
+  },
+  {
+    "name": "status-1",
+    "status": 1
+  },
+  {
+    "name": "status-2",
+    "status": 2
+  },
+  {
+    "name": "status-255",
+    "status": 255
+  },
+  {
+    "name": "revoked-0",
+    "revoked": 0
+  },
+  {
+    "name": "revoked-1",
+    "revoked": 1
+  },
+  {
+    "name": "revoked-2",
+    "revoked": 2
+  },
+  {
+    "name": "patch-0",
+    "sharing_patches": [
+      [
+        0,
+        "00"
+      ]
+    ]
+  },
+  {
+    "name": "patch-8",
+    "sharing_patches": [
+      [
+        8,
+        "00"
+      ]
+    ]
+  },
+  {
+    "name": "patch-11",
+    "sharing_patches": [
+      [
+        11,
+        "00"
+      ]
+    ]
+  },
+  {
+    "name": "patch-43",
+    "sharing_patches": [
+      [
+        43,
+        "00"
+      ]
+    ]
+  },
+  {
+    "name": "patch-75",
+    "sharing_patches": [
+      [
+        75,
+        "00"
+      ]
+    ]
+  },
+  {
+    "name": "patch-76",
+    "sharing_patches": [
+      [
+        76,
+        "00"
+      ]
+    ]
+  },
+  {
+    "name": "holder-version-0",
+    "holder": true,
+    "new_none": true,
+    "version": 0
+  },
+  {
+    "name": "holder-version-1",
+    "holder": true,
+    "new_none": true,
+    "version": 1
+  },
+  {
+    "name": "holder-version-2",
+    "holder": true,
+    "new_none": true,
+    "version": 2
+  },
+  {
+    "name": "holder-version-255",
+    "holder": true,
+    "new_none": true,
+    "version": 255
+  },
+  {
+    "name": "holder-revoked",
+    "holder": true,
+    "new_none": true,
+    "revoked": 1
+  },
+  {
+    "name": "holder-paused",
+    "holder": true,
+    "new_none": true,
+    "status": 0
+  },
+  {
+    "name": "shares-empty",
+    "shareholders": []
+  },
+  {
+    "name": "shares-multiple",
+    "shareholders": [
+      [
+        "Bqqt1tFkrCw35zoLcqDXK4yAmo5bw725EZkgeMMy28qw",
+        5000
+      ],
+      [
+        "9gECFE3oJt262dFDhySt7ymNNVRUhrq5tbNjZRE3qoQ9",
+        5000
+      ]
+    ]
+  },
+  {
+    "name": "new-zero",
+    "new_creator": "11111111111111111111111111111111"
+  },
+  {
+    "name": "new-self",
+    "new_creator": "A4QMiMKsZU83fN8robaBjRroT8NPjoFv5jBXQ3VHyLca"
+  },
+  {
+    "name": "new-old-admin",
+    "new_creator": "Bqqt1tFkrCw35zoLcqDXK4yAmo5bw725EZkgeMMy28qw"
+  },
+  {
+    "name": "new-program",
+    "new_creator": "pfeeUxB6jkeY1Hxd7CsFCAjcbHA9rWtchMGdZ6VojVZ"
+  },
+  {
+    "name": "wrong-pool_authority",
+    "wrong": "pool_authority"
+  },
+  {
+    "name": "wrong-pump_fees_event_authority",
+    "wrong": "pump_fees_event_authority"
+  },
+  {
+    "name": "wrong-pump_fees",
+    "wrong": "pump_fees"
+  },
+  {
+    "name": "wrong-event_authority",
+    "wrong": "event_authority"
+  },
+  {
+    "name": "wrong-sharing_config",
+    "wrong": "sharing_config"
+  },
+  {
+    "name": "length-0",
+    "sharing_length": 0
+  },
+  {
+    "name": "length-7",
+    "sharing_length": 7
+  },
+  {
+    "name": "length-8",
+    "sharing_length": 8
+  },
+  {
+    "name": "length-10",
+    "sharing_length": 10
+  },
+  {
+    "name": "length-11",
+    "sharing_length": 11
+  },
+  {
+    "name": "length-43",
+    "sharing_length": 43
+  },
+  {
+    "name": "length-75",
+    "sharing_length": 75
+  },
+  {
+    "name": "length-76",
+    "sharing_length": 76
+  },
+  {
+    "name": "length-79",
+    "sharing_length": 79
+  },
+  {
+    "name": "length-80",
+    "sharing_length": 80
+  },
+  {
+    "name": "length-113",
+    "sharing_length": 113
+  },
+  {
+    "name": "length-114",
+    "sharing_length": 114
+  },
+  {
+    "name": "length-256",
+    "sharing_length": 256
+  },
+  {
+    "name": "length-1024",
+    "sharing_length": 1024
+  },
+  {
+    "name": "owner-system",
+    "sharing_owner": "11111111111111111111111111111111"
+  },
+  {
+    "name": "owner-pump",
+    "sharing_owner": "6EF8rrecthR5Dkzon8Nwu78hRvfCKubJ14M5uBEwF6P"
+  },
+  {
+    "name": "empty-small-grow",
+    "shareholders": [],
+    "sharing_length": 80
+  },
+  {
+    "name": "holder-empty-small",
+    "shareholders": [],
+    "sharing_length": 80,
+    "holder": true,
+    "new_none": true
+  },
+  {
+    "name": "bad-weight",
+    "shareholders": [
+      [
+        "Bqqt1tFkrCw35zoLcqDXK4yAmo5bw725EZkgeMMy28qw",
+        65535
+      ]
+    ]
+  },
+  {
+    "name": "many-shareholders",
+    "shareholders": [
+      [
+        "gBxS1f6uyyGPuW5MzGBukidSb71jdsCb5fZaoSzULE5",
+        10
+      ],
+      [
+        "k7FaK87WHGVXzkaoHb7CdVPgkKDQhZ29VLDeBVbDfYn",
+        11
+      ],
+      [
+        "p2Yicb86aZig616Eav2VWG9vuXR5mEqhtzshZYBxzsV",
+        12
+      ],
+      [
+        "swqrv48gsrwpBFbftEwnP2vB4jckpvfGJfXkwaniLCC",
+        13
+      ],
+      [
+        "ws91DX9HBAAxGW77BZs5FogRDwpRtcUpiLBpKdPTfWu",
+        14
+      ],
+      [
+        "21nS9Wz9sUTQ6MkcYUtnN8aSfPA26xJJP7zqshfzCzqc",
+        15
+      ],
+      [
+        "25hjHpTATmkdET17ynDhf1MCuYNDn1z7wXfVw5iaxLAK",
+        16
+      ],
+      [
+        "29d2S7vB453rNYFdR5Ycwt7y9haRT5fwVwL9zTmBhfV2",
+        17
+      ],
+      [
+        "2DYKaRPBeNM5WdW8rNsYEktjPrnd89Mm4Lzp3qonSzoj",
+        18
+      ],
+      [
+        "2HTciirCEfeJeikeHgCTXdfVe1zpoD3ackfU7DrPCL8S",
+        19
+      ],
+      [
+        "2MNus2KCpxwXnp19iyXNpWSFtBD2UGjQBAL8AbtywfT9",
+        20
+      ],
+      [
+        "2RJD1KnDRGEkvuFfAGrJ7PD28LRE9LRDjZznDywagzmr",
+        21
+      ],
+      [
+        "2VDW9dFE1ZXz4zWAbaBDQFynNVdRpQ73HyfSHMzBSL6Z",
+        22
+      ],
+      [
+        "2Z8oHviEbrqDD5kg2sW8h8kYceqdVTnrrPL6Lk2nBfRG",
+        23
+      ],
+      [
+        "2d46SEBFCA8SMB1BUAq3z1XJrp3qAXUgQnzkQ85Nvzjy",
+        24
+      ],
+      [
+        "2gyPaXeFnTRfVGFguU9yGtJ56yG2qbAVyCfQTW7ygL4g",
+        25
+      ],
+      [
+        "2ktgiq7GNkitdMWCLmUtZm4qM8UEWerKXcL4WtAaRfPP",
+        26
+      ],
+      [
+        "2poys8aGy427mSkhn4oordqbbHgSBiY961ziaGDBAzi6",
+        27
+      ],
+      [
+        "2tjH1S3HZMKLuY1DDN8j9WcMqStdrnDxeRfNdeFmvL2o",
+        28
+      ],
+      [
+        "2xea9jWJ9eca3dFiefTeSPP85c6qXqunCqL2h2JNffMW",
+        29
+      ]
+    ]
+  },
+  {
+    "name": "holder-shares-multiple",
+    "holder": true,
+    "new_none": true,
+    "shareholders": [
+      [
+        "Bqqt1tFkrCw35zoLcqDXK4yAmo5bw725EZkgeMMy28qw",
+        5000
+      ],
+      [
+        "9gECFE3oJt262dFDhySt7ymNNVRUhrq5tbNjZRE3qoQ9",
+        5000
+      ]
+    ]
+  },
+  {
+    "name": "paused-revoked-version0",
+    "status": 0,
+    "revoked": 1,
+    "version": 0
+  },
+  {
+    "name": "fee-0",
+    "fee": 0
+  },
+  {
+    "name": "fee-1",
+    "fee": 1
+  },
+  {
+    "name": "fee-10",
+    "fee": 10
+  },
+  {
+    "name": "fee-100",
+    "fee": 100
+  },
+  {
+    "name": "fee-999",
+    "fee": 999
+  },
+  {
+    "name": "fee-1000",
+    "fee": 1000
+  },
+  {
+    "name": "fee-10000",
+    "fee": 10000
+  },
+  {
+    "name": "fee-10001",
+    "fee": 10001
+  },
+  {
+    "name": "fee-65535",
+    "fee": 65535
+  },
+  {
+    "name": "fee-18446744073709551615",
+    "fee": 18446744073709551615
+  },
+  {
+    "name": "curve-length-0",
+    "curve_length": 0
+  },
+  {
+    "name": "curve-length-7",
+    "curve_length": 7
+  },
+  {
+    "name": "curve-length-8",
+    "curve_length": 8
+  },
+  {
+    "name": "curve-length-48",
+    "curve_length": 48
+  },
+  {
+    "name": "curve-length-49",
+    "curve_length": 49
+  },
+  {
+    "name": "curve-length-80",
+    "curve_length": 80
+  },
+  {
+    "name": "curve-length-81",
+    "curve_length": 81
+  },
+  {
+    "name": "curve-length-82",
+    "curve_length": 82
+  },
+  {
+    "name": "curve-length-83",
+    "curve_length": 83
+  },
+  {
+    "name": "curve-length-114",
+    "curve_length": 114
+  },
+  {
+    "name": "curve-length-115",
+    "curve_length": 115
+  },
+  {
+    "name": "curve-length-122",
+    "curve_length": 122
+  },
+  {
+    "name": "curve-length-123",
+    "curve_length": 123
+  },
+  {
+    "name": "curve-length-124",
+    "curve_length": 124
+  },
+  {
+    "name": "curve-length-125",
+    "curve_length": 125
+  },
+  {
+    "name": "curve-length-133",
+    "curve_length": 133
+  },
+  {
+    "name": "curve-length-141",
+    "curve_length": 141
+  },
+  {
+    "name": "curve-length-166",
+    "curve_length": 166
+  },
+  {
+    "name": "curve-bool-48",
+    "curve_patches": [
+      [
+        48,
+        "02"
+      ]
+    ]
+  },
+  {
+    "name": "curve-bool-81",
+    "curve_patches": [
+      [
+        81,
+        "02"
+      ]
+    ]
+  },
+  {
+    "name": "curve-bool-82",
+    "curve_patches": [
+      [
+        82,
+        "02"
+      ]
+    ]
+  },
+  {
+    "name": "curve-bool-123",
+    "curve_patches": [
+      [
+        123,
+        "02"
+      ]
+    ]
+  },
+  {
+    "name": "curve-bool-124",
+    "curve_patches": [
+      [
+        124,
+        "02"
+      ]
+    ]
+  },
+  {
+    "name": "curve-byte-0",
+    "curve_patches": [
+      [
+        0,
+        "ff"
+      ]
+    ]
+  },
+  {
+    "name": "curve-byte-8",
+    "curve_patches": [
+      [
+        8,
+        "ff"
+      ]
+    ]
+  },
+  {
+    "name": "curve-byte-49",
+    "curve_patches": [
+      [
+        49,
+        "ff"
+      ]
+    ]
+  },
+  {
+    "name": "curve-byte-83",
+    "curve_patches": [
+      [
+        83,
+        "ff"
+      ]
+    ]
+  },
+  {
+    "name": "curve-byte-115",
+    "curve_patches": [
+      [
+        115,
+        "ff"
+      ]
+    ]
+  },
+  {
+    "name": "global-length-0",
+    "global_length": 0
+  },
+  {
+    "name": "global-length-7",
+    "global_length": 7
+  },
+  {
+    "name": "global-length-8",
+    "global_length": 8
+  },
+  {
+    "name": "global-length-417",
+    "global_length": 417
+  },
+  {
+    "name": "global-length-418",
+    "global_length": 418
+  },
+  {
+    "name": "global-length-449",
+    "global_length": 449
+  },
+  {
+    "name": "global-length-450",
+    "global_length": 450
+  },
+  {
+    "name": "global-length-512",
+    "global_length": 512
+  },
+  {
+    "name": "wrong-global",
+    "wrong": "global"
+  },
+  {
+    "name": "wrong-mint",
+    "wrong": "mint"
+  },
+  {
+    "name": "wrong-quote_mint",
+    "wrong": "quote_mint"
+  },
+  {
+    "name": "wrong-quote_token_program",
+    "wrong": "quote_token_program"
+  },
+  {
+    "name": "wrong-associated_token_program",
+    "wrong": "associated_token_program"
+  },
+  {
+    "name": "wrong-system_program",
+    "wrong": "system_program"
+  },
+  {
+    "name": "wrong-bonding_curve",
+    "wrong": "bonding_curve"
+  },
+  {
+    "name": "wrong-current_creator",
+    "wrong": "current_creator"
+  },
+  {
+    "name": "wrong-current_creator_quote_token_account",
+    "wrong": "current_creator_quote_token_account"
+  },
+  {
+    "name": "wrong-creator_vault",
+    "wrong": "creator_vault"
+  },
+  {
+    "name": "wrong-creator_vault_quote_token_account",
+    "wrong": "creator_vault_quote_token_account"
+  },
+  {
+    "name": "wrong-holder_creator_vault",
+    "wrong": "holder_creator_vault"
+  },
+  {
+    "name": "wrong-holder_creator_vault_quote_token_account",
+    "wrong": "holder_creator_vault_quote_token_account"
+  },
+  {
+    "name": "wrong-pump_amm",
+    "wrong": "pump_amm"
+  },
+  {
+    "name": "wrong-amm_global_config",
+    "wrong": "amm_global_config"
+  },
+  {
+    "name": "wrong-pool",
+    "wrong": "pool"
+  },
+  {
+    "name": "wrong-pump_amm_event_authority",
+    "wrong": "pump_amm_event_authority"
+  },
+  {
+    "name": "wrong-coin_creator_vault_authority",
+    "wrong": "coin_creator_vault_authority"
+  },
+  {
+    "name": "wrong-coin_creator_vault_ata",
+    "wrong": "coin_creator_vault_ata"
+  },
+  {
+    "name": "wrong-program",
+    "wrong": "program"
+  },
+  {
+    "name": "readonly-admin_set_creator_authority",
+    "readonly": [
+      "admin_set_creator_authority"
+    ]
+  },
+  {
+    "name": "readonly-bonding_curve",
+    "readonly": [
+      "bonding_curve"
+    ]
+  },
+  {
+    "name": "readonly-current_creator_quote_token_account",
+    "readonly": [
+      "current_creator_quote_token_account"
+    ]
+  },
+  {
+    "name": "readonly-creator_vault",
+    "readonly": [
+      "creator_vault"
+    ]
+  },
+  {
+    "name": "readonly-creator_vault_quote_token_account",
+    "readonly": [
+      "creator_vault_quote_token_account"
+    ]
+  },
+  {
+    "name": "readonly-holder_creator_vault",
+    "readonly": [
+      "holder_creator_vault"
+    ]
+  },
+  {
+    "name": "readonly-holder_creator_vault_quote_token_account",
+    "readonly": [
+      "holder_creator_vault_quote_token_account"
+    ]
+  },
+  {
+    "name": "readonly-pool",
+    "readonly": [
+      "pool"
+    ]
+  },
+  {
+    "name": "readonly-coin_creator_vault_authority",
+    "readonly": [
+      "coin_creator_vault_authority"
+    ]
+  },
+  {
+    "name": "readonly-coin_creator_vault_ata",
+    "readonly": [
+      "coin_creator_vault_ata"
+    ]
+  },
+  {
+    "name": "readonly-sharing_config",
+    "readonly": [
+      "sharing_config"
+    ]
+  },
+  {
+    "name": "owner-global-system",
+    "global_owner": "11111111111111111111111111111111"
+  },
+  {
+    "name": "owner-global-fees",
+    "global_owner": "pfeeUxB6jkeY1Hxd7CsFCAjcbHA9rWtchMGdZ6VojVZ"
+  },
+  {
+    "name": "owner-curve-system",
+    "curve_owner": "11111111111111111111111111111111"
+  },
+  {
+    "name": "owner-curve-fees",
+    "curve_owner": "pfeeUxB6jkeY1Hxd7CsFCAjcbHA9rWtchMGdZ6VojVZ"
+  },
+  {
+    "name": "complete-0",
+    "complete": 0
+  },
+  {
+    "name": "complete-1",
+    "complete": 1
+  },
+  {
+    "name": "complete-2",
+    "complete": 2
+  },
+  {
+    "name": "wallet-False-0",
+    "current": "9gECFE3oJt262dFDhySt7ymNNVRUhrq5tbNjZRE3qoQ9",
+    "current_writable": false,
+    "accounts": {
+      "creator_vault": {
+        "lamports": 0
+      }
+    }
+  },
+  {
+    "name": "wallet-False-890880",
+    "current": "9gECFE3oJt262dFDhySt7ymNNVRUhrq5tbNjZRE3qoQ9",
+    "current_writable": false,
+    "accounts": {
+      "creator_vault": {
+        "lamports": 890880
+      }
+    }
+  },
+  {
+    "name": "wallet-False-890881",
+    "current": "9gECFE3oJt262dFDhySt7ymNNVRUhrq5tbNjZRE3qoQ9",
+    "current_writable": false,
+    "accounts": {
+      "creator_vault": {
+        "lamports": 890881
+      }
+    }
+  },
+  {
+    "name": "wallet-False-1000000",
+    "current": "9gECFE3oJt262dFDhySt7ymNNVRUhrq5tbNjZRE3qoQ9",
+    "current_writable": false,
+    "accounts": {
+      "creator_vault": {
+        "lamports": 1000000
+      }
+    }
+  },
+  {
+    "name": "wallet-True-0",
+    "current": "9gECFE3oJt262dFDhySt7ymNNVRUhrq5tbNjZRE3qoQ9",
+    "current_writable": true,
+    "accounts": {
+      "creator_vault": {
+        "lamports": 0
+      }
+    }
+  },
+  {
+    "name": "wallet-True-890880",
+    "current": "9gECFE3oJt262dFDhySt7ymNNVRUhrq5tbNjZRE3qoQ9",
+    "current_writable": true,
+    "accounts": {
+      "creator_vault": {
+        "lamports": 890880
+      }
+    }
+  },
+  {
+    "name": "wallet-True-890881",
+    "current": "9gECFE3oJt262dFDhySt7ymNNVRUhrq5tbNjZRE3qoQ9",
+    "current_writable": true,
+    "accounts": {
+      "creator_vault": {
+        "lamports": 890881
+      }
+    }
+  },
+  {
+    "name": "wallet-True-1000000",
+    "current": "9gECFE3oJt262dFDhySt7ymNNVRUhrq5tbNjZRE3qoQ9",
+    "current_writable": true,
+    "accounts": {
+      "creator_vault": {
+        "lamports": 1000000
+      }
+    }
+  },
+  {
+    "name": "holder-sweep-0",
+    "holder": true,
+    "new_none": true,
+    "accounts": {
+      "creator_vault": {
+        "lamports": 0
+      }
+    }
+  },
+  {
+    "name": "holder-sweep-890880",
+    "holder": true,
+    "new_none": true,
+    "accounts": {
+      "creator_vault": {
+        "lamports": 890880
+      }
+    }
+  },
+  {
+    "name": "holder-sweep-890881",
+    "holder": true,
+    "new_none": true,
+    "accounts": {
+      "creator_vault": {
+        "lamports": 890881
+      }
+    }
+  },
+  {
+    "name": "holder-sweep-1000000",
+    "holder": true,
+    "new_none": true,
+    "accounts": {
+      "creator_vault": {
+        "lamports": 1000000
+      }
+    }
+  },
+  {
+    "name": "stable-0",
+    "quote": "6ws1bVyu3F8wGy1fPHhrc2v8UyWiGbRAAuek8SwikKPD"
+  },
+  {
+    "name": "stable-1",
+    "quote": "6ws1bVyu3F8wGy1fPHhrc2v8UyWiGbRAAuek8SwikKPD",
+    "fee": 0
+  },
+  {
+    "name": "stable-2",
+    "quote": "6ws1bVyu3F8wGy1fPHhrc2v8UyWiGbRAAuek8SwikKPD",
+    "fee": 1
+  },
+  {
+    "name": "stable-3",
+    "quote": "6ws1bVyu3F8wGy1fPHhrc2v8UyWiGbRAAuek8SwikKPD",
+    "fee": 10000
+  },
+  {
+    "name": "stable-4",
+    "quote": "6ws1bVyu3F8wGy1fPHhrc2v8UyWiGbRAAuek8SwikKPD",
+    "fee": 10001
+  },
+  {
+    "name": "stable-5",
+    "quote": "6ws1bVyu3F8wGy1fPHhrc2v8UyWiGbRAAuek8SwikKPD",
+    "fee": 18446744073709551615
+  },
+  {
+    "name": "stable-6",
+    "quote": "6ws1bVyu3F8wGy1fPHhrc2v8UyWiGbRAAuek8SwikKPD",
+    "holder": true,
+    "new_none": true
+  },
+  {
+    "name": "stable-7",
+    "quote": "6ws1bVyu3F8wGy1fPHhrc2v8UyWiGbRAAuek8SwikKPD",
+    "holder": true,
+    "new_none": true,
+    "accounts": {
+      "creator_vault_quote_token_account": {
+        "tokens": 1000
+      }
+    }
+  },
+  {
+    "name": "stable-8",
+    "quote": "6ws1bVyu3F8wGy1fPHhrc2v8UyWiGbRAAuek8SwikKPD",
+    "current": "9gECFE3oJt262dFDhySt7ymNNVRUhrq5tbNjZRE3qoQ9",
+    "current_writable": true,
+    "accounts": {
+      "creator_vault_quote_token_account": {
+        "tokens": 1000
+      }
+    }
+  },
+  {
+    "name": "count-0",
+    "count": 0
+  },
+  {
+    "name": "count-1",
+    "count": 1
+  },
+  {
+    "name": "count-2",
+    "count": 2
+  },
+  {
+    "name": "count-3",
+    "count": 3
+  },
+  {
+    "name": "count-4",
+    "count": 4
+  },
+  {
+    "name": "count-5",
+    "count": 5
+  },
+  {
+    "name": "count-6",
+    "count": 6
+  },
+  {
+    "name": "count-7",
+    "count": 7
+  },
+  {
+    "name": "count-8",
+    "count": 8
+  },
+  {
+    "name": "count-9",
+    "count": 9
+  },
+  {
+    "name": "count-10",
+    "count": 10
+  },
+  {
+    "name": "count-11",
+    "count": 11
+  },
+  {
+    "name": "count-12",
+    "count": 12
+  },
+  {
+    "name": "count-13",
+    "count": 13
+  },
+  {
+    "name": "count-14",
+    "count": 14
+  },
+  {
+    "name": "count-15",
+    "count": 15
+  },
+  {
+    "name": "count-16",
+    "count": 16
+  },
+  {
+    "name": "count-17",
+    "count": 17
+  },
+  {
+    "name": "count-18",
+    "count": 18
+  },
+  {
+    "name": "count-19",
+    "count": 19
+  },
+  {
+    "name": "count-20",
+    "count": 20
+  },
+  {
+    "name": "count-21",
+    "count": 21
+  },
+  {
+    "name": "count-22",
+    "count": 22
+  },
+  {
+    "name": "count-23",
+    "count": 23
+  },
+  {
+    "name": "count-24",
+    "count": 24
+  },
+  {
+    "name": "count-25",
+    "count": 25
+  },
+  {
+    "name": "unsigned",
+    "unsigned": true
+  },
+  {
+    "name": "trailing",
+    "trailing": "ffff"
+  },
+  {
+    "name": "curve-state-81-0",
+    "curve_patches": [
+      [
+        81,
+        "00"
+      ]
+    ]
+  },
+  {
+    "name": "curve-state-81-1",
+    "curve_patches": [
+      [
+        81,
+        "01"
+      ]
+    ]
+  },
+  {
+    "name": "curve-state-82-0",
+    "curve_patches": [
+      [
+        82,
+        "00"
+      ]
+    ]
+  },
+  {
+    "name": "curve-state-82-1",
+    "curve_patches": [
+      [
+        82,
+        "01"
+      ]
+    ]
+  },
+  {
+    "name": "curve-state-123-0",
+    "curve_patches": [
+      [
+        123,
+        "00"
+      ]
+    ]
+  },
+  {
+    "name": "curve-state-123-1",
+    "curve_patches": [
+      [
+        123,
+        "01"
+      ]
+    ]
+  },
+  {
+    "name": "curve-state-124-0",
+    "curve_patches": [
+      [
+        124,
+        "00"
+      ]
+    ]
+  },
+  {
+    "name": "curve-state-124-1",
+    "curve_patches": [
+      [
+        124,
+        "01"
+      ]
+    ]
+  },
+  {
+    "name": "holder-options-0-None-False",
+    "curve_patches": [
+      [
+        124,
+        "00"
+      ]
+    ],
+    "new_none": false
+  },
+  {
+    "name": "holder-options-0-None-True",
+    "curve_patches": [
+      [
+        124,
+        "00"
+      ]
+    ],
+    "new_none": true
+  },
+  {
+    "name": "holder-options-0-False-False",
+    "curve_patches": [
+      [
+        124,
+        "00"
+      ]
+    ],
+    "new_none": false,
+    "holder": false
+  },
+  {
+    "name": "holder-options-0-False-True",
+    "curve_patches": [
+      [
+        124,
+        "00"
+      ]
+    ],
+    "new_none": true,
+    "holder": false
+  },
+  {
+    "name": "holder-options-0-True-False",
+    "curve_patches": [
+      [
+        124,
+        "00"
+      ]
+    ],
+    "new_none": false,
+    "holder": true
+  },
+  {
+    "name": "holder-options-0-True-True",
+    "curve_patches": [
+      [
+        124,
+        "00"
+      ]
+    ],
+    "new_none": true,
+    "holder": true
+  },
+  {
+    "name": "holder-options-1-None-False",
+    "curve_patches": [
+      [
+        124,
+        "01"
+      ]
+    ],
+    "new_none": false
+  },
+  {
+    "name": "holder-options-1-None-True",
+    "curve_patches": [
+      [
+        124,
+        "01"
+      ]
+    ],
+    "new_none": true
+  },
+  {
+    "name": "holder-options-1-False-False",
+    "curve_patches": [
+      [
+        124,
+        "01"
+      ]
+    ],
+    "new_none": false,
+    "holder": false
+  },
+  {
+    "name": "holder-options-1-False-True",
+    "curve_patches": [
+      [
+        124,
+        "01"
+      ]
+    ],
+    "new_none": true,
+    "holder": false
+  },
+  {
+    "name": "holder-options-1-True-False",
+    "curve_patches": [
+      [
+        124,
+        "01"
+      ]
+    ],
+    "new_none": false,
+    "holder": true
+  },
+  {
+    "name": "holder-options-1-True-True",
+    "curve_patches": [
+      [
+        124,
+        "01"
+      ]
+    ],
+    "new_none": true,
+    "holder": true
+  },
+  {
+    "name": "account-layout-mint-0",
+    "accounts": {
+      "mint": {
+        "length": 0
+      }
+    }
+  },
+  {
+    "name": "account-layout-mint-1",
+    "accounts": {
+      "mint": {
+        "lamports": 0
+      }
+    }
+  },
+  {
+    "name": "account-layout-mint-2",
+    "accounts": {
+      "mint": {
+        "owner": "11111111111111111111111111111111"
+      }
+    }
+  },
+  {
+    "name": "account-layout-mint-3",
+    "accounts": {
+      "mint": {
+        "data": "00"
+      }
+    }
+  },
+  {
+    "name": "account-layout-mint-4",
+    "accounts": {
+      "mint": {
+        "lamports": 1000000
+      }
+    }
+  },
+  {
+    "name": "account-layout-quote_mint-0",
+    "accounts": {
+      "quote_mint": {
+        "length": 0
+      }
+    }
+  },
+  {
+    "name": "account-layout-quote_mint-1",
+    "accounts": {
+      "quote_mint": {
+        "lamports": 0
+      }
+    }
+  },
+  {
+    "name": "account-layout-quote_mint-2",
+    "accounts": {
+      "quote_mint": {
+        "owner": "11111111111111111111111111111111"
+      }
+    }
+  },
+  {
+    "name": "account-layout-quote_mint-3",
+    "accounts": {
+      "quote_mint": {
+        "data": "00"
+      }
+    }
+  },
+  {
+    "name": "account-layout-quote_mint-4",
+    "accounts": {
+      "quote_mint": {
+        "lamports": 1000000
+      }
+    }
+  },
+  {
+    "name": "account-layout-quote_token_program-0",
+    "accounts": {
+      "quote_token_program": {
+        "length": 0
+      }
+    }
+  },
+  {
+    "name": "account-layout-quote_token_program-1",
+    "accounts": {
+      "quote_token_program": {
+        "lamports": 0
+      }
+    }
+  },
+  {
+    "name": "account-layout-quote_token_program-2",
+    "accounts": {
+      "quote_token_program": {
+        "owner": "11111111111111111111111111111111"
+      }
+    }
+  },
+  {
+    "name": "account-layout-quote_token_program-3",
+    "accounts": {
+      "quote_token_program": {
+        "data": "00"
+      }
+    }
+  },
+  {
+    "name": "account-layout-quote_token_program-4",
+    "accounts": {
+      "quote_token_program": {
+        "lamports": 1000000
+      }
+    }
+  },
+  {
+    "name": "account-layout-pool-0",
+    "accounts": {
+      "pool": {
+        "length": 0
+      }
+    }
+  },
+  {
+    "name": "account-layout-pool-1",
+    "accounts": {
+      "pool": {
+        "lamports": 0
+      }
+    }
+  },
+  {
+    "name": "account-layout-pool-2",
+    "accounts": {
+      "pool": {
+        "owner": "11111111111111111111111111111111"
+      }
+    }
+  },
+  {
+    "name": "account-layout-pool-3",
+    "accounts": {
+      "pool": {
+        "data": "00"
+      }
+    }
+  },
+  {
+    "name": "account-layout-pool-4",
+    "accounts": {
+      "pool": {
+        "lamports": 1000000
+      }
+    }
+  },
+  {
+    "name": "account-layout-amm_global_config-0",
+    "accounts": {
+      "amm_global_config": {
+        "length": 0
+      }
+    }
+  },
+  {
+    "name": "account-layout-amm_global_config-1",
+    "accounts": {
+      "amm_global_config": {
+        "lamports": 0
+      }
+    }
+  },
+  {
+    "name": "account-layout-amm_global_config-2",
+    "accounts": {
+      "amm_global_config": {
+        "owner": "11111111111111111111111111111111"
+      }
+    }
+  },
+  {
+    "name": "account-layout-amm_global_config-3",
+    "accounts": {
+      "amm_global_config": {
+        "data": "00"
+      }
+    }
+  },
+  {
+    "name": "account-layout-amm_global_config-4",
+    "accounts": {
+      "amm_global_config": {
+        "lamports": 1000000
+      }
+    }
+  },
+  {
+    "name": "account-layout-current_creator-0",
+    "accounts": {
+      "current_creator": {
+        "length": 0
+      }
+    }
+  },
+  {
+    "name": "account-layout-current_creator-1",
+    "accounts": {
+      "current_creator": {
+        "lamports": 0
+      }
+    }
+  },
+  {
+    "name": "account-layout-current_creator-2",
+    "accounts": {
+      "current_creator": {
+        "owner": "11111111111111111111111111111111"
+      }
+    }
+  },
+  {
+    "name": "account-layout-current_creator-3",
+    "accounts": {
+      "current_creator": {
+        "data": "00"
+      }
+    }
+  },
+  {
+    "name": "account-layout-current_creator-4",
+    "accounts": {
+      "current_creator": {
+        "lamports": 1000000
+      }
+    }
+  },
+  {
+    "name": "account-layout-creator_vault-0",
+    "accounts": {
+      "creator_vault": {
+        "length": 0
+      }
+    }
+  },
+  {
+    "name": "account-layout-creator_vault-1",
+    "accounts": {
+      "creator_vault": {
+        "lamports": 0
+      }
+    }
+  },
+  {
+    "name": "account-layout-creator_vault-2",
+    "accounts": {
+      "creator_vault": {
+        "owner": "11111111111111111111111111111111"
+      }
+    }
+  },
+  {
+    "name": "account-layout-creator_vault-3",
+    "accounts": {
+      "creator_vault": {
+        "data": "00"
+      }
+    }
+  },
+  {
+    "name": "account-layout-creator_vault-4",
+    "accounts": {
+      "creator_vault": {
+        "lamports": 1000000
+      }
+    }
+  },
+  {
+    "name": "account-layout-holder_creator_vault-0",
+    "accounts": {
+      "holder_creator_vault": {
+        "length": 0
+      }
+    }
+  },
+  {
+    "name": "account-layout-holder_creator_vault-1",
+    "accounts": {
+      "holder_creator_vault": {
+        "lamports": 0
+      }
+    }
+  },
+  {
+    "name": "account-layout-holder_creator_vault-2",
+    "accounts": {
+      "holder_creator_vault": {
+        "owner": "11111111111111111111111111111111"
+      }
+    }
+  },
+  {
+    "name": "account-layout-holder_creator_vault-3",
+    "accounts": {
+      "holder_creator_vault": {
+        "data": "00"
+      }
+    }
+  },
+  {
+    "name": "account-layout-holder_creator_vault-4",
+    "accounts": {
+      "holder_creator_vault": {
+        "lamports": 1000000
+      }
+    }
+  },
+  {
+    "name": "account-layout-coin_creator_vault_authority-0",
+    "accounts": {
+      "coin_creator_vault_authority": {
+        "length": 0
+      }
+    }
+  },
+  {
+    "name": "account-layout-coin_creator_vault_authority-1",
+    "accounts": {
+      "coin_creator_vault_authority": {
+        "lamports": 0
+      }
+    }
+  },
+  {
+    "name": "account-layout-coin_creator_vault_authority-2",
+    "accounts": {
+      "coin_creator_vault_authority": {
+        "owner": "11111111111111111111111111111111"
+      }
+    }
+  },
+  {
+    "name": "account-layout-coin_creator_vault_authority-3",
+    "accounts": {
+      "coin_creator_vault_authority": {
+        "data": "00"
+      }
+    }
+  },
+  {
+    "name": "account-layout-coin_creator_vault_authority-4",
+    "accounts": {
+      "coin_creator_vault_authority": {
+        "lamports": 1000000
+      }
+    }
+  },
+  {
+    "name": "pool-byte-0",
+    "accounts": {
+      "pool": {
+        "patches": [
+          [
+            0,
+            "ff"
+          ]
+        ]
+      }
+    }
+  },
+  {
+    "name": "pool-byte-8",
+    "accounts": {
+      "pool": {
+        "patches": [
+          [
+            8,
+            "ff"
+          ]
+        ]
+      }
+    }
+  },
+  {
+    "name": "pool-byte-9",
+    "accounts": {
+      "pool": {
+        "patches": [
+          [
+            9,
+            "ff"
+          ]
+        ]
+      }
+    }
+  },
+  {
+    "name": "pool-byte-11",
+    "accounts": {
+      "pool": {
+        "patches": [
+          [
+            11,
+            "ff"
+          ]
+        ]
+      }
+    }
+  },
+  {
+    "name": "pool-byte-43",
+    "accounts": {
+      "pool": {
+        "patches": [
+          [
+            43,
+            "ff"
+          ]
+        ]
+      }
+    }
+  },
+  {
+    "name": "pool-byte-75",
+    "accounts": {
+      "pool": {
+        "patches": [
+          [
+            75,
+            "ff"
+          ]
+        ]
+      }
+    }
+  },
+  {
+    "name": "pool-byte-211",
+    "accounts": {
+      "pool": {
+        "patches": [
+          [
+            211,
+            "ff"
+          ]
+        ]
+      }
+    }
+  },
+  {
+    "name": "pool-byte-243",
+    "accounts": {
+      "pool": {
+        "patches": [
+          [
+            243,
+            "ff"
+          ]
+        ]
+      }
+    }
+  },
+  {
+    "name": "pool-byte-244",
+    "accounts": {
+      "pool": {
+        "patches": [
+          [
+            244,
+            "ff"
+          ]
+        ]
+      }
+    }
+  },
+  {
+    "name": "amm-funds-False-0",
+    "holder": false,
+    "new_none": false,
+    "current": "9gECFE3oJt262dFDhySt7ymNNVRUhrq5tbNjZRE3qoQ9",
+    "current_writable": true,
+    "accounts": {
+      "coin_creator_vault_ata": {
+        "tokens": 0
+      }
+    }
+  },
+  {
+    "name": "amm-funds-False-1",
+    "holder": false,
+    "new_none": false,
+    "current": "9gECFE3oJt262dFDhySt7ymNNVRUhrq5tbNjZRE3qoQ9",
+    "current_writable": true,
+    "accounts": {
+      "coin_creator_vault_ata": {
+        "tokens": 1
+      }
+    }
+  },
+  {
+    "name": "amm-funds-False-1000000",
+    "holder": false,
+    "new_none": false,
+    "current": "9gECFE3oJt262dFDhySt7ymNNVRUhrq5tbNjZRE3qoQ9",
+    "current_writable": true,
+    "accounts": {
+      "coin_creator_vault_ata": {
+        "tokens": 1000000
+      }
+    }
+  },
+  {
+    "name": "amm-funds-True-0",
+    "holder": true,
+    "new_none": true,
+    "current": "9gECFE3oJt262dFDhySt7ymNNVRUhrq5tbNjZRE3qoQ9",
+    "current_writable": true,
+    "accounts": {
+      "coin_creator_vault_ata": {
+        "tokens": 0
+      }
+    }
+  },
+  {
+    "name": "amm-funds-True-1",
+    "holder": true,
+    "new_none": true,
+    "current": "9gECFE3oJt262dFDhySt7ymNNVRUhrq5tbNjZRE3qoQ9",
+    "current_writable": true,
+    "accounts": {
+      "coin_creator_vault_ata": {
+        "tokens": 1
+      }
+    }
+  },
+  {
+    "name": "amm-funds-True-1000000",
+    "holder": true,
+    "new_none": true,
+    "current": "9gECFE3oJt262dFDhySt7ymNNVRUhrq5tbNjZRE3qoQ9",
+    "current_writable": true,
+    "accounts": {
+      "coin_creator_vault_ata": {
+        "tokens": 1000000
+      }
+    }
+  },
+  {
+    "name": "stable-fee-1",
+    "quote": "6ws1bVyu3F8wGy1fPHhrc2v8UyWiGbRAAuek8SwikKPD",
+    "fee": 1
+  },
+  {
+    "name": "stable-fee-50",
+    "quote": "6ws1bVyu3F8wGy1fPHhrc2v8UyWiGbRAAuek8SwikKPD",
+    "fee": 50
+  },
+  {
+    "name": "stable-fee-100",
+    "quote": "6ws1bVyu3F8wGy1fPHhrc2v8UyWiGbRAAuek8SwikKPD",
+    "fee": 100
+  },
+  {
+    "name": "stable-fee-999",
+    "quote": "6ws1bVyu3F8wGy1fPHhrc2v8UyWiGbRAAuek8SwikKPD",
+    "fee": 999
+  },
+  {
+    "name": "stable-fee-1000",
+    "quote": "6ws1bVyu3F8wGy1fPHhrc2v8UyWiGbRAAuek8SwikKPD",
+    "fee": 1000
+  },
+  {
+    "name": "stable-fee-1001",
+    "quote": "6ws1bVyu3F8wGy1fPHhrc2v8UyWiGbRAAuek8SwikKPD",
+    "fee": 1001
+  },
+  {
+    "name": "token22-0",
+    "token_program": "TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb",
+    "quote": "6ws1bVyu3F8wGy1fPHhrc2v8UyWiGbRAAuek8SwikKPD"
+  },
+  {
+    "name": "token22-1",
+    "token_program": "TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb",
+    "quote": "6ws1bVyu3F8wGy1fPHhrc2v8UyWiGbRAAuek8SwikKPD",
+    "holder": true,
+    "new_none": true,
+    "accounts": {
+      "creator_vault_quote_token_account": {
+        "tokens": 1000
+      }
+    }
+  },
+  {
+    "name": "token22-2",
+    "token_program": "TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb",
+    "quote": "6ws1bVyu3F8wGy1fPHhrc2v8UyWiGbRAAuek8SwikKPD",
+    "current": "9gECFE3oJt262dFDhySt7ymNNVRUhrq5tbNjZRE3qoQ9",
+    "current_writable": true,
+    "accounts": {
+      "creator_vault_quote_token_account": {
+        "tokens": 1000
+      }
+    }
+  },
+  {
+    "name": "shared-amm-False-0",
+    "holder": false,
+    "new_none": false,
+    "accounts": {
+      "coin_creator_vault_ata": {
+        "tokens": 0
+      }
+    }
+  },
+  {
+    "name": "shared-amm-False-1",
+    "holder": false,
+    "new_none": false,
+    "accounts": {
+      "coin_creator_vault_ata": {
+        "tokens": 1
+      }
+    }
+  },
+  {
+    "name": "shared-amm-False-1000000",
+    "holder": false,
+    "new_none": false,
+    "accounts": {
+      "coin_creator_vault_ata": {
+        "tokens": 1000000
+      }
+    }
+  },
+  {
+    "name": "shared-amm-True-0",
+    "holder": true,
+    "new_none": true,
+    "accounts": {
+      "coin_creator_vault_ata": {
+        "tokens": 0
+      }
+    }
+  },
+  {
+    "name": "shared-amm-True-1",
+    "holder": true,
+    "new_none": true,
+    "accounts": {
+      "coin_creator_vault_ata": {
+        "tokens": 1
+      }
+    }
+  },
+  {
+    "name": "shared-amm-True-1000000",
+    "holder": true,
+    "new_none": true,
+    "accounts": {
+      "coin_creator_vault_ata": {
+        "tokens": 1000000
+      }
+    }
+  },
+  {
+    "name": "source-shape-creator_vault_quote_token_account-0",
+    "current": "9gECFE3oJt262dFDhySt7ymNNVRUhrq5tbNjZRE3qoQ9",
+    "current_writable": true,
+    "quote": "6ws1bVyu3F8wGy1fPHhrc2v8UyWiGbRAAuek8SwikKPD",
+    "accounts": {
+      "creator_vault_quote_token_account": {
+        "data": "00",
+        "lamports": 2039280,
+        "owner": "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA"
+      }
+    }
+  },
+  {
+    "name": "source-shape-creator_vault_quote_token_account-1",
+    "current": "9gECFE3oJt262dFDhySt7ymNNVRUhrq5tbNjZRE3qoQ9",
+    "current_writable": true,
+    "quote": "6ws1bVyu3F8wGy1fPHhrc2v8UyWiGbRAAuek8SwikKPD",
+    "accounts": {
+      "creator_vault_quote_token_account": {
+        "tokens": 0
+      }
+    }
+  },
+  {
+    "name": "source-shape-creator_vault_quote_token_account-2",
+    "current": "9gECFE3oJt262dFDhySt7ymNNVRUhrq5tbNjZRE3qoQ9",
+    "current_writable": true,
+    "quote": "6ws1bVyu3F8wGy1fPHhrc2v8UyWiGbRAAuek8SwikKPD",
+    "accounts": {
+      "creator_vault_quote_token_account": {
+        "tokens": 1
+      }
+    }
+  },
+  {
+    "name": "source-shape-creator_vault_quote_token_account-3",
+    "current": "9gECFE3oJt262dFDhySt7ymNNVRUhrq5tbNjZRE3qoQ9",
+    "current_writable": true,
+    "quote": "6ws1bVyu3F8wGy1fPHhrc2v8UyWiGbRAAuek8SwikKPD",
+    "accounts": {
+      "creator_vault_quote_token_account": {
+        "tokens": 1,
+        "patches": [
+          [
+            108,
+            "00"
+          ]
+        ]
+      }
+    }
+  },
+  {
+    "name": "source-shape-creator_vault_quote_token_account-4",
+    "current": "9gECFE3oJt262dFDhySt7ymNNVRUhrq5tbNjZRE3qoQ9",
+    "current_writable": true,
+    "quote": "6ws1bVyu3F8wGy1fPHhrc2v8UyWiGbRAAuek8SwikKPD",
+    "accounts": {
+      "creator_vault_quote_token_account": {
+        "tokens": 1,
+        "patches": [
+          [
+            108,
+            "02"
+          ]
+        ]
+      }
+    }
+  },
+  {
+    "name": "source-shape-creator_vault_quote_token_account-5",
+    "current": "9gECFE3oJt262dFDhySt7ymNNVRUhrq5tbNjZRE3qoQ9",
+    "current_writable": true,
+    "quote": "6ws1bVyu3F8wGy1fPHhrc2v8UyWiGbRAAuek8SwikKPD",
+    "accounts": {
+      "creator_vault_quote_token_account": {
+        "tokens": 1,
+        "patches": [
+          [
+            0,
+            "0000000000000000000000000000000000000000000000000000000000000000"
+          ]
+        ]
+      }
+    }
+  },
+  {
+    "name": "source-shape-creator_vault_quote_token_account-6",
+    "current": "9gECFE3oJt262dFDhySt7ymNNVRUhrq5tbNjZRE3qoQ9",
+    "current_writable": true,
+    "quote": "6ws1bVyu3F8wGy1fPHhrc2v8UyWiGbRAAuek8SwikKPD",
+    "accounts": {
+      "creator_vault_quote_token_account": {
+        "tokens": 1,
+        "patches": [
+          [
+            32,
+            "0000000000000000000000000000000000000000000000000000000000000000"
+          ]
+        ]
+      }
+    }
+  },
+  {
+    "name": "source-shape-creator_vault_quote_token_account-7",
+    "current": "9gECFE3oJt262dFDhySt7ymNNVRUhrq5tbNjZRE3qoQ9",
+    "current_writable": true,
+    "quote": "6ws1bVyu3F8wGy1fPHhrc2v8UyWiGbRAAuek8SwikKPD",
+    "accounts": {
+      "creator_vault_quote_token_account": {
+        "tokens": 0,
+        "patches": [
+          [
+            108,
+            "02"
+          ]
+        ]
+      }
+    }
+  },
+  {
+    "name": "source-shape-coin_creator_vault_ata-0",
+    "current": "9gECFE3oJt262dFDhySt7ymNNVRUhrq5tbNjZRE3qoQ9",
+    "current_writable": true,
+    "quote": "6ws1bVyu3F8wGy1fPHhrc2v8UyWiGbRAAuek8SwikKPD",
+    "accounts": {
+      "coin_creator_vault_ata": {
+        "data": "00",
+        "lamports": 2039280,
+        "owner": "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA"
+      }
+    }
+  },
+  {
+    "name": "source-shape-coin_creator_vault_ata-1",
+    "current": "9gECFE3oJt262dFDhySt7ymNNVRUhrq5tbNjZRE3qoQ9",
+    "current_writable": true,
+    "quote": "6ws1bVyu3F8wGy1fPHhrc2v8UyWiGbRAAuek8SwikKPD",
+    "accounts": {
+      "coin_creator_vault_ata": {
+        "tokens": 0
+      }
+    }
+  },
+  {
+    "name": "source-shape-coin_creator_vault_ata-2",
+    "current": "9gECFE3oJt262dFDhySt7ymNNVRUhrq5tbNjZRE3qoQ9",
+    "current_writable": true,
+    "quote": "6ws1bVyu3F8wGy1fPHhrc2v8UyWiGbRAAuek8SwikKPD",
+    "accounts": {
+      "coin_creator_vault_ata": {
+        "tokens": 1
+      }
+    }
+  },
+  {
+    "name": "source-shape-coin_creator_vault_ata-3",
+    "current": "9gECFE3oJt262dFDhySt7ymNNVRUhrq5tbNjZRE3qoQ9",
+    "current_writable": true,
+    "quote": "6ws1bVyu3F8wGy1fPHhrc2v8UyWiGbRAAuek8SwikKPD",
+    "accounts": {
+      "coin_creator_vault_ata": {
+        "tokens": 1,
+        "patches": [
+          [
+            108,
+            "00"
+          ]
+        ]
+      }
+    }
+  },
+  {
+    "name": "source-shape-coin_creator_vault_ata-4",
+    "current": "9gECFE3oJt262dFDhySt7ymNNVRUhrq5tbNjZRE3qoQ9",
+    "current_writable": true,
+    "quote": "6ws1bVyu3F8wGy1fPHhrc2v8UyWiGbRAAuek8SwikKPD",
+    "accounts": {
+      "coin_creator_vault_ata": {
+        "tokens": 1,
+        "patches": [
+          [
+            108,
+            "02"
+          ]
+        ]
+      }
+    }
+  },
+  {
+    "name": "source-shape-coin_creator_vault_ata-5",
+    "current": "9gECFE3oJt262dFDhySt7ymNNVRUhrq5tbNjZRE3qoQ9",
+    "current_writable": true,
+    "quote": "6ws1bVyu3F8wGy1fPHhrc2v8UyWiGbRAAuek8SwikKPD",
+    "accounts": {
+      "coin_creator_vault_ata": {
+        "tokens": 1,
+        "patches": [
+          [
+            0,
+            "0000000000000000000000000000000000000000000000000000000000000000"
+          ]
+        ]
+      }
+    }
+  },
+  {
+    "name": "source-shape-coin_creator_vault_ata-6",
+    "current": "9gECFE3oJt262dFDhySt7ymNNVRUhrq5tbNjZRE3qoQ9",
+    "current_writable": true,
+    "quote": "6ws1bVyu3F8wGy1fPHhrc2v8UyWiGbRAAuek8SwikKPD",
+    "accounts": {
+      "coin_creator_vault_ata": {
+        "tokens": 1,
+        "patches": [
+          [
+            32,
+            "0000000000000000000000000000000000000000000000000000000000000000"
+          ]
+        ]
+      }
+    }
+  },
+  {
+    "name": "source-shape-coin_creator_vault_ata-7",
+    "current": "9gECFE3oJt262dFDhySt7ymNNVRUhrq5tbNjZRE3qoQ9",
+    "current_writable": true,
+    "quote": "6ws1bVyu3F8wGy1fPHhrc2v8UyWiGbRAAuek8SwikKPD",
+    "accounts": {
+      "coin_creator_vault_ata": {
+        "tokens": 0,
+        "patches": [
+          [
+            108,
+            "02"
+          ]
+        ]
+      }
+    }
+  },
+  {
+    "name": "quote-global-0",
+    "quote": "6ws1bVyu3F8wGy1fPHhrc2v8UyWiGbRAAuek8SwikKPD",
+    "fee": 100,
+    "global_patches": [
+      [
+        1045,
+        "00"
+      ]
+    ]
+  },
+  {
+    "name": "quote-global-1",
+    "quote": "6ws1bVyu3F8wGy1fPHhrc2v8UyWiGbRAAuek8SwikKPD",
+    "fee": 100,
+    "global_patches": [
+      [
+        1046,
+        "0000000000000000"
+      ]
+    ]
+  },
+  {
+    "name": "quote-global-2",
+    "quote": "6ws1bVyu3F8wGy1fPHhrc2v8UyWiGbRAAuek8SwikKPD",
+    "fee": 100,
+    "global_patches": [
+      [
+        1046,
+        "6400000000000000"
+      ]
+    ]
+  },
+  {
+    "name": "quote-global-3",
+    "quote": "6ws1bVyu3F8wGy1fPHhrc2v8UyWiGbRAAuek8SwikKPD",
+    "fee": 100,
+    "global_patches": [
+      [
+        1013,
+        "5858585858585858585858585858585858585858585858585858585858585858"
+      ]
+    ]
+  },
+  {
+    "name": "resize-rent-81-1",
+    "curve_length": 81,
+    "accounts": {
+      "bonding_curve": {
+        "lamports": 1
+      }
+    }
+  },
+  {
+    "name": "resize-rent-81-1000000",
+    "curve_length": 81,
+    "accounts": {
+      "bonding_curve": {
+        "lamports": 1000000
+      }
+    }
+  },
+  {
+    "name": "resize-rent-81-2046240",
+    "curve_length": 81,
+    "accounts": {
+      "bonding_curve": {
+        "lamports": 2046240
+      }
+    }
+  },
+  {
+    "name": "resize-rent-125-1",
+    "curve_length": 125,
+    "accounts": {
+      "bonding_curve": {
+        "lamports": 1
+      }
+    }
+  },
+  {
+    "name": "resize-rent-125-1000000",
+    "curve_length": 125,
+    "accounts": {
+      "bonding_curve": {
+        "lamports": 1000000
+      }
+    }
+  },
+  {
+    "name": "resize-rent-125-2046240",
+    "curve_length": 125,
+    "accounts": {
+      "bonding_curve": {
+        "lamports": 2046240
+      }
+    }
+  },
+  {
+    "name": "resize-rent-166-1",
+    "curve_length": 166,
+    "accounts": {
+      "bonding_curve": {
+        "lamports": 1
+      }
+    }
+  },
+  {
+    "name": "resize-rent-166-1000000",
+    "curve_length": 166,
+    "accounts": {
+      "bonding_curve": {
+        "lamports": 1000000
+      }
+    }
+  },
+  {
+    "name": "resize-rent-166-2046240",
+    "curve_length": 166,
+    "accounts": {
+      "bonding_curve": {
+        "lamports": 2046240
+      }
+    }
+  },
+  {
+    "name": "resize-rent-200-1",
+    "curve_length": 200,
+    "accounts": {
+      "bonding_curve": {
+        "lamports": 1
+      }
+    }
+  },
+  {
+    "name": "resize-rent-200-1000000",
+    "curve_length": 200,
+    "accounts": {
+      "bonding_curve": {
+        "lamports": 1000000
+      }
+    }
+  },
+  {
+    "name": "resize-rent-200-2046240",
+    "curve_length": 200,
+    "accounts": {
+      "bonding_curve": {
+        "lamports": 2046240
+      }
+    }
+  },
+  {
+    "name": "paired-0",
+    "curve_patches": [
+      [
+        81,
+        "01"
+      ]
+    ],
+    "holder": true
+  },
+  {
+    "name": "paired-1",
+    "curve_patches": [
+      [
+        124,
+        "01"
+      ]
+    ],
+    "new_creator": "11111111111111111111111111111111"
+  },
+  {
+    "name": "paired-2",
+    "new_none": true,
+    "fee": 0
+  },
+  {
+    "name": "paired-3",
+    "holder": true,
+    "fee": 0
+  },
+  {
+    "name": "paired-4",
+    "curve_patches": [
+      [
+        81,
+        "01"
+      ]
+    ],
+    "wrong_authority": true
+  },
+  {
+    "name": "paired-5",
+    "curve_length": 81,
+    "new_none": true,
+    "accounts": {
+      "bonding_curve": {
+        "lamports": 1
+      }
+    }
+  },
+  {
+    "name": "paired-6",
+    "current": "9gECFE3oJt262dFDhySt7ymNNVRUhrq5tbNjZRE3qoQ9",
+    "current_writable": false,
+    "new_none": true
+  },
+  {
+    "name": "holder-amm-transfer-False-0",
+    "holder": true,
+    "new_none": true,
+    "accounts": {
+      "coin_creator_vault_ata": {
+        "tokens": 0,
+        "lamports": 5000000
+      },
+      "creator_vault": {
+        "lamports": 1000000
+      }
+    }
+  },
+  {
+    "name": "holder-amm-transfer-False-1",
+    "holder": true,
+    "new_none": true,
+    "accounts": {
+      "coin_creator_vault_ata": {
+        "tokens": 1,
+        "lamports": 5000000
+      },
+      "creator_vault": {
+        "lamports": 1000000
+      }
+    }
+  },
+  {
+    "name": "holder-amm-transfer-False-1000000",
+    "holder": true,
+    "new_none": true,
+    "accounts": {
+      "coin_creator_vault_ata": {
+        "tokens": 1000000,
+        "lamports": 5000000
+      },
+      "creator_vault": {
+        "lamports": 1000000
+      }
+    }
+  },
+  {
+    "name": "holder-amm-transfer-True-0",
+    "holder": true,
+    "new_none": true,
+    "quote": "6ws1bVyu3F8wGy1fPHhrc2v8UyWiGbRAAuek8SwikKPD",
+    "accounts": {
+      "coin_creator_vault_ata": {
+        "tokens": 0,
+        "lamports": 5000000
+      },
+      "creator_vault": {
+        "lamports": 1000000
+      },
+      "creator_vault_quote_token_account": {
+        "tokens": 111
+      }
+    }
+  },
+  {
+    "name": "holder-amm-transfer-True-1",
+    "holder": true,
+    "new_none": true,
+    "quote": "6ws1bVyu3F8wGy1fPHhrc2v8UyWiGbRAAuek8SwikKPD",
+    "accounts": {
+      "coin_creator_vault_ata": {
+        "tokens": 1,
+        "lamports": 5000000
+      },
+      "creator_vault": {
+        "lamports": 1000000
+      },
+      "creator_vault_quote_token_account": {
+        "tokens": 111
+      }
+    }
+  },
+  {
+    "name": "holder-amm-transfer-True-1000000",
+    "holder": true,
+    "new_none": true,
+    "quote": "6ws1bVyu3F8wGy1fPHhrc2v8UyWiGbRAAuek8SwikKPD",
+    "accounts": {
+      "coin_creator_vault_ata": {
+        "tokens": 1000000,
+        "lamports": 5000000
+      },
+      "creator_vault": {
+        "lamports": 1000000
+      },
+      "creator_vault_quote_token_account": {
+        "tokens": 111
+      }
+    }
+  },
+  {
+    "name": "token-dest-False-0",
+    "quote": "6ws1bVyu3F8wGy1fPHhrc2v8UyWiGbRAAuek8SwikKPD",
+    "holder": false,
+    "new_none": false,
+    "current": "9gECFE3oJt262dFDhySt7ymNNVRUhrq5tbNjZRE3qoQ9",
+    "current_writable": true,
+    "accounts": {
+      "creator_vault_quote_token_account": {
+        "tokens": 100
+      },
+      "current_creator_quote_token_account": {
+        "tokens": 0
+      }
+    }
+  },
+  {
+    "name": "token-dest-False-1",
+    "quote": "6ws1bVyu3F8wGy1fPHhrc2v8UyWiGbRAAuek8SwikKPD",
+    "holder": false,
+    "new_none": false,
+    "current": "9gECFE3oJt262dFDhySt7ymNNVRUhrq5tbNjZRE3qoQ9",
+    "current_writable": true,
+    "accounts": {
+      "creator_vault_quote_token_account": {
+        "tokens": 100
+      },
+      "current_creator_quote_token_account": {
+        "tokens": 100
+      }
+    }
+  },
+  {
+    "name": "token-dest-False-2",
+    "quote": "6ws1bVyu3F8wGy1fPHhrc2v8UyWiGbRAAuek8SwikKPD",
+    "holder": false,
+    "new_none": false,
+    "current": "9gECFE3oJt262dFDhySt7ymNNVRUhrq5tbNjZRE3qoQ9",
+    "current_writable": true,
+    "accounts": {
+      "creator_vault_quote_token_account": {
+        "tokens": 100
+      },
+      "current_creator_quote_token_account": {
+        "tokens": 0,
+        "patches": [
+          [
+            108,
+            "02"
+          ]
+        ]
+      }
+    }
+  },
+  {
+    "name": "token-dest-False-3",
+    "quote": "6ws1bVyu3F8wGy1fPHhrc2v8UyWiGbRAAuek8SwikKPD",
+    "holder": false,
+    "new_none": false,
+    "current": "9gECFE3oJt262dFDhySt7ymNNVRUhrq5tbNjZRE3qoQ9",
+    "current_writable": true,
+    "accounts": {
+      "creator_vault_quote_token_account": {
+        "tokens": 100
+      },
+      "current_creator_quote_token_account": {
+        "tokens": 0,
+        "patches": [
+          [
+            32,
+            "0000000000000000000000000000000000000000000000000000000000000000"
+          ]
+        ]
+      }
+    }
+  },
+  {
+    "name": "token-dest-True-0",
+    "quote": "6ws1bVyu3F8wGy1fPHhrc2v8UyWiGbRAAuek8SwikKPD",
+    "holder": true,
+    "new_none": true,
+    "accounts": {
+      "creator_vault_quote_token_account": {
+        "tokens": 100
+      },
+      "holder_creator_vault_quote_token_account": {
+        "tokens": 0
+      }
+    }
+  },
+  {
+    "name": "token-dest-True-1",
+    "quote": "6ws1bVyu3F8wGy1fPHhrc2v8UyWiGbRAAuek8SwikKPD",
+    "holder": true,
+    "new_none": true,
+    "accounts": {
+      "creator_vault_quote_token_account": {
+        "tokens": 100
+      },
+      "holder_creator_vault_quote_token_account": {
+        "tokens": 100
+      }
+    }
+  },
+  {
+    "name": "token-dest-True-2",
+    "quote": "6ws1bVyu3F8wGy1fPHhrc2v8UyWiGbRAAuek8SwikKPD",
+    "holder": true,
+    "new_none": true,
+    "accounts": {
+      "creator_vault_quote_token_account": {
+        "tokens": 100
+      },
+      "holder_creator_vault_quote_token_account": {
+        "tokens": 0,
+        "patches": [
+          [
+            108,
+            "02"
+          ]
+        ]
+      }
+    }
+  },
+  {
+    "name": "token-dest-True-3",
+    "quote": "6ws1bVyu3F8wGy1fPHhrc2v8UyWiGbRAAuek8SwikKPD",
+    "holder": true,
+    "new_none": true,
+    "accounts": {
+      "creator_vault_quote_token_account": {
+        "tokens": 100
+      },
+      "holder_creator_vault_quote_token_account": {
+        "tokens": 0,
+        "patches": [
+          [
+            32,
+            "0000000000000000000000000000000000000000000000000000000000000000"
+          ]
+        ]
+      }
+    }
+  },
+  {
+    "name": "current-kind-0",
+    "current": "9gECFE3oJt262dFDhySt7ymNNVRUhrq5tbNjZRE3qoQ9",
+    "accounts": {
+      "current_creator": {
+        "owner": "pfeeUxB6jkeY1Hxd7CsFCAjcbHA9rWtchMGdZ6VojVZ"
+      },
+      "creator_vault": {
+        "lamports": 1000000
+      }
+    }
+  },
+  {
+    "name": "current-kind-1",
+    "current": "9gECFE3oJt262dFDhySt7ymNNVRUhrq5tbNjZRE3qoQ9",
+    "accounts": {
+      "current_creator": {
+        "owner": "6EF8rrecthR5Dkzon8Nwu78hRvfCKubJ14M5uBEwF6P"
+      },
+      "creator_vault": {
+        "lamports": 1000000
+      }
+    }
+  },
+  {
+    "name": "current-kind-2",
+    "current": "9gECFE3oJt262dFDhySt7ymNNVRUhrq5tbNjZRE3qoQ9",
+    "accounts": {
+      "current_creator": {
+        "data": "00"
+      },
+      "creator_vault": {
+        "lamports": 1000000
+      }
+    }
+  },
+  {
+    "name": "current-zero",
+    "current": "11111111111111111111111111111111",
+    "new_none": false
+  },
+  {
+    "name": "frozen-wallet-False-creator_vault_quote_token_account-False",
+    "current": "9gECFE3oJt262dFDhySt7ymNNVRUhrq5tbNjZRE3qoQ9",
+    "current_writable": true,
+    "accounts": {
+      "current_creator_quote_token_account": {
+        "tokens": 0,
+        "patches": [
+          [
+            108,
+            "02"
+          ]
+        ]
+      },
+      "creator_vault": {
+        "lamports": 1000000
+      },
+      "creator_vault_quote_token_account": {
+        "tokens": 100
+      }
+    }
+  },
+  {
+    "name": "frozen-wallet-False-creator_vault_quote_token_account-True",
+    "current": "9gECFE3oJt262dFDhySt7ymNNVRUhrq5tbNjZRE3qoQ9",
+    "current_writable": true,
+    "accounts": {
+      "current_creator_quote_token_account": {
+        "tokens": 0,
+        "patches": [
+          [
+            108,
+            "02"
+          ]
+        ]
+      },
+      "creator_vault": {
+        "lamports": 1000000
+      },
+      "creator_vault_quote_token_account": {
+        "data": "00",
+        "lamports": 2039280,
+        "owner": "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA"
+      }
+    }
+  },
+  {
+    "name": "frozen-wallet-False-coin_creator_vault_ata-False",
+    "current": "9gECFE3oJt262dFDhySt7ymNNVRUhrq5tbNjZRE3qoQ9",
+    "current_writable": true,
+    "accounts": {
+      "current_creator_quote_token_account": {
+        "tokens": 0,
+        "patches": [
+          [
+            108,
+            "02"
+          ]
+        ]
+      },
+      "creator_vault": {
+        "lamports": 1000000
+      },
+      "coin_creator_vault_ata": {
+        "tokens": 100
+      }
+    }
+  },
+  {
+    "name": "frozen-wallet-False-coin_creator_vault_ata-True",
+    "current": "9gECFE3oJt262dFDhySt7ymNNVRUhrq5tbNjZRE3qoQ9",
+    "current_writable": true,
+    "accounts": {
+      "current_creator_quote_token_account": {
+        "tokens": 0,
+        "patches": [
+          [
+            108,
+            "02"
+          ]
+        ]
+      },
+      "creator_vault": {
+        "lamports": 1000000
+      },
+      "coin_creator_vault_ata": {
+        "data": "00",
+        "lamports": 2039280,
+        "owner": "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA"
+      }
+    }
+  },
+  {
+    "name": "frozen-wallet-True-creator_vault_quote_token_account-False",
+    "current": "9gECFE3oJt262dFDhySt7ymNNVRUhrq5tbNjZRE3qoQ9",
+    "current_writable": true,
+    "quote": "6ws1bVyu3F8wGy1fPHhrc2v8UyWiGbRAAuek8SwikKPD",
+    "accounts": {
+      "current_creator_quote_token_account": {
+        "tokens": 0,
+        "patches": [
+          [
+            108,
+            "02"
+          ]
+        ]
+      },
+      "creator_vault": {
+        "lamports": 1000000
+      },
+      "creator_vault_quote_token_account": {
+        "tokens": 100
+      }
+    }
+  },
+  {
+    "name": "frozen-wallet-True-creator_vault_quote_token_account-True",
+    "current": "9gECFE3oJt262dFDhySt7ymNNVRUhrq5tbNjZRE3qoQ9",
+    "current_writable": true,
+    "quote": "6ws1bVyu3F8wGy1fPHhrc2v8UyWiGbRAAuek8SwikKPD",
+    "accounts": {
+      "current_creator_quote_token_account": {
+        "tokens": 0,
+        "patches": [
+          [
+            108,
+            "02"
+          ]
+        ]
+      },
+      "creator_vault": {
+        "lamports": 1000000
+      },
+      "creator_vault_quote_token_account": {
+        "data": "00",
+        "lamports": 2039280,
+        "owner": "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA"
+      }
+    }
+  },
+  {
+    "name": "frozen-wallet-True-coin_creator_vault_ata-False",
+    "current": "9gECFE3oJt262dFDhySt7ymNNVRUhrq5tbNjZRE3qoQ9",
+    "current_writable": true,
+    "quote": "6ws1bVyu3F8wGy1fPHhrc2v8UyWiGbRAAuek8SwikKPD",
+    "accounts": {
+      "current_creator_quote_token_account": {
+        "tokens": 0,
+        "patches": [
+          [
+            108,
+            "02"
+          ]
+        ]
+      },
+      "creator_vault": {
+        "lamports": 1000000
+      },
+      "coin_creator_vault_ata": {
+        "tokens": 100
+      }
+    }
+  },
+  {
+    "name": "frozen-wallet-True-coin_creator_vault_ata-True",
+    "current": "9gECFE3oJt262dFDhySt7ymNNVRUhrq5tbNjZRE3qoQ9",
+    "current_writable": true,
+    "quote": "6ws1bVyu3F8wGy1fPHhrc2v8UyWiGbRAAuek8SwikKPD",
+    "accounts": {
+      "current_creator_quote_token_account": {
+        "tokens": 0,
+        "patches": [
+          [
+            108,
+            "02"
+          ]
+        ]
+      },
+      "creator_vault": {
+        "lamports": 1000000
+      },
+      "coin_creator_vault_ata": {
+        "data": "00",
+        "lamports": 2039280,
+        "owner": "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA"
+      }
+    }
+  },
+  {
+    "name": "fee-boundary-299",
+    "quote": "6ws1bVyu3F8wGy1fPHhrc2v8UyWiGbRAAuek8SwikKPD",
+    "fee": 299
+  },
+  {
+    "name": "fee-boundary-300",
+    "quote": "6ws1bVyu3F8wGy1fPHhrc2v8UyWiGbRAAuek8SwikKPD",
+    "fee": 300
+  },
+  {
+    "name": "fee-boundary-301",
+    "quote": "6ws1bVyu3F8wGy1fPHhrc2v8UyWiGbRAAuek8SwikKPD",
+    "fee": 301
+  },
+  {
+    "name": "holder-disabled-0",
+    "global_patches": [
+      [
+        1086,
+        "00"
+      ]
+    ]
+  },
+  {
+    "name": "holder-disabled-1",
+    "global_patches": [
+      [
+        1086,
+        "00"
+      ]
+    ],
+    "holder": true,
+    "new_none": true
+  },
+  {
+    "name": "holder-disabled-2",
+    "global_patches": [
+      [
+        1086,
+        "00"
+      ]
+    ],
+    "holder": true
+  },
+  {
+    "name": "holder-disabled-3",
+    "global_patches": [
+      [
+        1086,
+        "00"
+      ]
+    ],
+    "curve_patches": [
+      [
+        124,
+        "01"
+      ]
+    ],
+    "holder": true,
+    "new_none": true
+  }
+]

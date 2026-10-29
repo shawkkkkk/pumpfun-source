@@ -1,0 +1,1941 @@
+{
+  "all_108_Rc_source_pointer_expressions_equal_original_to_5203": true,
+  "clone_counts": {
+    "5203": {
+      "direct": 54,
+      "inline_increment_stores": 0,
+      "parent_copy_sites": 54,
+      "parent_plus_used_pay_copy_sites": 54,
+      "used_pay_helper_copy_sites": 0
+    },
+    "f4": {
+      "direct": 48,
+      "inline_increment_stores": 0,
+      "parent_copy_sites": 48,
+      "parent_plus_used_pay_copy_sites": 55,
+      "used_pay_helper_copy_sites": 7
+    },
+    "original": {
+      "direct": 33,
+      "inline_increment_stores": 42,
+      "parent_copy_sites": 54,
+      "parent_plus_used_pay_copy_sites": 54,
+      "used_pay_helper_copy_sites": 0
+    }
+  },
+  "constant_pointer_add_folding_only": true,
+  "derived_parents": {
+    "5203": {
+      "clone_target": 69400,
+      "size": 18464,
+      "start": 195888
+    },
+    "f4": {
+      "clone_target": 69400,
+      "size": 18104,
+      "start": 195888
+    },
+    "original": {
+      "clone_target": 68728,
+      "size": 27400,
+      "start": 141840
+    }
+  },
+  "existing_partial_slicer_sha256": "e14efa5b429ffcb5bcbdb5aa2ba4b503e7ce9c6895c50c90b6a2a3fac275d797",
+  "filename_length_shaped_data_records": {
+    "5203": [],
+    "f4": []
+  },
+  "groups": {
+    "collect_coin": [
+      {
+        "offset": "0x2ec8",
+        "source": [
+          "load",
+          [
+            "load",
+            [
+              "input",
+              [
+                "r",
+                2
+              ]
+            ],
+            8,
+            3
+          ],
+          88,
+          3
+        ]
+      },
+      {
+        "offset": "0x2ef8",
+        "source": [
+          "load",
+          [
+            "load",
+            [
+              "load",
+              [
+                "input",
+                [
+                  "r",
+                  2
+                ]
+              ],
+              8,
+              3
+            ],
+            24,
+            3
+          ],
+          88,
+          3
+        ]
+      },
+      {
+        "offset": "0x2f18",
+        "source": [
+          "load",
+          [
+            "load",
+            [
+              "input",
+              [
+                "r",
+                2
+              ]
+            ],
+            8,
+            3
+          ],
+          32,
+          3
+        ]
+      },
+      {
+        "offset": "0x2f38",
+        "source": [
+          "add",
+          [
+            "load",
+            [
+              "input",
+              [
+                "r",
+                2
+              ]
+            ],
+            8,
+            3
+          ],
+          168
+        ]
+      },
+      {
+        "offset": "0x2f58",
+        "source": [
+          "load",
+          [
+            "load",
+            [
+              "input",
+              [
+                "r",
+                2
+              ]
+            ],
+            8,
+            3
+          ],
+          128,
+          3
+        ]
+      },
+      {
+        "offset": "0x2f78",
+        "source": [
+          "load",
+          [
+            "load",
+            [
+              "input",
+              [
+                "r",
+                2
+              ]
+            ],
+            8,
+            3
+          ],
+          136,
+          3
+        ]
+      },
+      {
+        "offset": "0x2f98",
+        "source": [
+          "load",
+          [
+            "load",
+            [
+              "input",
+              [
+                "r",
+                2
+              ]
+            ],
+            8,
+            3
+          ],
+          64,
+          3
+        ]
+      },
+      {
+        "offset": "0x2fb8",
+        "source": [
+          "load",
+          [
+            "load",
+            [
+              "input",
+              [
+                "r",
+                2
+              ]
+            ],
+            8,
+            3
+          ],
+          120,
+          3
+        ]
+      },
+      {
+        "offset": "0x2fd8",
+        "source": [
+          "load",
+          [
+            "load",
+            [
+              "input",
+              [
+                "r",
+                2
+              ]
+            ],
+            8,
+            3
+          ],
+          88,
+          3
+        ]
+      }
+    ],
+    "collect_coin_original": [
+      {
+        "offset": "0x6898",
+        "source": [
+          "load",
+          [
+            "load",
+            [
+              "input",
+              [
+                "r",
+                2
+              ]
+            ],
+            8,
+            3
+          ],
+          88,
+          3
+        ]
+      },
+      {
+        "offset": "0x68c8",
+        "source": [
+          "load",
+          [
+            "load",
+            [
+              "load",
+              [
+                "input",
+                [
+                  "r",
+                  2
+                ]
+              ],
+              8,
+              3
+            ],
+            24,
+            3
+          ],
+          88,
+          3
+        ]
+      },
+      {
+        "offset": "0x68e8",
+        "source": [
+          "load",
+          [
+            "load",
+            [
+              "input",
+              [
+                "r",
+                2
+              ]
+            ],
+            8,
+            3
+          ],
+          32,
+          3
+        ]
+      },
+      {
+        "offset": "0x6908",
+        "source": [
+          "add",
+          [
+            "load",
+            [
+              "input",
+              [
+                "r",
+                2
+              ]
+            ],
+            8,
+            3
+          ],
+          168
+        ]
+      },
+      {
+        "offset": "0x6928",
+        "source": [
+          "load",
+          [
+            "load",
+            [
+              "input",
+              [
+                "r",
+                2
+              ]
+            ],
+            8,
+            3
+          ],
+          128,
+          3
+        ]
+      },
+      {
+        "offset": "0x6948",
+        "source": [
+          "load",
+          [
+            "load",
+            [
+              "input",
+              [
+                "r",
+                2
+              ]
+            ],
+            8,
+            3
+          ],
+          136,
+          3
+        ]
+      },
+      {
+        "offset": "0x6968",
+        "source": [
+          "load",
+          [
+            "load",
+            [
+              "input",
+              [
+                "r",
+                2
+              ]
+            ],
+            8,
+            3
+          ],
+          64,
+          3
+        ]
+      },
+      {
+        "offset": "0x6988",
+        "source": [
+          "load",
+          [
+            "load",
+            [
+              "input",
+              [
+                "r",
+                2
+              ]
+            ],
+            8,
+            3
+          ],
+          120,
+          3
+        ]
+      },
+      {
+        "offset": "0x69a8",
+        "source": [
+          "load",
+          [
+            "load",
+            [
+              "input",
+              [
+                "r",
+                2
+              ]
+            ],
+            8,
+            3
+          ],
+          88,
+          3
+        ]
+      }
+    ],
+    "holder_ata": [
+      {
+        "offset": "0x4210",
+        "source": [
+          "load",
+          [
+            "load",
+            [
+              "input",
+              [
+                "r",
+                2
+              ]
+            ],
+            8,
+            3
+          ],
+          40,
+          3
+        ]
+      },
+      {
+        "offset": "0x4238",
+        "source": [
+          "load",
+          [
+            "load",
+            [
+              "input",
+              [
+                "r",
+                2
+              ]
+            ],
+            8,
+            3
+          ],
+          0,
+          3
+        ]
+      },
+      {
+        "offset": "0x4258",
+        "source": [
+          "load",
+          [
+            "load",
+            [
+              "input",
+              [
+                "r",
+                2
+              ]
+            ],
+            8,
+            3
+          ],
+          80,
+          3
+        ]
+      },
+      {
+        "offset": "0x4278",
+        "source": [
+          "add",
+          [
+            "load",
+            [
+              "input",
+              [
+                "r",
+                2
+              ]
+            ],
+            8,
+            3
+          ],
+          264
+        ]
+      },
+      {
+        "offset": "0x42a0",
+        "source": [
+          "load",
+          [
+            "load",
+            [
+              "load",
+              [
+                "input",
+                [
+                  "r",
+                  2
+                ]
+              ],
+              8,
+              3
+            ],
+            24,
+            3
+          ],
+          88,
+          3
+        ]
+      },
+      {
+        "offset": "0x42c0",
+        "source": [
+          "load",
+          [
+            "load",
+            [
+              "input",
+              [
+                "r",
+                2
+              ]
+            ],
+            8,
+            3
+          ],
+          48,
+          3
+        ]
+      },
+      {
+        "offset": "0x42e0",
+        "source": [
+          "load",
+          [
+            "load",
+            [
+              "input",
+              [
+                "r",
+                2
+              ]
+            ],
+            8,
+            3
+          ],
+          32,
+          3
+        ]
+      }
+    ],
+    "holder_ata_original": [
+      {
+        "offset": "0x5eb0",
+        "source": [
+          "load",
+          [
+            "load",
+            [
+              "input",
+              [
+                "r",
+                2
+              ]
+            ],
+            8,
+            3
+          ],
+          40,
+          3
+        ]
+      },
+      {
+        "offset": "0x5ed8",
+        "source": [
+          "load",
+          [
+            "load",
+            [
+              "input",
+              [
+                "r",
+                2
+              ]
+            ],
+            8,
+            3
+          ],
+          0,
+          3
+        ]
+      },
+      {
+        "offset": "0x5ef8",
+        "source": [
+          "load",
+          [
+            "load",
+            [
+              "input",
+              [
+                "r",
+                2
+              ]
+            ],
+            8,
+            3
+          ],
+          80,
+          3
+        ]
+      },
+      {
+        "offset": "0x5f18",
+        "source": [
+          "add",
+          [
+            "load",
+            [
+              "input",
+              [
+                "r",
+                2
+              ]
+            ],
+            8,
+            3
+          ],
+          264
+        ]
+      },
+      {
+        "offset": "0x5f40",
+        "source": [
+          "load",
+          [
+            "load",
+            [
+              "load",
+              [
+                "input",
+                [
+                  "r",
+                  2
+                ]
+              ],
+              8,
+              3
+            ],
+            24,
+            3
+          ],
+          88,
+          3
+        ]
+      },
+      {
+        "offset": "0x5f60",
+        "source": [
+          "load",
+          [
+            "load",
+            [
+              "input",
+              [
+                "r",
+                2
+              ]
+            ],
+            8,
+            3
+          ],
+          48,
+          3
+        ]
+      },
+      {
+        "offset": "0x5f80",
+        "source": [
+          "load",
+          [
+            "load",
+            [
+              "input",
+              [
+                "r",
+                2
+              ]
+            ],
+            8,
+            3
+          ],
+          32,
+          3
+        ]
+      }
+    ],
+    "pool": [
+      {
+        "offset": "0x30c8",
+        "source": [
+          "load",
+          [
+            "load",
+            [
+              "input",
+              [
+                "r",
+                2
+              ]
+            ],
+            8,
+            3
+          ],
+          88,
+          3
+        ]
+      },
+      {
+        "offset": "0x30f0",
+        "source": [
+          "load",
+          [
+            "load",
+            [
+              "input",
+              [
+                "r",
+                2
+              ]
+            ],
+            8,
+            3
+          ],
+          0,
+          3
+        ]
+      },
+      {
+        "offset": "0x3110",
+        "source": [
+          "load",
+          [
+            "load",
+            [
+              "input",
+              [
+                "r",
+                2
+              ]
+            ],
+            8,
+            3
+          ],
+          96,
+          3
+        ]
+      },
+      {
+        "offset": "0x3130",
+        "source": [
+          "load",
+          [
+            "load",
+            [
+              "input",
+              [
+                "r",
+                2
+              ]
+            ],
+            8,
+            3
+          ],
+          112,
+          3
+        ]
+      },
+      {
+        "offset": "0x3150",
+        "source": [
+          "load",
+          [
+            "load",
+            [
+              "input",
+              [
+                "r",
+                2
+              ]
+            ],
+            8,
+            3
+          ],
+          104,
+          3
+        ]
+      },
+      {
+        "offset": "0x3170",
+        "source": [
+          "load",
+          [
+            "load",
+            [
+              "input",
+              [
+                "r",
+                2
+              ]
+            ],
+            8,
+            3
+          ],
+          48,
+          3
+        ]
+      },
+      {
+        "offset": "0x3190",
+        "source": [
+          "load",
+          [
+            "load",
+            [
+              "input",
+              [
+                "r",
+                2
+              ]
+            ],
+            8,
+            3
+          ],
+          120,
+          3
+        ]
+      },
+      {
+        "offset": "0x31b0",
+        "source": [
+          "load",
+          [
+            "load",
+            [
+              "input",
+              [
+                "r",
+                2
+              ]
+            ],
+            8,
+            3
+          ],
+          88,
+          3
+        ]
+      }
+    ],
+    "pool_original": [
+      {
+        "offset": "0x4c70",
+        "source": [
+          "load",
+          [
+            "load",
+            [
+              "input",
+              [
+                "r",
+                2
+              ]
+            ],
+            8,
+            3
+          ],
+          88,
+          3
+        ]
+      },
+      {
+        "offset": "0x4c98",
+        "source": [
+          "load",
+          [
+            "load",
+            [
+              "input",
+              [
+                "r",
+                2
+              ]
+            ],
+            8,
+            3
+          ],
+          0,
+          3
+        ]
+      },
+      {
+        "offset": "0x4cb8",
+        "source": [
+          "load",
+          [
+            "load",
+            [
+              "input",
+              [
+                "r",
+                2
+              ]
+            ],
+            8,
+            3
+          ],
+          96,
+          3
+        ]
+      },
+      {
+        "offset": "0x4cd8",
+        "source": [
+          "load",
+          [
+            "load",
+            [
+              "input",
+              [
+                "r",
+                2
+              ]
+            ],
+            8,
+            3
+          ],
+          112,
+          3
+        ]
+      },
+      {
+        "offset": "0x4cf8",
+        "source": [
+          "load",
+          [
+            "load",
+            [
+              "input",
+              [
+                "r",
+                2
+              ]
+            ],
+            8,
+            3
+          ],
+          104,
+          3
+        ]
+      },
+      {
+        "offset": "0x4d18",
+        "source": [
+          "load",
+          [
+            "load",
+            [
+              "input",
+              [
+                "r",
+                2
+              ]
+            ],
+            8,
+            3
+          ],
+          48,
+          3
+        ]
+      },
+      {
+        "offset": "0x4d38",
+        "source": [
+          "load",
+          [
+            "load",
+            [
+              "input",
+              [
+                "r",
+                2
+              ]
+            ],
+            8,
+            3
+          ],
+          120,
+          3
+        ]
+      },
+      {
+        "offset": "0x4d60",
+        "source": [
+          "load",
+          [
+            "load",
+            [
+              "input",
+              [
+                "r",
+                2
+              ]
+            ],
+            8,
+            3
+          ],
+          88,
+          3
+        ]
+      }
+    ],
+    "sharing": [
+      {
+        "offset": "0x1ee8",
+        "source": [
+          "load",
+          [
+            "load",
+            [
+              "input",
+              [
+                "r",
+                2
+              ]
+            ],
+            8,
+            3
+          ],
+          152,
+          3
+        ]
+      },
+      {
+        "offset": "0x1f10",
+        "source": [
+          "load",
+          [
+            "load",
+            [
+              "input",
+              [
+                "r",
+                2
+              ]
+            ],
+            8,
+            3
+          ],
+          104,
+          3
+        ]
+      },
+      {
+        "offset": "0x1f30",
+        "source": [
+          "load",
+          [
+            "load",
+            [
+              "input",
+              [
+                "r",
+                2
+              ]
+            ],
+            8,
+            3
+          ],
+          0,
+          3
+        ]
+      },
+      {
+        "offset": "0x1f58",
+        "source": [
+          "load",
+          [
+            "load",
+            [
+              "load",
+              [
+                "input",
+                [
+                  "r",
+                  2
+                ]
+              ],
+              8,
+              3
+            ],
+            8,
+            3
+          ],
+          0,
+          3
+        ]
+      },
+      {
+        "offset": "0x1f78",
+        "source": [
+          "load",
+          [
+            "load",
+            [
+              "input",
+              [
+                "r",
+                2
+              ]
+            ],
+            8,
+            3
+          ],
+          16,
+          3
+        ]
+      },
+      {
+        "offset": "0x1f98",
+        "source": [
+          "load",
+          [
+            "load",
+            [
+              "input",
+              [
+                "r",
+                2
+              ]
+            ],
+            8,
+            3
+          ],
+          144,
+          3
+        ]
+      },
+      {
+        "offset": "0x1fb8",
+        "source": [
+          "load",
+          [
+            "load",
+            [
+              "input",
+              [
+                "r",
+                2
+              ]
+            ],
+            8,
+            3
+          ],
+          160,
+          3
+        ]
+      },
+      {
+        "offset": "0x1fd8",
+        "source": [
+          "load",
+          [
+            "load",
+            [
+              "input",
+              [
+                "r",
+                2
+              ]
+            ],
+            8,
+            3
+          ],
+          152,
+          3
+        ]
+      }
+    ],
+    "sharing_original_inline": [
+      {
+        "offset": "0x3dd0",
+        "rc_pointer": [
+          "load",
+          [
+            "load",
+            [
+              "load",
+              [
+                "input",
+                [
+                  "r",
+                  2
+                ]
+              ],
+              8,
+              3
+            ],
+            152,
+            3
+          ],
+          8,
+          3
+        ]
+      },
+      {
+        "offset": "0x3e18",
+        "rc_pointer": [
+          "load",
+          [
+            "load",
+            [
+              "load",
+              [
+                "input",
+                [
+                  "r",
+                  2
+                ]
+              ],
+              8,
+              3
+            ],
+            152,
+            3
+          ],
+          16,
+          3
+        ]
+      },
+      {
+        "offset": "0x3ec8",
+        "rc_pointer": [
+          "load",
+          [
+            "load",
+            [
+              "load",
+              [
+                "input",
+                [
+                  "r",
+                  2
+                ]
+              ],
+              8,
+              3
+            ],
+            104,
+            3
+          ],
+          8,
+          3
+        ]
+      },
+      {
+        "offset": "0x3f18",
+        "rc_pointer": [
+          "load",
+          [
+            "load",
+            [
+              "load",
+              [
+                "input",
+                [
+                  "r",
+                  2
+                ]
+              ],
+              8,
+              3
+            ],
+            104,
+            3
+          ],
+          16,
+          3
+        ]
+      },
+      {
+        "offset": "0x3fe0",
+        "rc_pointer": [
+          "load",
+          [
+            "load",
+            [
+              "load",
+              [
+                "input",
+                [
+                  "r",
+                  2
+                ]
+              ],
+              8,
+              3
+            ],
+            0,
+            3
+          ],
+          8,
+          3
+        ]
+      },
+      {
+        "offset": "0x4030",
+        "rc_pointer": [
+          "load",
+          [
+            "load",
+            [
+              "load",
+              [
+                "input",
+                [
+                  "r",
+                  2
+                ]
+              ],
+              8,
+              3
+            ],
+            0,
+            3
+          ],
+          16,
+          3
+        ]
+      },
+      {
+        "offset": "0x4108",
+        "rc_pointer": [
+          "load",
+          [
+            "load",
+            [
+              "load",
+              [
+                "load",
+                [
+                  "input",
+                  [
+                    "r",
+                    2
+                  ]
+                ],
+                8,
+                3
+              ],
+              8,
+              3
+            ],
+            0,
+            3
+          ],
+          8,
+          3
+        ]
+      },
+      {
+        "offset": "0x4158",
+        "rc_pointer": [
+          "load",
+          [
+            "load",
+            [
+              "load",
+              [
+                "load",
+                [
+                  "input",
+                  [
+                    "r",
+                    2
+                  ]
+                ],
+                8,
+                3
+              ],
+              8,
+              3
+            ],
+            0,
+            3
+          ],
+          16,
+          3
+        ]
+      },
+      {
+        "offset": "0x4220",
+        "rc_pointer": [
+          "load",
+          [
+            "load",
+            [
+              "load",
+              [
+                "input",
+                [
+                  "r",
+                  2
+                ]
+              ],
+              8,
+              3
+            ],
+            16,
+            3
+          ],
+          8,
+          3
+        ]
+      },
+      {
+        "offset": "0x4280",
+        "rc_pointer": [
+          "load",
+          [
+            "load",
+            [
+              "load",
+              [
+                "input",
+                [
+                  "r",
+                  2
+                ]
+              ],
+              8,
+              3
+            ],
+            16,
+            3
+          ],
+          16,
+          3
+        ]
+      },
+      {
+        "offset": "0x4350",
+        "rc_pointer": [
+          "load",
+          [
+            "load",
+            [
+              "load",
+              [
+                "input",
+                [
+                  "r",
+                  2
+                ]
+              ],
+              8,
+              3
+            ],
+            144,
+            3
+          ],
+          8,
+          3
+        ]
+      },
+      {
+        "offset": "0x43b0",
+        "rc_pointer": [
+          "load",
+          [
+            "load",
+            [
+              "load",
+              [
+                "input",
+                [
+                  "r",
+                  2
+                ]
+              ],
+              8,
+              3
+            ],
+            144,
+            3
+          ],
+          16,
+          3
+        ]
+      },
+      {
+        "offset": "0x4468",
+        "rc_pointer": [
+          "load",
+          [
+            "load",
+            [
+              "load",
+              [
+                "input",
+                [
+                  "r",
+                  2
+                ]
+              ],
+              8,
+              3
+            ],
+            160,
+            3
+          ],
+          8,
+          3
+        ]
+      },
+      {
+        "offset": "0x44d8",
+        "rc_pointer": [
+          "load",
+          [
+            "load",
+            [
+              "load",
+              [
+                "input",
+                [
+                  "r",
+                  2
+                ]
+              ],
+              8,
+              3
+            ],
+            160,
+            3
+          ],
+          16,
+          3
+        ]
+      },
+      {
+        "offset": "0x45a8",
+        "rc_pointer": [
+          "load",
+          [
+            "load",
+            [
+              "load",
+              [
+                "input",
+                [
+                  "r",
+                  2
+                ]
+              ],
+              8,
+              3
+            ],
+            152,
+            3
+          ],
+          8,
+          3
+        ]
+      },
+      {
+        "offset": "0x45f8",
+        "rc_pointer": [
+          "load",
+          [
+            "load",
+            [
+              "load",
+              [
+                "input",
+                [
+                  "r",
+                  2
+                ]
+              ],
+              8,
+              3
+            ],
+            152,
+            3
+          ],
+          16,
+          3
+        ]
+      }
+    ]
+  },
+  "hashes": {
+    "5203": "388fa73431d68cb0a89e9c939f1645510abd844652f4272ef1a841a0ec60bbe0",
+    "f4": "daa2772d4745d8488b357c6c1c088fadc77bf31d341c59f5b50c4706d7b54c78",
+    "original": "7a19affaa2c6187e04a5fe0ea298cee81fa5eb8c24cfcc30d85f615e89f7b02d"
+  },
+  "heuristic_parent_source_sites": {
+    "5203": [
+      {
+        "len_slot": 480,
+        "line": 296,
+        "line_slot": 472,
+        "path": "programs/pump/src/creator/admin_cto.rs",
+        "slot": 480
+      },
+      {
+        "len_slot": 1688,
+        "line": 289,
+        "line_slot": 1680,
+        "path": "programs/pump/src/creator/admin_cto.rs",
+        "slot": 1688
+      },
+      {
+        "len_slot": 2408,
+        "line": 326,
+        "line_slot": 2400,
+        "path": "programs/pump/src/creator/admin_cto.rs",
+        "slot": 2408
+      },
+      {
+        "len_slot": 2648,
+        "line": 326,
+        "line_slot": 2400,
+        "path": "programs/pump/src/creator/admin_cto.rs",
+        "slot": 2648
+      },
+      {
+        "len_slot": 3360,
+        "line": 284,
+        "line_slot": 3352,
+        "path": "programs/pump/src/creator/admin_cto.rs",
+        "slot": 3360
+      },
+      {
+        "len_slot": 3600,
+        "line": 284,
+        "line_slot": 3352,
+        "path": "programs/pump/src/creator/admin_cto.rs",
+        "slot": 3600
+      },
+      {
+        "len_slot": 3832,
+        "line": 306,
+        "line_slot": 3592,
+        "path": "programs/pump/src/creator/admin_cto.rs",
+        "slot": 3832
+      },
+      {
+        "len_slot": 4408,
+        "line": 312,
+        "line_slot": 4400,
+        "path": "programs/pump/src/creator/admin_cto.rs",
+        "slot": 4408
+      },
+      {
+        "len_slot": 4656,
+        "line": 312,
+        "line_slot": 4400,
+        "path": "programs/pump/src/creator/admin_cto.rs",
+        "slot": 4656
+      },
+      {
+        "len_slot": 4888,
+        "line": 330,
+        "line_slot": 4648,
+        "path": "programs/pump/src/creator/admin_cto.rs",
+        "slot": 4888
+      },
+      {
+        "len_slot": 5120,
+        "line": 334,
+        "line_slot": 4880,
+        "path": "programs/pump/src/creator/admin_cto.rs",
+        "slot": 5120
+      },
+      {
+        "len_slot": 5464,
+        "line": 410,
+        "line_slot": 5456,
+        "path": "programs/pump/src/creator/admin_cto.rs",
+        "slot": 5464
+      },
+      {
+        "len_slot": 6024,
+        "line": 556,
+        "line_slot": 6016,
+        "path": "programs/pump/src/creator/admin_cto.rs",
+        "slot": 6024
+      },
+      {
+        "len_slot": 7416,
+        "line": 660,
+        "line_slot": 7408,
+        "path": "programs/pump/src/creator/admin_cto.rs",
+        "slot": 7416
+      },
+      {
+        "len_slot": 9408,
+        "line": 648,
+        "line_slot": 9400,
+        "path": "programs/pump/src/creator/admin_cto.rs",
+        "slot": 9408
+      },
+      {
+        "len_slot": 18344,
+        "line": 719,
+        "line_slot": 18336,
+        "path": "programs/pump/src/creator/admin_cto.rs",
+        "slot": 18344
+      }
+    ],
+    "f4": [
+      {
+        "len_slot": 480,
+        "line": 296,
+        "line_slot": 472,
+        "path": "programs/pump/src/creator/admin_cto.rs",
+        "slot": 480
+      },
+      {
+        "len_slot": 1688,
+        "line": 289,
+        "line_slot": 1680,
+        "path": "programs/pump/src/creator/admin_cto.rs",
+        "slot": 1688
+      },
+      {
+        "len_slot": 2408,
+        "line": 326,
+        "line_slot": 2400,
+        "path": "programs/pump/src/creator/admin_cto.rs",
+        "slot": 2408
+      },
+      {
+        "len_slot": 2648,
+        "line": 326,
+        "line_slot": 2400,
+        "path": "programs/pump/src/creator/admin_cto.rs",
+        "slot": 2648
+      },
+      {
+        "len_slot": 3360,
+        "line": 284,
+        "line_slot": 3352,
+        "path": "programs/pump/src/creator/admin_cto.rs",
+        "slot": 3360
+      },
+      {
+        "len_slot": 3600,
+        "line": 284,
+        "line_slot": 3352,
+        "path": "programs/pump/src/creator/admin_cto.rs",
+        "slot": 3600
+      },
+      {
+        "len_slot": 3832,
+        "line": 306,
+        "line_slot": 3592,
+        "path": "programs/pump/src/creator/admin_cto.rs",
+        "slot": 3832
+      },
+      {
+        "len_slot": 4408,
+        "line": 312,
+        "line_slot": 4400,
+        "path": "programs/pump/src/creator/admin_cto.rs",
+        "slot": 4408
+      },
+      {
+        "len_slot": 4656,
+        "line": 312,
+        "line_slot": 4400,
+        "path": "programs/pump/src/creator/admin_cto.rs",
+        "slot": 4656
+      },
+      {
+        "len_slot": 4888,
+        "line": 330,
+        "line_slot": 4648,
+        "path": "programs/pump/src/creator/admin_cto.rs",
+        "slot": 4888
+      },
+      {
+        "len_slot": 5120,
+        "line": 334,
+        "line_slot": 4880,
+        "path": "programs/pump/src/creator/admin_cto.rs",
+        "slot": 5120
+      },
+      {
+        "len_slot": 5464,
+        "line": 410,
+        "line_slot": 5456,
+        "path": "programs/pump/src/creator/admin_cto.rs",
+        "slot": 5464
+      },
+      {
+        "len_slot": 6024,
+        "line": 556,
+        "line_slot": 6016,
+        "path": "programs/pump/src/creator/admin_cto.rs",
+        "slot": 6024
+      },
+      {
+        "len_slot": 7416,
+        "line": 660,
+        "line_slot": 7408,
+        "path": "programs/pump/src/creator/admin_cto.rs",
+        "slot": 7416
+      },
+      {
+        "len_slot": 9408,
+        "line": 648,
+        "line_slot": 9400,
+        "path": "programs/pump/src/creator/admin_cto.rs",
+        "slot": 9408
+      },
+      {
+        "len_slot": 17984,
+        "line": 719,
+        "line_slot": 17976,
+        "path": "programs/pump/src/creator/admin_cto.rs",
+        "slot": 17984
+      }
+    ]
+  },
+  "heuristic_source_site_multiset_equal": true,
+  "limits": [
+    "Partial pointer slices ignore callee output writes; numeric values/whole-parent CFG are outside this result.",
+    "Static Source record recognizer is shape based; no arbitrary data extent or unique Rust type is inferred.",
+    "Raw/normalized original parent equality and exhaustive runtime equivalence remain false/unproved."
+  ],
+  "only_holder_owner_copy": [
+    {
+      "offset": "0x4278",
+      "source": [
+        "add",
+        [
+          "load",
+          [
+            "input",
+            [
+              "r",
+              2
+            ]
+          ],
+          8,
+          3
+        ],
+        264
+      ]
+    }
+  ],
+  "pay_token_symbol_absent": true,
+  "scope": "Read-only actual clone/source-location consequences of the 5203 build.",
+  "source_line_775_to_772": {
+    "actual_direct_helper_location_change_observed": false,
+    "interpretation": "Lexical source shift only in observed executable/helper evidence. Helper has zero relocations and zero direct recognized Source sites; no Location movement is claimed. Typed/indirect/transitive consumption beyond these bounded observations is not proved.",
+    "new_772_data_records": 0,
+    "old_775_data_records": 0
+  },
+  "source_site_recognizer_sha256": "56a93a3340e680de24a279f9bb4e533f182fca96e8a83bba68a3d6d1bde7ef65",
+  "token_raw_amount": {
+    "5203": {
+      "bytes": 448,
+      "calls": [
+        {
+          "offset": 24,
+          "target": 1720472
+        },
+        {
+          "offset": 64,
+          "target": 1720840
+        },
+        {
+          "offset": 192,
+          "target": 1602608
+        },
+        {
+          "offset": 344,
+          "target": 1691928
+        }
+      ],
+      "direct_source_sites": [],
+      "normalized_sha256": "51e3791d6dbf4b8b7fbd28ed1eb4b84268cfd7cdda6f870d364722dc4ff6b026",
+      "relocations": [],
+      "start": "0x34728"
+    },
+    "f4": {
+      "bytes": 448,
+      "calls": [
+        {
+          "offset": 24,
+          "target": 1723256
+        },
+        {
+          "offset": 64,
+          "target": 1723624
+        },
+        {
+          "offset": 192,
+          "target": 1605392
+        },
+        {
+          "offset": 344,
+          "target": 1694712
+        }
+      ],
+      "direct_source_sites": [],
+      "normalized_sha256": "51e3791d6dbf4b8b7fbd28ed1eb4b84268cfd7cdda6f870d364722dc4ff6b026",
+      "relocations": [],
+      "start": "0x35208"
+    }
+  }
+}

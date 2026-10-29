@@ -1,0 +1,246 @@
+{
+  "base_revision": "1285b5e9e3a29c1e2cf32246d6046035e5d66fad",
+  "scope": "Existing363 admin CTO +5 Source-record +12 shared-holder cases; exact5203 used-flow candidate only, no new handler or privileged signer.",
+  "files": {
+    "scripts/pump_admin_cto_differential.py": {
+      "sha256": "89a98d33f9338bc56822d7800ceba97f6ee64156a1e8cc2dc09849808d8cd11c",
+      "git_blob": "c7bdf7012b2fe2e40c8eae0556aaf25b5123aead",
+      "bytes": 19504
+    },
+    "scripts/pump_captured_loader.py": {
+      "sha256": "6cbb57b5dc576b49110a9a39fa0d44ccda8fe3c1521bb407da58649f48bf3871",
+      "git_blob": "68b5ff7a817f0f950d1cb489a845bf163ce19c4f",
+      "bytes": 4265
+    },
+    "scripts/pump_with_captured_loader.py": {
+      "sha256": "4eb9d65c8e54b39b2e991f1cff6068a28bd2d5c1a33601225d3608eb5e82863e",
+      "git_blob": "b1905656d29f1ee70fe691dc923070b1954ef661",
+      "bytes": 1085
+    },
+    "scripts/fees_donation_create_differential.py": {
+      "sha256": "610e3296d912dde1e4f7c071416b81a204095ff3aafe4a4e318ee48411a46b87",
+      "git_blob": "166b3dbf9ec215e5fc0f6dec68d7ac84971215bd",
+      "bytes": 10644
+    },
+    "scripts/fees_admin_differential.py": {
+      "sha256": "30ae2037e1bb4288f5fca5a7f1ee4dbf7e59ad8170857113f58e302d65ea3003",
+      "git_blob": "7fdf762d9064d5c4ea689ee8b8c11c32c4e25438",
+      "bytes": 5605
+    },
+    "scripts/pump_validate_admin.py": {
+      "sha256": "bcb7ea8f10be236910823c5320f03a1b339f64fe6ef90ff36e0e7ef07238c2e8",
+      "git_blob": "6d14e58eb29bf66e07a9fcc27421dd0ea2eeda81",
+      "bytes": 6960
+    },
+    "scripts/pump_amm_admin_differential.py": {
+      "sha256": "cc3834231f951e3dbf36f38504d85f3135c0edf3792fabecd12fae10c493a72b",
+      "git_blob": "3756fe5848f7737751ab3dde47bc54ef2ec5f937",
+      "bytes": 8271
+    },
+    "research/pump-migration-completion-20261028/probe_admin_wallet_coin_guard.py": {
+      "sha256": "11015a8ba9263f5cc984671a58fcf612215ed1ba717d3fccf953db8d1dda08d2",
+      "git_blob": "a42b83863463ae12d76c0f7b9053a8ada1c6189f",
+      "bytes": 5095
+    },
+    "research/imported-lab/analysis/pump_fun/config-snapshot.json": {
+      "sha256": "17b886a6b4aa7fdc89f2fca9a1b67b318d33998794da59fe4df1fe89ca70bd27",
+      "git_blob": "d17e526376411ce7c0666ad23189f9f49a76344e",
+      "bytes": 5247
+    },
+    "evidence/original/pump/programdata-account.bin": {
+      "sha256": "0b692730f9707139fd86d1c1e3a7d63a3f7cb0702278975fa99df90883aab508",
+      "git_blob": "f96d5352f1fca1cd63a8c34a93f0c6251561cf44",
+      "bytes": 10485760
+    },
+    "evidence/original/pump/deployed.so": {
+      "sha256": "7a19affaa2c6187e04a5fe0ea298cee81fa5eb8c24cfcc30d85f615e89f7b02d",
+      "git_blob": "85cb0059f2814c86224fdfea778c56df770dd920",
+      "bytes": 10485715
+    },
+    "evidence/original/pump/program-account.bin": {
+      "sha256": "8101492b544ce08703d5de95363bf796e7e4cd17d03639cfe603071fb59652eb",
+      "git_blob": "30a42e224fcfc686e7a68b9fab9158cd25fe9647",
+      "bytes": 36
+    },
+    "evidence/original/pump/capture.json": {
+      "sha256": "ffb53e71ce9cbee60df91e54cc1d677527a6eeb5806cb8d68e525af698744110",
+      "git_blob": "df303eca3ce70f3b8d43015ca72ba358e62ce8f5",
+      "bytes": 884
+    },
+    "evidence/original/pump_amm/programdata-account.bin": {
+      "sha256": "e3d3be2256841163ba89b6184c2cc90ca1700c820bf887e5bb58b0aa668f5840",
+      "git_blob": "0317a1571d7d6c76221adeaf312f86d8fd0e9955",
+      "bytes": 10485760
+    },
+    "evidence/original/pump_amm/deployed.so": {
+      "sha256": "6a7ad34596d83b4c435b32f458a56e718e9f82eb4ad38e4316616d15d24d8ff7",
+      "git_blob": "f8387822561c9f1b207956344578ad9df2b5c1eb",
+      "bytes": 10485715
+    },
+    "evidence/original/pump_amm/program-account.bin": {
+      "sha256": "8a28beaa6366bb6236a8b455b61b280f430b4da6583becf73fd229886844e0da",
+      "git_blob": "b1bc8382b1cb821b61c6f1ca9a4177f18a08dd01",
+      "bytes": 36
+    },
+    "evidence/original/pump_amm/capture.json": {
+      "sha256": "ffb8eb471345e4625c42b7f90840c1c44bb50ce202c3ebb4e9a4ec7f6abe1d8d",
+      "git_blob": "37e70aab3da36dffd932603e59538de7caf54fea",
+      "bytes": 884
+    },
+    "evidence/original/pump_fees/programdata-account.bin": {
+      "sha256": "3cf9ee9a380c0ced31171802d402551910ceb8c4819ede4ef44aaf63a12dbfac",
+      "git_blob": "22f623cecf866fe17a36306192eea32087e75225",
+      "bytes": 948989
+    },
+    "evidence/original/pump_fees/deployed.so": {
+      "sha256": "4f2955d0f6b40cc9ff7daa18ccad7d19119ba1249759f4e7e3bb691beee6b35e",
+      "git_blob": "e330cbb6dfbc3351dbaaf594ba6e873d89af5f5e",
+      "bytes": 948944
+    },
+    "evidence/original/pump_fees/program-account.bin": {
+      "sha256": "cc9077315efa761cfe0b52aae08678ccda2a07e0fa2b374c98a1d51a1b4ce079",
+      "git_blob": "7b8bbafc5e9ada557fbe58574758266dff19f0bd",
+      "bytes": 36
+    },
+    "evidence/original/pump_fees/capture.json": {
+      "sha256": "a98928432afc25e4aa422559d4aa3bd73062e1f634ca6189ff5495d1fe158334",
+      "git_blob": "cac71e8e2463eba8bccfd8774c91fb72e15544a7",
+      "bytes": 879
+    },
+    "evidence/dependencies/spl_token/programdata-account.bin": {
+      "sha256": "573971c9baedda479bf4c38537787ae396358009b4920f8a270bd2b31dde5fe3",
+      "git_blob": "68b24bda18e9de889fc858599ffe97c5b2720c74",
+      "bytes": 108645
+    },
+    "evidence/dependencies/spl_token/deployed.so": {
+      "sha256": "8190d3f7ceb6cb7a7a8d8924bff89f9f611e15ce1f806f2b6237f3311a98f697",
+      "git_blob": "ddab82d0d26649235095d99bde6e4bba2f327bb8",
+      "bytes": 108600
+    },
+    "evidence/dependencies/spl_token/program-account.bin": {
+      "sha256": "5b31219b7bc4060b1638b933be5f50df3400109acfef12408a196d57ad119748",
+      "git_blob": "1ba9f204287af80d80f106e72f233a4d86bc21ef",
+      "bytes": 36
+    },
+    "evidence/dependencies/spl_token/capture.json": {
+      "sha256": "26b905e633fd869d9e9a9e34627ddf8308d0323d51565f35973d47d125e34213",
+      "git_blob": "f5439136658f4e35ee966e4ecb928ac79a20f7df",
+      "bytes": 836
+    },
+    "evidence/dependencies/spl_token_2022/programdata-account.bin": {
+      "sha256": "babc437405bea7f9d4083097a7266db84de58330bdc41c2b54f1f4e4c66aaa94",
+      "git_blob": "ca3313f65218da401a621784aad0b2cbc5476134",
+      "bytes": 1382061
+    },
+    "evidence/dependencies/spl_token_2022/deployed.so": {
+      "sha256": "15a2e615a42e20f31714bbaaee43002ae6f1cda2e8d7118243117ab3c1342e2d",
+      "git_blob": "be80935166687161c48b7972be2e45d65fec3fc0",
+      "bytes": 1382016
+    },
+    "evidence/dependencies/spl_token_2022/program-account.bin": {
+      "sha256": "bae3e5d63e30c0c3e6fe788b9e027bf003ca5e5bb46d3a9627e034bb3002ea5c",
+      "git_blob": "40c72bd7c1efbb5f6b053d64731b8c7a027df695",
+      "bytes": 36
+    },
+    "evidence/dependencies/spl_token_2022/capture.json": {
+      "sha256": "f114c064c5a1d08d75bcce3e01552204816048b8aa74dfd59cacb74f9a85fe54",
+      "git_blob": "6c348cb2e6a0c9e8f95c38681d2cee8e5ca7105e",
+      "bytes": 881
+    },
+    "evidence/dependencies/associated_token/deployed.so": {
+      "sha256": "6804554e69fd3a58caa191dc4a58f4c67223d30ca28ab8987f39fc18d2f7374d",
+      "git_blob": "01fcb69b8014df8979c4e56d8d7b3e4643333ce3",
+      "bytes": 105032
+    },
+    "evidence/dependencies/associated_token/program-account.bin": {
+      "sha256": "6804554e69fd3a58caa191dc4a58f4c67223d30ca28ab8987f39fc18d2f7374d",
+      "git_blob": "01fcb69b8014df8979c4e56d8d7b3e4643333ce3",
+      "bytes": 105032
+    },
+    "evidence/dependencies/associated_token/capture.json": {
+      "sha256": "0b1b18d80b6ccde58f96ffe879be4cc8f2a1ceba5a40c1a3ba2c1b6bcf618327",
+      "git_blob": "1ba0fb7a4cfc17288347fb8a56ee44f0135a3c1b",
+      "bytes": 614
+    },
+    "evidence/upstream/pump.json": {
+      "sha256": "7616681ea557975f9f623ac211080f22a93060781eaf4765b0a488d980997207",
+      "git_blob": "bb79d04e5a4ef8b286d67511757c23a15672ef51",
+      "bytes": 328788
+    },
+    "evidence/upstream/pump_fees.json": {
+      "sha256": "6b9fa3eccc6e06273076a47b581f9fcb9e531bb7c3c88acbcd44db55a4002b29",
+      "git_blob": "a06cfeca8aed4d984091c023ec4d5ef3fa0bdda7",
+      "bytes": 136538
+    },
+    "evidence/upstream/official-repositories.json": {
+      "sha256": "401fbb93890aa2273dd33fcebea246194779136df0265f35c735bcba104a0420",
+      "git_blob": "c6523dfa84d362106e36f19f30b70eb657f570bf",
+      "bytes": 815
+    },
+    "evidence/upstream/provenance.json": {
+      "sha256": "a315baa42e9ab40e70f31f541199983c2a5a2883571dbd3dfee8b690518b68b2",
+      "git_blob": "31873fbb2012126782afd12806984242ff0db9dd",
+      "bytes": 628
+    },
+    "evidence/upstream/pump_amm.json": {
+      "sha256": "b7d8c57a4d9c4dd0109a9ab893052352333252d4eedced10ac091d4d66cab89b",
+      "git_blob": "d907b16a91f035aeb3c3182bfa0972a91bf23a86",
+      "bytes": 191835
+    }
+  },
+  "fixtures": {
+    "reference_report_sha256": "9a42e48b4e67081042bb375e411e29dc45702423f651a5b04930127235508fcb",
+    "reference_path": "research/pump-final-composition-673-20261028/runtime/focused/admin-wallet.json.gz",
+    "cases_sha256": "527a50bba63cf410f746f8192f64d0ba68f95d84f338ca38d19153526d0a5653",
+    "count": 18,
+    "reference_baseline_mismatch_count": 8
+  },
+  "toolchain": {
+    "python_version": "3.12.14",
+    "python_executable": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3.12",
+    "python_executable_sha256": "fa67443527ed9647f760d807e2a38f26340757123e643c4639cf273ed15d5ea7",
+    "solders_version": "0.27.1",
+    "solders_native_path": "/home/agent/.local/lib/python3.12/site-packages/solders/solders.abi3.so",
+    "solders_native_sha256": "3ff2cff4ff026cda6c0662e2518c79fbb3ecd7f915b5360d3fb2a4fc6e086eb2"
+  },
+  "current_control_sha256": "199fd7379b6881adefd9e54803f75902176c17bded1718bfc1c59b1cf5bc8473",
+  "candidate_source_sha256": "5203d20c2e63be7337204491588e0ec69808f8ddd39d96b8b5fa1964d6ec201d",
+  "candidate_image_sha256": null,
+  "candidate_build_or_replay_executed": false,
+  "comparison": "All error/before/after/events/inner/return and same signed transaction; full ordered logs except exact standard compute-consumption lines; no Source filename/line rewrites.",
+  "parent_source_sha256": "f4a2bb7d33431e0fb4911e39d5e03c8bb9f45c6f7a184da21d1a6762f9127955",
+  "parent_image_sha256": "d537faf5907c594eeef6f3706d87e300e6f01509243b5dcf28b018f3c90a64c6",
+  "path_adaptations": [
+    {
+      "original_repository_path": "research/pump-admin-cto-source-records-20261028/tools/focused.py",
+      "original_sha256": "89ebd6bb939e129e41b6be53605b752b7a210ccce935d310dda46bc3c5e1ef7e",
+      "adapted_path": "/workspace/pump-admin-cto/used-flow-runtime/inputs/cto-focused.py",
+      "adapted_sha256": "3c90566c8da4dfc811c2a42a79c2120a4b812061893a0d907ddfa45b3ee5bdf0",
+      "only_replacements": {
+        "/workspace/pumpfun-source-latest/scripts": "/workspace/pump-admin-cto/runtime-control/repo/scripts",
+        "/workspace/pumpfun-source-workers/pump-admin/work/pump-admin/l38/cashback-parse-qualified/candidate.so": "/workspace/pump-admin-cto/used-flow-runtime/inputs/cto-control.so"
+      }
+    },
+    {
+      "original_repository_path": "research/pump-admin-shared-holder-guard-20261028/tools/focused.py",
+      "original_sha256": "ff12d13336b153de62d462cba0b43151ed9a38c722f8e5856c75ca925399c12c",
+      "adapted_path": "/workspace/pump-admin-cto/used-flow-runtime/inputs/shared-holder-focused.py",
+      "adapted_sha256": "06eca75e26a70ecdafff093eed6c2ce819fd1c1142f32a4fbdaa241ee03cc664",
+      "only_replacements": {
+        "/workspace/pumpfun-source-latest/scripts": "/workspace/pump-admin-cto/runtime-control/repo/scripts"
+      }
+    }
+  ],
+  "additional_inputs": {
+    "inputs/cto-focused.py": "3c90566c8da4dfc811c2a42a79c2120a4b812061893a0d907ddfa45b3ee5bdf0",
+    "inputs/cto-control.so.gz": "4f4dafa2ff3a930ed93375ef315f43a597a00788dad9f10396b6209e3b565a7f",
+    "inputs/cto-control.metadata.json": "e2053088c730259eff833fd9f0ac0d7807715510f61ac6c8812e4fe4dce6fa87",
+    "inputs/shared-holder-focused.py": "06eca75e26a70ecdafff093eed6c2ce819fd1c1142f32a4fbdaa241ee03cc664",
+    "inputs/canonical-admin-broad.json.gz": "694f1fc2b1e53ee95f5e189d9a4654a877f09df6abdca5ab7565fccfad236ab5",
+    "inputs/shared-control.so": "beb2f5acd81fc8243a8364a2264c4df8893476d7132af8a4a153874151aea436",
+    "inputs/cto-control.so": "41ee7efa16d1e9a1cb0c7d7b0fcb9991680a6db9ac509788be253b841e89c044",
+    "inputs/shared-control.so.gz": "b3e925078b066f1f8eac3f205947838d913cb6ce8debda27d699f522cf426c22",
+    "inputs/shared-control.metadata.json": "7c61c2409f780cadded106725d44d3a5ae22e740bc5bb759b4e929f02292c0ec",
+    "inputs/broad-cases.json": "eaa7d3de17dd27195d4470683d5f77872a4bfb7c9f409698756b31be9cbf19e6"
+  }
+}

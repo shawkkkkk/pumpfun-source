@@ -1,0 +1,40 @@
+{
+  "schema": "PUMP_CURRENT673_MACOS_CONTROL_V1",
+  "base_commit": "1285b5e9e3a29c1e2cf32246d6046035e5d66fad",
+  "cold_package": "research/pump-final-composition-cold-20261028",
+  "source_directory": "programs/pump",
+  "original_sha256": "7a19affaa2c6187e04a5fe0ea298cee81fa5eb8c24cfcc30d85f615e89f7b02d",
+  "builder_sha256": "c7d215a92dbb733cae044b40d06ce5da45df7d5c84fe2985acea023ecd316241",
+  "build_inputs_sha256": "e929879d80180ddb2228f1dfe32691727a2862d3d3282e553357334ed220d0aa",
+  "tools_sha256": {
+    "analyze.py": "dd7fb38d795d4dd72a25aab0d65c2223d9f6f75d8b3ecb0de1d87d6e102910ac",
+    "build_source_manifest.py": "05eb3446b95c0b7b80517fe05a98a9841fa53053fe39ca56fe2659daf6b58df0",
+    "census.py": "804b88102b69c7bf41f7a3f751454bf9d4d1c89cc36fb7e7f52bdc89f28b9d5c",
+    "compare.py": "9e33a6c239927728b96bb1305bffad0e144a701e9ac7723928bb2f8d49f63e67",
+    "pump_compare_function_bytes.py": "43fa359dce1e398f820df445d534e0912ac5f181f1ea15e13a5267b53105b075",
+    "pump_dependency_cache.py": "6ac18c9fd98e010850bdeef0211a58840696064bd664e5ea3f35960a94f4b9ed",
+    "pump_diagnostic_audit.py": "0343c70e4f9c7860ad392f0a8bd10d90ac94fe17bb2ba5bfd49a45683edbe343",
+    "pump_linux_v144_sbpf_libraries.json": "7e2461b5ec54416d6b64508af1e2677f63afd83d35e9a3eeae6ca877ae879f1e",
+    "pump_physical_source_wrapper.py": "d959fe0074fafe7f310a8f40051ce87f795b1e81b104a38dfe57086efa6bae1b",
+    "pump_quote_control_function_match.py": "28ad656012f8fbcd41ed1726e9345ee76f6249992bf28c91c4b9202479d3e94e",
+    "pump_target_library_profile.py": "f997a891051ee84aec6f0bc22270425213880a4b1ef358774f015b08e0c9a605",
+    "source_sites.py": "56a93a3340e680de24a279f9bb4e533f182fca96e8a83bba68a3d6d1bde7ef65",
+    "tool-locator-reference.py": "cc0c76a59c8c8c3db5d1008c788dd14116fda44b87bef9dd7d355aab2c4f2c50",
+    "verify_runtime.py": "4e3d2fbd1ac4f1e414748115c2c5831df0d466efdced69ff2e05d31726f54a73"
+  },
+  "archives": {
+    "macos": {
+      "url": "https://github.com/anza-xyz/platform-tools/releases/download/v1.44/platform-tools-osx-aarch64.tar.bz2",
+      "sha256": "66e20d135fddd70ff519baf7ff320d762957f9aedf93a50e23756db23ad79351"
+    },
+    "linux": {
+      "url": "https://github.com/anza-xyz/platform-tools/releases/download/v1.44/platform-tools-linux-x86_64.tar.bz2",
+      "sha256": "6719b889d60677a8a2fcf4c82f68441a1afe0ab093edd2efe9f84a67a808b3e9"
+    }
+  },
+  "expected": {
+    "candidate_sha256": "199fd7379b6881adefd9e54803f75902176c17bded1718bfc1c59b1cf5bc8473",
+    "unstripped_sha256": "49df399b8a36a0a60de03e8d55f1417261dc451e44845ca9d17a94040968c680"
+  },
+  "candidate_policy": "Control only. Each later proposal must supply its own independently frozen source descriptor; no candidate result or old frontier execution is relabeled as this control."
+}

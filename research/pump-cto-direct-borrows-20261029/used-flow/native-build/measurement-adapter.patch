@@ -1,0 +1,8 @@
+--- frozen-control-build.py
++++ candidate-measurement-build.py
+@@ -73,4 +73,4 @@
+ record.update(unstripped_sha256=sha(out/'unstripped.so'),build_log_sha256=sha(out/'build.log'),comparison=compare((R/'evidence/original/pump/deployed.so').read_bytes(),(out/'candidate.so').read_bytes()))
+ record['qualified_image_hashes_equal']=record['comparison']['candidate_sha256']==expected['comparison']['candidate_sha256']and record['unstripped_sha256']==expected['unstripped_sha256']
+ for n in ['build-attempt.json','build-comparison.json']:(out/n).write_text(json.dumps(record,indent=2)+'\n')
+-print(json.dumps({'returncode':r.returncode,'cold_empty_target':True,'locked_registry_packages':len(archives),'registry_source_files':files_checked,'candidate_sha256':record['comparison']['candidate_sha256'],'unstripped_sha256':record['unstripped_sha256'],'qualified_image_hashes_equal':record['qualified_image_hashes_equal'],'seconds':record['seconds']},indent=2));assert record['qualified_image_hashes_equal']
++print(json.dumps({'returncode':r.returncode,'cold_empty_target':True,'locked_registry_packages':len(archives),'registry_source_files':files_checked,'candidate_sha256':record['comparison']['candidate_sha256'],'unstripped_sha256':record['unstripped_sha256'],'qualified_image_hashes_equal':record['qualified_image_hashes_equal'],'seconds':record['seconds']},indent=2))

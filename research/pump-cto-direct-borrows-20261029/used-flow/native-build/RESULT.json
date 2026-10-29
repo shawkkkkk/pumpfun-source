@@ -1,0 +1,22 @@
+{
+  "status": "compiled-measurement-only",
+  "candidate": "cto-used-flow",
+  "base_commit": "1285b5e9e3a29c1e2cf32246d6046035e5d66fad",
+  "control_run": 40791064153,
+  "proposal": {
+    "source_path": "src/creator/admin_cto.rs",
+    "frozen_file": "cto-used-flow.rs",
+    "before_sha256": "6353b1f7b9e613bb8d819000c504d44410b04f7da7dfbdc7fb2e5132df100180",
+    "after_sha256": "5203d20c2e63be7337204491588e0ec69808f8ddd39d96b8b5fa1964d6ec201d",
+    "immediate_parent_source_sha256": "f4a2bb7d33431e0fb4911e39d5e03c8bb9f45c6f7a184da21d1a6762f9127955",
+    "state": "staged only; sixth one-shot original-backed compiler proposal after fourth/fifth complete",
+    "source_proposal": "https://github.com/lalalune/pumpfun-source/pull/712",
+    "source_positions": "17 explicit Source/error/unwrap sites unchanged; natural obsolete-helper deletion moves token_raw_amount775to772, disclosed for actual Location audit; no padding."
+  },
+  "candidate_sha256": "df40382896c913ba02f064a993424daec707abe7ea95895cc821061cc7a82684",
+  "unstripped_sha256": "388fa73431d68cb0a89e9c939f1645510abd844652f4272ef1a841a0ec60bbe0",
+  "control_hashes_equal": false,
+  "cold_empty_target": true,
+  "both_local_crates_compiled": true,
+  "limits": "No acceptance, census gain, runtime behavior or original whole-ELF identity claim."
+}

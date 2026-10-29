@@ -1,0 +1,25 @@
+{
+  "schema": "PUMP_OFFICIAL_INVENTORY_DELTA_V1",
+  "baseline_symbols_sha256": "49df399b8a36a0a60de03e8d55f1417261dc451e44845ca9d17a94040968c680",
+  "candidate_symbols_sha256": "388fa73431d68cb0a89e9c939f1645510abd844652f4272ef1a841a0ec60bbe0",
+  "inventory_sha256": "c5092539edbb5c9ba200a9e17a039e95c01c3a16de1b75fbc8fa3350d8cd9e1b",
+  "baseline_counts": {
+    "matched_text_bytes": 1611088,
+    "normalized": 1019,
+    "raw": 188,
+    "total": 1035,
+    "unmatched": 16
+  },
+  "candidate_counts": {
+    "matched_text_bytes": 1611088,
+    "normalized": 1019,
+    "raw": 188,
+    "total": 1035,
+    "unmatched": 16
+  },
+  "gained": [],
+  "lost": [],
+  "all_match_changes": [],
+  "no_window_regressions": true,
+  "limits": "Official static census only. No runtime, source provenance, or whole-ELF equality qualification."
+}

@@ -1,0 +1,10 @@
+{
+  "returncode": 0,
+  "cold_empty_target": true,
+  "locked_registry_packages": 254,
+  "registry_source_files": 4176,
+  "candidate_sha256": "df40382896c913ba02f064a993424daec707abe7ea95895cc821061cc7a82684",
+  "unstripped_sha256": "388fa73431d68cb0a89e9c939f1645510abd844652f4272ef1a841a0ec60bbe0",
+  "qualified_image_hashes_equal": false,
+  "seconds": 75.16
+}

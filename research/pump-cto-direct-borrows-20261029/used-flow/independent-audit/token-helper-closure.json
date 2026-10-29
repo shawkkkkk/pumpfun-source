@@ -1,0 +1,313 @@
+{
+  "actual_location_records": [
+    {
+      "callee_offset": "0x50",
+      "f4": {
+        "column": 19,
+        "file": "src/lib.rs",
+        "file_pointer": "0x1bdd28",
+        "length": 10,
+        "line": 102,
+        "record": "0x1c1708"
+      },
+      "new": {
+        "column": 19,
+        "file": "src/lib.rs",
+        "file_pointer": "0x1bd248",
+        "length": 10,
+        "line": 102,
+        "record": "0x1c0c28"
+      },
+      "typed_scope": "Location supplied by actual AccountInfo::data_is_empty borrow-failure path; no arbitrary table extent inferred."
+    }
+  ],
+  "actual_recursive_edges_depth2": [
+    {
+      "bytes": 104,
+      "depth": 0,
+      "f4_actual": "0x1a4b78",
+      "full_normalized_body_and_relocation_pattern_equal": true,
+      "new_actual": "0x1a4098",
+      "symbol": "_ZN19solana_account_info11AccountInfo13data_is_empty17h4cbad3bc61143bcfE"
+    },
+    {
+      "bytes": 144,
+      "depth": 0,
+      "f4_actual": "0x1a4ce8",
+      "full_normalized_body_and_relocation_pattern_equal": true,
+      "new_actual": "0x1a4208",
+      "symbol": "_ZN19solana_account_info11AccountInfo15try_borrow_data17hb083aa8a48fb7724E"
+    },
+    {
+      "bytes": 1056,
+      "depth": 0,
+      "f4_actual": "0x187f10",
+      "full_normalized_body_and_relocation_pattern_equal": true,
+      "new_actual": "0x187430",
+      "symbol": "_ZN93_$LT$anchor_spl..token_interface..TokenAccount$u20$as$u20$anchor_lang..AccountDeserialize$GT$25try_deserialize_unchecked17hae25a5b8fdd5feacE"
+    },
+    {
+      "bytes": 160,
+      "depth": 0,
+      "f4_actual": "0x19dbf8",
+      "full_normalized_body_and_relocation_pattern_equal": true,
+      "new_actual": "0x19d118",
+      "symbol": "_ZN107_$LT$anchor_lang..error..Error$u20$as$u20$core..convert..From$LT$solana_program_error..ProgramError$GT$$GT$4from17ha4865197be4b9a2fE"
+    },
+    {
+      "bytes": 152,
+      "depth": 1,
+      "f4_actual": "0x1adb48",
+      "full_normalized_body_and_relocation_pattern_equal": true,
+      "new_actual": "0x1ad068",
+      "symbol": "_ZN4core4cell30panic_already_mutably_borrowed17h1b0d052ee073462cE"
+    },
+    {
+      "bytes": 1216,
+      "depth": 1,
+      "f4_actual": "0x1963c8",
+      "full_normalized_body_and_relocation_pattern_equal": true,
+      "new_actual": "0x1958e8",
+      "symbol": "_ZN76_$LT$spl_token_2022..state..Account$u20$as$u20$solana_program_pack..Pack$GT$17unpack_from_slice17hc3becab88fd02c53E"
+    },
+    {
+      "bytes": 32,
+      "depth": 1,
+      "f4_actual": "0x1b5650",
+      "full_normalized_body_and_relocation_pattern_equal": true,
+      "new_actual": "0x1b4b70",
+      "symbol": "memcpy"
+    },
+    {
+      "bytes": 208,
+      "depth": 1,
+      "f4_actual": "0x1574f8",
+      "full_normalized_body_and_relocation_pattern_equal": true,
+      "new_actual": "0x156a18",
+      "symbol": "__rust_alloc"
+    },
+    {
+      "bytes": 32,
+      "depth": 1,
+      "f4_actual": "0x1ad1f0",
+      "full_normalized_body_and_relocation_pattern_equal": true,
+      "new_actual": "0x1ac710",
+      "symbol": "_ZN5alloc5alloc18handle_alloc_error17hdf8d5797c8d8bbffE"
+    },
+    {
+      "bytes": 80,
+      "depth": 2,
+      "f4_actual": "0x1ae8d0",
+      "full_normalized_body_and_relocation_pattern_equal": true,
+      "new_actual": "0x1addf0",
+      "symbol": "_ZN4core9panicking9panic_fmt17h0f7a5cdbeae7e874E"
+    },
+    {
+      "bytes": 8,
+      "depth": 2,
+      "f4_actual": "0x1b25c0",
+      "full_normalized_body_and_relocation_pattern_equal": true,
+      "new_actual": "0x1b1ae0",
+      "symbol": "_ZN4core5slice5index24slice_end_index_len_fail17h3f8438963677f5b8E"
+    },
+    {
+      "bytes": 16,
+      "depth": 2,
+      "f4_actual": "0x17df60",
+      "full_normalized_body_and_relocation_pattern_equal": true,
+      "new_actual": "0x17d480",
+      "symbol": "__rust_alloc_error_handler"
+    }
+  ],
+  "actual_sources_sha256": {
+    "5203": "5203d20c2e63be7337204491588e0ec69808f8ddd39d96b8b5fa1964d6ec201d",
+    "f4": "f4a2bb7d33431e0fb4911e39d5e03c8bb9f45c6f7a184da21d1a6762f9127955"
+  },
+  "all_bounded_actual_pairs_equal": true,
+  "bounded_pair_count": 12,
+  "four_actual_direct_callees": [
+    {
+      "bytes": 104,
+      "depth": 0,
+      "f4_actual": "0x1a4b78",
+      "full_normalized_body_and_relocation_pattern_equal": true,
+      "new_actual": "0x1a4098",
+      "symbol": "_ZN19solana_account_info11AccountInfo13data_is_empty17h4cbad3bc61143bcfE"
+    },
+    {
+      "bytes": 144,
+      "depth": 0,
+      "f4_actual": "0x1a4ce8",
+      "full_normalized_body_and_relocation_pattern_equal": true,
+      "new_actual": "0x1a4208",
+      "symbol": "_ZN19solana_account_info11AccountInfo15try_borrow_data17hb083aa8a48fb7724E"
+    },
+    {
+      "bytes": 1056,
+      "depth": 0,
+      "f4_actual": "0x187f10",
+      "full_normalized_body_and_relocation_pattern_equal": true,
+      "new_actual": "0x187430",
+      "symbol": "_ZN93_$LT$anchor_spl..token_interface..TokenAccount$u20$as$u20$anchor_lang..AccountDeserialize$GT$25try_deserialize_unchecked17hae25a5b8fdd5feacE"
+    },
+    {
+      "bytes": 160,
+      "depth": 0,
+      "f4_actual": "0x19dbf8",
+      "full_normalized_body_and_relocation_pattern_equal": true,
+      "new_actual": "0x19d118",
+      "symbol": "_ZN107_$LT$anchor_lang..error..Error$u20$as$u20$core..convert..From$LT$solana_program_error..ProgramError$GT$$GT$4from17ha4865197be4b9a2fE"
+    }
+  ],
+  "helper_direct_relocation_count": 0,
+  "helper_source_lines": {
+    "5203": 772,
+    "f4": 775
+  },
+  "lexical_error_require_unwrap_tokens": {
+    "5203": [
+      {
+        "line": 284,
+        "token": "error!("
+      },
+      {
+        "line": 289,
+        "token": "error!("
+      },
+      {
+        "line": 296,
+        "token": "error!("
+      },
+      {
+        "line": 298,
+        "token": "error!("
+      },
+      {
+        "line": 306,
+        "token": "error!("
+      },
+      {
+        "line": 307,
+        "token": ".unwrap("
+      },
+      {
+        "line": 307,
+        "token": "error!("
+      },
+      {
+        "line": 312,
+        "token": "error!("
+      },
+      {
+        "line": 326,
+        "token": "error!("
+      },
+      {
+        "line": 330,
+        "token": "error!("
+      },
+      {
+        "line": 334,
+        "token": "error!("
+      },
+      {
+        "line": 338,
+        "token": "error!("
+      },
+      {
+        "line": 410,
+        "token": "require!("
+      },
+      {
+        "line": 556,
+        "token": "error!("
+      },
+      {
+        "line": 648,
+        "token": "error!("
+      },
+      {
+        "line": 660,
+        "token": "require!("
+      },
+      {
+        "line": 719,
+        "token": "require!("
+      }
+    ],
+    "f4": [
+      {
+        "line": 284,
+        "token": "error!("
+      },
+      {
+        "line": 289,
+        "token": "error!("
+      },
+      {
+        "line": 296,
+        "token": "error!("
+      },
+      {
+        "line": 298,
+        "token": "error!("
+      },
+      {
+        "line": 306,
+        "token": "error!("
+      },
+      {
+        "line": 307,
+        "token": ".unwrap("
+      },
+      {
+        "line": 307,
+        "token": "error!("
+      },
+      {
+        "line": 312,
+        "token": "error!("
+      },
+      {
+        "line": 326,
+        "token": "error!("
+      },
+      {
+        "line": 330,
+        "token": "error!("
+      },
+      {
+        "line": 334,
+        "token": "error!("
+      },
+      {
+        "line": 338,
+        "token": "error!("
+      },
+      {
+        "line": 410,
+        "token": "require!("
+      },
+      {
+        "line": 556,
+        "token": "error!("
+      },
+      {
+        "line": 648,
+        "token": "error!("
+      },
+      {
+        "line": 660,
+        "token": "require!("
+      },
+      {
+        "line": 719,
+        "token": "require!("
+      }
+    ]
+  },
+  "lexical_tokens_equal": true,
+  "meaning": "Only the lexical function-definition line moves. The448B helper differs only in its4actualCALL operands; its actual callees and depth2 actual edge identities match. The sole directcallee Location is unchanged src/lib.rs102:19, with naturally shifted addresses. This is not a claim that every parent Location/semantic effect is closed.",
+  "observed_775_to_772_location_change": false,
+  "scope": "Four actual token_raw_amount callee bodies/edges plus its actual SDK borrow-failure Location; no universal parent/semantic proof."
+}

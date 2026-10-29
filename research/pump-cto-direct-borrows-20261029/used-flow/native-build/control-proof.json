@@ -1,0 +1,20 @@
+{
+  "run_id": 40791064153,
+  "artifact_name": "pump-current673-native-control-40791064153-1",
+  "manifest_sha256": "ba3109afa0032dd65ad13c6fa7a6884a1c1c1990c59757109cf6bcaf6a7f0cf5",
+  "result": {
+    "status": "reproduced",
+    "base_commit": "1285b5e9e3a29c1e2cf32246d6046035e5d66fad",
+    "candidate_sha256": "199fd7379b6881adefd9e54803f75902176c17bded1718bfc1c59b1cf5bc8473",
+    "unstripped_sha256": "49df399b8a36a0a60de03e8d55f1417261dc451e44845ca9d17a94040968c680",
+    "cold_empty_target": true,
+    "source_files": 65,
+    "limits": "Unchanged control only. No new census, runtime, candidate or original whole-ELF identity claim."
+  },
+  "host": {
+    "system": "Darwin",
+    "machine": "arm64",
+    "python": "3.14.7 (main, Aug  5 2026, 10:29:49) [Clang 17.0.0 (clang-1700.6.4.2)]",
+    "revision": "c6ae78c36ef59de4f1b2a057b54e57b6c9f3dce7"
+  }
+}

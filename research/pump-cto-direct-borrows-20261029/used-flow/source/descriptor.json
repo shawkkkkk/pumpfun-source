@@ -1,0 +1,159 @@
+{
+  "schema": "PUMP_CTO_USED_CPI_FLOW_SOURCE_PROPOSAL_V1",
+  "status": "STATIC ONLY; not submitted to compiler",
+  "parent_source_sha256": "f4a2bb7d33431e0fb4911e39d5e03c8bb9f45c6f7a184da21d1a6762f9127955",
+  "parent_candidate_sha256": "d537faf5907c594eeef6f3706d87e300e6f01509243b5dcf28b018f3c90a64c6",
+  "parent_unstripped_sha256": "daa2772d4745d8488b357c6c1c088fadc77bf31d341c59f5b50c4706d7b54c78",
+  "proposal_source_sha256": "5203d20c2e63be7337204491588e0ec69808f8ddd39d96b8b5fa1964d6ec201d",
+  "changes": [
+    {
+      "context": "collect-coin",
+      "change": "Clone genuine used pump_amm CpiContext program first, before cpi_accounts; same value used in constructor, no extra copy",
+      "original_and_proposed_order": "program first, account fields in declaration order, program field last"
+    },
+    {
+      "context": "sharing",
+      "change": "Clone genuine used pump_fees CpiContext program first, before cpi_accounts; same value used in constructor, no extra copy",
+      "original_and_proposed_order": "program first, account fields in declaration order, program field last"
+    },
+    {
+      "context": "pool",
+      "change": "Clone genuine used pump_amm CpiContext program first, before cpi_accounts; same value used in constructor, no extra copy",
+      "original_and_proposed_order": "program first, account fields in declaration order, program field last"
+    },
+    {
+      "context": "shared holder token payout",
+      "change": "Replace sole used pay_token call with genuine fixed-destination ATA-create/transfer body; remove obsolete helper including its attached inline(never) declaration; no attribute toggle/forced inlining. Eliminates one extra owner temporary."
+    }
+  ],
+  "evidence_files": {
+    "clone-boundary-proof.py": "e14efa5b429ffcb5bcbdb5aa2ba4b503e7ce9c6895c50c90b6a2a3fac275d797",
+    "clone-boundary-slices.json": "480f229e1664bfffe03b38041fee3fd4046985f3467ae81ffb9a37a3267c75b3",
+    "clone-group-attribution.json": "ac3cc97511ee843e8b10d384b6b301820772b5b2dda05c7e7e17c33c6b6c4128",
+    "pay-token-abi.json": "6f479109d46e0ba14baf635823615343f0bcea1a80fda9b03c6a6ba117de54c1",
+    "f4-native-callee-audit.json": "8def0320c7a0780696a98bd5c56d2eea7bf128ef16b86f4865e5632e5d4ac807"
+  },
+  "source_positions": {
+    "explicit_error_require_panic_unwrap_expect_tokens": [
+      {
+        "kind": "error!(",
+        "line": 284,
+        "column": 47
+      },
+      {
+        "kind": "error!(",
+        "line": 289,
+        "column": 69
+      },
+      {
+        "kind": "error!(",
+        "line": 296,
+        "column": 106
+      },
+      {
+        "kind": "error!(",
+        "line": 298,
+        "column": 40
+      },
+      {
+        "kind": "error!(",
+        "line": 306,
+        "column": 41
+      },
+      {
+        "kind": ".unwrap(",
+        "line": 307,
+        "column": 46
+      },
+      {
+        "kind": "error!(",
+        "line": 307,
+        "column": 97
+      },
+      {
+        "kind": "error!(",
+        "line": 312,
+        "column": 80
+      },
+      {
+        "kind": "error!(",
+        "line": 326,
+        "column": 226
+      },
+      {
+        "kind": "error!(",
+        "line": 330,
+        "column": 40
+      },
+      {
+        "kind": "error!(",
+        "line": 334,
+        "column": 66
+      },
+      {
+        "kind": "error!(",
+        "line": 338,
+        "column": 85
+      },
+      {
+        "kind": "require!(",
+        "line": 410,
+        "column": 2
+      },
+      {
+        "kind": "error!(",
+        "line": 556,
+        "column": 179
+      },
+      {
+        "kind": "error!(",
+        "line": 648,
+        "column": 144
+      },
+      {
+        "kind": "require!(",
+        "line": 660,
+        "column": 24
+      },
+      {
+        "kind": "require!(",
+        "line": 719,
+        "column": 4
+      }
+    ],
+    "all_explicit_sites_unchanged": true,
+    "token_frozen_line": 770,
+    "token_raw_amount_before": 775,
+    "token_raw_amount_after": 772,
+    "newline_count_before": 775,
+    "newline_count_after": 772,
+    "padding_added": false,
+    "Location_limits": "Natural3line shrink from deleting obsolete pay_token helper. token_raw_amount actual statement moves. Compiler-generated Locations and every matched membership must be rechecked, never masked/forged."
+  },
+  "expected_observations": [
+    "All five f4 direct borrows and six outer caller emptiness calls remain as measured; no previous source correction reverted.",
+    "Sole used pay_token call disappears, genuine holder ATA and transfer_vault_tokens calls restored directly in execute.",
+    "Current55 total AccountInfo copy sites reduce by the single extra holder-owner temp to original54, independent of compiler direct/inline choices.",
+    "sharing/pool/collect-coin contexts now construct outer CpiContext program before account fields as original instruction pointer chains prove; all account values and declaration ordering retained."
+  ],
+  "not_claimed": [
+    "window match",
+    "raw equality",
+    "runtime pass for new proposal",
+    "unique original source spelling",
+    "predetermined compiler inlining or total defined call count"
+  ],
+  "excluded": [
+    "compiler flag or inline attribute sweeps",
+    "dummy unused matching bodies",
+    "source-origin fabrication",
+    "stopped incentive handlers"
+  ],
+  "validation_required": [
+    "fresh native control + this exact source descriptor binding",
+    "both actual local crates compiled",
+    "official all1035 census with0 matched membership losses",
+    "actual CTO clone/argument/callee audit",
+    "strict18 common-wallet plus existing shared-holder/CTO affected signed runtime"
+  ]
+}

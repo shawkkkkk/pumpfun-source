@@ -1,0 +1,569 @@
+{
+  "actual_source_identified_root_calls": [
+    {
+      "offset": 10184,
+      "target": 1571208
+    },
+    {
+      "offset": 17240,
+      "target": 1571208
+    },
+    {
+      "offset": 17472,
+      "target": 228424
+    }
+  ],
+  "mismatches": [],
+  "new_parent": {
+    "bytes": 18464,
+    "start": "0x2fd30"
+  },
+  "pairs": [
+    {
+      "actual_child_edges": [
+        {
+          "new_target": "0x19ae78",
+          "offset": "0x48",
+          "original_target": "0x199918"
+        },
+        {
+          "new_target": "0x1b4b70",
+          "offset": "0x80",
+          "original_target": "0x1b3610"
+        },
+        {
+          "new_target": "0x1b4b70",
+          "offset": "0xb0",
+          "original_target": "0x1b3610"
+        },
+        {
+          "new_target": "0x1b4b70",
+          "offset": "0xe0",
+          "original_target": "0x1b3610"
+        },
+        {
+          "new_target": "0x1b4b70",
+          "offset": "0x110",
+          "original_target": "0x1b3610"
+        },
+        {
+          "new_target": "0x1b4b70",
+          "offset": "0x140",
+          "original_target": "0x1b3610"
+        },
+        {
+          "new_target": "0x1b4b70",
+          "offset": "0x170",
+          "original_target": "0x1b3610"
+        },
+        {
+          "new_target": "0x1a1a90",
+          "offset": "0x1c8",
+          "original_target": "0x1a0530"
+        },
+        {
+          "new_target": "0x19d118",
+          "offset": "0x218",
+          "original_target": "0x19bbb8"
+        },
+        {
+          "new_target": "0x156ae8",
+          "offset": "0x260",
+          "original_target": "0x1570b8"
+        },
+        {
+          "new_target": "0x156ae8",
+          "offset": "0x288",
+          "original_target": "0x1570b8"
+        },
+        {
+          "new_target": "0x17eb98",
+          "offset": "0x2a0",
+          "original_target": "0x17d638"
+        },
+        {
+          "new_target": "0x17f058",
+          "offset": "0x2b0",
+          "original_target": "0x17daf8"
+        },
+        {
+          "new_target": "0x156ae8",
+          "offset": "0x318",
+          "original_target": "0x1570b8"
+        },
+        {
+          "new_target": "0x156ae8",
+          "offset": "0x378",
+          "original_target": "0x1570b8"
+        }
+      ],
+      "actual_new_target": "0x17f988",
+      "actual_symbol": "_ZN10anchor_spl16associated_token17create_idempotent17h6d66b04320e05cf1E",
+      "bytes": 928,
+      "depth": 0,
+      "new_bytes": 928,
+      "original": "0x17e428",
+      "same_complete_normalized_body_and_relocation_pattern": true
+    },
+    {
+      "actual_child_edges": [
+        {
+          "new_target": "0x181228",
+          "offset": "0x7f0",
+          "original_target": "0x17fcc8"
+        }
+      ],
+      "actual_new_target": "0x37c48",
+      "actual_symbol": "_ZN14pump_recovered10collect_v221transfer_vault_tokens17h2ece254518fc977aE",
+      "bytes": 2088,
+      "depth": 0,
+      "new_bytes": 2088,
+      "original": "0x93898",
+      "same_complete_normalized_body_and_relocation_pattern": true
+    },
+    {
+      "actual_child_edges": [
+        {
+          "new_target": "0x19a950",
+          "offset": "0x18",
+          "original_target": "0x1993f0"
+        }
+      ],
+      "actual_new_target": "0x19ae78",
+      "actual_symbol": "_ZN35spl_associated_token_account_client11instruction42create_associated_token_account_idempotent17h4223a67c67ddacf1E",
+      "bytes": 40,
+      "depth": 1,
+      "new_bytes": 40,
+      "original": "0x199918",
+      "same_complete_normalized_body_and_relocation_pattern": true
+    },
+    {
+      "actual_child_edges": [],
+      "actual_new_target": "0x1b4b70",
+      "actual_symbol": "memcpy",
+      "bytes": 32,
+      "depth": 1,
+      "new_bytes": 32,
+      "original": "0x1b3610",
+      "same_complete_normalized_body_and_relocation_pattern": true
+    },
+    {
+      "actual_child_edges": [
+        {
+          "new_target": "0x1b4bd8",
+          "offset": "0x120",
+          "original_target": "0x1b3678"
+        },
+        {
+          "new_target": "0x1a4100",
+          "offset": "0x178",
+          "original_target": "0x1a2ba0"
+        },
+        {
+          "new_target": "0x1a4208",
+          "offset": "0x1e0",
+          "original_target": "0x1a2ca8"
+        },
+        {
+          "new_target": "0x1a4190",
+          "offset": "0x250",
+          "original_target": "0x1a2c30"
+        },
+        {
+          "new_target": "0x1a4298",
+          "offset": "0x2b8",
+          "original_target": "0x1a2d38"
+        },
+        {
+          "new_target": "0x1a32d0",
+          "offset": "0x330",
+          "original_target": "0x1a1d70"
+        }
+      ],
+      "actual_new_target": "0x1a1a90",
+      "actual_symbol": "_ZN14solana_program7program13invoke_signed17h01c3b84bc1fc491eE",
+      "bytes": 880,
+      "depth": 1,
+      "new_bytes": 880,
+      "original": "0x1a0530",
+      "same_complete_normalized_body_and_relocation_pattern": true
+    },
+    {
+      "actual_child_edges": [
+        {
+          "new_target": "0x156a18",
+          "offset": "0x20",
+          "original_target": "0x156fe8"
+        },
+        {
+          "new_target": "0x1ac710",
+          "offset": "0x40",
+          "original_target": "0x1ab1b0"
+        }
+      ],
+      "actual_new_target": "0x19d118",
+      "actual_symbol": "_ZN107_$LT$anchor_lang..error..Error$u20$as$u20$core..convert..From$LT$solana_program_error..ProgramError$GT$$GT$4from17ha4865197be4b9a2fE",
+      "bytes": 160,
+      "depth": 1,
+      "new_bytes": 160,
+      "original": "0x19bbb8",
+      "same_complete_normalized_body_and_relocation_pattern": true
+    },
+    {
+      "actual_child_edges": [],
+      "actual_new_target": "0x156ae8",
+      "actual_symbol": "__rust_dealloc",
+      "bytes": 8,
+      "depth": 1,
+      "new_bytes": 8,
+      "original": "0x1570b8",
+      "same_complete_normalized_body_and_relocation_pattern": true
+    },
+    {
+      "actual_child_edges": [
+        {
+          "new_target": "0x156ae8",
+          "offset": "0x68",
+          "original_target": "0x1570b8"
+        },
+        {
+          "new_target": "0x156ae8",
+          "offset": "0xc8",
+          "original_target": "0x1570b8"
+        },
+        {
+          "new_target": "0x156ae8",
+          "offset": "0x130",
+          "original_target": "0x1570b8"
+        },
+        {
+          "new_target": "0x156ae8",
+          "offset": "0x190",
+          "original_target": "0x1570b8"
+        },
+        {
+          "new_target": "0x156ae8",
+          "offset": "0x1f8",
+          "original_target": "0x1570b8"
+        },
+        {
+          "new_target": "0x156ae8",
+          "offset": "0x258",
+          "original_target": "0x1570b8"
+        },
+        {
+          "new_target": "0x156ae8",
+          "offset": "0x2c0",
+          "original_target": "0x1570b8"
+        },
+        {
+          "new_target": "0x156ae8",
+          "offset": "0x320",
+          "original_target": "0x1570b8"
+        },
+        {
+          "new_target": "0x156ae8",
+          "offset": "0x388",
+          "original_target": "0x1570b8"
+        },
+        {
+          "new_target": "0x156ae8",
+          "offset": "0x3e8",
+          "original_target": "0x1570b8"
+        },
+        {
+          "new_target": "0x156ae8",
+          "offset": "0x450",
+          "original_target": "0x1570b8"
+        },
+        {
+          "new_target": "0x156ae8",
+          "offset": "0x4b0",
+          "original_target": "0x1570b8"
+        }
+      ],
+      "actual_new_target": "0x17eb98",
+      "actual_symbol": "_ZN4core3ptr74drop_in_place$LT$$u5b$solana_account_info..AccountInfo$u3b$$u20$6$u5d$$GT$17h3c5498a396782e87E",
+      "bytes": 1216,
+      "depth": 1,
+      "new_bytes": 1216,
+      "original": "0x17d638",
+      "same_complete_normalized_body_and_relocation_pattern": true
+    },
+    {
+      "actual_child_edges": [
+        {
+          "new_target": "0x156ae8",
+          "offset": "0x98",
+          "original_target": "0x1570b8"
+        },
+        {
+          "new_target": "0x156ae8",
+          "offset": "0xe0",
+          "original_target": "0x1570b8"
+        },
+        {
+          "new_target": "0x156ae8",
+          "offset": "0x150",
+          "original_target": "0x1570b8"
+        }
+      ],
+      "actual_new_target": "0x17f058",
+      "actual_symbol": "_ZN4core3ptr76drop_in_place$LT$alloc..vec..Vec$LT$solana_account_info..AccountInfo$GT$$GT$17h4f49cc865b18d01dE",
+      "bytes": 360,
+      "depth": 1,
+      "new_bytes": 360,
+      "original": "0x17daf8",
+      "same_complete_normalized_body_and_relocation_pattern": true
+    },
+    {
+      "actual_child_edges": [
+        {
+          "new_target": "0x194c30",
+          "offset": "0x90",
+          "original_target": "0x1936d0"
+        },
+        {
+          "new_target": "0x1b4b70",
+          "offset": "0x160",
+          "original_target": "0x1b3610"
+        },
+        {
+          "new_target": "0x1b4b70",
+          "offset": "0x1c8",
+          "original_target": "0x1b3610"
+        },
+        {
+          "new_target": "0x1b4b70",
+          "offset": "0x1f0",
+          "original_target": "0x1b3610"
+        },
+        {
+          "new_target": "0x1b4b70",
+          "offset": "0x218",
+          "original_target": "0x1b3610"
+        },
+        {
+          "new_target": "0x1b4b70",
+          "offset": "0x240",
+          "original_target": "0x1b3610"
+        },
+        {
+          "new_target": "0x1a1a90",
+          "offset": "0x2a0",
+          "original_target": "0x1a0530"
+        },
+        {
+          "new_target": "0x19d118",
+          "offset": "0x2f0",
+          "original_target": "0x19bbb8"
+        },
+        {
+          "new_target": "0x156ae8",
+          "offset": "0x338",
+          "original_target": "0x1570b8"
+        },
+        {
+          "new_target": "0x156ae8",
+          "offset": "0x360",
+          "original_target": "0x1570b8"
+        },
+        {
+          "new_target": "0x17e470",
+          "offset": "0x378",
+          "original_target": "0x17cf10"
+        },
+        {
+          "new_target": "0x17f058",
+          "offset": "0x388",
+          "original_target": "0x17daf8"
+        },
+        {
+          "new_target": "0x156ae8",
+          "offset": "0x3f0",
+          "original_target": "0x1570b8"
+        },
+        {
+          "new_target": "0x156ae8",
+          "offset": "0x450",
+          "original_target": "0x1570b8"
+        },
+        {
+          "new_target": "0x19d118",
+          "offset": "0x498",
+          "original_target": "0x19bbb8"
+        },
+        {
+          "new_target": "0x156ae8",
+          "offset": "0x510",
+          "original_target": "0x1570b8"
+        },
+        {
+          "new_target": "0x156ae8",
+          "offset": "0x570",
+          "original_target": "0x1570b8"
+        },
+        {
+          "new_target": "0x156ae8",
+          "offset": "0x5d8",
+          "original_target": "0x1570b8"
+        },
+        {
+          "new_target": "0x156ae8",
+          "offset": "0x638",
+          "original_target": "0x1570b8"
+        },
+        {
+          "new_target": "0x156ae8",
+          "offset": "0x6a0",
+          "original_target": "0x1570b8"
+        },
+        {
+          "new_target": "0x156ae8",
+          "offset": "0x700",
+          "original_target": "0x1570b8"
+        },
+        {
+          "new_target": "0x156ae8",
+          "offset": "0x768",
+          "original_target": "0x1570b8"
+        },
+        {
+          "new_target": "0x156ae8",
+          "offset": "0x7c8",
+          "original_target": "0x1570b8"
+        },
+        {
+          "new_target": "0x17f058",
+          "offset": "0x7d8",
+          "original_target": "0x17daf8"
+        },
+        {
+          "new_target": "0x156ae8",
+          "offset": "0x840",
+          "original_target": "0x1570b8"
+        }
+      ],
+      "actual_new_target": "0x181228",
+      "actual_symbol": "_ZN10anchor_spl10token_202216transfer_checked17h41d7593a59ca7245E",
+      "bytes": 2192,
+      "depth": 1,
+      "new_bytes": 2192,
+      "original": "0x17fcc8",
+      "same_complete_normalized_body_and_relocation_pattern": true
+    },
+    {
+      "actual_child_edges": [],
+      "actual_new_target": "0x19a950",
+      "actual_symbol": "_ZN35spl_associated_token_account_client11instruction42build_associated_token_account_instruction17he2789df0763e9f81E",
+      "bytes": 1280,
+      "depth": 2,
+      "new_bytes": 1280,
+      "original": "0x1993f0",
+      "same_complete_normalized_body_and_relocation_pattern": true
+    },
+    {
+      "actual_child_edges": [],
+      "actual_new_target": "0x1b4bd8",
+      "actual_symbol": "memcmp",
+      "bytes": 64,
+      "depth": 2,
+      "new_bytes": 64,
+      "original": "0x1b3678",
+      "same_complete_normalized_body_and_relocation_pattern": true
+    },
+    {
+      "actual_child_edges": [],
+      "actual_new_target": "0x1a4100",
+      "actual_symbol": "_ZN19solana_account_info11AccountInfo19try_borrow_lamports17h7ffa9b9c90c53c02E",
+      "bytes": 144,
+      "depth": 2,
+      "new_bytes": 144,
+      "original": "0x1a2ba0",
+      "same_complete_normalized_body_and_relocation_pattern": true
+    },
+    {
+      "actual_child_edges": [],
+      "actual_new_target": "0x1a4208",
+      "actual_symbol": "_ZN19solana_account_info11AccountInfo15try_borrow_data17hb083aa8a48fb7724E",
+      "bytes": 144,
+      "depth": 2,
+      "new_bytes": 144,
+      "original": "0x1a2ca8",
+      "same_complete_normalized_body_and_relocation_pattern": true
+    },
+    {
+      "actual_child_edges": [],
+      "actual_new_target": "0x1a4190",
+      "actual_symbol": "_ZN19solana_account_info11AccountInfo23try_borrow_mut_lamports17hc75a8bf8e315e81bE",
+      "bytes": 120,
+      "depth": 2,
+      "new_bytes": 120,
+      "original": "0x1a2c30",
+      "same_complete_normalized_body_and_relocation_pattern": true
+    },
+    {
+      "actual_child_edges": [],
+      "actual_new_target": "0x1a4298",
+      "actual_symbol": "_ZN19solana_account_info11AccountInfo19try_borrow_mut_data17h544b4a458d62062bE",
+      "bytes": 120,
+      "depth": 2,
+      "new_bytes": 120,
+      "original": "0x1a2d38",
+      "same_complete_normalized_body_and_relocation_pattern": true
+    },
+    {
+      "actual_child_edges": [],
+      "actual_new_target": "0x1a32d0",
+      "actual_symbol": "_ZN10solana_cpi23invoke_signed_unchecked17h29c3e5ddf8e2a195E",
+      "bytes": 984,
+      "depth": 2,
+      "new_bytes": 984,
+      "original": "0x1a1d70",
+      "same_complete_normalized_body_and_relocation_pattern": true
+    },
+    {
+      "actual_child_edges": [],
+      "actual_new_target": "0x156a18",
+      "actual_symbol": "__rust_alloc",
+      "bytes": 208,
+      "depth": 2,
+      "new_bytes": 208,
+      "original": "0x156fe8",
+      "same_complete_normalized_body_and_relocation_pattern": true
+    },
+    {
+      "actual_child_edges": [],
+      "actual_new_target": "0x1ac710",
+      "actual_symbol": "_ZN5alloc5alloc18handle_alloc_error17hdf8d5797c8d8bbffE",
+      "bytes": 32,
+      "depth": 2,
+      "new_bytes": 32,
+      "original": "0x1ab1b0",
+      "same_complete_normalized_body_and_relocation_pattern": true
+    },
+    {
+      "actual_child_edges": [],
+      "actual_new_target": "0x194c30",
+      "actual_symbol": "_ZN14spl_token_202211instruction16transfer_checked17he7c6d648b34ca87fE",
+      "bytes": 1520,
+      "depth": 2,
+      "new_bytes": 1520,
+      "original": "0x1936d0",
+      "same_complete_normalized_body_and_relocation_pattern": true
+    },
+    {
+      "actual_child_edges": [],
+      "actual_new_target": "0x17e470",
+      "actual_symbol": "_ZN4core3ptr74drop_in_place$LT$$u5b$solana_account_info..AccountInfo$u3b$$u20$4$u5d$$GT$17ha467bc362b1c55faE",
+      "bytes": 816,
+      "depth": 2,
+      "new_bytes": 816,
+      "original": "0x17cf10",
+      "same_complete_normalized_body_and_relocation_pattern": true
+    }
+  ],
+  "pairs_checked": 21,
+  "pairs_equal": 21,
+  "scope": "Original actual holder/wallet ATA and holder transfer vs actual5203 callee bodies and actual outgoing edges depth2. No alternate-target substitution; static pointee/whole semantics excluded."
+}

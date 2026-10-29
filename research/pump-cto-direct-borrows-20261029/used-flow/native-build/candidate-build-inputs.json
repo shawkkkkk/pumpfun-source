@@ -1,0 +1,194 @@
+{
+  "schema": "PUMP_FINAL_COMPOSITION_COLD_INPUTS_V1",
+  "source_wrapper_sha256": "d959fe0074fafe7f310a8f40051ce87f795b1e81b104a38dfe57086efa6bae1b",
+  "tool_sha256": {
+    "rustc": "1f26338cc2cabd0a6057dcbd0528bba262b23ca1296d357a55304ee31d1d9e5a",
+    "cargo": "cd27e4113fc155b5e79fca97c1cc5447ef89d1c8ce3d0e1e5679d2dd7a9ab0ef",
+    "objcopy": "8f79cc9a0eab0bd1b19a2ad789e5cb5e6f22d16c2f147d58ca30b9b51d2231e1",
+    "clang": "6310b1b8597e31c61e256db37784a7cd25ac52d1a9546a038827ce37409107a4",
+    "ar": "f5f6f54d235df10bc7e806a22966ca9bbae048a3ae8f8c4c20eb9b6c8081d267"
+  },
+  "target_libraries_sha256": {
+    "libaddr2line-e6aeb2e4b400d273.rlib": {
+      "sha256": "db16f788fbc9049a1c694876c9c8e52335640be0e667ef9c871d545e05b007d9",
+      "mode": 420
+    },
+    "libadler-a1ecf6226fab4e4c.rlib": {
+      "sha256": "eb6633b603230abf871ea94dc06141f493d31bb7b5db4469a85cc9212428a0dc",
+      "mode": 420
+    },
+    "liballoc-f3c66a8de450488e.rlib": {
+      "sha256": "679a55ef942aab47fc69da32765e782a28d71d0edc544ba4367589722bd69d94",
+      "mode": 420
+    },
+    "libcfg_if-ea0575808b373f94.rlib": {
+      "sha256": "17a2996b3d25d5ff035e6ecae7b29ccdeb5fe4ade59ffe80eda70bae6d321452",
+      "mode": 420
+    },
+    "libcompiler_builtins-c45c2ded080d9668.rlib": {
+      "sha256": "10fc7b8628875a6d330dcd5aea94852ec9f31ed85009a20dcf98e93f36894e86",
+      "mode": 420
+    },
+    "libcore-52876eb403c2f847.rlib": {
+      "sha256": "85972d2c6f6b4eabb34b7c9d5cb04aa216723d9ac35f050a7c219d6f9d65f5e7",
+      "mode": 420
+    },
+    "libgetopts-70e39e4d407d9f9d.rlib": {
+      "sha256": "322d8fbd80f1ffbc186abb461f85a1f845eb54cc23b1d9ebbfebecd2cf9e1c62",
+      "mode": 420
+    },
+    "libgimli-e8cd2ed6ba81ed3d.rlib": {
+      "sha256": "59337ec33e3c65422b2984247708c1668cee45e6c017d7cbee9d510c9db9bbc5",
+      "mode": 420
+    },
+    "libhashbrown-acc155a66701b798.rlib": {
+      "sha256": "9c916224d6f42d506323dc0fa78e3ba8a6d05feab3f8a7e99ae78093e45bbbda",
+      "mode": 420
+    },
+    "liblibc-6e7ddecf4e3040fb.rlib": {
+      "sha256": "804d80ef515b2d75e435bd5908ffdd98c62fdb962942c8254fa92e472f33f042",
+      "mode": 420
+    },
+    "libmemchr-014ff96e10cd0668.rlib": {
+      "sha256": "bb996019425342176ba13e5b060a193f725fea5956346a025eaa1a0bd05e5dbe",
+      "mode": 420
+    },
+    "libminiz_oxide-35c9473c472b3826.rlib": {
+      "sha256": "8c54b094181013ae29d72455f0c2e14807c2d24865df470f1d00d7d1a20254b8",
+      "mode": 420
+    },
+    "libobject-f88c80390b2ba95c.rlib": {
+      "sha256": "7584eea0c9862c5e5e354d35c60a0e3be42aa2ab1d82292b98532614460bbf85",
+      "mode": 420
+    },
+    "libpanic_abort-103d29f0ede7c858.rlib": {
+      "sha256": "e4c090de50a06b9ccd0d0ad3e5f0bc0389155277b3dc25ca1c268c3975f3bfb6",
+      "mode": 420
+    },
+    "libpanic_unwind-0c092adc710fd79f.rlib": {
+      "sha256": "02c687c95a570afb23e971ee45dfe7f26358081ca3f01843859f1dc50be7e4a6",
+      "mode": 420
+    },
+    "libproc_macro-b0e8b13964190326.rlib": {
+      "sha256": "896b9e3be0e2071c42ab1ff580801ce33ffff34d6bb7f1c7fa66ac601f5a448c",
+      "mode": 420
+    },
+    "librustc_std_workspace_alloc-43985c5bf5cb3cc1.rlib": {
+      "sha256": "d1f708aea3212a8723daed54851c6f08b2ac875f2a85ec6f6cad667848622558",
+      "mode": 420
+    },
+    "librustc_std_workspace_core-0d013a368a425fcf.rlib": {
+      "sha256": "22634be6b5115c40acfb7ca250eb9677a27aa1062531a99240fa60ada36bec88",
+      "mode": 420
+    },
+    "librustc_std_workspace_std-e66af626521502ee.rlib": {
+      "sha256": "7b7f3c944172d447f899f8a140b7eb3ca02b5ae045d083e18df381433712781d",
+      "mode": 420
+    },
+    "libstd-b21c434e0a696890.rlib": {
+      "sha256": "43c13aedf385aed42c3c7c97d13e7cc89979203e72fd87857c93c395e5fd4efa",
+      "mode": 420
+    },
+    "libstd_detect-ec5d45a0e20fae33.rlib": {
+      "sha256": "25f93d04b12d269e870666aa97bb47727203b533316932a8dee0966f3bb1d942",
+      "mode": 420
+    },
+    "libsysroot-b6b213ae1df94df5.rlib": {
+      "sha256": "c1a9183a76386cbaf604b48211008c219afdaae6757f846733950d046936ba82",
+      "mode": 420
+    },
+    "libtest-080eee5a22e558c4.rlib": {
+      "sha256": "8f82444d4c8591a90c63af2e41e51d8f74d4cfbab43da83cde196bfc6787bd36",
+      "mode": 420
+    },
+    "libunicode_width-e11e6d0a5e02b016.rlib": {
+      "sha256": "5bb7b96f1afdd9da91efb1e9b6e71d805d87804f17006560757030f194faed13",
+      "mode": 420
+    },
+    "libunwind-411a1a08afc96e48.rlib": {
+      "sha256": "089468bfa405b742e86b418b7d3c795a74d2d123539bc0b3d16144cee8f25101",
+      "mode": 420
+    }
+  },
+  "comparison": {
+    "candidate_sha256": "199fd7379b6881adefd9e54803f75902176c17bded1718bfc1c59b1cf5bc8473"
+  },
+  "unstripped_sha256": "49df399b8a36a0a60de03e8d55f1417261dc451e44845ca9d17a94040968c680",
+  "source_inputs": {
+    "Cargo.toml": "de2a8a93b5c2de8bfe3719bb6ece3fc5d9f71e4e10ef7086596cbd67165bf843",
+    "Cargo.lock": "65498a93b0e9c1c11f292ccb71b0ce6392d3d568783859e23a2fc8142da545da",
+    "recovered/constant_product_host.rs": "ee2e9e7fb89d7cdc42525dcafa28c802faab4ccb874652fa9df2307b11bc5825",
+    "recovered/constant_product.rs": "ec71f386f5f42abca163df627c7d8a5741c8954efec8732a1c9093728d33a99b",
+    "recovered/sell_accounting_host.rs": "b4aa42643c68895a23b99d5c46ac429cdaff76f0b650b69211b813b48859a39a",
+    "recovered/sell_accounting.rs": "23c1bbd79d6aa2987472a6eba572e0ded99cc8846cffd6bc23883f0700a25983",
+    "pump-token-ext/Cargo.toml": "a721097d6155534fdce19b3079fb90c0873fc7cd416bd74893d2d50d3ea40882",
+    "idls/pump_amm.json": "7a6d9badd36c50fd2426a89073fabce7398394035c95503b48fc2fefa7662bac",
+    "idls/pump_fees.json": "6b9fa3eccc6e06273076a47b581f9fcb9e531bb7c3c88acbcd44db55a4002b29",
+    "src/admin_set_idl_authority.rs": "d579c21de6b3d84fb8c4a65ea28de01451f7a5d8fb5d26a1e3d1621dab0940a0",
+    "src/multi_hop_curve_swap.rs": "679b34ae4965bf1cdc999e0f45f3ae5e171116c5f04173e7394c3b9e48a0fb43",
+    "src/v2_native_payments.rs": "0d6ed2941144ba94a1eec70e87df193538b3de8745525e4ac479cf6c6f783eb8",
+    "src/sweep_fees.rs": "8735adba8b670c3b4ee63a6fd716d1d639be6efa56269a15365c15ff2f44ba0c",
+    "src/pump_quote.rs": "68e893a86a76bf391a296b0b76f89355971503f67edb1e762401660b01f3646a",
+    "src/global_init.rs": "10af175df7b55445cd3a239c4d63f42bf4cfe459892e2ec3abe4a926f2d89e45",
+    "src/volume_sync.rs": "7e5c2d07d5e01aa872bd21c7c2dd96688a4dd0af5dbb5a3d9136bfb19964d085",
+    "src/cashback.rs": "1c632938b7f4d9c08b4f6ef173a47f1674b1c53dd255f0a3fd38109570a17863",
+    "src/create_v2.rs": "afd072350a1febfb4c7e0b327a40f73556b3407d53bd609edf4b01f9ac1c198e",
+    "src/v3_native_transfer_fee.rs": "8d9c1d5f07d97213408ad99f727d19732f4fdf2e238d0100722d97ad37abc078",
+    "src/buy_v2.rs": "12a5af479327b079bdf3d45ea5123b2610e2f93ed363b49a5de200f4e223ae9e",
+    "src/lib.rs": "3201fde6c15c69dd710cda8672c8d4d1837e8fea6c6943735b34c64c6463e0a9",
+    "src/v2_recipient_payments.rs": "afdf1516ed7cb43f98cd04f73c69837c3d02319841ec4d64e0f3dd239e72bbf5",
+    "src/set_params.rs": "0508a02b59e8ca1feb1f642db1597c4d2553800571ef09c0eef7370d9c6ce84c",
+    "src/create.rs": "8af4fb0525644d230f5fd394cd479aaeab412ca76d39e7995b963f5dbaae8e33",
+    "src/v2_user_token_transfers.rs": "86577a8573623af55b93fab323306c8fc087bbb8478f7d5a13d1be8581d8beb5",
+    "src/incentives.rs": "eba8b43e22bbd451d38b3c953cd78f559560cef6d0cc6cdfa5cd2a81da127840",
+    "src/set_reserved_fee_recipients.rs": "17415e982cfa3d186e552c928b2238c79e206471b44f0bee759f9302d5545280",
+    "src/fee_recipient.rs": "d3b055f677dead8b73766d6a4c3b3db1759f262af5ea33005b173f36a2e720ef",
+    "src/sell_v2.rs": "0a214cbd9077b5606c1c867e831d9ccc5cc2705262d568061c03925334783b4c",
+    "src/fee_cpi.rs": "fc24463e8c319f33b9db62c88594e273ea29048ece18cb873ff3db43610659b0",
+    "src/trade_v3.rs": "580b1e31173ca53ccd5cb547e04efde4ae178a0626fca966ca0034e4305b2ee5",
+    "src/migrate.rs": "517127564699052ca8e9ea0068d4c56e8edba481ce27161811d261f748ccc582",
+    "src/v2_quote_token_transfers.rs": "ac15f56326e6b234c9593a6843a2ac19d353bfa047d5cd8b381a5517afe83bfe",
+    "src/v2_token_transfers.rs": "154ccec87f26100562d87830955bf4ece2092798359da03ee4755a621b001280",
+    "src/legacy_native_payments.rs": "e10fdcb0373ba407df6e35a9092e7e5a4c38fa40a9d0e542dcb9a95f8c05037f",
+    "src/migration_native_payments.rs": "d5c3558ca41e76f6f815f73bbe55c836086a0adcf8f0bbfbe5edac3ae364a59f",
+    "src/trade_types.rs": "ab406bc16f1eaa6759de1bd01f9a35868226448b3c2b94e102a46e9e51b11ce0",
+    "src/sell.rs": "dabae1ca8773005ada6253f7d9194c12fcdd38db78ca527f632abf364d740392",
+    "src/buy.rs": "ce1450c29a4e9e65111ecd58eb5b1dae932ab3785265ddf52eea828c4f98335c",
+    "src/curve_quote_payments.rs": "415544f015827f07e4eff9ebc5addedc0559ed17539a1647d299851e8064ead5",
+    "src/migrate_v2.rs": "01b9cd6e1cc397f2238936e59a2837a2b0b63f2063ee52dbda56f52b30e58541",
+    "src/extend_account.rs": "9e1ddb267475f74e794f513a907eb11a802d6044c11bc6c312be6065751d12a0",
+    "src/mayhem_virtual_params.rs": "efc33461e70724b77a12afa6ab7369e708a05fdcb8fb2bd5ef1e738191901103",
+    "src/minimum.rs": "aab3cb1d7c3598bf5a44c3bd8917493c3cf05fb356f7a315ed862669fe64155d",
+    "src/creator/admin_cto.rs": "5203d20c2e63be7337204491588e0ec69808f8ddd39d96b8b5fa1964d6ec201d",
+    "src/creator/migrate_bonding_curve_creator.rs": "8c4d373338fa4b16585be3836ced1767fe646b1d5c37c18fc4d96f1a7fcf6219",
+    "src/creator/set_creator.rs": "4e33bac77f03271c9c0a54f53c7cc45446b771a23d0395c93bb93a07bd5a4bae",
+    "src/creator/distribute_creator_fees.rs": "f9ece9526c17fa9bd76cd08a02f1a3adfcde5905787a638d9a0859c95f855f18",
+    "src/creator/distribute_fee_to_holders.rs": "854e8bc552dc2ed9f31f41a82dd30fc55b7ca528f85d29521c99d1aff19df761",
+    "src/creator/distribute_creator_fee_v2.rs": "b7ede82daff0311c3b6efa0a8836746bd5dbdbb3686e804709af198aa56f0a52",
+    "src/creator/collect_creator_fee.rs": "429aac2fab93c8ff68fb6c53ab77eb4996f948fc11bfd0eac4afcb2254683bf4",
+    "src/creator/set_metaplex_creator.rs": "6b62a96f5175f62e5393829e51e888d06cd177af7a2abea4a114ddd17a904fee",
+    "src/util/fee.rs": "3775a3561564bb1564e7ad5d82cb4e23e92d53692c20687bd9b32f80b1526efb",
+    "src/util/account_name.rs": "d1f56578bc7f5f9ba770b14d97108984ec38d84b62a938f0def71e518602113e",
+    "src/util/transfer_fee.rs": "2a572b204fce41b8adf86361d82f71974dc3d9641436900bcc22d9477a844305",
+    "src/util/constant_product.rs": "3269785c24ef5a343c6b7f2095ba1541b042b9944596bad9cab1e026dbca8616",
+    "src/quote_control/initialize_quote_control.rs": "51d9657965554ff42f221131c96624b346fbbecb324e856b510be8818d65cfea",
+    "src/quote_control/mod.rs": "c1a355d9ed55a4b69224ddd3ddc703b2dd7608bc8aa0bbde830d88a6a61a8120",
+    "src/quote_control/update_quote_control_mints.rs": "8a98fe8b59dc327875c40530b7aa97d7c1f120fb245801b338d81f43367f7581",
+    "src/quote_control/state.rs": "9bdfa965349da47706ff8d258b5d42c21aed631f5941ca999f05003b09f58386",
+    "src/token_incentives/volume_accumulator.rs": "015c02e00443029489dc8e53691bff86e2ba30bd46693b32fd10c39174f0b0f5",
+    "src/token_incentives/claim_token_incentives.rs": "ab6db0255d5efa8c586cef12af00320eb660a43d82a664a0c1f30e2ff9ffe4e5",
+    "src/token_incentives/mod.rs": "5b8f20984b1e98a9ac1809592275b787a6fc78b41c2406076490065912f38b76",
+    "src/token_incentives/init_user_volume_accumulator.rs": "0c4c291e44ed2cf4a9eace64ad64b2aa458388b4e1c8aea150e8b1e3c48e0a92",
+    "pump-token-ext/src/lib.rs": "43b88dda9f4e14301c27c14d6f7d6212ac19ec051652fff6d9f196f51e57274b"
+  },
+  "qualified_parent": {
+    "path": "research/pump-admin-wallet-guard-20261028",
+    "manifest_sha256": "f909441fff95d22e14bce888fe8f108bcd0966c8525517b765ea7facb6b0ff3f",
+    "build_controller_sha256": "c7d215a92dbb733cae044b40d06ce5da45df7d5c84fe2985acea023ecd316241"
+  },
+  "actual_new_warm_build_receipt_sha256": "f7380e23fe311b94530914d409eaa58b32835130802dc094185b1780b161949f",
+  "final_source_parent_manifest": {
+    "path": "research/pump-final-composition-673-20261028/SOURCE-FROZEN.json",
+    "sha256": "974468bf7a2756089bf1b8729115cc03c20cc011bb39af4d1deb23b8e62d133a"
+  }
+}
