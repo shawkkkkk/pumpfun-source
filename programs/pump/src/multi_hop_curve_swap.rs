@@ -576,7 +576,7 @@ pub fn transfer_input<'info>(a: &MultiHopCurve<'info>, previous: Option<&Previou
             let post_fill; let selected = crate::legacy_sell::fee_math::get_fees(&a.global,c,&a.fee_config,fee_config_len,cap,trade_amount)?;
             let p_rate = if flag & 1 != 0 { selected.protocol_fee_bps } else { 0 };
             let c_rate = if flag & 2 != 0 { selected.creator_fee_bps } else { 0 };
-            let (_,crate::trade::TradeFees{protocol_fee:pf,creator_fee:cf,..}) = crate::trade::net_quote_for_budget(&c.creator,p_rate,c_rate,trade_amount)?;
+            let (_,crate::trade::TradeFees{protocol_fee:pf,creator_fee:cf,protocol_fee_bps:p_rate,creator_fee_bps:c_rate}) = crate::trade::net_quote_for_budget(&c.creator,p_rate,c_rate,trade_amount)?;
             let q = crate::trade::sub3(trade_amount,pf,cf)?;
 
 
