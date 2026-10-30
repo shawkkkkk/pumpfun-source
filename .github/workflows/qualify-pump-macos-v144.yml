@@ -1,65 +1,70 @@
-name: Qualify archived673 Pump on pinned native macOS v1.44
-run-name: Archived673 ${{ inputs.proposal || 'control' }} native v1.44
+name: Measure one frozen Pump native pair
+run-name: One cold control and candidate on macos-26
 on:
   workflow_dispatch:
     inputs:
-      proposal:
-        description: Unchanged control or one independently frozen proposal
+      source_base:
+        description: Exact reviewed source-base commit (40 lowercase hex)
+        required: true
+        type: string
+      candidate:
+        description: Exact reviewed one-Rust-delta child commit
+        required: true
+        type: string
+      changed_source_path:
+        description: The single reviewed Rust source path
+        required: true
         type: choice
-        default: control
-        options: [control, cto, sweep, perhop, sell-event, constructor, cto-used-flow, perhop-clock, sweep-read-timing]
+        options:
+          - programs/pump/src/buy_v2.rs
+          - programs/pump/src/creator/admin_cto.rs
+          - programs/pump/src/multi_hop_curve_swap.rs
 permissions:
   contents: read
-  actions: read
 concurrency:
-  group: pump-current673-native-macos-v144-${{ inputs.proposal || 'control' }}
+  group: pump-native-one-pair-measurement
   cancel-in-progress: false
 jobs:
-  qualify:
-    if: github.repository == 'shawkkkkk/pumpfun-source'
-    runs-on: macos-15
+  pair:
+    runs-on: macos-26
     timeout-minutes: 60
+    env:
+      SOURCE_BASE: ${{ inputs.source_base }}
+      CANDIDATE_COMMIT: ${{ inputs.candidate }}
+      CHANGED_SOURCE_PATH: ${{ inputs.changed_source_path }}
     steps:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
         with:
           persist-credentials: false
+          fetch-depth: 1
           filter: blob:none
           sparse-checkout-cone-mode: false
           sparse-checkout: |
             /.github/workflows/qualify-pump-macos-v144.yml
-            /scripts/pump_current673_macos_control.py
-            /scripts/pump_current673_macos_candidate.py
-            /research/pump-final-composition-673-20261028/source/
+            /reconstruction/pump-main/lanes/native-pair-measurement/
+            /programs/pump/
+            /reconstruction/harness/
+            /reconstruction/toolchain/
+            /reconstruction/base/
+            /reconstruction/pump-main/baseline/
             /evidence/original/pump/
-            /research/pump-current673-macos-qualification/
-            /research/pump-final-composition-cold-20261028/build.py
-            /research/pump-final-composition-cold-20261028/build-inputs.json
-            /research/pump-final-composition-cold-20261028/tools/
-      - name: Authenticate archived673 source and portable builder
-        run: python3 -B scripts/pump_current673_macos_control.py --source-directory research/pump-final-composition-673-20261028/source --inspect
-      - name: Retrieve exact reproduced control for independent candidate measurement
-        if: inputs.proposal != 'control'
-        uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065
         with:
-          github-token: ${{ github.token }}
-          repository: shawkkkkk/pumpfun-source
-          run-id: 40791064153
-          name: pump-current673-native-control-40791064153-1
-          path: work/pump-current673-control-proof
-      - name: Reproduce control or measure one frozen proposal from an empty target
-        env:
-          PROPOSAL: ${{ inputs.proposal }}
+          python-version: '3.12'
+      - name: Fetch only the two reviewed immutable commits
+        shell: bash
         run: |
-          if [ "$PROPOSAL" = control ]; then
-            python3 -B scripts/pump_current673_macos_control.py --source-directory research/pump-final-composition-673-20261028/source
-          else
-            python3 -B scripts/pump_current673_macos_candidate.py --source-directory research/pump-final-composition-673-20261028/source --candidate "$PROPOSAL"
-          fi
-      - name: Retain actual compiler inputs, outputs and logs
+          [[ "$SOURCE_BASE" =~ ^[0-9a-f]{40}$ && "$CANDIDATE_COMMIT" =~ ^[0-9a-f]{40}$ ]]
+          git -c gc.auto=0 -c maintenance.auto=false fetch --depth=1 --filter=blob:none --no-tags origin "$SOURCE_BASE" "$CANDIDATE_COMMIT"
+      - name: One control and one candidate, both cold
+        run: |
+          python3 -B reconstruction/pump-main/lanes/native-pair-measurement/measure_pair.py --source-base "$SOURCE_BASE" --candidate "$CANDIDATE_COMMIT" --changed-source-path "$CHANGED_SOURCE_PATH"
+      - name: Retain both actual images, inputs and full comparison
         if: always()
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         with:
-          name: pump-current673-native-${{ inputs.proposal }}-${{ github.run_id }}-${{ github.run_attempt }}
-          path: work/pump-current673-macos-${{ inputs.proposal }}/evidence
+          name: pump-native-pair-${{ github.run_id }}-${{ github.run_attempt }}
+          path: work/pump-native-pair/evidence/
           if-no-files-found: error
+          compression-level: 6
           retention-days: 30
