@@ -14,7 +14,7 @@ import tarfile
 import urllib.request
 
 BASE = '1cacecfbf9a58b698f99d5e11d6723a254588b81'
-ROOT = Path(__file__).resolve().parents[1]
+ROOT = Path(__file__).resolve().parents[4]
 EVIDENCE = ROOT / 'work/pump-current-identity/evidence'
 WORK = Path(os.environ['RUNNER_TEMP']) / 'pump-current-identity-work'
 SDKROOT = Path.home() / '.cache/solana'

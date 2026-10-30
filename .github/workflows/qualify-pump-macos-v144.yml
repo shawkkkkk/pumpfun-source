@@ -20,7 +20,7 @@ jobs:
           sparse-checkout-cone-mode: false
           sparse-checkout: |
             /.github/workflows/qualify-pump-macos-v144.yml
-            /scripts/pump_current_control.py
+            /reconstruction/pump-main/lanes/current-native-control/pump_current_control.py
             /programs/pump/
             /reconstruction/harness/
             /reconstruction/toolchain/
@@ -33,7 +33,7 @@ jobs:
       - name: Authenticate the frozen source checkpoint metadata
         run: git -c gc.auto=0 -c maintenance.auto=false fetch --depth=1 --filter=blob:none --no-tags origin 1cacecfbf9a58b698f99d5e11d6723a254588b81
       - name: One unchanged source build with full SDK inventory checks
-        run: python3 -B scripts/pump_current_control.py
+        run: python3 -B reconstruction/pump-main/lanes/current-native-control/pump_current_control.py
       - name: Retain actual source, provenance, compiler output and census
         if: always()
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
