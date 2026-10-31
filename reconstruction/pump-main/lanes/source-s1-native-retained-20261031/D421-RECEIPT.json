@@ -1,0 +1,55 @@
+{
+  "schema": "d421-current-control-remote-retention-v1",
+  "source": "d4219123cf0fbbefcfc7e77450efeda6684b812b",
+  "operational": "5b09cc4f3afb11eaba2479700ac67411ce976750",
+  "run": 41210896548,
+  "job": 124565448266,
+  "artifact": 13045424986,
+  "files": {
+    "d421-current-raw.zip": {
+      "bytes": 2911025,
+      "sha256": "6ce20ac22fa9d7d2852d0e2c47d129c5c72936a5664592bf1b17db0871ea73e7"
+    },
+    "d421-current-admission.tar.xz": {
+      "bytes": 968052,
+      "sha256": "34292f0e2e1302d5c9042cc8952fcede6af3dd79b5871e484199d124063af945"
+    }
+  },
+  "capsuleMembers": 113,
+  "images": {
+    "unstripped.so": "e9df54086dcfc8ca1a4833d3577bc5092e3e23eae2c4492d52bdea661ba82a85",
+    "candidate.so": "bfd0b071d7169f2c5cb6fd0b3a2b2ae006e57c16869367f398c8f4ed94b70bb5"
+  },
+  "CTO": {
+    "name": "_ZN14pump_recovered9admin_cto7execute17h3bd6d7f34f2e30d7E",
+    "info": 2,
+    "other": 2,
+    "sectionIndex": 1,
+    "address": 141840,
+    "bytes": 27400,
+    "bodySha256": "14a4654f0e151edae32446955a7f71c86e7cf7fcf76d5e86ebf72ce8f14e17aa"
+  },
+  "rootAdmissionSHA256": "cdd4389fe35f55d994b25d708b576a66a34c4a5e6700f4e7b124bc4a433ec105",
+  "rootSecondary39SHA256": "c27957a10e4e9ecc38d9a714a2cf1c306e1ebafa19437b856198ec7186226998",
+  "officialScoreSHA256": "26c8b3fa4dc13372474076b13ae68a62b04446ccb4a275bafb4d66a8b3d5f008",
+  "coverage": {
+    "raw": 1034,
+    "normalized": 1034,
+    "total": 1035,
+    "rawLosses": 0,
+    "normalizedLosses": 0,
+    "newMatchedWindows": 0
+  },
+  "targetMetric": {
+    "M": 2248,
+    "ratio": 0.6734571599760335,
+    "sealedEbeM": 2247,
+    "newMeasureExecutions": 1,
+    "EbeRemeasured": false,
+    "method": "Previously sealed Ebe normalized logical tokens / SequenceMatcher autojunk=False; same helper functions, older five method-file pins retained."
+  },
+  "independentAgentReview": false,
+  "sourceProposal": false,
+  "candidateVMExecutions": 0,
+  "limits": "Fresh unchanged-source control and retained bounded native-prefix facts. Confirms the reported upstream +1 token on this fixed cohort; no new source contribution, private original Result/type/lifetime inference, runtime acceptance or final CTO equality."
+}
