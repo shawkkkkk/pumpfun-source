@@ -1,0 +1,63 @@
+{
+  "artifact": 13047634711,
+  "capsuleMembers": 92,
+  "compiledSourceQualified": false,
+  "coreFiles": 288,
+  "decision": "COMPILATION_COMPLETED_V2_METADATA_GUARD_FAILED_UNQUALIFIED",
+  "files": {
+    "latest912-v2-guard-failure-raw.zip": {
+      "bytes": 2504474,
+      "sha256": "8d825f057250ef9f28aaf2f50c9c9552707ecd6215a5e58a017c1de73dc96c48"
+    },
+    "latest912-v2-guard-failure.tar.xz": {
+      "bytes": 2272756,
+      "sha256": "e7d764933b88790024ee8bfcf2e46e2d5ccdc8f3f428e6122ec3f481b7bd6004"
+    }
+  },
+  "images": {
+    "candidate.so": {
+      "bytes": 1934832,
+      "sha256": "d96c89272aa4fac9101d0bc5328596caecb63715b6514f554305bf8deb7cd3b8"
+    },
+    "unstripped.so": {
+      "bytes": 2665688,
+      "sha256": "dc79dde734b0cfb2ba84e505d62b5d3bdd801649e04e7ed9741366d07d095c8c"
+    }
+  },
+  "inputChecks": "All pinned regular bytes, the one literal tracked CORE symlink text without dereference, source/CORE Git blobs, executable modes, v2 directories, TAR/ZIP domains, hashes, CRC and root provenance checked; no build or scorer executed.",
+  "job": 124578385642,
+  "missing": [
+    "RESULT.json",
+    "score.json",
+    "bootstrap-after.log",
+    "registry-source-inputs-after.json",
+    "tool-inputs-after.json",
+    "native-lld-input-after.json",
+    "cargo-fingerprints.json"
+  ],
+  "newScoreMetricVM": false,
+  "note": "Compiler runtime_valid is its stack-warning gate, not VM execution. ELF byte identities confer no source/after-state qualification. No waiver, score, metric, or source acceptance.",
+  "operational": "60c9ad3fe10cffcab0f1d28c8e99f23621ba3187",
+  "planSHA256": "9d5ecdccd83cfe3bd6b7fd77b78118a5c4bc05339a14ba9287f81d4d1783591d",
+  "rawMembers": 35,
+  "run": 41215272713,
+  "schema": "pump-failed-v2-guard-retention-receipt-v1",
+  "source": "9120883a957d7d9b2cab6140f66fb5bc9e6774d5",
+  "sourceDirectories": [
+    "idls",
+    "link",
+    "pump-token-ext",
+    "pump-token-ext/src",
+    "recovered",
+    "src",
+    "src/creator",
+    "src/quote_control",
+    "src/token_incentives",
+    "src/util"
+  ],
+  "sourceFiles": 263,
+  "sourceSHA256": "6f5926830f08711a09d4b680f941338019217aaa48868b1afac8284619c0d6f3",
+  "sourceSchema": "pump-source-inputs-v2",
+  "sourceTree": "643b5908a1955db1503437d45a9da9a02bdbbd8d",
+  "stageFiles": 264
+}
