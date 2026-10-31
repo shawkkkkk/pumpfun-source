@@ -1,0 +1,44 @@
+{
+  "schema": "h1-negative-retention-receipt-v1",
+  "utc": "2026-10-31T14:12:13.083693+00:00",
+  "source": "568790dd4628bb39f9570562f6cc2d1892bcb358",
+  "operationalCommit": "3f7294baf1f2a68876a701ab2e67b0c96c9b3866",
+  "run": 41183367084,
+  "job": 124485182180,
+  "artifact": 13036585257,
+  "files": {
+    "h1-hopt-projection-raw.zip": {
+      "bytes": 2532804,
+      "sha256": "432e6de2023846fbd438dc2f68e0fccc35901c6e4fed348e2e2e11917c73eaba"
+    },
+    "h1-hopt-projection-admission.tar.xz": {
+      "bytes": 815316,
+      "sha256": "1c7c4c528823e0918d46a08229839a65ccc77356ee3bd7644b7d482971e254b1"
+    }
+  },
+  "capsuleMemberCount": 279,
+  "sourceQualification": {
+    "raw": 347,
+    "normalized": 1034,
+    "total": 1035,
+    "rawLosses": 687,
+    "normalizedLosses": 0,
+    "status": "REJECTED",
+    "targetMetricExecutions": 0,
+    "VMExecutions": 0
+  },
+  "rootAdmissionSHA256": "bcf870101aeb83a1d5b92553f5cde1c3a2bdac6683b42dea8eb1b88ec1802eef",
+  "rootSecondary39ReviewSHA256": "34057179481dbd661df3acf8b1b016b20bcad61c351cdc92a271129106dec484",
+  "independentH1NativeReviewer": false,
+  "holderResult": "ALTERNATE_PARTIAL_LITERAL_HOLDER_AND1_REALIZED_WITH_EXPLICIT_NONE_BRANCH_AND_MULTIPLE_PROJECTIONS",
+  "holderResultSHA256": "22f597177c60795979cf256f61450323c7e2f86d2cd6b1c87328ae98c8ffaf78",
+  "reference": {
+    "source": "ebe5387e12e948c2534618adf7a3cf0f27d9de51",
+    "run": 41176417138,
+    "artifact": 13033007890,
+    "zipSHA256": "b9ad6f1bc76f9b8fdb01e06b65262e3725ded83d544e394c8f0f568da6bfcfe5",
+    "retainedAt": "e07fc54bba34a90d387647e6ebe27ed8597c1e02",
+    "prefix": "reconstruction/pump-main/lanes/source-s1-native-retained-20261031/"
+  },
+  "limits": "Negative fixed-source experiment only. No original Rust-type/spelling recovery, byte progress, all-role predicate proof, runtime, security acceptance, source promotion or points claimed."
+}
