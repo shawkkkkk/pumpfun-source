@@ -1,0 +1,58 @@
+{
+  "schema": "current912-qualified-native-control-retention-v1",
+  "source": "9120883a957d7d9b2cab6140f66fb5bc9e6774d5",
+  "operational": "289ec59df531dc563573564769a787efc968f599",
+  "run": 41217095271,
+  "job": 124583802204,
+  "artifact": 13048299239,
+  "files": {
+    "latest912-qualified-raw.zip": {
+      "bytes": 2912199,
+      "sha256": "bfffe349ab4563fcfcc07e6d9bffcadb0046260e71b5857173b708402599f6f4"
+    },
+    "latest912-qualified-admission.tar.xz": {
+      "bytes": 924536,
+      "sha256": "b8db3d61c761484bc3d76f562be4f8032db6d15d8c9913850ad87c4525dad540"
+    }
+  },
+  "capsuleMembers": 97,
+  "rawMembers": 43,
+  "images": {
+    "unstripped.so": "dc79dde734b0cfb2ba84e505d62b5d3bdd801649e04e7ed9741366d07d095c8c",
+    "candidate.so": "d96c89272aa4fac9101d0bc5328596caecb63715b6514f554305bf8deb7cd3b8"
+  },
+  "CTO": {
+    "name": "_ZN14pump_recovered9admin_cto7execute17h3bd6d7f34f2e30d7E",
+    "info": 2,
+    "other": 2,
+    "sectionIndex": 1,
+    "address": 141840,
+    "bytes": 27400,
+    "bodySha256": "368ca0da629cc9266109539348ccde2723854b0c99ffe9296bcaf84855c616cc"
+  },
+  "rootAdmissionSHA256": "a9f1f4c1c884853ebd193c19b608cde3f19ffaefcb58d868aee6e12185a4398a",
+  "rootSecondary39SHA256": "0fd1e8c5d2627032f2cde735812449b58a27b17bf3a5ac41135660d101352433",
+  "officialScoreSHA256": "563754fd3ef3e0e3a8e6b6fd1e1cfb97a4f7af57cccd13ea43d7ab563fc9376b",
+  "targetMetricReceiptSHA256": "55bf053bb83a6b40908dddaf916c6864d977f5a239babdf91926b31317539bd3",
+  "coverage": {
+    "raw": 1034,
+    "normalized": 1034,
+    "total": 1035,
+    "rawLosses": 0,
+    "normalizedLosses": 0,
+    "newMatchedWindows": 0
+  },
+  "targetMetric": {
+    "M": 2249,
+    "ratio": 0.6737567405632116,
+    "sealedD421M": 2248,
+    "newMeasureExecutions": 1,
+    "D421Remeasured": false,
+    "method": "Previously sealed Ebe normalized logical tokens / SequenceMatcher autojunk=False"
+  },
+  "independentStaticReaderReview": true,
+  "independentAgentNativeAdmission": false,
+  "sourceProposal": false,
+  "candidateVMExecutions": 0,
+  "limits": "Unchanged-source cold control. Confirms upstream reported +1 token on this source cohort. No new source contribution, final CTO equality, runtime/security acceptance or whole-original-ELF equality. Both operationally failed predecessor runs remain separately retained."
+}
