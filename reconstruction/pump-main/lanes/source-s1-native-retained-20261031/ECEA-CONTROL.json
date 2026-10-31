@@ -1,0 +1,16 @@
+{
+  "source": "ecea7021fcb6a09959901522c6a4edca150a1a1b",
+  "operationalCommit": "5cb7aa3de669d0baaf8f0e9a86b838f3690baea6",
+  "run": 41166161483,
+  "artifactId": 13029328269,
+  "rawZipBytes": 2539543,
+  "rawZipSha256": "e37113f971eb103ffa929a4c931f00d876bcdaef112f50ff0b6be451d788c48a",
+  "rawZipGitBlob": "5e188edb56ea8299eff21dd4912a77c19d5883fc",
+  "sourceSha256": "c182aa90dcbf0262ddb2354016f84500826b6013a36d5e4e122d350dd7262980",
+  "unstrippedSha256": "8efdc872cdf169ae992c5efc193480c3cc4d9cc7b8808d956733e4f3ce713435",
+  "strippedSha256": "053452856e75b0995d4fe3a947fb66bffa3b49170c2537f4e198ee08da27ddb2",
+  "normalized": 1034,
+  "raw": 1034,
+  "total": 1035,
+  "role": "Actual unchanged-source control for rejectedS1 and pendingS2; complete43member rawZIP preserved. No source gain/runtime/fulloriginal claim."
+}
