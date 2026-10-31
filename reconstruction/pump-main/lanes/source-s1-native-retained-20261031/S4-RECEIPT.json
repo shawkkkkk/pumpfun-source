@@ -1,0 +1,158 @@
+{
+  "schema": "s4-permission-unit-negative-retention-receipt-v1",
+  "status": "NATIVE_SUCCESS_IDENTITY_PASS39_SOURCE_REJECTED_RAW_LOSS",
+  "source": {
+    "commit": "a119f880c73de06084df27a2b2cbffec09a6f46c",
+    "tree": "cb9c5dc663f5e54509ea12fefef3af7b96fcd1c0",
+    "parent": "ebe5387e12e948c2534618adf7a3cf0f27d9de51",
+    "aggregate": "9e7f44ab78eb9e87c295ae213f06059a3f226104444e036ad8282e318c6eac6a",
+    "sourceFiles": 141,
+    "CORE": 236,
+    "stageFiles": 142
+  },
+  "native": {
+    "run": 41180242239,
+    "operationalCommit": "4106295776cc7eb5bb93f1fedd10dfae999d7537",
+    "artifactId": 13034866296,
+    "members": 43
+  },
+  "rawZIP": {
+    "bodyPath": "/dev/shm/pump-cto-permission-s4/work/native-run/raw-artifact.zip",
+    "bytes": 2533055,
+    "sha256": "a552a4f04078857199e1d83666b1c215710e8cb53919c5ed80cdf0d023e4773e",
+    "gitBlob": "cdab935619a239ef449e4956ab1448c8db65de59"
+  },
+  "admissionAnalysisArchive": {
+    "bodyPath": "/dev/shm/pump-cto-permission-s4/work/retention-prep/s4-permission-unit-admission.tar.xz",
+    "bytes": 1168700,
+    "sha256": "384f099bd24fef7bf1336cfe7421cadf95cefeb00de9ada630fae22932ea8ab3",
+    "gitBlob": "4882b7779602aa52be827bc660b858abed7ea40b",
+    "members": 274
+  },
+  "images": {
+    "unstripped.so": "e60735f50f1435bd36acc200e8cdcf524752947095daeba33ee1f783f044141e",
+    "candidate.so": "11d137595a5033ce9380de49c42602c8697c70cb744517f157f149b8c359239d"
+  },
+  "official": {
+    "total": 1035,
+    "raw": 347,
+    "normalized": 1034,
+    "rawLosses": 687,
+    "normalizedLosses": 0,
+    "rawGains": 0,
+    "normalizedGains": 0,
+    "fullChangedRows": 687,
+    "rootAdmissionSHA256": "7b417968d0d26297827672b9596f69a0dc5ccff13ae21c4981606075f5818c92",
+    "freshScoreSHA256": "dafd9b3b5baadffb23bf2705be30717b2fa8fc0ca247645a31e2b9625eba0073",
+    "nativeSavedScoreSHA256": "e322647d496fc7c783e591bd88e0618f602165f21aae40dc5846b72615bd098d",
+    "sourceAndNativeProvenance": "PASS",
+    "membershipQualification": "REJECTED_RAW_OR_NORMALIZED_LOSS",
+    "fullRowAndFailureRecordsRetained": true,
+    "independentOfficialScorerExecutions": 1
+  },
+  "CTO": {
+    "name": "_ZN14pump_recovered9admin_cto7execute17h3bd6d7f34f2e30d7E",
+    "info": 2,
+    "other": 2,
+    "sectionIndex": 1,
+    "address": 141840,
+    "bytes": 27144,
+    "bodySha256": "e0905e9f3e46c5ec56adf364e544620ed0959a793c455f674416feda4adf0f8b"
+  },
+  "independentIdentity": {
+    "status": "FIRST_ONLY_PASS39",
+    "finalManifestSHA256": "d7015b173b4ffa8999ba79a970c183fc5cff54375ea0c14314eb3a6298ae442b",
+    "reviewSHA256": "36cb9f0938aa84de97f68163bf3e1b0242304e112097fde4c0684d7a7ec0f564"
+  },
+  "actualCausalPrefix": {
+    "manifestSHA256": "c9d01c37edd50a7b32df57666a9ae0ef7b630806d2330a65b3b22869c5866b60",
+    "mechanismSHA256": "3f9fa9279990f8bc8475079a0b50da100d5e38141199202128bc124fa29a052a",
+    "lateValidatedKNThenCOverwrite": "ABSENT_IN_AUTHORIZED_PREFIX",
+    "completedC32BeforeFeesAndPreservedToOuterPack": true,
+    "originalPhaseOrderReproduced": false,
+    "phaseLimit": "S4 selects C before creator/new validation; original selected nonholder C after supplied-new checks. This realizes the narrower prediction, not full original phase order.",
+    "incomingN": "Distinct original-N pre-prepare pack; no S4 tail/CPI/curve/Fees/pool/event consumer inspection claimed.",
+    "validationFeePresenceTests": 2,
+    "originalUnitABIInferred": false,
+    "newVariantGO": false
+  },
+  "compiledRawLossForensics": {
+    "finalManifestSHA256": "798c4785ffa6aa533ba118a5b04eb14a16215a3e4e9a8703b118ff32991d0ec8",
+    "archive": {
+      "path": "evidence.tar.xz",
+      "bytes": 413400,
+      "sha256": "16c2d5e0a7baa0b87071a7a78e651dba6528e020aba8aee9e5b64e44d91ae0ea",
+      "members": 28
+    },
+    "archiveMembers": 28,
+    "readerEntryPoints": [
+      {
+        "archive": "compiled-raw-loss/evidence.tar.xz",
+        "member": "same-symbol/CONCLUSION.md"
+      },
+      {
+        "archive": "compiled-raw-loss/evidence.tar.xz",
+        "member": "same-symbol/SUMMARY.json"
+      },
+      {
+        "archive": "compiled-raw-loss/evidence.tar.xz",
+        "member": "same-symbol/SAVED-EVIDENCE-REVIEW.json"
+      }
+    ],
+    "initialPairingBlockerPreserved": {
+      "path": "MANIFEST.json",
+      "sha256": "06e3bf39bb77db637b222a3df9bb9f3d8a7c385d43c3fa5b3ed3c659d8a875b7"
+    },
+    "failedAdapterAttempts": 2,
+    "savedRawLossRows": 687,
+    "existentialAddressImmediateOnlyRows": 672,
+    "unknownRows": 15,
+    "unboundRepeatedNames": 9,
+    "addressOnlyChangedPhysicalPairs": 673,
+    "rawEqualPhysicalPairs": 44,
+    "originalRawWitnessUniquelyChosen": false,
+    "limits": [
+      "Fifteen rows and nine repeated names remain unbound; no all687 explanation.",
+      "One CALL common target name is nonunique; actual numeric endpoint and operand arithmetic are retained without clone identity.",
+      "No original identity, arbitrary pointed-data semantics, CTO logic/runtime, source gain or layout fix claim."
+    ],
+    "scope": "Existential same-symbol compiled old-Ebe/S4 evidence, not all687 or unique original-witness proof. No pointed-data/runtime/CTO logic/sourcegain/layoutrepair claim."
+  },
+  "targetMetric": {
+    "executions": 0,
+    "status": "HELD_REJECTED_SOURCE",
+    "M": null,
+    "noEbeResultTransferred": true
+  },
+  "VM": {
+    "executions": 0,
+    "status": "HELD_REJECTED_SOURCE",
+    "noOldRuntimeResultTransferred": true
+  },
+  "retentionAnchor": {
+    "repository": "shawkkkkk/pumpfun-source",
+    "branch": "work/cto-s1-native-retained-20261031",
+    "expectedParent": "e07fc54bba34a90d387647e6ebe27ed8597c1e02",
+    "expectedBaseTree": "70b6a372f8c46c43a77d05f94ad8fa3d2b0b4903"
+  },
+  "originalTrueConsumerProofSHA256": "883cea9ee27fc594dc395b67032c577b3ef3ca4867002263a79016ab0b1fe195",
+  "claims": {
+    "acceptedSource": false,
+    "newVariantGO": false,
+    "originalUnitABI": false,
+    "all687AddressOnlyExplained": false,
+    "uniqueOriginalWitness": false,
+    "runtimeEquivalence": false,
+    "sourceGainOrNewWindow": false,
+    "newPRorPoints": false
+  },
+  "rawPublicMaskedLogPreserved": true,
+  "allFailedSelectorsAdaptersAndNoLossExitPreserved": true,
+  "livePublicCheckerExcluded": true,
+  "actionsHere": {
+    "remoteWrites": 0,
+    "newNativeSDKCompilerScorerMetricVmTests": 0,
+    "forensicOrAnalysisProducerExecutions": 0
+  },
+  "utc": "2026-10-31T07:40:25.403741+00:00"
+}
