@@ -1,0 +1,60 @@
+{
+  "schemaVersion": 1,
+  "purpose": "Retain one exact unchanged13fe control and its finite signed363-case comparison; no full identity/source gain.",
+  "source": {
+    "commit": "13fe4536be64d8c5c10f8905e9d2236f423ac4f4",
+    "selectedSha256": "ba203d5c8b0cda5ab3bb6eec65266a992331b7a8a361b9977a3d2ab474b11fe2",
+    "programFiles": 141,
+    "coreFiles": 236,
+    "stageFiles": 142
+  },
+  "native": {
+    "operationalCommit": "1f061a9adb2217b1cf37c26dacfab66fe7e2205b",
+    "run": 41170683278,
+    "attempt": 1,
+    "artifactId": 13031166975,
+    "conclusion": "success",
+    "zip": {
+      "file": "13fe-control-raw.zip",
+      "bytes": 2539578,
+      "sha256": "875edcd6e9ebb7e5b8fb2495d0008e723762b1f0251a02e038881fb56749fa92",
+      "gitBlob": "21f5f1024290cca0ede7f036bbb76440397ec3bd",
+      "members": 43
+    },
+    "imagesSha256": {
+      "unstripped.so": "cec841bd60cc002213829e3149e7c170dbb7f5bbc47a9887cef1ab7e0193319e",
+      "candidate.so": "fe099633c59f1a409f66d7b7bd6ce702580116c92ac24cb26842a351f3ee459e"
+    },
+    "independentAdmissionChecks": 33,
+    "reviewSha256": "c85caacab74ae22f1f621d29e3960a7bd435951ed8e529b4b5aa8a29547c53e1",
+    "rootAdmissionSha256": "0fbf0e3a337c60a7c55b5c161cd5a5ba5fa1e12ba16373a2fa7d183b0d90b234",
+    "rootOfficialScore": {
+      "raw": 1034,
+      "normalized": 1034,
+      "total": 1035,
+      "unmatched": [
+        "0x22a10"
+      ]
+    },
+    "sdkLimit": "SDK bytes physically verified by authenticated native runner, not physically rehashed locally."
+  },
+  "runtime": {
+    "archive": "13fe-runtime.tar.xz",
+    "bytes": 137596,
+    "sha256": "7ab327bfb06cded6943ed28495f5ebf7829c17df537adbda4224c8aa7e90ecc8",
+    "gitBlob": "3deda4ee6c991300907b324ff8d48f2befda3766",
+    "fullReportBytes": 27593213,
+    "fullReportSha256": "9715315e51142505314974e4731b1aa5cada9557f5c33ba5d3d25a5612d9cede",
+    "cases": 363,
+    "matches": 363,
+    "successPerSide": 169,
+    "rejectedPerSide": 194,
+    "savedSignatureAudit": 726,
+    "poolAuthorityNonsignerRows": 726,
+    "beforeAfterInputsEqual": true,
+    "receiptSha256": "5922fecbcae82b5bd3dddf351d2af38e9e448c342e221665c684e653f6574d8e",
+    "publicSchemaReviewSha256": "59c9d67a426dae7c2a65c17f377ae69064c793bed3e00c639f244ecdc7f0a759",
+    "reexecutedForPackaging": false
+  },
+  "limits": "Finite363 signed synthetic comparisons and726 recorded verifications only. Native1034/1035 does not establish whole-original identity, whole-program behavior, source gain, candidate acceptance, security clearance or later-main qualification. Prior negatives remain distinct."
+}
