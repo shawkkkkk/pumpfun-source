@@ -1,0 +1,7 @@
+# Latest maintained 9120883 source control
+
+One unchanged-source cold control of main9120883, tree643b5908. Since actual D421, only the compiled CTO state-literal initialization order changed (accepted upstream3666); no program proposal is mixed in. Full source/CORE/stage sets are retained.
+
+Current maintained source_inputs v2 binds files AND directory membership. Record its canonical file+directory digest; do not reuse v1 file-only aggregation or omit directories. Native file/stage vectors and archives remain separately bound. Latest fastbuild filters ambient Cargo linker overrides; latest macOS bootstrap assembles a locked private stage, verifies it, and atomically publishes it. These committed helpers remain unchanged, with full SDK inventories and ordinary cold-target fixed flags. No compiler/IR/layout/oracle sweep, flags, volatile changes or binary edits. All controller AST nodes except BASE/description equal the qualified D421 controller.
+
+Source/manifest/lockfile review found no new install hook or credential access. All project Python imports use bytecode-off; unchanged isolated compiler-guardian standard-library invocation remains the documented exception. Upstream M2249/runtime388 remain author reports until this artifact is admitted; no source gain, runtime or last-window equality is transferred. Root-only preparation, no independent agent review. One preflight then one native dispatch, full no-loss score against actual D421 before any new target measurement. S5 remains rejected and retained.
