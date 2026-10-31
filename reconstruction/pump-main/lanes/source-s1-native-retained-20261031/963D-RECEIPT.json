@@ -1,0 +1,60 @@
+{
+  "schemaVersion": 1,
+  "purpose": "Retain one exact unchanged963d control and its finite signed363-case comparison; no full identity/source gain.",
+  "source": {
+    "commit": "963d1eefbed3a81a51d2d52f80026c5434a7a423",
+    "selectedSha256": "1f7b48f38510ee9aa9dd06382e1ebb0e99cf70c897aa0a5d11bc25b33454d8e8",
+    "programFiles": 141,
+    "coreFiles": 236,
+    "stageFiles": 142
+  },
+  "native": {
+    "operationalCommit": "abf086a2e6664615dcac903bf4cf12487c2070ab",
+    "run": 41169198128,
+    "attempt": 1,
+    "artifactId": 13030337257,
+    "conclusion": "success",
+    "zip": {
+      "file": "963d-control-raw.zip",
+      "bytes": 2539421,
+      "sha256": "cc8911b3343f396ceb77a4003d83ff088c109f0810aed373dcd13bfeb5b9302b",
+      "gitBlob": "6f5b7c3995ddd3b2b085dee961229935e0d802e3",
+      "members": 43
+    },
+    "imagesSha256": {
+      "unstripped.so": "c3ea5d9310d855ee7ec6b5f3f3896d1373e9ae56e3051fd2415cfc7d1d1eeeab",
+      "candidate.so": "99da16d544508e1f7989ef2e91b34e788b7636fc540cc015db9335228cd5a4cd"
+    },
+    "independentAdmissionChecks": 33,
+    "reviewSha256": "d8b588dd2d2008dbe8ffdd900b55ff2c507946db8100ace9acb2576b98a80291",
+    "rootAdmissionSha256": "a6ea9113f20bdcd7b9d342f457eb8c20c582e62ff9d3873a194aea263aa6385e",
+    "rootOfficialScore": {
+      "raw": 1034,
+      "normalized": 1034,
+      "total": 1035,
+      "unmatched": [
+        "0x22a10"
+      ]
+    },
+    "sdkLimit": "SDK bytes physically verified by authenticated native runner, not physically rehashed locally."
+  },
+  "runtime": {
+    "archive": "963d-runtime.tar.xz",
+    "bytes": 135996,
+    "sha256": "d396f6c5886ee41faa077498291c8815b73e8b5cb1c6cd75942b8da1f56e5f0c",
+    "gitBlob": "08c258d95336e35e71af98fd61859fadff142def",
+    "fullReportBytes": 27593213,
+    "fullReportSha256": "08bf6c30c5fa47d0ab042e77d799fe6e5e213b1988f1787b7d4bdc0aa4217fb3",
+    "cases": 363,
+    "matches": 363,
+    "successPerSide": 169,
+    "rejectedPerSide": 194,
+    "savedSignatureAudit": 726,
+    "poolAuthorityNonsignerRows": 726,
+    "beforeAfterInputsEqual": true,
+    "receiptSha256": "b4437fc36344f05a4092cf6586c1273f1a75968f7fee84bd4c45b50122c59718",
+    "publicSchemaReviewSha256": "2efec496e95416f6ff8cfbe81acfd690380f583638b7c0ef05c171111c3851d6",
+    "reexecutedForPackaging": false
+  },
+  "limits": "Finite363 signed synthetic comparisons and726 recorded verifications only. Native1034/1035 does not establish whole-original identity, whole-program behavior, source gain, candidate acceptance, security clearance or later-main qualification. Prior negatives remain distinct."
+}
