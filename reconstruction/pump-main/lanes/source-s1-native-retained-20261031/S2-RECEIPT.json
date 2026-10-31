@@ -1,0 +1,62 @@
+{
+  "schemaVersion": 1,
+  "purpose": "Durable retention of exact rejected S2 native artifact; no source gain or candidate acceptance.",
+  "archive": {
+    "file": "s2-raw-artifact.zip",
+    "bytes": 2568953,
+    "sha256": "2cbef91934f7714bef0073698157f0b55210a05691178e7b32e17030992bc8c7",
+    "members": 45,
+    "preservedOriginalTransportZip": true
+  },
+  "source": {
+    "commit": "5cfe37b14b5486b802782651fde4a39985141494",
+    "selectedSourceSha256": "5e3ec1f60ed3e22dd59401e08776c678fdc03265f6887f43ddb048b183c07eea",
+    "programFiles": 141,
+    "coreFiles": 236,
+    "workspaceFiles": 142
+  },
+  "operationalCommit": "86c9b9f46be4b655e738a9f42aff9ee5d050f252",
+  "run": {
+    "id": 41168263822,
+    "attempt": 1,
+    "url": "https://github.com/shawkkkkk/pumpfun-source/actions/runs/41168263822",
+    "conclusion": "failure",
+    "artifactId": 13030326688
+  },
+  "reference": {
+    "sourceCommit": "ecea7021fcb6a09959901522c6a4edca150a1a1b",
+    "run": 41166161483,
+    "artifactId": 13029328269
+  },
+  "result": {
+    "disposition": "REJECTED",
+    "reason": "Raw losses against the exact ECEA control; original no-loss guard failed.",
+    "normalized": 1034,
+    "raw": 347,
+    "total": 1035,
+    "normalizedLosses": 0,
+    "rawLosses": 687,
+    "fullRowsCompared": 1035,
+    "imagesSha256": {
+      "unstripped.so": "eeb484325eb342fa9a59c19e661b8f8bd0af14b88b61c459946e712db253de88",
+      "candidate.so": "ea09e0773e42023cbdaaf972b8bf37eb951781efdd87bd7ee88a9b23a7f7be05"
+    }
+  },
+  "rootAdmission": {
+    "sourceAndArchiveAdmission": "PASS",
+    "independentOfficialScorer": "PASS",
+    "receiptSha256": "7879badd12eea951cbeefdd6dc456d337a7909eacddfa3331ae781be671125bb",
+    "scope": "One frozenS2-versusECEA measurement only. Full original candidate score independently verified. A native negative is retained; no current-main PR qualification, runtime or whole meaningful ELF result is implied."
+  },
+  "retainedMemberBindings": {
+    "FAILURE.json": "ec95dc7785bccdc7c7d44c837e6416ff789585d34c8b76f91559a37dfbfeca01",
+    "CANDIDATE-COMPARISON.json": "febf06f59a59e7ee9289cf314b318a45885587c9e28aff14745aeb0f9859e1c2",
+    "score.json": "f6f4a8ab24bbc164726375f2f6b96bb76fcaa5784a65c452b9113636fe08e826",
+    "program-source-inputs.json": "39d07014f5db5b7805ee991516a6e076dc35c5bd498f52dda020b0e45a91e5d7",
+    "toolchain-source-inputs.json": "79be4ca5e09a812fd5d3d6f0c80fd66edf7670ee6afa476064a7e79b0ebfd790",
+    "compiled-workspace-inputs.json": "6e392a05c6b9462b4b5c3f5fd3b515327fa4538797da7b5dfa72250970521fc7",
+    "unstripped.so": "eeb484325eb342fa9a59c19e661b8f8bd0af14b88b61c459946e712db253de88",
+    "candidate.so": "ea09e0773e42023cbdaaf972b8bf37eb951781efdd87bd7ee88a9b23a7f7be05"
+  },
+  "limits": "One historical S2-versus-ECEA native measurement. Full negative score and original failure remain in the ZIP. No current-main PR qualification, runtime/VM result, compiler diagnostic or whole-original equivalence is implied."
+}
