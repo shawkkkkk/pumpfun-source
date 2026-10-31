@@ -1,0 +1,298 @@
+"""One fixed-source diagnostic build; never a source/IR-edit or LLVM-variant oracle."""
+from pathlib import Path
+import argparse
+import hashlib
+import importlib.util
+import json
+import os
+import re
+import shutil
+import sys
+
+SOURCE_SHA256 = 'a0cbf5b4a9adf2aaefd9a54d19ee2167032fb31a62a197dc871da71b53705642'
+SOURCE_FILES = 141
+SYMBOL = '_ZN14pump_recovered9admin_cto7execute17h3bd6d7f34f2e30d7E'
+LLVM_ARGUMENTS = (
+    '-filter-print-funcs=' + SYMBOL,
+    '-print-before=jump-threading',
+    '-print-after=jump-threading',
+    '-print-after=finalize-isel',
+    '-print-before=greedy',
+    '-print-after=greedy',
+    '-print-after=virtregrewriter',
+    '-print-after=block-placement',
+)
+ROOT_ARGUMENTS = ('--emit=link,llvm-ir',) + tuple(
+    item for value in LLVM_ARGUMENTS for item in ('-C', 'llvm-args=' + value))
+STAGES = (('After', 'finalize-isel'), ('Before', 'greedy'), ('After', 'greedy'),
+          ('After', 'virtregrewriter'), ('After', 'block-placement'))
+ENVIRONMENT_KEYS = (
+    'RUSTC', 'RUSTC_WRAPPER', 'CARGO_HOME', 'CARGO_TARGET_DIR', 'CARGO_BUILD_JOBS',
+    'CARGO_TARGET_SBPF_SOLANA_SOLANA_RUSTFLAGS', 'CC', 'AR', 'OBJDUMP', 'OBJCOPY',
+    'PUMP_RECON_HOME', 'PUMP_RECON_PYTHON', 'PUMP_LOGICAL_REGISTRY_SRC',
+    'PUMP_LINK_NEXT_WRAPPER', 'PUMP_LINK_ROOT_CRATE', 'PUMP_LINK_SCRIPT',
+    'PUMP_LINK_SCRIPT_SHA256', 'PUMP_LINK_LLD', 'PUMP_LINK_RECEIPT', 'PUMP_LINK_MAP',
+    'PYTHONDONTWRITEBYTECODE')
+OWNED_OUTPUTS = ('capture-result.json', 'llvm-ir', 'compiler-dumps')
+BUILD_OUTPUTS = ('build.log', 'unstripped.so', 'candidate.so', 'source-inputs.json',
+                 'link-receipt.json', 'link.map')
+
+
+def require(condition, message):
+    if not condition:
+        raise ValueError(message)
+
+
+def digest(path):
+    h = hashlib.sha256()
+    with Path(path).open('rb') as stream:
+        for block in iter(lambda: stream.read(1024 * 1024), b''):
+            h.update(block)
+    return h.hexdigest()
+
+
+def overlap(first, second):
+    return first == second or first in second.parents or second in first.parents
+
+
+def admit_paths(src, work, out, expected_source):
+    """Read-only admission before creating any helper directory or receipt."""
+    for path in (src, work, out):
+        require(not path.is_symlink(), 'source/work/output must not be a symlink')
+    src, work, out = (path.resolve() for path in (src, work, out))
+    require(src == expected_source.resolve() and src.is_dir(), 'only frozen repository source is admitted')
+    require(not overlap(src, work) and not overlap(src, out), 'source overlaps workspace/output')
+    require(not overlap(work, out), 'diagnostic workspace/output must be separate')
+    require(not out.exists() or out.is_dir(), 'output must be a directory')
+    require(not work.exists() or work.is_dir(), 'workspace must be a directory')
+    for name in OWNED_OUTPUTS + BUILD_OUTPUTS:
+        destination = out / name
+        require(not destination.exists() and not destination.is_symlink(),
+                'diagnostic output already present: ' + name)
+    require(not (work / 'target-identity').exists()
+            and not (work / 'target-identity').is_symlink(), 'diagnostic target must start absent')
+    return src, work, out
+
+
+def rewrite_command(command):
+    """Pure transformation; the hook separately requires the entire frozen argv."""
+    require(isinstance(command, list) and len(command) >= 2
+            and Path(command[0]).name == 'cargo' and command[1] == 'build'
+            and command[-1] == '--offline' and '--release' in command
+            and '--locked' in command and '--' not in command,
+            'unexpected maintained cold Cargo command')
+    result = list(command)
+    result[1] = 'rustc'
+    return result + ['--lib', '--', *ROOT_ARGUMENTS]
+
+
+def target_ir_extent(blob):
+    """Locate an unedited complete target definition inside one raw LLVM dump."""
+    definitions = list(re.finditer(rb'(?m)^define\b[^\n]*@"?' + re.escape(SYMBOL.encode()) + rb'"?\(', blob))
+    if len(definitions) != 1:
+        return None
+    start = definitions[0].start()
+    closing = re.search(rb'(?m)^\}', blob[start:])
+    return (start, start + closing.end()) if closing is not None else None
+
+
+def dump_identity(heading):
+    timing = re.search(rb'IR Dump (Before|After)\b', heading)
+    timing = timing.group(1).decode() if timing else None
+    ids = '|'.join(re.escape(stage) for _, stage in STAGES) + '|jump-threading'
+    name = re.search(rb'\((' + ids.encode() + rb')\)', heading)
+    stage = name.group(1).decode() if name else None
+    # Legacy IR printing can use only the fixed pass's readable name, while
+    # machine dumps include its registered ID. Both retain the exact heading.
+    if stage is None and re.search(rb'IR Dump (Before|After) Jump Threading(?: on [^\r\n]+)? \*\*\*:?[ \t]*$', heading):
+        stage = 'jump-threading'
+    return timing, stage
+
+
+def collect(out, work):
+    """Retain all root IR and exact IR/machine pass slices, including failures."""
+    ir_folder, dump_folder = out / 'llvm-ir', out / 'compiler-dumps'
+    ir_folder.mkdir()
+    dump_folder.mkdir()
+    modules = []
+    deps = work / 'target-identity/sbpf-solana-solana/release/deps'
+    for source in sorted(deps.glob('*.ll')):
+        require(source.is_file() and not source.is_symlink(), 'unexpected emitted IR file type')
+        destination = ir_folder / source.name
+        with source.open('rb') as reader, destination.open('xb') as writer:
+            shutil.copyfileobj(reader, writer)
+        data = destination.read_bytes()
+        extent = target_ir_extent(data)
+        modules.append({'file': destination.relative_to(out).as_posix(),
+                        'bytes': len(data), 'sha256': digest(destination),
+                        'containsTargetDefinition': extent is not None})
+    log = out / 'build.log'
+    require(not log.is_symlink(), 'raw build log must not be a symlink')
+    raw = log.read_bytes() if log.is_file() else b''
+    starts = list(re.finditer(rb'(?m)^(?:# )?\*\*\* IR Dump [^\r\n]+', raw))
+    dumps = []
+    for i, start in enumerate(starts):
+        end = starts[i + 1].start() if i + 1 < len(starts) else len(raw)
+        part = raw[start.start():end]
+        timing, stage = dump_identity(start.group())
+        stem = 'dump-%03d-%s-%s' % (i + 1, (timing or 'other').lower(), stage or 'unclassified')
+        destination = dump_folder / (stem + '.txt')
+        with destination.open('xb') as writer:
+            writer.write(part)
+        opening = b'# Machine code for function ' + SYMBOL.encode() + b':'
+        closing = b'# End machine code for function ' + SYMBOL.encode() + b'.'
+        machine_complete = (part.count(opening) == part.count(closing) == 1
+                            and part.find(opening) < part.find(closing))
+        extent = target_ir_extent(part)
+        target = None
+        if extent is not None:
+            target_path = dump_folder / (stem + '-target.ll')
+            with target_path.open('xb') as writer:
+                writer.write(part[extent[0]:extent[1]])
+            target = {'file': target_path.relative_to(out).as_posix(),
+                      'rawLogStart': start.start() + extent[0], 'rawLogEnd': start.start() + extent[1],
+                      'bytes': extent[1] - extent[0], 'sha256': digest(target_path)}
+        dumps.append({'file': destination.relative_to(out).as_posix(),
+                      'bytes': len(part), 'sha256': digest(destination),
+                      'rawLogOffset': start.start(), 'rawLogEnd': end,
+                      'heading': start.group().decode('utf-8', errors='replace'),
+                      'timing': timing, 'pass': stage,
+                      'containsTargetSymbol': SYMBOL.encode() in part,
+                      'completeTargetMachineFunction': machine_complete,
+                      'completeTargetIrFunction': extent is not None,
+                      'targetIr': target})
+    observed = []
+    for timing, stage in STAGES:
+        matching = [d['file'] for d in dumps if d['timing'] == timing and d['pass'] == stage
+                    and d['completeTargetMachineFunction']]
+        observed.append({'timing': timing, 'pass': stage, 'files': matching})
+    machine_dumps = [d for d in dumps if d['pass'] in {s for _, s in STAGES}]
+    machine_complete = len(machine_dumps) == len(STAGES) and all(len(x['files']) == 1 for x in observed)
+    jt = [d for d in dumps if d['pass'] == 'jump-threading']
+    pairing_valid = (len(jt) >= 4 and len(jt) % 2 == 0 and all(
+        d['timing'] == ('Before' if index % 2 == 0 else 'After')
+        and d['completeTargetIrFunction'] for index, d in enumerate(jt)))
+    pairs = []
+    for index in range(0, len(jt) - 1, 2):
+        before, after = jt[index:index + 2]
+        pairs.append({'iteration': index // 2 + 1, 'before': before['file'], 'after': after['file'],
+                      'beforeTarget': before['targetIr'], 'afterTarget': after['targetIr'],
+                      'complete': before['timing'] == 'Before' and after['timing'] == 'After'
+                          and before['completeTargetIrFunction'] and after['completeTargetIrFunction']})
+    return {'llvmIr': modules, 'passDumps': dumps,
+            'machineDumps': machine_dumps,
+            'jumpThreadingDumps': jt, 'jumpThreadingPairs': pairs,
+            'minimumJumpThreadingPairs': 2, 'jumpThreadingPairingValid': pairing_valid,
+            'requestedStages': observed, 'allMachineStagesObserved': machine_complete,
+            'allRequestedStagesObserved': machine_complete and pairing_valid,
+            'targetDefinitionRetained': any(x['containsTargetDefinition'] for x in modules),
+            'rawBuildLogPresent': log.is_file(),
+            'rawBuildLogSha256': hashlib.sha256(raw).hexdigest(),
+            'rawBuildLogBytes': len(raw)}
+
+
+def capture(fastbuild, src, work, out, expected_source):
+    require(SYMBOL.startswith('_ZN'), 'actual current-control target symbol not frozen')
+    src, work, out = admit_paths(src, work, out, expected_source)
+    source = fastbuild.snapshot(src)
+    require(source['sha256'] == SOURCE_SHA256 and len(source['files']) == SOURCE_FILES,
+            'selected source differs from frozen current39eb source')
+    # Source/path/output admission above precedes every helper write.
+    out.mkdir(parents=True, exist_ok=True)
+    calls = []
+    original = fastbuild.run_compiler
+    record = {'purpose': 'Diagnostic capture only; no source gain or IR editing.',
+              'symbol': SYMBOL, 'sourceSha256': source['sha256'],
+              'rootAdditionalArguments': list(ROOT_ARGUMENTS),
+              'rootOnlyCargoRustcArguments': True, 'calls': calls,
+              'environmentScope': 'Only explicit compiler/linker environment keys; inherited environment is not dumped.',
+              'rustMirDump': 'Not requested: no scoped Rust-MIR dump option qualified.',
+              'compilerCompleted': False, 'buildOk': False, 'captureComplete': False}
+    def save():
+        path = out / 'capture-result.json'
+        require(not path.is_symlink() and (not path.exists() or
+                (path.is_file() and path.stat().st_nlink == 1)), 'unsafe capture receipt output')
+        with path.open('w' if path.exists() else 'x', encoding='utf-8') as stream:
+            stream.write(json.dumps(record, indent=2) + '\n')
+    def hook(command, *positional, **keywords):
+        require(not calls, 'diagnostic permits exactly one compiler command')
+        expected = [str(fastbuild.SDK / 'rust/bin/cargo'), 'build', '--manifest-path',
+                    str(work / 'ws/programs/pump/Cargo.toml'), '--release',
+                    '--target', 'sbpf-solana-solana', '--locked', '--offline']
+        require(command == expected and keywords.get('cwd') == work / 'ws',
+                'compiler command/cwd differs from frozen identity build')
+        environment = keywords.get('env', {})
+        require(environment.get('CARGO_TARGET_SBPF_SOLANA_SOLANA_RUSTFLAGS') == '-Zremap-cwd-prefix='
+                and 'RUSTFLAGS' not in environment and 'CARGO_ENCODED_RUSTFLAGS' not in environment,
+                'maintained identity compiler flags differ')
+        require(environment.get('RUSTC') == str(fastbuild.RECIPES['identity']['rustc'])
+                and environment.get('RUSTC_WRAPPER') == str(fastbuild.H / 'pump_link_rustc.sh')
+                and environment.get('CARGO_TARGET_DIR') == str(work / 'target-identity'),
+                'maintained identity compiler/wrapper/target path differs')
+        fastbuild.assert_unchanged(src, source)
+        transformed = rewrite_command(command)
+        calls.append({'originalArgv': list(command), 'diagnosticArgv': transformed,
+                      'argvDelta': {'replacedIndex': 1, 'from': 'build', 'to': 'rustc',
+                                    'appended': ['--lib', '--', *ROOT_ARGUMENTS]},
+                      'cwd': str(keywords['cwd']),
+                      'compilerEnvironment': {key: environment.get(key) for key in ENVIRONMENT_KEYS},
+                      'originalKeywordNames': sorted(keywords), 'timeout': keywords.get('timeout'),
+                      'originalPositionalCount': len(positional)})
+        save()
+        # Preserve every original argument and keyword, including timeout and env.
+        return original(transformed, *positional, **keywords)
+    result, failure = None, None
+    save()
+    try:
+        fastbuild.run_compiler = hook
+        result = fastbuild.build(src, work, out, recipe='identity')
+        record['compilerCompleted'] = True
+        record['buildOk'] = result.get('ok', False)
+        require(len(calls) == 1, 'actual compiler boundary count differs from one')
+    except BaseException as error:
+        failure = error
+        record['error'] = {'type': type(error).__name__, 'message': str(error)}
+    finally:
+        fastbuild.run_compiler = original
+        try:
+            record.update(collect(out, work))
+            fastbuild.assert_unchanged(src, source)
+            record['sourceUnchanged'] = True
+        except BaseException as error:
+            record['collectionError'] = {'type': type(error).__name__, 'message': str(error)}
+            if failure is None:
+                failure = error
+        record['captureComplete'] = bool(record['buildOk'] and record.get('sourceUnchanged')
+                and record.get('rawBuildLogPresent') and record.get('targetDefinitionRetained')
+                and record.get('allRequestedStagesObserved') and len(calls) == 1 and failure is None)
+        save()
+    if failure is not None:
+        raise failure
+    return result
+
+
+def main():
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--src', type=Path, required=True)
+    parser.add_argument('--work', type=Path, required=True)
+    parser.add_argument('--out', type=Path, required=True)
+    parser.add_argument('--recipe', choices=['identity'], required=True)
+    args = parser.parse_args()
+    root = Path(__file__).resolve().parents[4]
+    harness = root / 'reconstruction/harness'
+    sys.path.insert(0, str(harness))
+    try:
+        spec = importlib.util.spec_from_file_location('diagnostic_fastbuild', harness / 'fastbuild.py')
+        fastbuild = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(fastbuild)
+    finally:
+        sys.path.pop(0)
+    result = capture(fastbuild, args.src, args.work, args.out, root / 'programs/pump')
+    print(json.dumps(result, indent=2))
+    # Build success still reaches the official scorer even if capture is incomplete.
+    # The controller separately rejects incomplete diagnostic attribution.
+    return 0 if result.get('ok') else 1
+
+
+if __name__ == '__main__':
+    raise SystemExit(main())
