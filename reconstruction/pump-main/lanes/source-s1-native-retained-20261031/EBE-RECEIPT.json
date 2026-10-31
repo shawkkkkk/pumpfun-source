@@ -1,0 +1,141 @@
+{
+  "schema": "ebe-actual-normal-control-retention-receipt-v1",
+  "status": "ADMITTED_NATIVE_SUCCESS_NO_LOSS_VM0",
+  "source": {
+    "commit": "ebe5387e12e948c2534618adf7a3cf0f27d9de51",
+    "tree": "196d24d8725ef08e0470c44de7bed95a797eb46a",
+    "parent": "13fe4536be64d8c5c10f8905e9d2236f423ac4f4",
+    "sourceAggregate": "6b02f60a97777892b9cfb3b93ff40679226e08dca15b8313899df342c68e07e7",
+    "sourceFiles": 141,
+    "coreFiles": 236,
+    "stageFiles": 142,
+    "stageVector": "d3a20e58a5ab6b40923700bf3ef97680a31675152c6d406d88eded4b12983e62"
+  },
+  "native": {
+    "run": 41176417138,
+    "attempt": 1,
+    "operationalCommit": "1bb7326cbccd7773f9accba45b9b6379b76ceb12",
+    "operationalTree": "80c589377a42a4872b9b79609d339c742809433e",
+    "artifactId": 13033007890,
+    "members": 43
+  },
+  "rawZIP": {
+    "path": "/dev/shm/pump-cto-ebe5387/work/native-run/raw-artifact.zip",
+    "bytes": 2539553,
+    "sha256": "b9ad6f1bc76f9b8fdb01e06b65262e3725ded83d544e394c8f0f568da6bfcfe5",
+    "gitBlob": "d7ca9c8304cd1865fb1c0385c9230a423edaf9a9"
+  },
+  "admissionArchive": {
+    "path": "/dev/shm/pump-cto-ebe5387/work/retention-prep/ebe-control-admission.tar.xz",
+    "bytes": 263740,
+    "sha256": "68ba7b14a10f7a196dd4366c76e07208e54eef27264cc066fc4007191b2af5c1",
+    "gitBlob": "b3492aa75faa8861f796f019ebae4a622c31bce3",
+    "members": 250
+  },
+  "sourceNativeImages": {
+    "unstripped.so": "9ac11d9e5692d3ff91d45880d5e442347dac7a76bf7d62870f07fc53247b4fcf",
+    "candidate.so": "f4dcdd2067ba6e65b14d4460e1b718321303e63083d5cac6d22e1bed69c23c66"
+  },
+  "official": {
+    "total": 1035,
+    "raw": 1034,
+    "normalized": 1034,
+    "unmatched": [
+      "0x22a10"
+    ],
+    "fullReferenceRows": 1035,
+    "allRowsEqual13fe": true,
+    "changedRows": {},
+    "rawLosses": 0,
+    "normalizedLosses": 0,
+    "rootScoreSha256": "eb31f3f8bac9ae9a31f3f932dd99a952ee57e6c46c876c901bb778c00ab6def5",
+    "rootAdmissionSha256": "47cd591397090a3fcd3e8dc80e2a1900e0b7ac45dae257d55bf28ec8e181df5e",
+    "onceIndependentOfficialScorerRun": true,
+    "independentAdmission": "PASS37_FIRST_ONLY_READER"
+  },
+  "targetMetric": {
+    "measured": true,
+    "M": 2247,
+    "ratio": 0.6731575793888556,
+    "bodyBytes": 27400,
+    "logicalInstructions": 3337,
+    "sealed13feM": 2245,
+    "deltaM": 2,
+    "reference13feRemeasured": false,
+    "newEbeMetricExecutions": 1,
+    "method": "win.insns(score.normalize) / Cand.tokens / SequenceMatcher(None, original, newEbe, autojunk=False)",
+    "resultSha256": "e77fa54acbb9a9d90d80a1d2abc74c88a01d7872a70659fda26bd948406c731d",
+    "executionReceiptSha256": "d075287e7018069e533f95e38b3ed4dce2977a4b26cb126ac871ebe6f4726df5",
+    "limits": "Target normalized token similarity only; no window equality, runtime, original type/lifetime or global causal claim."
+  },
+  "boundedAnalysisConclusions": {
+    "context": "Actual Ebe creator-first versus copied sharing-key32 comparison, then owner and data gates, is bound to current native inputs. Selected shared gate proof is bounded; original cleanroom outline agrees historically, exact parent13fe native operand chain remains unknown. No universal alias/type/lifetime or source-cause claim.",
+    "event": "One separately authorized actual Ebe metric gives M2247/ratio0.6731575793888556, plus2 over sealed13feM2245 consumed without remeasurement. Official1034/1035 no-loss remains separate; this does not close the CTO window or authorize source variant.",
+    "sweep": "Actual Ebe two validation fee-tag tests/common shared head+1760/no scoped validate/sweep outlines match selected13fe control facts. Wholebody differs. One Ebe scoped reader, cached comparison; first13fe extraction/completion were successful, not failures. No universal carrier/inliner rule or S4GO."
+  },
+  "sourceConstraintConclusions": {
+    "publicABI": "One raw-identical original/Ebe public caller binds incoming hopt None2/Some(false)0/Some(true)1, fee presence0/1 plus independently passed magnitude/new pointer. Valid decoding/frame/alias limits remain explicit; no universal Rust niche/layout/private-helper inference.",
+    "originalFeePaths": "Original three fee sites partition selected K holder / C shared nonholder / N nonshared nonholder, not the three public hopt encodings. Incoming fee tag is common; shared nonholder still requires validated N and later sharing keeps N. This role partition was already known; three native sites do not prove three source fee calls or supply a new sourceGO. Cache-only wrong shared-load coordinate+db8 attempt retained; corrected+da8 passes.",
+    "priorCorrection": "PR3197 F1/F2/F3 have TWO NESTED PRIVATE fee_ok calls INSIDE validate, not public execute calls. PR3384 is distinct negative private-helper placement from public execute/and_then. Exact three-arm collision was not established, but no novelty/source/causalGO follows. Current two-volatile-read/error-order budget and all prior negative limits remain."
+  },
+  "sourceConstraintSeals": {
+    "public-abi": {
+      "manifest": "MANIFEST.json",
+      "sha256": "bed64ee28036406cc78c09354155300dcd7b4d3383423c980c50d6408d84e5ea"
+    },
+    "original-fee-paths": {
+      "manifest": "MANIFEST.json",
+      "sha256": "56cdab3e2a9895b30912d713313f7c3a2189fad599f4a99546944a748b26ae06"
+    },
+    "three-arm-prior": {
+      "manifest": "MANIFEST.json",
+      "sha256": "5f89b4e00677fa35d1e33642cb572b1dfa38ff493fbf14db1a21957500737877"
+    }
+  },
+  "analysisSeals": {
+    "context": {
+      "manifest": "MANIFEST.json",
+      "sha256": "4436ec860908bbd21e4173550202aacf0c27134eab54ac85783080f909252b6f"
+    },
+    "event": {
+      "manifest": "MANIFEST.json",
+      "sha256": "a9b1f54379c8dfb1802aa3a09f1986ddbcd0c3c4b069c5772da48f32c890f21e"
+    },
+    "sweep": {
+      "manifest": "MANIFEST.json",
+      "sha256": "91be205cdf4c48ef2a0ce3033d5f2410cbbc5deabbadf61b09157a9d76d93210"
+    }
+  },
+  "VM": {
+    "executions": 0,
+    "resultTransferFrom13fe": false,
+    "finiteRuntimeEquivalenceClaim": false
+  },
+  "preservation": {
+    "allPreparationFailures": true,
+    "ARTMETAExistingBeforeWriteFailurePreserved": true,
+    "allRawProviderWrappersAndCanonicalMappings": true,
+    "rawPublicMaskedLogUnchanged": true,
+    "independentReleaseAndReaderRecords": true,
+    "privateAuthTransferSlopClientVersionExcluded": true,
+    "extraNativeCopiesOutsideZIP": 0
+  },
+  "retentionAnchor": {
+    "repository": "shawkkkkk/pumpfun-source",
+    "branch": "work/cto-s1-native-retained-20261031",
+    "expectedParent": "3b6d3a92da95d6722af3ae3782d3d30d856b6c15",
+    "expectedBaseTree": "5939bad3ee1b084923111737b84b82c90762efec"
+  },
+  "limits": [
+    "One exact accepted Ebe source normal control; no new source variant or diagnostic.",
+    "Full official window no-loss is distinct from target similarity and whole-original ELF identity.",
+    "Target metric, if present, comes only from separately sealed existing measurement; no measurement ran here.",
+    "No VM run, later-main qualification, security acceptance or followup candidate authorization."
+  ],
+  "actions": {
+    "remoteWrites": 0,
+    "compilerNativeSDKScorerMetricVMTests": 0,
+    "analysisProducerExecutions": 0
+  },
+  "utc": "2026-10-31T06:48:23.366813+00:00"
+}
