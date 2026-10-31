@@ -1,0 +1,22 @@
+{
+  "source": "9120883a957d7d9b2cab6140f66fb5bc9e6774d5",
+  "operational": "e3d2f3fe75cabf894e00ed81369c496365c4224a",
+  "run": 41214651218,
+  "artifact": 13047494061,
+  "job": 124576542688,
+  "capsuleMembers": 83,
+  "files": {
+    "latest912-bootstrap-failure-raw.zip": {
+      "bytes": 870335,
+      "sha256": "50d23e7bcc8565d4b1e54fca1d4e77576f63dd60d6cbccbdff7076dd8d455699"
+    },
+    "latest912-bootstrap-failure.tar.xz": {
+      "bytes": 1532120,
+      "sha256": "1e6e6507c5b3476ca3e6eee856546e88e7abeb12646c51824e652db5a29321c2"
+    }
+  },
+  "rawMembers": 22,
+  "decision": "FAILED_BOOTSTRAP_NO_PUMP_ELF_OR_SCORE",
+  "cause": "Missing scripts/deep_disassembly.py outside historical CORE/sparse checkout; transitive window_elf_reader.py also required. No program source, compiler option or source-layout correction proposed.",
+  "nextScope": "One exact tracked dependency-closure correction in operational controller/workflow, then a genuinely cold build of the unchanged same source. Preserve this failure; no source or compiler/SDK recipe variation."
+}
