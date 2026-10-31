@@ -1,0 +1,19 @@
+{
+  "source": "66caa3e2de152190bab3d998e7f6df18243b8e1e",
+  "sourceParent": "ecea7021fcb6a09959901522c6a4edca150a1a1b",
+  "sourceSha256": "a1035b0d249859e09fd64c1598cef256c7ca337563d7408a4cf9189d9e0ceb2b",
+  "operationalCommit": "7ece095f8d9b6d34054a69b54f4d87091b8a76d0",
+  "run": 41166956637,
+  "attempt": 1,
+  "artifactId": 13029399303,
+  "rawZipBytes": 2568632,
+  "rawZipSha256": "13b50791b061c72bae69ff94251bb8b26648be3bde0aac2cb423b6c352d50618",
+  "rawZipGitBlob": "4bd9a32abf349cc6cb52af9fe3acf98b523df0cf",
+  "sourceOutcome": "REJECTED",
+  "normalized": 1034,
+  "raw": 347,
+  "rawLosses": 687,
+  "noNormalizedLosses": true,
+  "codeObservation": "CTO17992B plus newlyoutlinedsweep9096B, combined27088 vs27400. Projectionbeforefees nowobserved; privatefeeSome sharedgate stillabsent.",
+  "limits": "Private fork evidence retention only; no source PR, source gain, runtime qualification or points claim."
+}
