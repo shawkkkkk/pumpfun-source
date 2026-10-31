@@ -1,0 +1,58 @@
+{
+  "schema": "s5-borrowed-selection-negative-remote-retention-v1",
+  "source": "bb4a6fcaca179a8a49882a6acac3b503a1206882",
+  "sourceTree": "f981d5c90d5137be84c5f5d2438cf96dd3af5f17",
+  "parent": "d4219123cf0fbbefcfc7e77450efeda6684b812b",
+  "operational": "e3d97702e33feb979b94bd7572ec1c9c5468bb55",
+  "run": 41212621615,
+  "job": 124570618282,
+  "artifact": 13047416013,
+  "files": {
+    "s5-borrowed-selection-raw.zip": {
+      "bytes": 2903978,
+      "sha256": "3f2e92eac544dfcef2592d9a9904d8eac1771a9e55aa438efda25311aedc3d35"
+    },
+    "s5-borrowed-selection-admission.tar.xz": {
+      "bytes": 998660,
+      "sha256": "404f0b732df5dcf30be68bcaddb37e89de2d20664280713bc35df8c7414aede5"
+    }
+  },
+  "capsuleMembers": 112,
+  "images": {
+    "unstripped.so": "1591191d1bf12e3710fd68619fef5d5171844f5f2b98154adcbbe8d393519e7b",
+    "candidate.so": "ccfd8fcb2b6bfd38d38f7283dfacbedc9912cac734488a575b99064c1902aa21"
+  },
+  "CTO": {
+    "name": "_ZN14pump_recovered9admin_cto7execute17h3bd6d7f34f2e30d7E",
+    "info": 2,
+    "other": 2,
+    "sectionIndex": 1,
+    "address": 141840,
+    "bytes": 26936,
+    "bodySha256": "48784a7d7d3cac788248a10084405330a589aceaded79ce5f55cd221614dc108"
+  },
+  "rootAdmissionSHA256": "9245804d93b1da0851a6da7d04f5da4edd46d9cd76d1b05c4e581cac05e5a90b",
+  "secondary39SHA256": "ee4524d809514be899fd50c0b759f2a642df6b08c416be4d80474e7f41684e65",
+  "officialScoreSHA256": "dabbc55943f407c84e52e3beb79188088d19d79c4bc4d127ef94e71ff4849480",
+  "coverage": {
+    "raw": 347,
+    "normalized": 1034,
+    "total": 1035,
+    "rawLosses": 687,
+    "normalizedLosses": 0,
+    "rawGains": 0,
+    "normalizedGains": 0
+  },
+  "decision": "REJECTED; no token metric, VM or source PR",
+  "mechanism": {
+    "prefixJSONsha256": "3633c7c9e64a6c455156910cc9ee50b2b5a17e54ace45b6b80812836e473a817",
+    "queries": 113,
+    "pointerChoice": "C/N pointer at1338..1358 before fee-tag1370, only after N guards; not original private ABI proof.",
+    "materialization": "Selected target FP[-1624,-1592) only receives four-qword writes in blocks1648,18a0,1990; snapshots of C at entry are a different object.",
+    "sharing": "Incoming-N staging remains distinct from selected-target object, conditional public valid-value premise.",
+    "twoFeeTagLoadsRemain": true
+  },
+  "independentAgentReview": false,
+  "currentMainLimit": "Frozen D421 diagnostic; upstream3666 has meanwhile moved fee_configurable literal initialization and reportsM2249. Not promoted/rebuilt on that source.",
+  "limits": "Full source/build/SDK/registry/linker/artifact/root-score provenance retained, qualification remains rejected. Original types/lifetimes/Result layout, arbitrary aliases, exhaustive behavior and whole-ELF equality are not inferred."
+}
