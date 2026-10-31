@@ -1,0 +1,92 @@
+{
+  "schemaVersion": 1,
+  "purpose": "Durably preserve rejected S3 source with successful native no-loss result and VM held0.",
+  "source": {
+    "commit": "65f0162a3dcd381df0f831082dd6732c9af4ab78",
+    "selectedSha256": "9fc3fd3c8e68d85e5bf4fcb2309694974aab3c5aaacab9741a1e0ea25c72a622",
+    "proposalLeafSha256": "32d4d71065f96e0d24f65ead880974a4e4cc95919ec2ef0bc113a0d536e3d7b9",
+    "proposalManifestSha256": "42a11e20671e4c354813f0b45de7f0f5521b8948cd8c683919d3ff0c1b1ad0a5",
+    "semanticReviewSha256": "d38a892b1ec4785fca34a4a62f7d33bfba7f398e1449be6b4b287dcf413e6753"
+  },
+  "native": {
+    "operationalCommit": "d95abdd9a72bd492adc4cb8b11f329e72e9222db",
+    "run": 41172052790,
+    "attempt": 1,
+    "artifactId": 13031054922,
+    "conclusion": "SUCCESS",
+    "noLossGuard": "PASS",
+    "zip": {
+      "file": "s3-raw-artifact.zip",
+      "bytes": 2534297,
+      "sha256": "0f1a82695dd41525fffbebe667c3067062a9a1fd1fd3fb4b70cbdb054965bdda",
+      "gitBlob": "dda4ff1b0bf9ca43130ecd96fa813001083fa405",
+      "members": 45
+    },
+    "unstrippedSha256": "100d222047a2281a4409d8f732266955368504479d3d4076b4f6e3af08ef37e4",
+    "strippedSha256": "31ece96dc7eee70c8c7cc16ba401d63e668c3725a8d1c411834fd9494d8e01d0",
+    "CTObytes": 27400,
+    "CTObodySha256": "a8bf685d74da8226d39a8fc9f17eb0100b84a56db69415f241bb2a2b3f75e570",
+    "officialScore": {
+      "raw": 1034,
+      "normalized": 1034,
+      "total": 1035,
+      "rowsChangedVersus13fe": 0
+    },
+    "independentAdmissionChecks": 38,
+    "reviewSha256": "29a17fafa3d32a88dce607bbaede8b4248d38974ac115b8d1b81f4c660baba8a",
+    "correctedRootAdmissionSha256": "b477052a47f8bcb4835cfd0e800f820f0c1dbad9aaf31ed4a3d43d737d4e17cd"
+  },
+  "parentReference": {
+    "source": "13fe4536be64d8c5c10f8905e9d2236f423ac4f4",
+    "run": 41170683278,
+    "artifactId": 13031166975,
+    "zipSha256": "875edcd6e9ebb7e5b8fb2495d0008e723762b1f0251a02e038881fb56749fa92",
+    "alreadyRetainedPath": "reconstruction/pump-main/lanes/source-s1-native-retained-20261031/13fe-control-raw.zip",
+    "alreadyRetainedGitBlob": "21f5f1024290cca0ede7f036bbb76440397ec3bd"
+  },
+  "sourceDecision": {
+    "sourceVerdict": "SOURCE_REJECTED_INTERNAL_METRIC",
+    "nativeBuildAndNoLossResult": "SUCCESS",
+    "savedOfficialRows": {
+      "total": 1035,
+      "raw": 1034,
+      "normalized": 1034,
+      "changedVersus13fe": 0
+    },
+    "metricEvidence": {
+      "file": "sweep/TARGET-METRIC.json",
+      "method": "win.insns(score.normalize) / Cand.tokens / difflib.SequenceMatcher(None, original_tokens, candidate_tokens, autojunk=False)",
+      "parent13feRatio": 0.6725584182144997,
+      "S3Ratio": 0.38316357100059917,
+      "parentNormalizedM": 2245,
+      "S3NormalizedM": 1279,
+      "normalizedMDelta": -966,
+      "originalLogicalInstructions": 3339,
+      "candidateLogicalInstructions": 3337,
+      "recomputedForPackaging": false
+    },
+    "structuralObservation": "Existing sealed sweep evidence records three fee tests/private successful-fee shared head; this does not overcome the negative target metric.",
+    "VM": {
+      "executions": 0,
+      "heldBeforeLaunch": true,
+      "runnerStarted": false,
+      "privateSnapshotCreated": false
+    },
+    "sourcePR": false,
+    "nextCandidateAuthorized": false,
+    "typeUniquenessClaimed": false,
+    "limits": "Native no-loss success and source rejection are separate. Unchanged1034 score rows do not establish source progress, code identity or runtime equivalence. Existing plans are historical, not authorization for any next form."
+  },
+  "analysis": {
+    "file": "s3-analysis.tar.xz",
+    "bytes": 270080,
+    "sha256": "c31ce1260386471ba68b60d24088cd833413a7d9dc6ba82290ee20d937c09193",
+    "gitBlob": "0a2f72bc0a18b7d433470c7de85b25ad90ade9ea",
+    "retainedFiles": 56,
+    "savedMetricSha256": "2ab39d249030560c5a2dc9bcc98d47c3f463ea3ed69e81b507394af73783c045",
+    "savedFeeBoundarySha256": "08cd32af2993fc966a0747663f809d50c77b9904121bf83cde91e1c2b9e34465",
+    "contextSealSha256": "14d85249cd7cdde8912a8693e2387584f4b768546f9c2c0c4d3472c0f6dd4139",
+    "heldVMReceiptSha256": "8394bbfb216001d176a5d74afdd2261f8985c3f01d09d97bcd8ae9d91f1b5d78"
+  },
+  "limits": "SOURCE_REJECTED_INTERNAL_METRIC, no sourcePR/next candidate/type uniqueness. Native RESULT remains SUCCESS; S3VM0. Packaging did not repeat metrics/ELF/scorer/compiler/VM/tests. Unchanged official score rows imply no source progress or whole identity."
+}
